@@ -1,4 +1,5 @@
 #include "scientistList.h"
+#include <iostream>
 using namespace std;
 
 scientistList::scientistList()
@@ -21,7 +22,7 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
 }
 
 //Reading from file
-bool scientistList::readFile ()
+bool scientistList::readFile ()  //returns true if it is not the end of the file.
 {
     fstream file;
     file.open("turingAwardWinners.txt");
@@ -33,7 +34,7 @@ bool scientistList::readFile ()
     file >> _birthYear;
     file >> _deathYear;
     file >> _TuringAwards;
-    if (file.eof())
+    if (!file.eof())
     {
         return true;
     }
