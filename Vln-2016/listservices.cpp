@@ -55,27 +55,57 @@ vector<scientistList> listServices::sortByBirth()
     return sortedList;
 }
 
-void   listServices::sortByAlive()
+vector<scientistList>   listServices::sortByAlive()
 {
+    vector<scientistList> sortedList;
+    int currentYear;
+
   for(unsigned int i = 0; i < _computerScientists.size(); i++)
   {
+      currentYear = _computerScientists[i].dod();
       for(unsigned int j = i ; i < _computerScientists.size(); j++)
       {
+          // if the year of death is listed as 0, the scientist is still alive.  This loop puts the living scientists first in the vector.
+          if(_computerScientists[j].dod() == 0)
+          {
+              sortedList.push_back(_computerScientists[j]);
+              scientistList temp = _computerScientists[i];
+              _computerScientists[i] = _computerScientists[j];
+              _computerScientists[j] = temp;
+          }
 
       }
   }
-
-
-
-
+return sortedList;
 }
 
-/*void   listServices::sortByAward()
+vector<scientistList>   listServices::sortByAward()
 {
-    //TODO
+
+    vector<scientistList> sortedList;
+    int currentSmallest;
+
+    for(unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        currentSmallest = _computerScientists[i].getAwards();
+        for(unsigned int j = i; j < _computerScientists.size(); j++)
+        { //in the if sentence below, a 0 in getAwards indicates that the scientist has never received the award.
+           if(_computerScientists[i].getAwards() < currentSmallest && _computerScientists[i].getAwards() != 0)
+           {
+               scientistList temp;
+               temp = _computerScientists[i];
+               _computerScientists[i] = _computerScientists[j];
+               _computerScientists[i] = temp;
+               sortedList.push_back(temp);
+           }
+        }
+    }
+    return sortedList;
+
+
+
 }
 /*
-
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {
     //TODO

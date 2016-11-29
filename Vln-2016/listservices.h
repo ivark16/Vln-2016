@@ -12,8 +12,8 @@ public:
     listServices();
 vector<scientistList> sortByName();
 vector<scientistList>   sortByBirth();
- void   sortByAlive();
- void   sortByAward();
+vector<scientistList>    sortByAlive();
+vector<scientistList>   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
  vector<scientistList>   searchLastName(string lastName);
