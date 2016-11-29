@@ -3,6 +3,7 @@
 #include "listservices.h"
 #include <iostream>
 #include <vector>
+#include <stdio.h>
 using namespace std;
 
 class consoleUI

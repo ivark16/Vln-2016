@@ -1,8 +1,4 @@
 #include "consoleui.h"
-#include "scientistList.h"
-#include "listservices.h"
-#include <vector>
-#include <iostream>
 
 using namespace std;
 

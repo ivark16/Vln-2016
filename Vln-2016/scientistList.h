@@ -1,8 +1,6 @@
 #ifndef SCIENTISTLIST_H
 #define SCIENTISTLIST_H
 
-using namespace std;
-
 #include <string>
 #include <fstream>
 using namespace std;

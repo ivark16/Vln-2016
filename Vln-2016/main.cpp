@@ -1,6 +1,6 @@
 #include <iostream>
-using namespace std;
 #include "consoleui.h"
+using namespace std;
 
 int main(int argc, char *argv[])
 {
