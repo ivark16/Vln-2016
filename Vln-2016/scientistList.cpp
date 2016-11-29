@@ -1,4 +1,4 @@
-#include "list.h"
+#include "scientistList.h"
 using namespace std;
 
 list::list()
@@ -34,4 +34,3 @@ void list::getScientist ()
     deathYear = _deathYear;
     TuringAwards = _TuringAwards;
 }
-

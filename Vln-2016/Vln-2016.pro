@@ -12,9 +12,9 @@ TEMPLATE = app
 SOURCES += main.cpp \
     consoleui.cpp \
     listservices.cpp \
-    list.cpp
+    scientistList.cpp
 
 HEADERS += \
     consoleui.h \
     listservices.h \
-    list.h
+    scientistList.h
