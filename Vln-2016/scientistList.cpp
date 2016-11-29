@@ -79,3 +79,9 @@ int scientistList::getAwards() const
 {
     return TuringAwards;
 }
+
+string scientistList::fullName() const
+{
+    string a = getFirstName() + getLastName();
+    return a;
+}
