@@ -3,12 +3,12 @@
 
 listServices::listServices()
 {
-
+    bool isEndOfFile;
     do {
         list nextScientist();
-        nextScientist.readFile();
-        _computerScientists.push_back()
-    }while(!list.isEndOfFile()) //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
+        isEndOfFile = nextScientist.readFile ();
+        _computerScientists.push_back(nextScientist);
+    }while(!isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
 
 }
 
