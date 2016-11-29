@@ -3,7 +3,13 @@
 
 listServices::listServices()
 {
-    //constructor
+
+    do {
+        list nextScientist();
+        nextScientist.readFile();
+        _computerScientists.push_back()
+    }while(!list.isEndOfFile()) //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
+
 }
 
 void   listServices::sortByName()

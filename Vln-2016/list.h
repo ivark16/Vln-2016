@@ -1,13 +1,13 @@
 #ifndef LIST_H
 #define LIST_H
-<<<<<<< HEAD
+ // <<<<<<< HEAD
 
 using namespace std;
 
-=======
+ //=======
 #include <string>
 using namespace std;
->>>>>>> 6ccc14fae7c5db06ed5cd8ce6e3b9028e1af5f48
+// >>>>>>> 6ccc14fae7c5db06ed5cd8ce6e3b9028e1af5f48
 
 class list
 {
