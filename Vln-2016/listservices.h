@@ -10,7 +10,7 @@ class listServices
 
 public:
     listServices();
- void   sortByName();
+vector<scientistList> sortByName();
 vector<scientistList>   sortByBirth();
 vector<scientistList>    sortByAlive();
 vector<scientistList>   sortByAward();

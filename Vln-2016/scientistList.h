@@ -32,10 +32,12 @@ public:
     void getScientist();
     string getFirstName() const;
     string getLastName() const;
+    string fullName() const;
     int dob() const;
     int dod() const;
     char getSex () const;
     int getAwards() const;
+
 
 };
 

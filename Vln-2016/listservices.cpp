@@ -1,8 +1,14 @@
 #include "listservices.h"
 #include <vector>
 #include <string>
+#include <algorithm>
 
 using namespace std;
+
+struct ScientistComparison {
+    bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
+};
+
 
 listServices::listServices()
 {
@@ -15,9 +21,16 @@ listServices::listServices()
 
 }
 
-void   listServices::sortByName()
+vector<scientistList> listServices::sortByName()
 {
-    //TODO: flokka eftir nafni
+    vector<scientistList> sortedByName;
+
+    ScientistComparison cmp;
+
+    std::sort(sortedByName.begin(), sortedByName.end(), cmp);
+
+
+    return sortedByName;
 }
 vector<scientistList> listServices::sortByBirth()
 {
@@ -92,11 +105,7 @@ vector<scientistList>   listServices::sortByAward()
 
 
 }
-
-
-
 /*
-
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {
     //TODO
