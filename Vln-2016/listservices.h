@@ -4,9 +4,10 @@
 #include <vector>
 
 
-
 class listServices
 {
+    vector<list> _computerScientists;
+
 public:
     listServices();
  void   sortByName();
@@ -15,15 +16,12 @@ public:
  void   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
- vector<list> searchLastName(string lastName);
+ vector<list>   searchLastName(string lastName);
  vector<list>   searchBirth(int birthYear);
  vector<list>   searchAlive(int deathYear);
  vector<list>   searchAward(int awardYear);
 
 
-private:
-
-    vector<list> _turingAwardWinners;
 
 };
 
