@@ -13,7 +13,7 @@ public:
  void   sortByName();
 vector<scientistList>   sortByBirth();
  void   sortByAlive();
- void   sortByAward();
+vector<scientistList>   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
  vector<scientistList>   searchLastName(string lastName);

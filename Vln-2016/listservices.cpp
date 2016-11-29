@@ -57,10 +57,35 @@ void   listServices::sortByAlive()
 
 }
 
-void   listServices::sortByAward()
+vector<scientistList>   listServices::sortByAward()
 {
-    //TODO
+
+    vector<scientistList> sortedList;
+    int currentSmallest;
+
+    for(unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        currentSmallest = _computerScientists[i].getAwards();
+        for(unsigned int j = i; j < _computerScientists.size(); j++)
+        {
+           if(_computerScientists[i].getAwards() < currentSmallest && _computerScientists[i].getAwards() != 0)
+           {
+               scientistList temp;
+               temp = _computerScientists[i];
+               _computerScientists[i] = _computerScientists[j];
+               _computerScientists[i] = temp;
+               sortedList.push_back(temp);
+           }
+        }
+    }
+    return sortedList;
+
+
+
 }
+
+
+
 /*
 
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
