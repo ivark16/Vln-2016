@@ -6,7 +6,7 @@ scientistList::scientistList()
 
 }
 
-scientistList::scientistList(string nafn, char kyn, int faedingarAr, int danarar, int verdlaun)
+scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarAr, int danarar, int verdlaun)
 {
     fstream myFile;
     myFile.open("turingAwardWinners.txt", ios::app);
@@ -27,7 +27,8 @@ bool scientistList::readFile ()
     file.open("turingAwardWinners.txt");
 
 
-    file >> _name;
+    file >> _firstName;
+    file >> _lastName;
     file >> _sex;
     file >> _birthYear;
     file >> _deathYear;
@@ -42,34 +43,39 @@ bool scientistList::readFile ()
 
 void scientistList::getScientist ()
 {
-    name = _name;
+    firstName = _firstName;
+    lastName = _lastName;
     sex = _sex;
     birthYear = _birthYear;
     deathYear = _deathYear;
     TuringAwards = _TuringAwards;
 }
 
-string scientistList::getName()
+string scientistList::getFirstName() const
 {
-    return name;
+    return firstName;
 }
 
-int scientistList::dob()
+string scientistList::getLastName() const
+{
+    return lastName;
+}
+int scientistList::dob() const
 {
     return birthYear;
 }
 
-int scientistList::dod()
+int scientistList::dod() const
 {
     return deathYear;
 }
 
-char scientistList::getSex ()
+char scientistList::getSex () const
 {
     return sex;
 }
 
-int scientistList::getAwards()
+int scientistList::getAwards() const
 {
     return TuringAwards;
 }
