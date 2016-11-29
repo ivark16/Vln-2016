@@ -5,7 +5,7 @@ listServices::listServices()
 {
     bool isEndOfFile;
     do {
-        scientistList nextScientist();
+        scientistList nextScientist;
         isEndOfFile = nextScientist.readFile();
         _computerScientists.push_back(nextScientist);
     }while(!isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
@@ -38,30 +38,30 @@ void   listServices::addNew(string firstName, string lastName, char gender, int 
     //TODO
 }
 
-vector<list> listServices::searchLastName(string lastName)
+vector<scientistList> listServices::searchLastName(string lastName)
 {
-    vector<list> matchingNames;
+    vector<scientistList> matchingNames;
     //TODO
     return matchingNames;
 }
 
-vector<list> listServices::searchBirth(int birthYear)
+vector<scientistList> listServices::searchBirth(int birthYear)
 {
-    vector<list> matchingBirthYears;
+    vector<scientistList> matchingBirthYears;
     //TODO
     return matchingBirthYears;
 }
 
-vector<list> listServices::searchAlive(int deathYear)
+vector<scientistList> listServices::searchAlive(int deathYear)
 {
-    vector<list> livingScientists;
+    vector<scientistList> livingScientists;
     //TODO
     return livingScientists;
 }
 
-vector<list> listServices::searchAward(int awardYear)
+vector<scientistList> listServices::searchAward(int awardYear)
 {
-    vector<list> matchingAwardYear;
+    vector<scientistList> matchingAwardYear;
     //TODO
     return matchingAwardYear;
 }
