@@ -9,4 +9,12 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    consoleui.cpp \
+    listservices.cpp \
+    list.cpp
+
+HEADERS += \
+    consoleui.h \
+    listservices.h \
+    list.h
