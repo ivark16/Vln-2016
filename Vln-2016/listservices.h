@@ -12,7 +12,7 @@ public:
     listServices();
  void   sortByName();
 vector<scientistList>   sortByBirth();
- void   sortByAlive();
+vector<scientistList>    sortByAlive();
 vector<scientistList>   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
