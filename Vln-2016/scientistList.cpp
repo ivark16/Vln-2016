@@ -1,13 +1,13 @@
 #include "scientistList.h"
 using namespace std;
 
-list::list()
+scientistList::scientistList()
 {
 
 }
 
 //Reading from file
-bool list::readFile ()
+bool scientistList::readFile ()
 {
     fstream file;
     file.open("turingAwardWinners.txt");
@@ -26,7 +26,7 @@ bool list::readFile ()
     return false;
 }
 
-void list::getScientist ()
+void scientistList::getScientist ()
 {
     name = _name;
     sex = _sex;

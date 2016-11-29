@@ -6,7 +6,7 @@
 
 class listServices
 {
-    vector<list> _computerScientists;
+    vector<scientistList> _computerScientists;
 
 public:
     listServices();

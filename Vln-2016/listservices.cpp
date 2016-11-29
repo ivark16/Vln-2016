@@ -5,8 +5,8 @@ listServices::listServices()
 {
     bool isEndOfFile;
     do {
-        list nextScientist();
-        isEndOfFile = nextScientist.readFile ();
+        scientistList nextScientist();
+        isEndOfFile = nextScientist.readFile();
         _computerScientists.push_back(nextScientist);
     }while(!isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
 
@@ -18,7 +18,9 @@ void   listServices::sortByName()
 }
 void   listServices::sortByBirth()
 {
-    //TODO
+
+
+
 }
 
 void   listServices::sortByAlive()

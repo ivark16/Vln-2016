@@ -1,5 +1,5 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef SCIENTISTLIST_H
+#define SCIENTISTLIST_H
 
 using namespace std;
 
@@ -8,7 +8,7 @@ using namespace std;
 using namespace std;
 
 
-class list
+class scientistList
 {
 private:
     string _name;
@@ -24,10 +24,10 @@ public:
     int deathYear;
     int TuringAwards;
 
-    list();
+    scientistList();
     bool readFile ();
     void getScientist ();
 
 };
 
-#endif // LIST_H
+#endif // SCIENTISTLIST_H
