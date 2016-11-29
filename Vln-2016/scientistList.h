@@ -25,8 +25,14 @@ public:
     int TuringAwards;
 
     scientistList();
+    scientistList(string nafn, char kyn, int faedingarAr, int danarar, int verdlaun);
     bool readFile ();
     void getScientist ();
+    string getName();
+    int dob();
+    int dod();
+    char getSex ();
+    int getAwards();
 
 };
 
