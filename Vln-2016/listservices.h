@@ -11,7 +11,7 @@ class listServices
 public:
     listServices();
  void   sortByName();
- void   sortByBirth();
+vector<scientistList>   sortByBirth();
  void   sortByAlive();
  void   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
