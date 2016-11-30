@@ -1,5 +1,6 @@
 #include "scientistList.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 scientistList::scientistList()
@@ -13,6 +14,7 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     myFile.open("turingAwardWinners.txt", ios::app);
 
     myFile << nafn << " ";
+    myFile << nafn2 << " ";
     myFile << kyn << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
@@ -22,18 +24,21 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
 }
 
 //Reading from file
-bool scientistList::readFile ()  //returns true if it is not the end of the file.
+bool scientistList::readFile (vector <scientistList>& science)  //returns true if it is not the end of the file.
 {
+    scientistList bla;
     fstream file;
     file.open("turingAwardWinners.txt");
 
 
-    file >> _firstName;
-    file >> _lastName;
-    file >> _sex;
-    file >> _birthYear;
-    file >> _deathYear;
-    file >> _TuringAwards;
+    file >> bla._firstName;
+    file >> bla._lastName;
+    file >> bla._sex;
+    file >> bla._birthYear;
+    file >> bla._deathYear;
+    file >> bla._TuringAwards;
+
+    science.push_back(bla);
     if (!file.eof())
     {
         return true;

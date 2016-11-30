@@ -15,7 +15,7 @@ listServices::listServices()
     bool isEndOfFile;
     do {
         scientistList nextScientist;
-        isEndOfFile = nextScientist.readFile();
+        isEndOfFile = nextScientist.readFile(_computerScientists);
         _computerScientists.push_back(nextScientist);
     }while(!isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
 
