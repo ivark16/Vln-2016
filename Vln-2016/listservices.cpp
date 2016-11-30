@@ -101,11 +101,12 @@ vector<scientistList>   listServices::sortByAward()
 
 
 
-/*
+
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {
-    //TODO
-}
+    scientistList newScientist(firstName, lastName, gender, birthYear, deathYear, awardYear);
+    _computerScientists.push_back(newScientist);
+}/*
 
 vector<scientistList> listServices::searchLastName(string lastName)
 {
