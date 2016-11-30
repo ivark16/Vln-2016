@@ -108,6 +108,7 @@ void consoleUI::run()
         }
             break;
         case 2:
+            //
             int firstOrLast;
             cout << "choose 1 for firstname or 2 for lastname" << endl;
             cin >> firstOrLast;
@@ -132,7 +133,7 @@ void consoleUI::run()
             listServices scientists;
             scientists.changeTo(_scientist.sortByAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
-            for(unsigned int i = 0 ; i < scientists.getSize(); i++)
+            for(int i = 0 ; i < scientists.getSize(); i++)
             {
                 cout.width(15);
                 cout << scientists.getFirstNameFromList(i) << left << scientists.getLastNameFromList(i) << endl;
@@ -142,6 +143,18 @@ void consoleUI::run()
               break;
         case 4:
             //sortAward
+        //sortAlive
+            {
+            listServices scientistsByAward;
+            scientistsByAward.changeTo(_scientist.sortByAward());
+            cout << "An organized list starting with the oldest living scientist" << endl;
+            for(int i = 0 ; i < scientistsByAward.getSize(); i++)
+            {
+                cout.width(15);
+                cout << scientistsByAward.getFirstNameFromList(i) << left << scientistsByAward.getLastNameFromList(i) << endl;
+
+            }
+             }
             break;
 
         case 5:
