@@ -24,7 +24,7 @@ void consoleUI::run()
     cout << "3: Search if alive.                   *" << endl;
     cout << "4: Search for award.                  *" << endl;
     cout << "5: Add new scientist.                 *" << endl;
-    cout << "6: Enter Function.                    *" << endl;
+    cout << "6: Search for birth year.             *" << endl;
     cout << "7: Enter Function.                    *" << endl;
     cout << "8: Enter Function.                    *" << endl;
     cout << "9: Enter Function.                    *" << endl;
@@ -142,6 +142,33 @@ void consoleUI::run()
         _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
     }
         break;
+
+    case 6:
+        //sortBirth
+        {
+        int year;
+
+        cout << "Enter year: ";
+        cin >> year;
+        listServices scientistsBirth;
+        scientistsBirth.changeTo(_scientist.searchBirth(year));
+        cout << "A list of scientists born in your year of choice" << endl;
+        for(int i = 0; i < scientistsBirth.getSize(); i++)
+        {
+
+            cout << scientistsBirth.getFirstNameFromList(i);
+            for(int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
+            {
+                cout << " ";
+            }
+
+            cout << scientistsBirth.getLastNameFromList(i) << endl;
+
+        }
+         }
+          break;
+
+
 
     }
 }

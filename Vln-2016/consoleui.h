@@ -17,6 +17,7 @@ public:
     void displayList();
     void searchFirstName();
     void searchLastName();
+
 };
 
 #endif // CONSOLEUI_H

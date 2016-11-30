@@ -31,6 +31,7 @@ vector<scientistList>   sortByAward();
  vector<scientistList>   searchAward(int awardYear);
  void changeTo(vector<scientistList> rhs);
 int getSize ();
+int searchLongestName();
 };
 
 #endif // LISTSERVICES_H
