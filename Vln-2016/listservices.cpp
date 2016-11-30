@@ -167,7 +167,7 @@ vector<scientistList> listServices::searchFirstName(string firstName)
     vector<scientistList> matchingFirstNames;
     for (unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-        if (firstName == _computerScientists[i].getLastName())
+        if (firstName == _computerScientists[i].getFirstName())
         {
             matchingFirstNames.push_back(_computerScientists[i]);
         }

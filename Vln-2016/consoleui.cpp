@@ -102,10 +102,9 @@ void consoleUI::run()
                     cout << "Enter first name ";
                     cin >> firstName;
                     searchName.changeTo(_scientist.searchFirstName(firstName));
-                    cout.width(15);
                     for (unsigned int i = 0; i < searchName.getSize(); i++)
                     {
-                        cout << searchName.getFirstNameFromList(i);
+                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
                     }
 
                 }
@@ -116,10 +115,9 @@ void consoleUI::run()
                     cout << "Enter last name ";
                     cin >> lastName;
                     searchName.changeTo(_scientist.searchLastName(lastName));
-                    cout.width(15);
                     for (unsigned int i = 0; i < searchName.getSize(); i++)
                     {
-                        cout << searchName.getLastNameFromList(i);
+                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
                     }
                 }
             }
