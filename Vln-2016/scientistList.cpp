@@ -34,9 +34,10 @@ bool scientistList::readFile ()  //returns true if it is not the end of the file
     file >> _birthYear;
     file >> _deathYear;
     file >> _TuringAwards;
-    if (!file.eof())
+    if (file.eof())
     {
         return true;
+        cout << "Returns true";
     }
     file.close();
     return false;
@@ -54,31 +55,31 @@ void scientistList::getScientist ()
 
 string scientistList::getFirstName() const
 {
-    return firstName;
+    return _firstName;
 }
 
 string scientistList::getLastName() const
 {
-    return lastName;
+    return _lastName;
 }
 int scientistList::dob() const
 {
-    return birthYear;
+    return _birthYear;
 }
 
 int scientistList::dod() const
 {
-    return deathYear;
+    return _deathYear;
 }
 
 char scientistList::getSex () const
 {
-    return sex;
+    return _sex;
 }
 
 int scientistList::getAwards() const
 {
-    return TuringAwards;
+    return _TuringAwards;
 }
 
 string scientistList::fullName() const
