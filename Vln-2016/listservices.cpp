@@ -174,17 +174,33 @@ vector<scientistList> listServices::searchFirstName(string firstName)
     return matchingFirstNames;
 }
 
+
 vector<scientistList> listServices::searchBirth(int birthYear)
 {
     vector<scientistList> matchingBirthYears;
-    //TODO
+
+    for(unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+      if (birthYear == _computerScientists[i].dob())
+      {
+          matchingBirthYears.push_back(_computerScientists[i]);
+      }
+    }
+
     return matchingBirthYears;
 }
 
 vector<scientistList> listServices::searchAlive(int deathYear)
 {
     vector<scientistList> livingScientists;
-    //TODO
+
+    for(unsigned int k = 0; k < _computerScientists.size(); k++)
+    {
+        if(_computerScientists[k].dod() == 0)
+        {
+            livingScientists.push_back(_computerScientists[k]);
+        }
+    }
     return livingScientists;
 }
 
@@ -200,6 +216,7 @@ vector<scientistList> listServices::searchAward(int awardYear)
     }
     return matchingAwardYear;
 }
+
 
 
 void listServices::changeTo(vector<scientistList> rhs)
