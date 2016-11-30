@@ -20,4 +20,3 @@ Stephen Cook m 1939 0 1982
 Ken Thompson m 1943 0 1983
 Dennis Ritchie m 1941 2011 1983
 Niklaus Wirth m 1934 0 1984
-
