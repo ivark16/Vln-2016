@@ -28,18 +28,22 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
 {
     fstream file;
     file.open("turingAwardWinners.txt");
-while(!file.eof())
-{
-    scientistList bla;
-    file >> bla._firstName;
-    file >> bla._lastName;
-    file >> bla._sex;
-    file >> bla._birthYear;
-    file >> bla._deathYear;
-    file >> bla._TuringAwards;
-    science.push_back(bla);
-}
-    file.close();
+    if(file.fail())
+    {
+        exit(1);
+    }
+    while(!file.eof())
+    {
+        scientistList bla;
+        file >> bla._firstName;
+        file >> bla._lastName;
+        file >> bla._sex;
+        file >> bla._birthYear;
+        file >> bla._deathYear;
+        file >> bla._TuringAwards;
+        science.push_back(bla);
+     }
+        file.close();
 }
 
 void scientistList::getScientist ()
