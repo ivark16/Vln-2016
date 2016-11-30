@@ -16,7 +16,7 @@ void consoleUI::run()
 {
     int chooseNumber = 0;
 
-    cout << "Enter number: ";
+    cout << "Enter number: " << endl;
     cout << "1: for entire list." << endl;
     cout << "2: Search by name." << endl;
     cout << "3: Search if alive." << endl;
