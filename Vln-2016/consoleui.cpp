@@ -127,13 +127,41 @@ void consoleUI::run()
         case 3:
             //sortAlive
             {
+
             listServices scientists;
             scientists.changeTo(_scientist.sortByAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
             for(int i = 0 ; i < scientists.getSize(); i++)
             {
+                string a;
+                string b;
+                if (scientists.getSexFromList(i) == 'm')
+                {
+                    a = "Male";
+                } else {
+                    a = "Female";
+                }
+
                 cout.width(15);
-                cout << scientists.getFirstNameFromList(i) << left << scientists.getLastNameFromList(i) << endl;
+                cout << left << scientists.getFirstNameFromList(i);
+                cout.width(15);
+                cout << scientists.getLastNameFromList(i) << left;
+                cout.width(15);
+                cout << a << left;
+                cout.width(15);
+                cout << scientists.dobFromList(i) << left;
+                cout.width(15);
+
+                if (scientists.dodFromList(i) == 0){
+                    cout.width(15);
+                    cout << "Alive" << left;
+                } else {
+                    cout.width(15);
+                    cout << scientists.dodFromList(i) << left;
+                }
+                cout.width(15);
+                cout << scientists.getAwardsFromList(i) << endl;
+                //cout <<  << endl;
 
             }
              }
@@ -154,59 +182,65 @@ void consoleUI::run()
             break;
 
         case 5:
-    {
+        {
             //addNew
-        string firstName;
-        string lastName;
-        char gender;
-        int birthYear;
-        char isAlive;
-        int deathYear;
-        char isWinner;
-        int awardYear;
+            string firstName;
+            string lastName;
+            char gender;
+            int birthYear;
+            char isAlive;
+            int deathYear;
+            char isWinner;
+            int awardYear;
 
-        cout << "Please enter the scientist's first name: ";
-        cin >> firstName;
-        cout << "Please enter the scientist's last name: ";
-        cin >> lastName;
-        cout << "Enter the scientist's gender (m/f) : ";
-        cin >> gender;
-        cout << "Enter the scientist's birth year: ";
-        cin >> birthYear;
-        cout << "Is the scientist still alive? (y/n) ";
-        cin >> isAlive;
-        if(isAlive == 'n')
-        {
-        cout << "Enter the scientist's year of death: ";
-        cin >>  deathYear;
-        }
-        else if(isAlive == 'y')
-        {
-        deathYear = 0;
-        }
-        else
-        {
-        "Invalid entry.  Please enter either y (yes) or n (no)";
-        }
-        cout << "Did the scientist win a Turing award? (y/n)";
-        cin >> isWinner;
-        if(isWinner == 'y')
-        {
-        cout << "Enter the year the scientist won: ";
-        cin >>  awardYear;
-        }
-        else if(isWinner == 'n')
-        {
-        awardYear = 0;
-        }
-        else
-        {
-        "Invalid entry.  Please enter either y (yes) or n (no)";
-        }
+            cout << "Please enter the scientist's first name: ";
+            cin >> firstName;
+            cout << "Please enter the scientist's last name: ";
+            cin >> lastName;
+            cout << "Enter the scientist's gender (m/f) : ";
+            cin >> gender;
+            cout << "Enter the scientist's birth year: ";
+            cin >> birthYear;
+            cout << "Is the scientist still alive? (y/n) ";
+            cin >> isAlive;
+            if(isAlive == 'n')
+            {
+                cout << "Enter the scientist's year of death: ";
+                cin >>  deathYear;
+            }
+            else if(isAlive == 'y')
+            {
+                deathYear = 0;
+            }
+            else
+            {
+                "Invalid entry.  Please enter either y (yes) or n (no)";
+            }
+            cout << "Did the scientist win a Turing award? (y/n)";
+            cin >> isWinner;
+            if(isWinner == 'y')
+            {
+                cout << "Enter the year the scientist won: ";
+                cin >>  awardYear;
+            }
+            else if(isWinner == 'n')
+            {
+                awardYear = 0;
+            }
+            else
+            {
+                "Invalid entry.  Please enter either y (yes) or n (no)";
+            }
 
-        _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
-    }
-        break;
+            _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
+            }
+            break;
+        case 6: //
+            {
+
+            }
+
+            break;
 
     }
 }
