@@ -1,5 +1,6 @@
 #include "consoleui.h"
-
+#include <iostream>
+#include <iomanip>
 using namespace std;
 
 consoleUI::consoleUI()
@@ -50,11 +51,14 @@ void consoleUI::run()
             break;
         case 3:
             //sortAlive
-
-            vector <scientistList> scientists = _scientist.sortByAlive();
-            for(unsigned int i = 0 ; i < scientists.size(); i++)
+            listServices scientists;
+            scientists.changeTo(_scientist.sortByAlive());
+            cout << "An organized list starting with the oldest living scientist" << endl;
+            for(unsigned int i = 0 ; i < scientists.getSize(); i++)
             {
-                cout << scientists[i].getFirstName() << endl;
+                cout.width(15);
+                cout << scientists.getFirstNameFromList(i) << left << scientists.getLastNameFromList(i) << endl;
+
             }
             break;
     }

@@ -10,6 +10,49 @@ struct ScientistComparison {
     bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
 };
 
+string listServices::getFirstNameFromList(int i)
+{
+    string name;
+    name = _computerScientists[i].getFirstName();
+    return name;
+}
+
+string listServices::getLastNameFromList(int i)
+{
+    string name;
+    name = _computerScientists[i].getLastName();
+    return name;
+}
+
+string listServices::fullNameFromList(int i) const
+{
+    string a = _computerScientists[i].fullName();
+    return a;
+}
+
+int listServices::dobFromList(int i) const
+{
+    int a = _computerScientists[i].dob();
+    return a;
+}
+
+int listServices::dodFromList(int i) const
+{
+    int a = _computerScientists[i].dod();
+    return a;
+}
+
+char listServices::getSexFromList(int i) const
+{
+    char a = _computerScientists[i].getSex();
+    return a;
+}
+
+int listServices::getAwardsFromList(int i) const
+{
+    int a = _computerScientists[i].getAwards();
+    return a;
+}
 
 listServices::listServices()
 {
@@ -99,9 +142,6 @@ vector<scientistList>   listServices::sortByAward()
     return sortedList;
 }
 
-
-
-
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {
     scientistList newScientist(firstName, lastName, gender, birthYear, deathYear, awardYear);
@@ -110,9 +150,28 @@ void   listServices::addNew(string firstName, string lastName, char gender, int 
 
 vector<scientistList> listServices::searchLastName(string lastName)
 {
-    vector<scientistList> matchingNames;
-    //TODO
-    return matchingNames;
+    vector<scientistList> matchingLastNames;
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        if (lastName == _computerScientists[i].getLastName())
+        {
+            matchingLastNames.push_back(_computerScientists[i]);
+        }
+    }
+    return matchingLastNames;
+}
+
+vector<scientistList> listServices::searchFirstName(string firstName)
+{
+    vector<scientistList> matchingFirstNames;
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        if (firstName == _computerScientists[i].getLastName())
+        {
+            matchingFirstNames.push_back(_computerScientists[i]);
+        }
+    }
+    return matchingFirstNames;
 }
 
 vector<scientistList> listServices::searchBirth(int birthYear)
@@ -132,7 +191,24 @@ vector<scientistList> listServices::searchAlive(int deathYear)
 vector<scientistList> listServices::searchAward(int awardYear)
 {
     vector<scientistList> matchingAwardYear;
-    //TODO
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        if (awardYear == _computerScientists[i].getAwards())
+        {
+            matchingAwardYear.push_back(_computerScientists[i]);
+        }
+    }
     return matchingAwardYear;
+}
+
+
+void listServices::changeTo(vector<scientistList> rhs)
+{
+    _computerScientists  = rhs;
+}
+
+int listServices::getSize ()
+{
+    return _computerScientists.size();
 }
 
