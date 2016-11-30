@@ -15,13 +15,20 @@ consoleUI::consoleUI(int chooseNumber)
 void consoleUI::run()
 {
     int chooseNumber = 0;
-
+    cout << "---------------------------------------" << endl;
+    cout << "------- Database for Scientist --------" << endl;
+    cout << "1: Display entire list.               *" << endl;
+    cout << "2: Search by name.                    *" << endl;
+    cout << "3: Search if alive.                   *" << endl;
+    cout << "4: Search for award.                  *" << endl;
+    cout << "5: Add new scientist.                 *" << endl;
+    cout << "6: Enter Function.                    *" << endl;
+    cout << "7: Enter Function.                    *" << endl;
+    cout << "8: Enter Function.                    *" << endl;
+    cout << "9: Enter Function.                    *" << endl;
+    cout << "10: Enter Function.                   *" << endl;
+    cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
-    cout << "1: for entire list." << endl;
-    cout << "2: Search by name." << endl;
-    cout << "3: Search if alive." << endl;
-    cout << "4: Search for award." << endl;
-    cout << "5: to add new scientist." << endl;
     cin >> chooseNumber;
 
     switch (chooseNumber)
