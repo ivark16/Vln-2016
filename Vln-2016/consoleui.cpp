@@ -41,25 +41,7 @@ void consoleUI::run()
             int counter = 1;
             listServices scientists;
             cout << "***List of all scientists***" << endl;
-            cout.width(10);
-            cout << left << "number";
-            cout.width(10);
-            cout << "Firstname" << left;
-            cout.width(10);
-            cout << "Lastname" << left;
-            cout.width(10);
-            cout << "gender" << left;
-            cout.width(10);
-            cout << "D.O.B" << left;
-            cout.width(10);
-            cout << "D.O.D" << left;
-            cout.width(10);
-            cout << "Year of award" << left << endl;
-            for(int i = 0 ; i < 9 ; i++)
-            {
-                cout << "--------";
-            }
-            cout << endl;
+            Print();
             for(int i = 0; i < scientists.getSize() - 1 ; i++)
             {
 
@@ -213,6 +195,29 @@ void consoleUI::run()
         break;
 
     }
+}
+
+void consoleUI::Print()
+{
+    cout.width(10);
+    cout << left << "number";
+    cout.width(10);
+    cout << "Firstname" << left;
+    cout.width(10);
+    cout << "Lastname" << left;
+    cout.width(10);
+    cout << "gender" << left;
+    cout.width(10);
+    cout << "D.O.B" << left;
+    cout.width(10);
+    cout << "D.O.D" << left;
+    cout.width(10);
+    cout << "Year of award" << left << endl;
+    for(int i = 0 ; i < 9 ; i++)
+    {
+        cout << "--------";
+    }
+    cout << endl;
 }
 
 
