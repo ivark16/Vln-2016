@@ -21,8 +21,6 @@ vector<scientistList>   sortByAward();
  vector<scientistList>   searchAlive(int deathYear);
  vector<scientistList>   searchAward(int awardYear);
 
-
-
 };
 
 #endif // LISTSERVICES_H

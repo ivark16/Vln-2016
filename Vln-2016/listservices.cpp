@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ listServices::listServices()
         scientistList nextScientist;
         isEndOfFile = nextScientist.readFile(_computerScientists);
         _computerScientists.push_back(nextScientist);
-    }while(!isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
+    }while(isEndOfFile); //This loop fills the computerScientist vector ( a member variable) with computer scientists from the list class.
 
 }
 
@@ -63,12 +64,11 @@ vector<scientistList>   listServices::sortByAlive()
   for(unsigned int i = 0; i < _computerScientists.size(); i++)
   {
       currentYear = _computerScientists[i].dod();
-      for(unsigned int j = i ; i < _computerScientists.size(); j++)
+      for(unsigned int j = i ; j < _computerScientists.size(); j++)
       {
           // if the year of death is listed as 0, the scientist is still alive.  This loop puts the living scientists first in the vector.
           if(_computerScientists[j].dod() == 0)
           {
-              sortedList.push_back(_computerScientists[j]);
               scientistList temp = _computerScientists[i];
               _computerScientists[i] = _computerScientists[j];
               _computerScientists[j] = temp;
@@ -76,6 +76,7 @@ vector<scientistList>   listServices::sortByAlive()
 
       }
   }
+sortedList = _computerScientists;
 return sortedList;
 }
 
@@ -101,10 +102,10 @@ vector<scientistList>   listServices::sortByAward()
         }
     }
     return sortedList;
-
-
-
 }
+
+
+
 /*
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {

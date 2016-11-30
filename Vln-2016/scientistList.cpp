@@ -30,7 +30,6 @@ bool scientistList::readFile (vector <scientistList>& science)  //returns true i
     fstream file;
     file.open("turingAwardWinners.txt");
 
-
     file >> bla._firstName;
     file >> bla._lastName;
     file >> bla._sex;
@@ -40,8 +39,10 @@ bool scientistList::readFile (vector <scientistList>& science)  //returns true i
 
     science.push_back(bla);
     if (!file.eof())
+
     {
         return true;
+        cout << "Returns true";
     }
     file.close();
     return false;
@@ -59,31 +60,31 @@ void scientistList::getScientist ()
 
 string scientistList::getFirstName() const
 {
-    return firstName;
+    return _firstName;
 }
 
 string scientistList::getLastName() const
 {
-    return lastName;
+    return _lastName;
 }
 int scientistList::dob() const
 {
-    return birthYear;
+    return _birthYear;
 }
 
 int scientistList::dod() const
 {
-    return deathYear;
+    return _deathYear;
 }
 
 char scientistList::getSex () const
 {
-    return sex;
+    return _sex;
 }
 
 int scientistList::getAwards() const
 {
-    return TuringAwards;
+    return _TuringAwards;
 }
 
 string scientistList::fullName() const

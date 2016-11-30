@@ -1,6 +1,6 @@
 #ifndef SCIENTISTLIST_H
 #define SCIENTISTLIST_H
-
+#include <vector>
 #include <string>
 #include <fstream>
 using namespace std;
@@ -26,7 +26,7 @@ public:
 
     scientistList();
     scientistList(string nafn1, string nafn2 , char kyn, int faedingarAr, int danarar, int verdlaun);
-    bool readFile ();
+    bool readFile (vector <scientistList>& science);
     void getScientist();
     string getFirstName() const;
     string getLastName() const;

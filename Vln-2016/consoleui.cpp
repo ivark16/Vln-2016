@@ -50,6 +50,7 @@ void consoleUI::run()
             break;
         case 3:
             //sortAlive
+
             vector <scientistList> scientists = _scientist.sortByAlive();
             for(unsigned int i = 0 ; i < scientists.size(); i++)
             {
