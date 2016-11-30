@@ -129,14 +129,21 @@ vector<scientistList> listServices::searchBirth(int birthYear)
 
     return matchingBirthYears;
 }
-/*
+
 vector<scientistList> listServices::searchAlive(int deathYear)
 {
     vector<scientistList> livingScientists;
-    //TODO
+
+    for(unsigned int k = 0; k < _computerScientists.size(); k++)
+    {
+        if(_computerScientists[k].dod() == 0)
+        {
+            livingScientists.push_back(_computerScientists[k]);
+        }
+    }
     return livingScientists;
 }
-
+/*
 vector<scientistList> listServices::searchAward(int awardYear)
 {
     vector<scientistList> matchingAwardYear;
