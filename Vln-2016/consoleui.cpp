@@ -131,6 +131,7 @@ void consoleUI::run()
             listServices scientists;
             scientists.changeTo(_scientist.sortByAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
+            Print();
             for(int i = 0 ; i < scientists.getSize(); i++)
             {
                 string a;
@@ -142,24 +143,24 @@ void consoleUI::run()
                     a = "Female";
                 }
 
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << left << scientists.getFirstNameFromList(i);
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getLastNameFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << a << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.dobFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
 
                 if (scientists.dodFromList(i) == 0){
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << "Alive" << left;
                 } else {
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << scientists.dodFromList(i) << left;
                 }
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getAwardsFromList(i) << endl;
                 //cout <<  << endl;
 
@@ -245,6 +246,7 @@ void consoleUI::run()
         listServices scientistsBirth;
         scientistsBirth.changeTo(_scientist.searchBirth(year));
         cout << "A list of scientists born in your year of choice" << endl;
+        Print();
         for(int i = 0; i < scientistsBirth.getSize(); i++)
         {
 
@@ -271,19 +273,21 @@ void consoleUI::run()
 
 void consoleUI::Print()
 {
-    cout.width(10);
+    listServices scientists;
+
+    cout.width(scientists.searchLongestName());
     cout << left << "number";
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Lastname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "gender" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.B" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.D" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Year of award" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
