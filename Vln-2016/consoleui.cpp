@@ -90,23 +90,38 @@ void consoleUI::run()
         }
             break;
         case 2:
-            //
-            int firstOrLast;
-            cout << "choose 1 for firstname or 2 for lastname" << endl;
-            cin >> firstOrLast;
-            if(firstOrLast == 1)
+            //Searching from first or last name
             {
-                string firstName;
-                cout << "Enter firstname";
-                cin >> firstName;
-                //searchfirstname
-            }
-            else
-            {
-                string lastName;
-                cout << "Enter lastname:";
-                cin >> lastName;
+                int firstOrLast;
+                cout << "choose 1 for first name or 2 for last name" << endl;
+                cin >> firstOrLast;
+                if(firstOrLast == 1)
+                {
+                    listServices searchName;
+                    string firstName;
+                    cout << "Enter first name ";
+                    cin >> firstName;
+                    searchName.changeTo(_scientist.searchFirstName(firstName));
+                    cout.width(15);
+                    for (unsigned int i = 0; i < searchName.getSize(); i++)
+                    {
+                        cout << searchName.getFirstNameFromList(i);
+                    }
 
+                }
+                else
+                {
+                    listServices searchName;
+                    string lastName;
+                    cout << "Enter last name ";
+                    cin >> lastName;
+                    searchName.changeTo(_scientist.searchLastName(lastName));
+                    cout.width(15);
+                    for (unsigned int i = 0; i < searchName.getSize(); i++)
+                    {
+                        cout << searchName.getLastNameFromList(i);
+                    }
+                }
             }
             break;
         case 3:
@@ -125,7 +140,6 @@ void consoleUI::run()
               break;
         case 4:
             //sortAward
-        //sortAlive
             {
             listServices scientistsByAward;
             scientistsByAward.changeTo(_scientist.sortByAward());
