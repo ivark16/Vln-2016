@@ -37,7 +37,75 @@ void consoleUI::run()
     switch (chooseNumber)
     {
         case 1:
-            //vector <scientistList> scientists = _scientist.();
+        {
+            int counter = 1;
+            listServices scientists;
+            cout << "***List of all scientists***" << endl;
+            cout.width(10);
+            cout << left << "number";
+            cout.width(10);
+            cout << "Firstname" << left;
+            cout.width(10);
+            cout << "Lastname" << left;
+            cout.width(10);
+            cout << "gender" << left;
+            cout.width(10);
+            cout << "D.O.B" << left;
+            cout.width(10);
+            cout << "D.O.D" << left;
+            cout.width(10);
+            cout << "Year of award" << left << endl;
+            for(int i = 0 ; i < 9 ; i++)
+            {
+                cout << "--------";
+            }
+            cout << endl;
+            for(int i = 0; i < scientists.getSize() - 1 ; i++)
+            {
+
+                string sex;
+                string isDead;
+                if(scientists.getSexFromList(i) == 'm')
+                {
+                    sex = "male";
+                }
+                else
+                {
+                    sex = "female";
+                }
+                cout.width(10);
+                cout << left << counter;
+                counter++;
+                cout.width(10);
+                cout << scientists.getFirstNameFromList(i) << left;
+                cout.width(10);
+                cout << scientists.getLastNameFromList(i) << left;
+                cout.width(10);
+                cout << sex << left;
+                cout.width(10);
+                cout << scientists.dobFromList(i) << left;
+                if(scientists.dodFromList(i) == 0)
+                {
+                    isDead = "Alive";
+                    cout.width(10);
+                    cout << isDead << left;
+                }
+                else
+                {
+                    cout.width(10);
+                    cout << scientists.dodFromList(i) << left;
+                }
+                cout.width(10);
+                cout << scientists.getAwardsFromList(i) << left;;
+                cout << "   *" << endl;
+
+            }
+            for(int i = 0 ; i < 9 ; i++)
+            {
+                cout << "--------";
+            }
+            cout << endl;
+        }
             break;
         case 2:
             //Searching from first or last name
