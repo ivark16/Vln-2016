@@ -24,28 +24,22 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
 }
 
 //Reading from file
-bool scientistList::readFile (vector <scientistList>& science)  //returns true if it is not the end of the file.
+void scientistList::readFile (vector <scientistList>& science)  //returns true if it is not the end of the file.
 {
-    scientistList bla;
     fstream file;
     file.open("turingAwardWinners.txt");
-
+while(!file.eof())
+{
+    scientistList bla;
     file >> bla._firstName;
     file >> bla._lastName;
     file >> bla._sex;
     file >> bla._birthYear;
     file >> bla._deathYear;
     file >> bla._TuringAwards;
-
     science.push_back(bla);
-    if (!file.eof())
-
-    {
-        return true;
-        cout << "Returns true";
-    }
+}
     file.close();
-    return false;
 }
 
 void scientistList::getScientist ()
