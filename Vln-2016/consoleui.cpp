@@ -92,8 +92,8 @@ void consoleUI::run()
         case 2:
             //Searching from first or last name
             {
-                listServices searchName1;
-                listServices searchName2;
+                listServices searchName;
+                //listServices searchName2;
                 int firstOrLast;
                 cout << "choose 1 for first name or 2 for last name" << endl;
                 cin >> firstOrLast;
@@ -102,11 +102,11 @@ void consoleUI::run()
                     string firstName;
                     cout << "Enter first name ";
                     cin >> firstName;
-                    searchName1.changeTo(_scientist.searchFirstName(firstName));
-                    cout << searchName1.getSize();
-                    for (unsigned int i = 0; i < searchName1.getSize(); i++)
+
+                    searchName.changeTo(_scientist.searchFirstName(firstName));
+                    for (unsigned int i = 0; i < searchName.getSize(); i++)
                     {
-                        cout << searchName1.getFirstNameFromList(i);
+                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
                     }
 
                 }
@@ -115,10 +115,12 @@ void consoleUI::run()
                     string lastName;
                     cout << "Enter last name ";
                     cin >> lastName;
-                    searchName2.changeTo(_scientist.searchLastName(lastName));
-                    for (unsigned int i = 0; i < searchName2.getSize(); i++)
+
+                    searchName.changeTo(_scientist.searchLastName(lastName));
+                    for (unsigned int i = 0; i < searchName.getSize(); i++)
                     {
-                        cout << searchName2.getLastNameFromList(i) << searchName2.dobFromList(i) <<  endl;
+                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
+
                     }
                 }
             }
@@ -142,24 +144,24 @@ void consoleUI::run()
                     a = "Female";
                 }
 
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << left << scientists.getFirstNameFromList(i);
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getLastNameFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << a << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.dobFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
 
                 if (scientists.dodFromList(i) == 0){
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << "Alive" << left;
                 } else {
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << scientists.dodFromList(i) << left;
                 }
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getAwardsFromList(i) << endl;
                 //cout <<  << endl;
 
@@ -245,6 +247,7 @@ void consoleUI::run()
         listServices scientistsBirth;
         scientistsBirth.changeTo(_scientist.searchBirth(year));
         cout << "A list of scientists born in your year of choice" << endl;
+        Print();
         for(int i = 0; i < scientistsBirth.getSize(); i++)
         {
 
@@ -271,19 +274,21 @@ void consoleUI::run()
 
 void consoleUI::Print()
 {
-    cout.width(10);
+    listServices scientists;
+
+    cout.width(scientists.searchLongestName());
     cout << left << "number";
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Lastname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "gender" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.B" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.D" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Year of award" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {

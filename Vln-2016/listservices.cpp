@@ -259,7 +259,7 @@ int listServices::searchLongestName()
         }
     }
 
-    return newLongest;
+    return newLongest + 2;
 
 }
 
