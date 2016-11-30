@@ -9,49 +9,42 @@ using namespace std;
 struct ScientistComparison {
     bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
 };
-
+//This function is used to return the (first) name of the Scientists at intex i
 string listServices::getFirstNameFromList(int i)
 {
     string name;
-    name = _computerScientists[i].getFirstName();
-    return name;
+    return _computerScientists[i].getFirstName();
 }
-
+//This function is used to return the (last) name of the Scientists at intex i
 string listServices::getLastNameFromList(int i)
 {
     string name;
-    name = _computerScientists[i].getLastName();
-    return name;
+    return _computerScientists[i].getLastName();
 }
-
+//Will return the (full) name of the Scientists at intex i
 string listServices::fullNameFromList(int i) const
 {
-    string a = _computerScientists[i].fullName();
-    return a;
+    return _computerScientists[i].fullName();
 }
-
+//Returns the Scientists date of birth at intex i
 int listServices::dobFromList(int i) const
 {
-    int a = _computerScientists[i].dob();
-    return a;
+    return _computerScientists[i].dob();
 }
-
+//Returns the Scientists date of death at intex i
 int listServices::dodFromList(int i) const
 {
-    int a = _computerScientists[i].dod();
-    return a;
+    return _computerScientists[i].dod();
 }
-
+//This function is returning the Scientists gender at intex i
 char listServices::getSexFromList(int i) const
 {
-    char a = _computerScientists[i].getSex();
-    return a;
+    return _computerScientists[i].getSex();
 }
-
+//This function returns the Awards from the list at intex i
 int listServices::getAwardsFromList(int i) const
 {
-    int a = _computerScientists[i].getAwards();
-    return a;
+    return _computerScientists[i].getAwards();
 }
 
 listServices::listServices()
