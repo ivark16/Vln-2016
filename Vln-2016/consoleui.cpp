@@ -40,6 +40,7 @@ void consoleUI::run()
             //vector <scientistList> scientists = _scientist.();
             break;
         case 2:
+            //
             int firstOrLast;
             cout << "choose 1 for firstname or 2 for lastname" << endl;
             cin >> firstOrLast;
