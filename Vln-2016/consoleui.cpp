@@ -24,7 +24,7 @@ void consoleUI::run()
     cout << "3: Search if alive.                   *" << endl;
     cout << "4: Search for award.                  *" << endl;
     cout << "5: Add new scientist.                 *" << endl;
-    cout << "6: Enter Function.                    *" << endl;
+    cout << "6: Search for birth year.             *" << endl;
     cout << "7: Enter Function.                    *" << endl;
     cout << "8: Enter Function.                    *" << endl;
     cout << "9: Enter Function.                    *" << endl;
@@ -129,6 +129,7 @@ void consoleUI::run()
             listServices scientists;
             scientists.changeTo(_scientist.sortByAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
+            Print();
             for(int i = 0 ; i < scientists.getSize(); i++)
             {
                 string a;
@@ -140,24 +141,24 @@ void consoleUI::run()
                     a = "Female";
                 }
 
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << left << scientists.getFirstNameFromList(i);
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getLastNameFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << a << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.dobFromList(i) << left;
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
 
                 if (scientists.dodFromList(i) == 0){
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << "Alive" << left;
                 } else {
-                    cout.width(15);
+                    cout.width(scientists.searchLongestName());
                     cout << scientists.dodFromList(i) << left;
                 }
-                cout.width(15);
+                cout.width(scientists.searchLongestName());
                 cout << scientists.getAwardsFromList(i) << endl;
                 //cout <<  << endl;
 
@@ -233,31 +234,58 @@ void consoleUI::run()
             _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
             }
             break;
-        case 6: //
-            {
+    case 6:
+        //sortBirth
+        {
+        int year;
 
+        cout << "Enter year: ";
+        cin >> year;
+        listServices scientistsBirth;
+        scientistsBirth.changeTo(_scientist.searchBirth(year));
+        cout << "A list of scientists born in your year of choice" << endl;
+        Print();
+        for(int i = 0; i < scientistsBirth.getSize(); i++)
+        {
+
+            cout << scientistsBirth.getFirstNameFromList(i);
+            for(int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
+            {
+                cout << " ";
             }
 
-            break;
+            cout << scientistsBirth.getLastNameFromList(i) << endl;
+
+        }
+         }
+          break;
+
+
+
 
     }
 }
 
+
+
+
 void consoleUI::Print()
 {
-    cout.width(10);
+    listServices scientists;
+
+    cout.width(scientists.searchLongestName());
     cout << left << "number";
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Lastname" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "gender" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.B" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "D.O.D" << left;
-    cout.width(10);
+    cout.width(scientists.searchLongestName());
     cout << "Year of award" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
