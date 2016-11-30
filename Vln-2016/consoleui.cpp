@@ -92,34 +92,33 @@ void consoleUI::run()
         case 2:
             //Searching from first or last name
             {
+                listServices searchName1;
+                listServices searchName2;
                 int firstOrLast;
                 cout << "choose 1 for first name or 2 for last name" << endl;
                 cin >> firstOrLast;
                 if(firstOrLast == 1)
                 {
-                    listServices searchName;
                     string firstName;
                     cout << "Enter first name ";
                     cin >> firstName;
-                    searchName.changeTo(_scientist.searchFirstName(firstName));
-                    cout.width(15);
-                    for (unsigned int i = 0; i < searchName.getSize(); i++)
+                    searchName1.changeTo(_scientist.searchFirstName(firstName));
+                    cout << searchName1.getSize();
+                    for (unsigned int i = 0; i < searchName1.getSize(); i++)
                     {
-                        cout << searchName.getFirstNameFromList(i);
+                        cout << searchName1.getFirstNameFromList(i);
                     }
 
                 }
                 else
                 {
-                    listServices searchName;
                     string lastName;
                     cout << "Enter last name ";
                     cin >> lastName;
-                    searchName.changeTo(_scientist.searchLastName(lastName));
-                    cout.width(15);
-                    for (unsigned int i = 0; i < searchName.getSize(); i++)
+                    searchName2.changeTo(_scientist.searchLastName(lastName));
+                    for (unsigned int i = 0; i < searchName2.getSize(); i++)
                     {
-                        cout << searchName.getLastNameFromList(i);
+                        cout << searchName2.getLastNameFromList(i) << searchName2.dobFromList(i) <<  endl;
                     }
                 }
             }
@@ -131,6 +130,7 @@ void consoleUI::run()
             listServices scientists;
             scientists.changeTo(_scientist.sortByAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
+            Print();
             for(int i = 0 ; i < scientists.getSize(); i++)
             {
                 string a;
