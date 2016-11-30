@@ -101,26 +101,35 @@ vector<scientistList>   listServices::sortByAward()
 
 
 
-/*
+
 void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
 {
-    //TODO
-}
+    scientistList newScientist(firstName, lastName, gender, birthYear, deathYear, awardYear);
+    _computerScientists.push_back(newScientist);
+}/*
 
 vector<scientistList> listServices::searchLastName(string lastName)
 {
     vector<scientistList> matchingNames;
     //TODO
     return matchingNames;
-}
+}*/
 
 vector<scientistList> listServices::searchBirth(int birthYear)
 {
     vector<scientistList> matchingBirthYears;
-    //TODO
+
+    for(unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+      if (birthYear == _computerScientists[i].dob())
+      {
+          matchingBirthYears.push_back(_computerScientists[i]);
+      }
+    }
+
     return matchingBirthYears;
 }
-
+/*
 vector<scientistList> listServices::searchAlive(int deathYear)
 {
     vector<scientistList> livingScientists;

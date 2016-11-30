@@ -18,7 +18,7 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     myFile << kyn << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
-    myFile << verdlaun << " ";
+    myFile << verdlaun << endl;
 
     myFile.close();
 }
