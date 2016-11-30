@@ -135,10 +135,10 @@ vector<scientistList>   listServices::sortByAward()
                temp = _computerScientists[i];
                _computerScientists[i] = _computerScientists[j];
                _computerScientists[i] = temp;
-               sortedList.push_back(temp);
            }
         }
     }
+    sortedList = _computerScientists;
     return sortedList;
 }
 
