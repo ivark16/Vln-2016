@@ -99,6 +99,7 @@ void consoleUI::run()
                 cin >> firstOrLast;
                 if(firstOrLast == 1)
                 {
+                    string vectorName;
                     string firstName;
                     cout << "Enter first name ";
                     cin >> firstName;
@@ -287,6 +288,11 @@ void consoleUI::run()
 
 
          break;
+    case 10:
+        //Delete from list
+
+
+        break;
 
         break;
 

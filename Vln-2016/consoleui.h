@@ -17,7 +17,6 @@ public:
     void displayList();
     void searchFirstName();
     void searchLastName();
-
     void Print();
 };
 

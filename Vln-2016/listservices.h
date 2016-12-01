@@ -18,20 +18,21 @@ public:
     char getSexFromList(int i) const;
     int getAwardsFromList(int i) const;
 
-vector<scientistList> sortByName();
-vector<scientistList>   sortByBirth();
-vector<scientistList>    sortByAlive();
-vector<scientistList>   sortByAward();
- void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
+    vector<scientistList> sortByName();
+    vector<scientistList>   sortByBirth();
+    vector<scientistList>    sortByAlive();
+    vector<scientistList>   sortByAward();
+    void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
- vector<scientistList>   searchLastName(string lastName);
- vector<scientistList>   searchFirstName(string firstName);
- vector<scientistList>   searchBirth(int birthYear);
- vector<scientistList>   searchAlive(int deathYear);
- vector<scientistList>   searchAward(int awardYear);
- void changeTo(vector<scientistList> rhs);
-int getSize ();
-int searchLongestName();
+    vector<scientistList>   searchLastName(string lastName);
+    vector<scientistList>   searchFirstName(string firstName);
+    vector<scientistList>   searchBirth(int birthYear);
+    vector<scientistList>   searchAlive(int deathYear);
+    vector<scientistList>   searchAward(int awardYear);
+    void changeTo(vector<scientistList> rhs);
+    int getSize ();
+    int searchLongestName();
+    string changeToLower(string input);
 };
 
 #endif // LISTSERVICES_H
