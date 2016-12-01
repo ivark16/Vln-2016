@@ -78,43 +78,11 @@ void consoleUI::run()
             {
 
             listServices scientists;
-            scientists.changeTo(_scientist.sortByAlive());
+            string searchTerm;
+            scientists.changeTo(_scientist.searchAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
             print();
             printNames(scientists);
-            /*for(int i = 0 ; i < scientists.getSize(); i++)
-            {
-                string a;
-                string b;
-                if (scientists.getSexFromList(i) == 'm')
-                {
-                    a = "Male";
-                } else {
-                    a = "Female";
-                }
-
-                cout.width(scientists.searchLongestName());
-                cout << left << scientists.getFirstNameFromList(i);
-                cout.width(scientists.searchLongestName());
-                cout << scientists.getLastNameFromList(i) << left;
-                cout.width(scientists.searchLongestName());
-                cout << a << left;
-                cout.width(scientists.searchLongestName());
-                cout << scientists.dobFromList(i) << left;
-                cout.width(scientists.searchLongestName());
-
-                if (scientists.dodFromList(i) == 0){
-                    cout.width(scientists.searchLongestName());
-                    cout << "Alive" << left;
-                } else {
-                    cout.width(scientists.searchLongestName());
-                    cout << scientists.dodFromList(i) << left;
-                }
-                cout.width(scientists.searchLongestName());
-                cout << scientists.getAwardsFromList(i) << endl;
-                //cout <<  << endl;
-
-            }*/
              }
               break;
         case 4:
@@ -237,20 +205,6 @@ void consoleUI::run()
 
          break;
 
-
-    case 10:
-    //sortAlive
-    {
-        listServices scientistsByAlive;
-        scientistsByAlive.changeTo(_scientist.sortByAlive());
-        cout << "An organized list of living scientists" << endl;
-        for(int i = 0 ; i < scientistsByAlive.getSize(); i++)
-        {
-            cout << scientistsByAlive.getFirstNameFromList(i) << left << scientistsByAlive.getLastNameFromList(i) << endl;
-
-        }
-    }
-        break;
 
 
     }

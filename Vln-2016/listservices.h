@@ -27,7 +27,7 @@ vector<scientistList>   sortByAward();
  vector<scientistList>   searchLastName(string lastName);
  vector<scientistList>   searchFirstName(string firstName);
  vector<scientistList>   searchBirth(int birthYear);
- vector<scientistList>   searchAlive(int deathYear);
+ vector<scientistList>   searchAlive();
  vector<scientistList>   searchAward(int awardYear);
  void changeTo(vector<scientistList> rhs);
 int getSize ();

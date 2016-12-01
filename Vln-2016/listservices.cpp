@@ -194,13 +194,13 @@ vector<scientistList> listServices::searchBirth(int birthYear)
 
 //This function creates and returns a new vector containing only the scientists whose death years match the year being searched.
 //The year being searched is the integer that is taken in as an argument.
-vector<scientistList> listServices::searchAlive(int deathYear)
+vector<scientistList> listServices::searchAlive()
 {
     vector<scientistList> matchingScientists;
 
     for(unsigned int k = 0; k < _computerScientists.size(); k++)
     {
-        if(_computerScientists[k].dod() == deathYear)
+        if(_computerScientists[k].dod() == 00)
         {
             matchingScientists.push_back(_computerScientists[k]);
         }
