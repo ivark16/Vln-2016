@@ -126,7 +126,10 @@ void consoleUI::run()
                 bool cont = false;
                 bool hasOnlyChar = true;
 
-                while(!cont)
+
+                firstName = nameChecker("first name");
+
+             /*   while(!cont)
                 {
                 cout << "Please enter the scientist's first name: ";
                 cin >> firstName;
@@ -150,7 +153,7 @@ void consoleUI::run()
                 {
                    cont = true;
                 }
-                }
+                } */
 
                 cout << "Please enter the scientist's last name: ";
                 cin >> lastName;
@@ -253,6 +256,51 @@ void consoleUI::run()
     }
 
 }
+
+
+
+string consoleUI::nameChecker(string nameType)
+{
+    string firstName;
+    bool cont = false;
+    bool hasOnlyChar = true;
+
+       while(!cont)
+       {
+       cout << "Please enter the scientist's " << nameType << ": ";
+       cin >> firstName;
+       for(unsigned int i = 0; i < firstName.length(); i++)
+       {
+           if(!isalpha(firstName[i]) && firstName[i] != '.')
+           {
+               hasOnlyChar = false;
+           }
+       }
+       if(firstName.length() <2 || firstName.length()>16)
+          {
+           cout <<"Error: Names must be between 2 and 16 characters." << endl;
+           }
+       else if(!hasOnlyChar)
+       {
+          cout << "Error: Names can only contain characters from the latin alphabet." << endl;
+          hasOnlyChar = true;
+       }
+       else
+       {
+          cont = true;
+       }
+       }
+
+       return firstName;
+
+
+
+}
+
+
+
+
+
 void consoleUI::print()
 {
     listServices scientists;

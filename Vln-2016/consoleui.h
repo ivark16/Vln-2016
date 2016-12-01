@@ -17,6 +17,7 @@ public:
     void displayList();
     void searchFirstName();
     void searchLastName();
+    string nameChecker(string nameType);
 
 
     void print();
