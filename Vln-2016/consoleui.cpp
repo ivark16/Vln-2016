@@ -84,7 +84,6 @@ void consoleUI::run()
             }
             break;
         case 3:
-            //sortAlive
             {
                 listServices scientists;
                 string searchTerm;
@@ -94,8 +93,9 @@ void consoleUI::run()
                 printNames(scientists);
              }
               break;
+
+        //sortAward
         case 4:
-            //sortAward
             {
                 listServices scientistsByAward;
                 scientistsByAward.changeTo(_scientist.sortByAward());
@@ -185,8 +185,9 @@ void consoleUI::run()
                 _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
             }
             break;
+
+    //searchBirth
     case 6:
-        //searchBirth
         {
             int year;
             cout << "Enter year: ";
@@ -198,8 +199,9 @@ void consoleUI::run()
             printNames(scientistsBirth);
          }
           break;
+
+    //sort by name
     case 7:
-        //sort by name
     {
         listServices sort;
         sort.changeTo(_scientist.sortByName());
@@ -210,23 +212,23 @@ void consoleUI::run()
     }
         break;
 
+    //sortByBirth
     case 8:
-        //sortByBirth
-
             _scientist.changeTo(_scientist.sortByBirth());
             cout << "An organized list starting with the oldest scientist" << endl;
             print();
             printNames(_scientist);
         break;
 
+    //sortByAward
     case 9:
-        //sortByAward
             _scientist.changeTo(_scientist.sortByAward());
             cout << "An organized list of scientists in order of when they received a Turing award." << endl;
             print();
             printNames(_scientist);
          break;
 
+    //All the scientist will become infinitely more awesome because this function changes all of there names to Chuck Norris
     case 10:
     {
         listServices norris;
