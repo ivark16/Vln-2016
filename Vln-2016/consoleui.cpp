@@ -26,7 +26,6 @@ void consoleUI::run()
 {
     int chooseNumber;
 
-
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
