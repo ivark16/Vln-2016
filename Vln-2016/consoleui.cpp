@@ -101,7 +101,7 @@ void consoleUI::run()
              }
               break;
 
-        //This function sorts the scientists by the year they received the Turning award
+        //This function sorts the scientists by the year they received an award
         case 4:
             {
                 listServices scientistsByAward;
@@ -210,7 +210,7 @@ void consoleUI::run()
          }
           break;
 
-    //sort by name
+    //This function sorts all the scientists by their name in an alpabetical order
     case 7:
     {
         listServices sort;
@@ -222,7 +222,7 @@ void consoleUI::run()
     }
         break;
 
-    //sortByBirth
+    //This function displays the scientists in an organized list from oldest to youngest
     case 8:
             _scientist.changeTo(_scientist.sortByBirth());
             cout << "An organized list starting with the oldest scientist" << endl;
@@ -230,7 +230,7 @@ void consoleUI::run()
             printNames(_scientist);
         break;
 
-    //sortByAward
+    //This function sorts the scientists by the year they recived the Turning Award
     case 9:
             _scientist.changeTo(_scientist.sortByAward());
             cout << "An organized list of scientists in order of when they received a Turing award." << endl;
