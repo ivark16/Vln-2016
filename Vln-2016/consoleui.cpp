@@ -28,12 +28,17 @@ void consoleUI::run()
     cout << "7:  Enter Function.                    *" << endl;
     cout << "8:  Sort by birthyear.                 *" << endl;
     cout << "9:  Search for Turing award winner.    *" << endl;
-    cout << "10: Chuck Norris.                     *" << endl;
+    cout << "10: Chuck Norris.                      *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
     cin >> chooseNumber;
-
+    if((!isdigit(chooseNumber)) || (chooseNumber < 1) || (chooseNumber > 10))
+    {
+        cout << "Please enter a valid input: ";
+    }
+    else
+    {
     switch (chooseNumber)
     {
         case 1:
@@ -200,6 +205,7 @@ void consoleUI::run()
         printNames(norris);
 
         break;
+    }
     }
 }
 }
