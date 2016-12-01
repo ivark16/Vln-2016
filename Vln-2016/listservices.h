@@ -29,7 +29,7 @@ public:
 
     vector<scientistList>   searchLastName(string lastName); // Searches last name and returns the persons in vector
     vector<scientistList>   searchFirstName(string firstName); // Searches first name and returns the persons in vector
-    vector<scientistList>   searchBirth(int birthYear); // Searches scientists with same birthdays as the user inputs and returns vector
+    vector<scientistList>   searchBirth(int minYear, int maxYear); // Searches scientists with same birthdays as the user inputs and returns vector
     vector<scientistList>   searchAlive(); // Searches if the person is alive and returns a vector
     vector<scientistList>   searchAward(int awardYear); // Searches if the anyone has won Turing award in the database and returns vector
     vector<scientistList>   chuckNorris(); // Changes every scientist into Chuck Norris because Chuck Norris

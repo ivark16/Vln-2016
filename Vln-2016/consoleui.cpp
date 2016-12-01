@@ -26,6 +26,12 @@ void consoleUI::run()
 {
     int chooseNumber;
 
+    cout << "           _______ _______ ______ _______ ______      ______ " << endl;
+    cout << "          |   |   |       |   __ \\   |   |   __ \\    |  __  |" << endl;
+    cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
+    cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
+
+
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
@@ -194,7 +200,7 @@ void consoleUI::run()
             cout << "Enter year: ";
             cin >> year;
             listServices scientistsBirth;
-            scientistsBirth.changeTo(scientistsBirth.searchBirth(year));
+            scientistsBirth.changeTo(scientistsBirth.searchBirth(year, year));
             cout << "A list of scientists born in your year of choice" << endl;
             print();
             printNames(scientistsBirth);
