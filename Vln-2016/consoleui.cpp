@@ -13,34 +13,53 @@ consoleUI::consoleUI(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
+bool consoleUI::digitCheck(int digit)
+{
+    if(isdigit(digit))
+    {
+        return true;
+    }
+    return false;
+}
+
 void consoleUI::run()
 {
-    int chooseNumber = 0;
+    int chooseNumber;
 
-    cout << "---------------------------------------" << endl;
-    cout << "------- Database for Scientist --------" << endl;
-    cout << "1:  Display entire list.               *" << endl;
-    cout << "2:  Search by name.                    *" << endl;
-    cout << "3:  Search if alive.                   *" << endl;
-    cout << "4:  Sort by award year.                *" << endl;
-    cout << "5:  Add new scientist.                 *" << endl;
-    cout << "6:  Search for birth year.             *" << endl;
-    cout << "7:  Enter Function.                    *" << endl;
-    cout << "8:  Sort by birthyear.                 *" << endl;
-    cout << "9:  Search for Turing award winner.    *" << endl;
-    cout << "10: Chuck Norris.                      *" << endl;
-    cout << "---------------------------------------" << endl;
+
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Display entire list.               * D.O.D = date of death *" << endl;
+    cout << "* 2:  Search by name.                    * D.O.B = date of birth *"<< endl;
+    cout << "* 3:  Search if alive.                   * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Sort by award year.                *                       *" << endl;
+    cout << "* 5:  Add new scientist.                 *                       *" << endl;
+    cout << "* 6:  Search for birth year.             *                       *" << endl;
+    cout << "* 7:  Enter Function.                    *                       *" << endl;
+    cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
+    cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
+    cout << "* 10: Chuck Norris.                      *                       *" << endl;
+    cout << "*----------------------------------------*----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
     cin >> chooseNumber;
-    if((!isdigit(chooseNumber)) || (chooseNumber < 1) || (chooseNumber > 10))
+
+
+    if((chooseNumber < 1) || (chooseNumber > 11) || digitCheck(chooseNumber))
     {
-        cout << "Please enter a valid input: ";
+        cout << "Please enter a valid input: " << endl;
+        exit(1);
     }
     else
     {
+    }
+
+
+    //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
+        //This function displays a list of all the scientists (that is there full names, dob, dod and year of award)
         case 1:
         {
             listServices scientists;
@@ -49,8 +68,9 @@ void consoleUI::run()
             printNames(scientists);
         }
             break;
+
+        //This function let's you search from either the first or last name
         case 2:
-            //Searching from first or last name
             {
                 listServices scientists;
                 //listServices searchName2;
@@ -61,28 +81,6 @@ void consoleUI::run()
                 print();
                 printNames(scientists);
 
-
-               /* int firstOrLast;
-                cout << "Choose 1 for first name or 2 for last name: ";
-                cin >> firstOrLast;
-                if(firstOrLast == 1)
-                {
-                    string firstName;
-                    cout << "Enter first name: ";
-                    cin >> firstName;
-                    searchName.changeTo(_scientist.searchFirstName(firstName));
-                    print();
-                    printNames(searchName);
-                }
-                else
-                {
-                    string lastName;
-                    cout << "Enter last name: ";
-                    cin >> lastName;
-                    searchName.changeTo(_scientist.searchLastName(lastName));
-                    print();
-                    printNames(searchName);
-                } */
             }
             break;
         case 3:
@@ -174,6 +172,17 @@ void consoleUI::run()
             printNames(scientistsBirth);
          }
           break;
+    case 7:
+        //sort by name
+    {
+        listServices sort;
+        sort.changeTo(_scientist.sortByName());
+        cout << "A list of scinetists in alphabetical order" << endl;
+        print();
+        printNames(sort);
+
+    }
+        break;
 
     case 8:
         //sortByBirth
@@ -207,7 +216,7 @@ void consoleUI::run()
         break;
     }
     }
-}
+
 }
 void consoleUI::print()
 {
