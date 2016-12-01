@@ -212,6 +212,11 @@ void consoleUI::run()
 
 
          break;
+    case 10:
+        //Delete from list
+
+
+        break;
 
 
 
