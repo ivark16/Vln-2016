@@ -22,13 +22,13 @@ void consoleUI::run()
     cout << "1: Display entire list.               *" << endl;
     cout << "2: Search by name.                    *" << endl;
     cout << "3: Search if alive.                   *" << endl;
-    cout << "4: Search for award.                  *" << endl;
+    cout << "4: Sort by award year.                *" << endl;
     cout << "5: Add new scientist.                 *" << endl;
     cout << "6: Search for birth year.             *" << endl;
     cout << "7: Enter Function.                    *" << endl;
-    cout << "8: Enter Function.                    *" << endl;
-    cout << "9: Enter Function.                    *" << endl;
-    cout << "10: Enter Function.                   *" << endl;
+    cout << "8: Sort by birthyear.                 *" << endl;
+    cout << "9: Search for Turing award winner.    *" << endl;
+    cout << "10: Sort by Alive.                   *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -175,7 +175,7 @@ void consoleUI::run()
             {
             listServices scientistsByAward;
             scientistsByAward.changeTo(_scientist.sortByAward());
-            cout << "An organized list starting with the oldest living scientist" << endl;
+            cout << "An organized list of scientists in order of when they received the Turing award." << endl;
             for(int i = 0 ; i < scientistsByAward.getSize(); i++)
             {
                 cout.width(15);
@@ -240,14 +240,14 @@ void consoleUI::run()
             }
             break;
     case 6:
-        //sortBirth
+        //searchBirth
         {
         int year;
 
         cout << "Enter year: ";
         cin >> year;
         listServices scientistsBirth;
-        scientistsBirth.changeTo(_scientist.searchBirth(year));
+        scientistsBirth.changeTo(scientistsBirth.searchBirth(year));
         cout << "A list of scientists born in your year of choice" << endl;
         Print();
         for(int i = 0; i < scientistsBirth.getSize(); i++)
@@ -259,13 +259,51 @@ void consoleUI::run()
                 cout << " ";
             }
 
-            cout << scientistsBirth.getLastNameFromList(i) << endl;
+            cout << _scientist.getLastNameFromList(i) << endl;
 
         }
          }
           break;
 
+    case 8:
+        //sortByBirth
 
+       _scientist.changeTo(_scientist.sortByBirth());
+       cout << "An organized list starting with the oldest scientist" << endl;
+       Print();
+       cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
+       cout << _scientist.getFirstNameFromList(1);
+
+
+        break;
+
+    case 9:
+        //sortByAward
+
+
+        _scientist.changeTo(_scientist.sortByAward());
+        cout << "An organized list of scientists in order of when they received a Turing award." << endl;
+        Print();
+        cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
+        cout << _scientist.getFirstNameFromList(1);
+
+
+         break;
+
+
+    case 10:
+    //sortAlive
+    {
+        listServices scientistsByAlive;
+        scientistsByAlive.changeTo(_scientist.sortByAlive());
+        cout << "An organized list of living scientists" << endl;
+        for(int i = 0 ; i < scientistsByAlive.getSize(); i++)
+        {
+            cout << scientistsByAlive.getFirstNameFromList(i) << left << scientistsByAlive.getLastNameFromList(i) << endl;
+
+        }
+    }
+        break;
 
 
     }
