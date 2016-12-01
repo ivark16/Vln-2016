@@ -82,11 +82,12 @@ vector<scientistList> listServices::sortByBirth()
         currentSmallest = _computerScientists[i].dob();  //in the first iteration, the smallest number is the first number
         for(unsigned int j = i; j < _computerScientists.size(); j++)
         {
-           if(_computerScientists[i].dob() < currentSmallest)
+           if(_computerScientists[j].dob() < currentSmallest)
            {
+               currentSmallest = _computerScientists[i].dob();
                scientistList temp;
-               temp = _computerScientists[i];
-               _computerScientists[i] = _computerScientists[j];
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
                _computerScientists[i] = temp;
            }
         }
