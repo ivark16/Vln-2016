@@ -47,6 +47,30 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
         file.close();
 }
 
+void scientistList::writeToFile(vector<scientistList> newFile)
+{
+
+    ofstream myfile;
+    remove("turingAwardWinners.txt");
+    myfile.open("turingAwardWinners.txt");
+    if(myfile.is_open())
+    {
+        for(unsigned int i = 0 ; i < newFile.size() ; i++)
+        {
+            myfile << newFile[i].getFirstName() << " ";
+            myfile << newFile[i].getLastName() << " ";
+            myfile << newFile[i].getSex() << " ";
+            myfile << newFile[i].dob() << " ";
+            myfile << newFile[i].dod() << " ";
+            myfile << newFile[i].getAwards() << " " << endl;
+
+        }
+        myfile.close();
+    }
+
+
+}
+
 void scientistList::getScientist ()
 {
     firstName = _firstName;

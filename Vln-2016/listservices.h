@@ -3,11 +3,10 @@
 #include "scientistList.h"
 #include <vector>
 
-
 class listServices
 {
     vector<scientistList> _computerScientists;
-
+    scientistList _data;
 public:
     listServices();
     string getFirstNameFromList(int i);
@@ -37,6 +36,8 @@ public:
     int getSize ();
     int searchLongestName();
     string changeToLower(string input);
+    void deleteFromList(int ID);
+    void writeNewFile();
 
 };
 
