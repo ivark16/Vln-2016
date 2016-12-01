@@ -262,6 +262,18 @@ void consoleUI::run()
         }
          }
           break;
+    case 7:
+        //sort by name
+    {
+        listServices sort;
+        sort.changeTo(_scientist.sortByName());
+        cout << "A list of scinetists in alphabetical order" << endl;
+        for(int i = 0; i < sort.getSize(); i++)
+        {
+            cout << sort.sortByName() << endl;
+        }
+
+    }
 
 
 
