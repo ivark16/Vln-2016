@@ -29,7 +29,7 @@ void consoleUI::run()
     cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
     cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
     cout << "* 10: Chuck Norris.                      *                       *" << endl;
-    cout << "*----------------------------------------*----------------------*" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
