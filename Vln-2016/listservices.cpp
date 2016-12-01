@@ -62,11 +62,12 @@ listServices::listServices()
 vector<scientistList> listServices::sortByName()
 {
     vector<scientistList> sortedByName;
+    sortedByName = _computerScientists;
 
     ScientistComparison cmp;
 
     std::sort(sortedByName.begin(), sortedByName.end(), cmp);
-
+    cout << sortedByName.size();
 
     return sortedByName;
 }
@@ -83,11 +84,12 @@ vector<scientistList> listServices::sortByBirth()
         currentSmallest = _computerScientists[i].dob();  //in the first iteration, the smallest number is the first number
         for(unsigned int j = i; j < _computerScientists.size(); j++)
         {
-           if(_computerScientists[i].dob() < currentSmallest)
+           if(_computerScientists[j].dob() < currentSmallest)
            {
+               currentSmallest = _computerScientists[j].dob();
                scientistList temp;
-               temp = _computerScientists[i];
-               _computerScientists[i] = _computerScientists[j];
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
                _computerScientists[i] = temp;
            }
         }
@@ -131,11 +133,18 @@ vector<scientistList>   listServices::sortByAward()
         { //In the if sentence below, a 0 in getAwards indicates that the scientist has never received the award.
           //This if statement switches the current index being checked with the index we are attempting to put the next lowest year in
           //if and only if the scientist won the award before the scientist who is currently stored at that index.
-           if(_computerScientists[i].getAwards() < currentSmallest && _computerScientists[i].getAwards() != 0)
+           if(_computerScientists[j].getAwards() < currentSmallest && _computerScientists[j].getAwards() != 0)
            {
                scientistList temp;
-               temp = _computerScientists[i];
-               _computerScientists[i] = _computerScientists[j];
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
+               _computerScientists[i] = temp;
+           }
+           if(_computerScientists[i].getAwards() == 0 && _computerScientists[j].getAwards() != 0)
+           {
+               scientistList temp;
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
                _computerScientists[i] = temp;
            }
         }
@@ -159,43 +168,13 @@ vector<scientistList> listServices::searchName(string searchTerm)
     for (unsigned int i = 0; i < _computerScientists.size(); i++)
     {
         //If the names match, the scientist is added to the new vector.
-        if (searchTerm == _computerScientists[i].getLastName() || searchTerm == _computerScientists[i].getFirstName() )
+        if (searchTerm == changeToLower(_computerScientists[i].getLastName()) || searchTerm == changeToLower(_computerScientists[i].getFirstName()))
         {
             matchingscientists.push_back(_computerScientists[i]);
         }
     }
     return matchingscientists;
 }
-/*
-vector<scientistList> listServices::searchLastName(string lastName)
-{
-    vector<scientistList> matchingLastNames;
-    for (unsigned int i = 0; i < _computerScientists.size(); i++)
-    {
-        //If the names match, the scientist is added to the new vector.
-        if (lastName == _computerScientists[i].getLastName())
-        {
-            matchingLastNames.push_back(_computerScientists[i]);
-        }
-    }
-    return matchingLastNames;
-}
-
-//This function creates and returns a new vector containing only the scientists whose first names match the name being searched.
-//The name being searched is the string that is taken in as an argument.
-vector<scientistList> listServices::searchFirstName(string firstName)
-{
-    vector<scientistList> matchingFirstNames;
-    for (unsigned int i = 0; i < _computerScientists.size(); i++)
-    {
-        if (firstName == changeToLower(_computerScientists[i].getFirstName()))
-        {
-            matchingFirstNames.push_back(_computerScientists[i]);
-        }
-    }
-    return matchingFirstNames;
-}
-*/
 
 //This function creates and returns a new vector containing only the scientists whose birth years match the year being searched.
 //The year being searched is the integer that is taken in as an argument.
