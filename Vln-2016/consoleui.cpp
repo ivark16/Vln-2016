@@ -31,7 +31,10 @@ void consoleUI::run()
     cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
     cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
 
+    bool stillLooping = true;
 
+    while(stillLooping)
+    {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
@@ -226,6 +229,7 @@ void consoleUI::run()
     }
     }
 
+}
 }
 
 
