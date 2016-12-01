@@ -13,12 +13,13 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     fstream myFile;
     myFile.open("turingAwardWinners.txt", ios::app);
 
+    myFile << endl;
     myFile << nafn << " ";
     myFile << nafn2 << " ";
     myFile << kyn << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
-    myFile << verdlaun << endl;
+    myFile << verdlaun;
 
     myFile.close();
 }

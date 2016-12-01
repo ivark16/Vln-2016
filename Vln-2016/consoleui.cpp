@@ -28,7 +28,7 @@ void consoleUI::run()
     cout << "7: Enter Function.                    *" << endl;
     cout << "8: Sort by birthyear.                 *" << endl;
     cout << "9: Search for Turing award winner.    *" << endl;
-    cout << "10: Sort by Alive.                   *" << endl;
+    cout << "10:                                   *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -38,7 +38,6 @@ void consoleUI::run()
     {
         case 1:
         {
-            int counter = 1;
             listServices scientists;
             cout << "***List of all scientists***" << endl;
             print();
@@ -76,142 +75,111 @@ void consoleUI::run()
         case 3:
             //sortAlive
             {
-
-            listServices scientists;
-            string searchTerm;
-            scientists.changeTo(_scientist.searchAlive());
-            cout << "An organized list starting with the oldest living scientist" << endl;
-            print();
-            printNames(scientists);
+                listServices scientists;
+                string searchTerm;
+                scientists.changeTo(_scientist.searchAlive());
+                cout << "An organized list starting with the oldest living scientist" << endl;
+                print();
+                printNames(scientists);
              }
               break;
         case 4:
             //sortAward
             {
-            listServices scientistsByAward;
-            scientistsByAward.changeTo(_scientist.sortByAward());
-            cout << "An organized list of scientists in order of when they received the Turing award." << endl;
-            for(int i = 0 ; i < scientistsByAward.getSize(); i++)
-            {
-                cout.width(15);
-                cout << scientistsByAward.getFirstNameFromList(i) << left << scientistsByAward.getLastNameFromList(i) << endl;
-
-            }
+                listServices scientistsByAward;
+                scientistsByAward.changeTo(_scientist.sortByAward());
+                cout << "An organized list of scientists in order of when they received the Turing award." << endl;
+                print();
+                printNames(scientistsByAward);
              }
             break;
 
         case 5:
-        {
-            //addNew
-            string firstName;
-            string lastName;
-            char gender;
-            int birthYear;
-            char isAlive;
-            int deathYear;
-            char isWinner;
-            int awardYear;
+            {
+                //addNew
+                string firstName;
+                string lastName;
+                char gender;
+                int birthYear;
+                char isAlive;
+                int deathYear;
+                char isWinner;
+                int awardYear;
 
-            cout << "Please enter the scientist's first name: ";
-            cin >> firstName;
-            cout << "Please enter the scientist's last name: ";
-            cin >> lastName;
-            cout << "Enter the scientist's gender (m/f) : ";
-            cin >> gender;
-            cout << "Enter the scientist's birth year: ";
-            cin >> birthYear;
-            cout << "Is the scientist still alive? (y/n) ";
-            cin >> isAlive;
-            if(isAlive == 'n')
-            {
-                cout << "Enter the scientist's year of death: ";
-                cin >>  deathYear;
-            }
-            else if(isAlive == 'y')
-            {
-                deathYear = 0;
-            }
-            else
-            {
-                cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-            }
-            cout << "Did the scientist win a Turing award? (y/n)";
-            cin >> isWinner;
-            if(isWinner == 'y')
-            {
-                cout << "Enter the year the scientist won: ";
-                cin >>  awardYear;
-            }
-            else if(isWinner == 'n')
-            {
-                awardYear = 0;
-            }
-            else
-            {
-               cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-            }
+                cout << "Please enter the scientist's first name: ";
+                cin >> firstName;
+                cout << "Please enter the scientist's last name: ";
+                cin >> lastName;
+                cout << "Enter the scientist's gender (m/f) : ";
+                cin >> gender;
+                cout << "Enter the scientist's birth year: ";
+                cin >> birthYear;
+                cout << "Is the scientist still alive? (y/n) ";
+                cin >> isAlive;
+                if(isAlive == 'n')
+                {
+                    cout << "Enter the scientist's year of death: ";
+                    cin >>  deathYear;
+                }
+                else if(isAlive == 'y')
+                {
+                    deathYear = 0;
+                }
+                else
+                {
+                    cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+                }
+                cout << "Did the scientist win a Turing award? (y/n)";
+                cin >> isWinner;
+                if(isWinner == 'y')
+                {
+                    cout << "Enter the year the scientist won: ";
+                    cin >>  awardYear;
+                }
+                else if(isWinner == 'n')
+                {
+                    awardYear = 0;
+                }
+                else
+                {
+                    cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+                }
 
-            _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
+                _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
             }
             break;
     case 6:
         //searchBirth
         {
-        int year;
-
-        cout << "Enter year: ";
-        cin >> year;
-        listServices scientistsBirth;
-        scientistsBirth.changeTo(scientistsBirth.searchBirth(year));
-        cout << "A list of scientists born in your year of choice" << endl;
-        print();
-        for(int i = 0; i < scientistsBirth.getSize(); i++)
-        {
-
-            cout << scientistsBirth.getFirstNameFromList(i);
-            for(unsigned int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
-            {
-                cout << " ";
-            }
-
-            cout << _scientist.getLastNameFromList(i) << endl;
-
-        }
+            int year;
+            cout << "Enter year: ";
+            cin >> year;
+            listServices scientistsBirth;
+            scientistsBirth.changeTo(scientistsBirth.searchBirth(year));
+            cout << "A list of scientists born in your year of choice" << endl;
+            print();
+            printNames(scientistsBirth);
          }
           break;
 
     case 8:
         //sortByBirth
 
-       _scientist.changeTo(_scientist.sortByBirth());
-       cout << "An organized list starting with the oldest scientist" << endl;
-       print();
-       cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
-       cout << _scientist.getFirstNameFromList(1);
-
-
+            _scientist.changeTo(_scientist.sortByBirth());
+            cout << "An organized list starting with the oldest scientist" << endl;
+            print();
+            printNames(_scientist);
         break;
 
     case 9:
         //sortByAward
-
-
-        _scientist.changeTo(_scientist.sortByAward());
-        cout << "An organized list of scientists in order of when they received a Turing award." << endl;
-        print();
-        cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
-        cout << _scientist.getFirstNameFromList(1);
-
-
+            _scientist.changeTo(_scientist.sortByAward());
+            cout << "An organized list of scientists in order of when they received a Turing award." << endl;
+            print();
+            printNames(_scientist);
          break;
-
-
-
     }
 }
-
-
-
 
 void consoleUI::print()
 {
