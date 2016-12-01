@@ -61,11 +61,12 @@ listServices::listServices()
 vector<scientistList> listServices::sortByName()
 {
     vector<scientistList> sortedByName;
+    sortedByName = _computerScientists;
 
     ScientistComparison cmp;
 
     std::sort(sortedByName.begin(), sortedByName.end(), cmp);
-
+    cout << sortedByName.size();
 
     return sortedByName;
 }
