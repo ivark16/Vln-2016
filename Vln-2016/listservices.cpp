@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+// This struct is used to print code in alphabetical order.
 struct ScientistComparison {
     bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
 };
@@ -48,8 +50,6 @@ int listServices::getAwardsFromList(int i) const
 }
 
 
-
-
 //A constructor for listServices.  readFile reads data from a .txt file and puts it in the member vector _computerScientists.
 listServices::listServices()
 {
@@ -57,7 +57,8 @@ listServices::listServices()
         nextScientist.readFile(_computerScientists);
 }
 
-
+// This function returns vector in alphabetical order. It uses ScientistComparison that is struct. We didn't know any good
+// way to do this so we got the idea from the King him self, Daniel Brandur, that used sort function. Thanks Daniel!
 vector<scientistList> listServices::sortByName()
 {
     vector<scientistList> sortedByName;
@@ -148,10 +149,10 @@ void   listServices::addNew(string firstName, string lastName, char gender, int 
     scientistList newScientist(firstName, lastName, gender, birthYear, deathYear, awardYear);
     _computerScientists.push_back(newScientist);
 }
-//This function creates and returns a new vector containing only the scientists whose last names match the name being searched.
+
+
+//This function creates and returns a new vector containing only the scientists whose names match the name being searched.
 //The name being searched is the string that is taken in as an argument.
-
-
 vector<scientistList> listServices::searchName(string searchTerm)
 {
     vector<scientistList> matchingscientists;
@@ -228,6 +229,7 @@ vector<scientistList> listServices::searchAlive()
     }
     return matchingScientists;
 }
+
 //This function creates and returns a new vector containing only the scientists who received the Turing award in the year that is being searched.
 //The year being searched is the integer that is taken in as an argument.
 vector<scientistList> listServices::searchAward(int awardYear)
@@ -256,8 +258,8 @@ int listServices::getSize ()
     return _computerScientists.size();
 }
 
-// binni kallinn með smá snúning
 
+// binni kallinn með smá snúning
 int listServices::searchLongestName()
 {
     listServices theList;
@@ -282,7 +284,7 @@ int listServices::searchLongestName()
     return newLongest + 2;
 }
 
-
+// Binni med Chuck Norris grin
 vector<scientistList> listServices::chuckNorris()
 {
     vector<scientistList> matchingFirstNames;
@@ -299,6 +301,8 @@ vector<scientistList> listServices::chuckNorris()
     return matchingFirstNames;
 }
 
+// This function changes upper case letters to lower case letters. It takes in string and uses the tolower function. It
+// checks every letter and if it is upper case letter than it changes it to lower case letter
 string listServices::changeToLower(string input)
 {
     for(unsigned int i = 0 ; i < input.length() ; i++)

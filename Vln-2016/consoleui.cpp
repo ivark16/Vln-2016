@@ -27,8 +27,8 @@ void consoleUI::run()
     cout << "6:  Search for birth year.             *" << endl;
     cout << "7:  Enter Function.                    *" << endl;
     cout << "8:  Sort by birthyear.                 *" << endl;
-    cout << "9:  Search for Turing award winner.    *" << endl;
-    cout << "10: Chuck Norris.                     *" << endl;
+    cout << "9:  Sort by Turing award winner.       *" << endl;
+    cout << "10: Chuck Norris.                      *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
