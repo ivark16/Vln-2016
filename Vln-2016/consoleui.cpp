@@ -28,7 +28,7 @@ void consoleUI::run()
     cout << "7: Enter Function.                    *" << endl;
     cout << "8: Sort by birthyear.                 *" << endl;
     cout << "9: Search for Turing award winner.    *" << endl;
-    cout << "10: Enter Function.                   *" << endl;
+    cout << "10: Sort by Alive.                   *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -41,52 +41,8 @@ void consoleUI::run()
             int counter = 1;
             listServices scientists;
             cout << "***List of all scientists***" << endl;
-            Print();
-            for(int i = 0; i < scientists.getSize() - 1 ; i++)
-            {
-
-                string sex;
-                string isDead;
-                if(scientists.getSexFromList(i) == 'm')
-                {
-                    sex = "male";
-                }
-                else
-                {
-                    sex = "female";
-                }
-                cout.width(10);
-                cout << left << counter;
-                counter++;
-                cout.width(10);
-                cout << scientists.getFirstNameFromList(i) << left;
-                cout.width(10);
-                cout << scientists.getLastNameFromList(i) << left;
-                cout.width(10);
-                cout << sex << left;
-                cout.width(10);
-                cout << scientists.dobFromList(i) << left;
-                if(scientists.dodFromList(i) == 0)
-                {
-                    isDead = "Alive";
-                    cout.width(10);
-                    cout << isDead << left;
-                }
-                else
-                {
-                    cout.width(10);
-                    cout << scientists.dodFromList(i) << left;
-                }
-                cout.width(10);
-                cout << scientists.getAwardsFromList(i) << left;;
-                cout << "   *" << endl;
-
-            }
-            for(int i = 0 ; i < 9 ; i++)
-            {
-                cout << "--------";
-            }
-            cout << endl;
+            print();
+            printNames(scientists);
         }
             break;
         case 2:
@@ -95,34 +51,25 @@ void consoleUI::run()
                 listServices searchName;
                 //listServices searchName2;
                 int firstOrLast;
-                cout << "choose 1 for first name or 2 for last name" << endl;
+                cout << "Choose 1 for first name or 2 for last name: ";
                 cin >> firstOrLast;
                 if(firstOrLast == 1)
                 {
-                    string vectorName;
                     string firstName;
-                    cout << "Enter first name ";
+                    cout << "Enter first name: ";
                     cin >> firstName;
-
                     searchName.changeTo(_scientist.searchFirstName(firstName));
-                    for (unsigned int i = 0; i < searchName.getSize(); i++)
-                    {
-                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
-                    }
-
+                    print();
+                    printNames(searchName);
                 }
                 else
                 {
                     string lastName;
-                    cout << "Enter last name ";
+                    cout << "Enter last name: ";
                     cin >> lastName;
-
                     searchName.changeTo(_scientist.searchLastName(lastName));
-                    for (unsigned int i = 0; i < searchName.getSize(); i++)
-                    {
-                        cout << searchName.getFirstNameFromList(i) << " " << searchName.getLastNameFromList(i) << endl;
-
-                    }
+                    print();
+                    printNames(searchName);
                 }
             }
             break;
@@ -131,42 +78,11 @@ void consoleUI::run()
             {
 
             listServices scientists;
-            scientists.changeTo(_scientist.sortByAlive());
+            string searchTerm;
+            scientists.changeTo(_scientist.searchAlive());
             cout << "An organized list starting with the oldest living scientist" << endl;
-            Print();
-            for(int i = 0 ; i < scientists.getSize(); i++)
-            {
-                string a;
-                string b;
-                if (scientists.getSexFromList(i) == 'm')
-                {
-                    a = "Male";
-                } else {
-                    a = "Female";
-                }
-
-                cout.width(scientists.searchLongestName());
-                cout << left << scientists.getFirstNameFromList(i);
-                cout.width(scientists.searchLongestName());
-                cout << scientists.getLastNameFromList(i) << left;
-                cout.width(scientists.searchLongestName());
-                cout << a << left;
-                cout.width(scientists.searchLongestName());
-                cout << scientists.dobFromList(i) << left;
-                cout.width(scientists.searchLongestName());
-
-                if (scientists.dodFromList(i) == 0){
-                    cout.width(scientists.searchLongestName());
-                    cout << "Alive" << left;
-                } else {
-                    cout.width(scientists.searchLongestName());
-                    cout << scientists.dodFromList(i) << left;
-                }
-                cout.width(scientists.searchLongestName());
-                cout << scientists.getAwardsFromList(i) << endl;
-                //cout <<  << endl;
-
-            }
+            print();
+            printNames(scientists);
              }
               break;
         case 4:
@@ -217,7 +133,7 @@ void consoleUI::run()
             }
             else
             {
-                "Invalid entry.  Please enter either y (yes) or n (no)";
+                cout << "Invalid entry.  Please enter either y (yes) or n (no)";
             }
             cout << "Did the scientist win a Turing award? (y/n)";
             cin >> isWinner;
@@ -232,7 +148,7 @@ void consoleUI::run()
             }
             else
             {
-                "Invalid entry.  Please enter either y (yes) or n (no)";
+               cout << "Invalid entry.  Please enter either y (yes) or n (no)";
             }
 
             _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
@@ -248,12 +164,12 @@ void consoleUI::run()
         listServices scientistsBirth;
         scientistsBirth.changeTo(scientistsBirth.searchBirth(year));
         cout << "A list of scientists born in your year of choice" << endl;
-        Print();
+        print();
         for(int i = 0; i < scientistsBirth.getSize(); i++)
         {
 
             cout << scientistsBirth.getFirstNameFromList(i);
-            for(int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
+            for(unsigned int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
             {
                 cout << " ";
             }
@@ -269,7 +185,7 @@ void consoleUI::run()
 
        _scientist.changeTo(_scientist.sortByBirth());
        cout << "An organized list starting with the oldest scientist" << endl;
-       Print();
+       print();
        cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
        cout << _scientist.getFirstNameFromList(1);
 
@@ -282,7 +198,7 @@ void consoleUI::run()
 
         _scientist.changeTo(_scientist.sortByAward());
         cout << "An organized list of scientists in order of when they received a Turing award." << endl;
-        Print();
+        print();
         cout << _scientist.getFirstNameFromList(0);  // taka ut og setja print fallid hans ivars
         cout << _scientist.getFirstNameFromList(1);
 
@@ -294,9 +210,6 @@ void consoleUI::run()
 
         break;
 
-        break;
-
-
 
 
     }
@@ -305,24 +218,24 @@ void consoleUI::run()
 
 
 
-void consoleUI::Print()
+void consoleUI::print()
 {
     listServices scientists;
 
-    cout.width(scientists.searchLongestName());
-    cout << left << "number";
+    cout.width(4);
+    cout << left << "No.";
     cout.width(scientists.searchLongestName());
     cout << "Firstname" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "Lastname" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "gender" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "D.O.B" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "D.O.D" << left;
     cout.width(scientists.searchLongestName());
-    cout << "Year of award" << left << endl;
+    cout << "Y.O.A." << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
         cout << "--------";
@@ -330,4 +243,51 @@ void consoleUI::Print()
     cout << endl;
 }
 
+void consoleUI::printNames (listServices scientistsToPrint)
+{
+    int counter = 1;
+    for(int i = 0; i < scientistsToPrint.getSize() ; i++)
+    {
+        string sex;
+        string isDead;
+        if(scientistsToPrint.getSexFromList(i) == 'm')
+        {
+            sex = "male";
+        }
+        else
+        {
+            sex = "female";
+        }
+        cout.width(5);
+        cout << left << counter;
+        counter++;
+        cout.width(10);
+        cout << scientistsToPrint.getFirstNameFromList(i) << left;
+        cout.width(10);
+        cout << scientistsToPrint.getLastNameFromList(i) << left;
+        cout.width(10);
+        cout << sex << left;
+        cout.width(10);
+        cout << scientistsToPrint.dobFromList(i) << left;
+        if(scientistsToPrint.dodFromList(i) == 0)
+        {
+            isDead = "Alive";
+            cout.width(10);
+            cout << isDead << left;
+        }
+        else
+        {
+            cout.width(10);
+            cout << scientistsToPrint.dodFromList(i) << left;
+        }
+        cout.width(10);
+        cout << scientistsToPrint.getAwardsFromList(i) << left;;
+        cout << "   *" << endl;
 
+    }
+    for(int i = 0 ; i < 9 ; i++)
+    {
+        cout << "--------";
+    }
+    cout << endl;
+}

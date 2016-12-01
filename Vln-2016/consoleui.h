@@ -17,7 +17,11 @@ public:
     void displayList();
     void searchFirstName();
     void searchLastName();
-    void Print();
+
+
+    void print();
+    void printNames (listServices scientistsToPrint);
+
 };
 
 #endif // CONSOLEUI_H

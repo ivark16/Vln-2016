@@ -24,6 +24,7 @@ public:
     vector<scientistList>   sortByAward();
     void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
+
     vector<scientistList>   searchLastName(string lastName);
     vector<scientistList>   searchFirstName(string firstName);
     vector<scientistList>   searchBirth(int birthYear);
@@ -33,6 +34,7 @@ public:
     int getSize ();
     int searchLongestName();
     string changeToLower(string input);
+
 };
 
 #endif // LISTSERVICES_H
