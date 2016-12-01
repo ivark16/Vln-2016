@@ -24,8 +24,9 @@ vector<scientistList>    sortByAlive();
 vector<scientistList>   sortByAward();
  void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
 
- vector<scientistList>   searchLastName(string lastName);
- vector<scientistList>   searchFirstName(string firstName);
+ vector<scientistList> searchName(string searchTerm);
+// vector<scientistList>   searchLastName(string lastName);
+// vector<scientistList>   searchFirstName(string firstName);
  vector<scientistList>   searchBirth(int birthYear);
  vector<scientistList>   searchAlive();
  vector<scientistList>   searchAward(int awardYear);
