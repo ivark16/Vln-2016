@@ -6,7 +6,6 @@ int main(int argc, char *argv[])
 {
     consoleUI Master;
     Master.run();
-    //ok
     return 0;
 
 }

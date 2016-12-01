@@ -132,11 +132,18 @@ vector<scientistList>   listServices::sortByAward()
         { //In the if sentence below, a 0 in getAwards indicates that the scientist has never received the award.
           //This if statement switches the current index being checked with the index we are attempting to put the next lowest year in
           //if and only if the scientist won the award before the scientist who is currently stored at that index.
-           if(_computerScientists[i].getAwards() < currentSmallest && _computerScientists[i].getAwards() != 0)
+           if(_computerScientists[j].getAwards() < currentSmallest && _computerScientists[j].getAwards() != 0)
            {
                scientistList temp;
-               temp = _computerScientists[i];
-               _computerScientists[i] = _computerScientists[j];
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
+               _computerScientists[i] = temp;
+           }
+           if(_computerScientists[i].getAwards() == 0 && _computerScientists[j].getAwards() != 0)
+           {
+               scientistList temp;
+               temp = _computerScientists[j];
+               _computerScientists[j] = _computerScientists[i];
                _computerScientists[i] = temp;
            }
         }
