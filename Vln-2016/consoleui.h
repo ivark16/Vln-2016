@@ -18,7 +18,7 @@ public:
     void searchFirstName();
     void searchLastName();
 
-    void Print();
+    void print();
     void printNames (listServices scientistsToPrint);
 };
 
