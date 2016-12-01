@@ -68,8 +68,8 @@ void consoleUI::run()
         }
             break;
 
+        //This function lets you search for a scientist from their name (either the first or last name)
         case 2:
-            //searchName
             {
                 listServices scientists;
                 //listServices searchName2;
@@ -82,6 +82,8 @@ void consoleUI::run()
 
             }
             break;
+
+        //This function organizes the living scientists from oldest to youngest
         case 3:
             {
                 listServices scientists;
@@ -93,7 +95,7 @@ void consoleUI::run()
              }
               break;
 
-        //sortAward
+        //This function sorts the scientists by the year they received the Turning award
         case 4:
             {
                 listServices scientistsByAward;
