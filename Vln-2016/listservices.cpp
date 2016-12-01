@@ -249,9 +249,24 @@ int listServices::searchLongestName()
             newLongest = theList.getLastNameFromList(i).size();
         }
     }
-
     return newLongest + 2;
+}
 
+
+vector<scientistList> listServices::chuckNorris()
+{
+    vector<scientistList> matchingFirstNames;
+    string firstName = "Chuck";
+    string lastName = "Norris";
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        _computerScientists[i].setFirstName(firstName);
+        _computerScientists[i].setLastName(lastName);
+
+        matchingFirstNames.push_back(_computerScientists[i]);
+
+    }
+    return matchingFirstNames;
 }
 
 string listServices::changeToLower(string input)
@@ -262,4 +277,5 @@ string listServices::changeToLower(string input)
     }
     return input;
 }
+
 

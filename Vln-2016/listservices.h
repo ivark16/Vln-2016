@@ -18,6 +18,7 @@ public:
     char getSexFromList(int i) const;
     int getAwardsFromList(int i) const;
 
+
     vector<scientistList> searchName(string searchTerm);
     vector<scientistList> sortByName();
     vector<scientistList>   sortByBirth();
@@ -31,6 +32,7 @@ public:
     vector<scientistList>   searchBirth(int birthYear);
     vector<scientistList>   searchAlive();
     vector<scientistList>   searchAward(int awardYear);
+    vector<scientistList>   chuckNorris();
     void changeTo(vector<scientistList> rhs);
     int getSize ();
     int searchLongestName();
