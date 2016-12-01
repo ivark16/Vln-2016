@@ -3,16 +3,18 @@
 #include <iomanip>
 using namespace std;
 
+//Constructor
 consoleUI::consoleUI()
 {
 
 }
-
+//Constructor
 consoleUI::consoleUI(int chooseNumber)
 {
     _chooseNumber = chooseNumber;
 }
 
+//Constructor
 bool consoleUI::digitCheck(int digit)
 {
     if(isdigit(digit))
@@ -22,6 +24,7 @@ bool consoleUI::digitCheck(int digit)
     return false;
 }
 
+//Construct that gives you a list of options to choose from
 void consoleUI::run()
 {
     int chooseNumber;
@@ -67,7 +70,7 @@ void consoleUI::run()
     //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
-        //This function displays a list of all the scientists (that is there full names, dob, dod and year of award)
+        //This case displays a list of all the scientists (that is there full names, dob, dod and year of award)
         case 1:
         {
             listServices scientists;
@@ -77,7 +80,7 @@ void consoleUI::run()
         }
             break;
 
-        //This function lets you search for a scientist from their name (either the first or last name)
+        //This case lets you search for a scientist from their name (either the first or last name)
         case 2:
             {
                 listServices scientists;
@@ -92,7 +95,7 @@ void consoleUI::run()
             }
             break;
 
-        //This function organizes the living scientists from oldest to youngest
+        //This case organizes the living scientists from oldest to youngest
         case 3:
             {
                 listServices scientists;
@@ -104,7 +107,7 @@ void consoleUI::run()
              }
               break;
 
-        //This function sorts the scientists by the year they received an award
+        //This case sorts the scientists by the year they received an award
         case 4:
             {
                 listServices scientistsByAward;
@@ -115,9 +118,9 @@ void consoleUI::run()
              }
             break;
 
+        // This case allows the user to add in another scientist (or even create a person - that is not real)
         case 5:
             {
-                //addNew
                 string firstName;
                 string lastName;
                 char gender;
@@ -184,7 +187,7 @@ void consoleUI::run()
          }
           break;
 
-    //This function sorts all the scientists by their name in an alpabetical order
+    //This case sorts all the scientists by their name in an alpabetical order
     case 7:
     {
         listServices sort;
@@ -196,7 +199,7 @@ void consoleUI::run()
     }
         break;
 
-    //This function displays the scientists in an organized list from oldest to youngest
+    //This case displays the scientists in an organized list from oldest to youngest
     case 8:
             _scientist.changeTo(_scientist.sortByBirth());
             cout << "An organized list starting with the oldest scientist" << endl;
@@ -204,7 +207,7 @@ void consoleUI::run()
             printNames(_scientist);
         break;
 
-    //This function sorts the scientists by the year they recived the Turning Award
+    //This case sorts the scientists by the year they recived the Turning Award
     case 9:
             _scientist.changeTo(_scientist.sortByAward());
             cout << "An organized list of scientists in order of when they received a Turing award." << endl;
@@ -212,7 +215,7 @@ void consoleUI::run()
             printNames(_scientist);
          break;
 
-    //All the scientist will become infinitely more awesome because this function changes all of there names to Chuck Norris
+    //All the scientist will become infinitely more awesome because this case changes all of their names to Chuck Norris
     case 10:
     {
         listServices norris;
