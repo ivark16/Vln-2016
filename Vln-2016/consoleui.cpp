@@ -56,28 +56,6 @@ void consoleUI::run()
                 print();
                 printNames(scientists);
 
-
-               /* int firstOrLast;
-                cout << "Choose 1 for first name or 2 for last name: ";
-                cin >> firstOrLast;
-                if(firstOrLast == 1)
-                {
-                    string firstName;
-                    cout << "Enter first name: ";
-                    cin >> firstName;
-                    searchName.changeTo(_scientist.searchFirstName(firstName));
-                    print();
-                    printNames(searchName);
-                }
-                else
-                {
-                    string lastName;
-                    cout << "Enter last name: ";
-                    cin >> lastName;
-                    searchName.changeTo(_scientist.searchLastName(lastName));
-                    print();
-                    printNames(searchName);
-                } */
             }
             break;
         case 3:
