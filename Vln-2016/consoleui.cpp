@@ -35,8 +35,10 @@ void consoleUI::run()
 
     cin >> chooseNumber;
 
+    //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
+        //This function displays a list of all the scientists (that is there full names, dob, dod and year of award)
         case 1:
         {
             listServices scientists;
@@ -45,8 +47,9 @@ void consoleUI::run()
             printNames(scientists);
         }
             break;
+
+        //This function let's you search from either the first or last name
         case 2:
-            //Searching from first or last name
             {
                 listServices scientists;
                 //listServices searchName2;
