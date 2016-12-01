@@ -17,19 +17,20 @@ void consoleUI::run()
 {
     int chooseNumber = 0;
 
-    cout << "---------------------------------------" << endl;
-    cout << "------- Database for Scientist --------" << endl;
-    cout << "1:  Display entire list.               *" << endl;
-    cout << "2:  Search by name.                    *" << endl;
-    cout << "3:  Search if alive.                   *" << endl;
-    cout << "4:  Sort by award year.                *" << endl;
-    cout << "5:  Add new scientist.                 *" << endl;
-    cout << "6:  Search for birth year.             *" << endl;
-    cout << "7:  Enter Function.                    *" << endl;
-    cout << "8:  Sort by birthyear.                 *" << endl;
-    cout << "9:  Search for Turing award winner.    *" << endl;
-    cout << "10: Chuck Norris.                     *" << endl;
-    cout << "---------------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Display entire list.               * D.O.D = date of death *" << endl;
+    cout << "* 2:  Search by name.                    * D.O.B = date of birth *"<< endl;
+    cout << "* 3:  Search if alive.                   * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Sort by award year.                *                       *" << endl;
+    cout << "* 5:  Add new scientist.                 *                       *" << endl;
+    cout << "* 6:  Search for birth year.             *                       *" << endl;
+    cout << "* 7:  Enter Function.                    *                       *" << endl;
+    cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
+    cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
+    cout << "* 10: Chuck Norris.                      *                       *" << endl;
+    cout << "*----------------------------------------*----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
     cin >> chooseNumber;
@@ -56,28 +57,6 @@ void consoleUI::run()
                 print();
                 printNames(scientists);
 
-
-               /* int firstOrLast;
-                cout << "Choose 1 for first name or 2 for last name: ";
-                cin >> firstOrLast;
-                if(firstOrLast == 1)
-                {
-                    string firstName;
-                    cout << "Enter first name: ";
-                    cin >> firstName;
-                    searchName.changeTo(_scientist.searchFirstName(firstName));
-                    print();
-                    printNames(searchName);
-                }
-                else
-                {
-                    string lastName;
-                    cout << "Enter last name: ";
-                    cin >> lastName;
-                    searchName.changeTo(_scientist.searchLastName(lastName));
-                    print();
-                    printNames(searchName);
-                } */
             }
             break;
         case 3:
