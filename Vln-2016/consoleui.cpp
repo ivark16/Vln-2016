@@ -28,7 +28,7 @@ void consoleUI::run()
     cout << "7: Enter Function.                    *" << endl;
     cout << "8: Sort by birthyear.                 *" << endl;
     cout << "9: Search for Turing award winner.    *" << endl;
-    cout << "10: Enter Function.                   *" << endl;
+    cout << "10: Sort by Alive.                   *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -288,9 +288,20 @@ void consoleUI::run()
 
          break;
 
+
+    case 10:
+    //sortAlive
+    {
+        listServices scientistsByAlive;
+        scientistsByAlive.changeTo(_scientist.sortByAlive());
+        cout << "An organized list of living scientists" << endl;
+        for(int i = 0 ; i < scientistsByAlive.getSize(); i++)
+        {
+            cout << scientistsByAlive.getFirstNameFromList(i) << left << scientistsByAlive.getLastNameFromList(i) << endl;
+
+        }
+    }
         break;
-
-
 
 
     }
