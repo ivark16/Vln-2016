@@ -131,37 +131,8 @@ void consoleUI::run()
 
 
                 firstName = nameChecker("first name");
-
-             /*   while(!cont)
-                {
-                cout << "Please enter the scientist's first name: ";
-                cin >> firstName;
-                for(unsigned int i = 0; i < firstName.length(); i++)
-                {
-                    if(!isalpha(firstName[i]) && firstName[i] != '.')
-                    {
-                        hasOnlyChar = false;
-                    }
-                }
-                if(firstName.length() <2 || firstName.length()>16)
-                   {
-                    cout <<"Error:  Names must be between 2 and 16 characters." << endl;
-                    }
-                else if(!hasOnlyChar)
-                {
-                   cout << "Error:Names can only contain characters from the latin alphabet." << endl;
-                   hasOnlyChar = true;
-                }
-                else
-                {
-                   cont = true;
-                }
-                } */
-
-                cout << "Please enter the scientist's last name: ";
-                cin >> lastName;
-                cout << "Enter the scientist's gender (m/f) : ";
-                cin >> gender;
+                lastName = nameChecker("last name");
+                gender = genderChecker();
                 cout << "Enter the scientist's birth year: ";
                 cin >> birthYear;
                 cout << "Is the scientist still alive? (y/n) ";
@@ -264,22 +235,22 @@ void consoleUI::run()
 
 string consoleUI::nameChecker(string nameType)
 {
-    string firstName;
+    string name;
     bool cont = false;
     bool hasOnlyChar = true;
 
        while(!cont)
        {
        cout << "Please enter the scientist's " << nameType << ": ";
-       cin >> firstName;
-       for(unsigned int i = 0; i < firstName.length(); i++)
+       cin >> name;
+       for(unsigned int i = 0; i < name.length(); i++)
        {
-           if(!isalpha(firstName[i]) && firstName[i] != '.')
+           if(!isalpha(name[i]) && name[i] != '.')
            {
                hasOnlyChar = false;
            }
        }
-       if(firstName.length() <2 || firstName.length()>16)
+       if(name.length() <2 || name.length()>16)
           {
            cout <<"Error: Names must be between 2 and 16 characters." << endl;
            }
@@ -294,14 +265,32 @@ string consoleUI::nameChecker(string nameType)
        }
        }
 
-       return firstName;
-
-
-
+       return name;
 }
 
+//prompts the user for
+char consoleUI::genderChecker()
+{
+    bool cont = false;
+    string gender;
 
+    while(!cont)
+    {
+        cout << "Enter the scientist's gender (m/f/o) : " ;
+        cin >> gender;
 
+        if(isalpha(gender[0]) && (gender[0] == 'm' || gender[0] == 'f' || gender[0] == 'o') && gender.size() == 1)
+        {
+            cont = true;
+        }
+        else
+        {
+            cout << "Invalid input.  Please enter either 'm' for male or 'f' for female or 'o' for other." << endl;
+        }
+    }
+
+    return gender[0];
+}
 
 
 void consoleUI::print()
@@ -340,9 +329,13 @@ void consoleUI::printNames (listServices scientistsToPrint)
         {
             sex = "male";
         }
-        else
+        else if(scientistsToPrint.getSexFromList(i) == 'f')
         {
             sex = "female";
+        }
+        else
+        {
+            sex = "other";
         }
         cout.width(5);
         cout << left << counter;
