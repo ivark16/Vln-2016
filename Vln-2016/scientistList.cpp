@@ -8,6 +8,7 @@ scientistList::scientistList()
 
 }
 
+// Constructor to input new Scientist to file, this does not overrite the file, only append the file.
 scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarAr, int danarar, int verdlaun)
 {
     fstream myFile;
@@ -24,7 +25,8 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     myFile.close();
 }
 
-//Reading from file
+// Reading from file turingAwardWinners.txt, this function reads from file and imports it to vector that is sent from the
+// function from listServices.
 void scientistList::readFile (vector <scientistList>& science)  //returns true if it is not the end of the file.
 {
     fstream file;
@@ -71,16 +73,6 @@ void scientistList::writeToFile(vector<scientistList> newFile)
 
 }
 
-void scientistList::getScientist ()
-{
-    firstName = _firstName;
-    lastName = _lastName;
-    sex = _sex;
-    birthYear = _birthYear;
-    deathYear = _deathYear;
-    TuringAwards = _TuringAwards;
-}
-
 string scientistList::getFirstName() const
 {
     return _firstName;
@@ -91,11 +83,13 @@ string scientistList::getLastName() const
     return _lastName;
 }
 
+// Returning date of birth
 int scientistList::dob() const
 {
     return _birthYear;
 }
 
+// Returning date of death
 int scientistList::dod() const
 {
     return _deathYear;
@@ -111,18 +105,20 @@ int scientistList::getAwards() const
     return _TuringAwards;
 }
 
+//Returning full name
 string scientistList::fullName() const
 {
     string a = getFirstName() + getLastName();
     return a;
 }
 
-
+// For Chuck Norris
 void scientistList::setFirstName(string name)
 {
    _firstName = name;
 }
 
+// For Chuck Norris
 void scientistList::setLastName(string name)
 {
    _lastName = name;
