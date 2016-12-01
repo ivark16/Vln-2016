@@ -26,8 +26,8 @@ void consoleUI::run()
     cout << "5: Add new scientist.                 *" << endl;
     cout << "6: Search for birth year.             *" << endl;
     cout << "7: Enter Function.                    *" << endl;
-    cout << "8: Enter Function.                    *" << endl;
-    cout << "9: Enter Function.                    *" << endl;
+    cout << "8: Sort by birthyear.                 *" << endl;
+    cout << "9: Sort by Turing award.              *" << endl;
     cout << "10: Enter Function.                   *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
@@ -238,30 +238,44 @@ void consoleUI::run()
             }
             break;
     case 6:
-        //sortBirth
+        //searchBirth
         {
         int year;
 
         cout << "Enter year: ";
         cin >> year;
         listServices scientistsBirth;
-        scientistsBirth.changeTo(_scientist.searchBirth(year));
+        _scientist.changeTo(_scientist.searchBirth(year));
         cout << "A list of scientists born in your year of choice" << endl;
         Print();
-        for(int i = 0; i < scientistsBirth.getSize(); i++)
+        for(int i = 0; i < _scientist.getSize(); i++)
         {
 
-            cout << scientistsBirth.getFirstNameFromList(i);
-            for(int k = 0; k < 15 - scientistsBirth.getFirstNameFromList(i).size(); k++)
+            cout << _scientist.getFirstNameFromList(i);
+            for(int k = 0; k < 15 - _scientist.getFirstNameFromList(i).size(); k++)
             {
                 cout << " ";
             }
 
-            cout << scientistsBirth.getLastNameFromList(i) << endl;
+            cout << _scientist.getLastNameFromList(i) << endl;
 
         }
          }
           break;
+
+    case 8:
+        //sortByBirth
+      // listServices scientists;
+       //scientists.changeTo(_scientist.search);
+
+
+        break;
+
+    case 9:
+        //sortByAward
+
+
+        break;
 
 
 
