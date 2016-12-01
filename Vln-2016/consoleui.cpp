@@ -29,17 +29,17 @@ void consoleUI::run()
 
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display entire list.               * D.O.D = date of death *" << endl;
-    cout << "* 2:  Search by name.                    * D.O.B = date of birth *"<< endl;
+    cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
+    cout << "* 2:  Search by name.                    * Y.O.B = date of birth *"<< endl;
     cout << "* 3:  Search if alive.                   * Y.O.A = year of award *" << endl;
     cout << "* 4:  Sort by award year.                *                       *" << endl;
     cout << "* 5:  Add new scientist.                 *                       *" << endl;
     cout << "* 6:  Search for birth year.             *                       *" << endl;
-    cout << "* 7:  Enter Function.                    *                       *" << endl;
+    cout << "* 7:  Disply list in alphabetical order  *                       *" << endl;
     cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
     cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
     cout << "* 10: Chuck Norris.                      *                       *" << endl;
-    cout << "*----------------------------------------*----------------------*" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -116,9 +116,35 @@ void consoleUI::run()
                 int deathYear;
                 char isWinner;
                 int awardYear;
+                bool cont = false;
+                bool hasOnlyChar = true;
 
+                while(!cont)
+                {
                 cout << "Please enter the scientist's first name: ";
                 cin >> firstName;
+                for(unsigned int i = 0; i < firstName.length(); i++)
+                {
+                    if(!isalpha(firstName[i]) && firstName[i] != '.')
+                    {
+                        hasOnlyChar = false;
+                    }
+                }
+                if(firstName.length() <2 || firstName.length()>16)
+                   {
+                    cout <<"Error:  Names must be between 2 and 16 characters." << endl;
+                    }
+                else if(!hasOnlyChar)
+                {
+                   cout << "Error:Names can only contain characters from the latin alphabet." << endl;
+                   hasOnlyChar = true;
+                }
+                else
+                {
+                   cont = true;
+                }
+                }
+
                 cout << "Please enter the scientist's last name: ";
                 cin >> lastName;
                 cout << "Enter the scientist's gender (m/f) : ";
@@ -210,7 +236,7 @@ void consoleUI::run()
 
 
         norris.changeTo(_scientist.chuckNorris());
-        //print();
+        print();
         printNames(norris);
 
         break;
@@ -231,11 +257,11 @@ void consoleUI::print()
     cout.width(10);
     cout << "gender" << left;
     cout.width(10);
-    cout << "D.O.B" << left;
+    cout << "Y.O.B" << left;
     cout.width(10);
-    cout << "D.O.D" << left;
+    cout << "Y.O.D" << left;
     cout.width(scientists.searchLongestName());
-    cout << "Y.O.A." << left << endl;
+    cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
         cout << "--------";
