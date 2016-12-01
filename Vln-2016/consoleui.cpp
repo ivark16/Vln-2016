@@ -68,8 +68,8 @@ void consoleUI::run()
         }
             break;
 
-        //This function let's you search from either the first or last name
         case 2:
+            //searchName
             {
                 listServices scientists;
                 //listServices searchName2;
