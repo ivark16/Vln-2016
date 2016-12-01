@@ -29,9 +29,10 @@ vector<scientistList>   sortByAward();
  vector<scientistList>   searchBirth(int birthYear);
  vector<scientistList>   searchAlive();
  vector<scientistList>   searchAward(int awardYear);
+ vector<scientistList>   chuckNorris();
  void changeTo(vector<scientistList> rhs);
 int getSize ();
-int searchLongestName();
+int searchLongestName(); //this function finds the longest name on the list and returns its size value as integer so we can use it to set out column width.
 };
 
 #endif // LISTSERVICES_H

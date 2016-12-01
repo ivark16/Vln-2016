@@ -19,16 +19,16 @@ void consoleUI::run()
 
     cout << "---------------------------------------" << endl;
     cout << "------- Database for Scientist --------" << endl;
-    cout << "1: Display entire list.               *" << endl;
-    cout << "2: Search by name.                    *" << endl;
-    cout << "3: Search if alive.                   *" << endl;
-    cout << "4: Sort by award year.                *" << endl;
-    cout << "5: Add new scientist.                 *" << endl;
-    cout << "6: Search for birth year.             *" << endl;
-    cout << "7: Enter Function.                    *" << endl;
-    cout << "8: Sort by birthyear.                 *" << endl;
-    cout << "9: Search for Turing award winner.    *" << endl;
-    cout << "10: Sort by Alive.                   *" << endl;
+    cout << "1:  Display entire list.               *" << endl;
+    cout << "2:  Search by name.                    *" << endl;
+    cout << "3:  Search if alive.                   *" << endl;
+    cout << "4:  Sort by award year.                *" << endl;
+    cout << "5:  Add new scientist.                 *" << endl;
+    cout << "6:  Search for birth year.             *" << endl;
+    cout << "7:  Enter Function.                    *" << endl;
+    cout << "8:  Sort by birthyear.                 *" << endl;
+    cout << "9:  Search for Turing award winner.    *" << endl;
+    cout << "10: Chuck Norris.                     *" << endl;
     cout << "---------------------------------------" << endl;
     cout << "Enter number: ";
 
@@ -205,13 +205,23 @@ void consoleUI::run()
 
          break;
 
+    case 10:
+    {
+        listServices norris;
+ /* for(int i = 0; i < _scientist.chuckNorris(); i++){
+       _scientist.chu
+  }*/
 
 
+        norris.changeTo(_scientist.chuckNorris());
+        //print();
+        printNames(norris);
     }
+
 }
 
 
-
+}
 
 void consoleUI::print()
 {

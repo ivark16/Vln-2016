@@ -66,6 +66,7 @@ string scientistList::getLastName() const
 {
     return _lastName;
 }
+
 int scientistList::dob() const
 {
     return _birthYear;
@@ -90,4 +91,15 @@ string scientistList::fullName() const
 {
     string a = getFirstName() + getLastName();
     return a;
+}
+
+
+void scientistList::setFirstName(string name)
+{
+   _firstName = name;
+}
+
+void scientistList::setLastName(string name)
+{
+   _lastName = name;
 }
