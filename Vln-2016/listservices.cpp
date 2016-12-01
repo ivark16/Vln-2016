@@ -85,7 +85,7 @@ vector<scientistList> listServices::sortByBirth()
         {
            if(_computerScientists[j].dob() < currentSmallest)
            {
-               currentSmallest = _computerScientists[i].dob();
+               currentSmallest = _computerScientists[j].dob();
                scientistList temp;
                temp = _computerScientists[j];
                _computerScientists[j] = _computerScientists[i];
