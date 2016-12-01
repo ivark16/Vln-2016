@@ -19,8 +19,8 @@ void consoleUI::run()
 
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display entire list.               * D.O.D = date of death *" << endl;
-    cout << "* 2:  Search by name.                    * D.O.B = date of birth *"<< endl;
+    cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
+    cout << "* 2:  Search by name.                    * Y.O.B = date of birth *"<< endl;
     cout << "* 3:  Search if alive.                   * Y.O.A = year of award *" << endl;
     cout << "* 4:  Sort by award year.                *                       *" << endl;
     cout << "* 5:  Add new scientist.                 *                       *" << endl;
