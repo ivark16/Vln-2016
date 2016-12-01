@@ -47,9 +47,17 @@ void consoleUI::run()
         case 2:
             //Searching from first or last name
             {
-                listServices searchName;
+                listServices scientists;
                 //listServices searchName2;
-                int firstOrLast;
+                string searchTerm;
+                cout << "Enter a single name to search: ";
+                cin >> searchTerm;
+                scientists.changeTo(_scientist.searchName(searchTerm));
+                print();
+                printNames(scientists);
+
+
+               /* int firstOrLast;
                 cout << "Choose 1 for first name or 2 for last name: ";
                 cin >> firstOrLast;
                 if(firstOrLast == 1)
@@ -69,7 +77,7 @@ void consoleUI::run()
                     searchName.changeTo(_scientist.searchLastName(lastName));
                     print();
                     printNames(searchName);
-                }
+                } */
             }
             break;
         case 3:
@@ -178,6 +186,13 @@ void consoleUI::run()
             print();
             printNames(_scientist);
          break;
+
+    case 10:
+        //Delete from list
+
+
+        break;
+
     }
 }
 
