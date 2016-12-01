@@ -3,16 +3,18 @@
 #include <iomanip>
 using namespace std;
 
+//Constructor
 consoleUI::consoleUI()
 {
 
 }
-
+//Constructor
 consoleUI::consoleUI(int chooseNumber)
 {
     _chooseNumber = chooseNumber;
 }
 
+//Constructor
 bool consoleUI::digitCheck(int digit)
 {
     if(isdigit(digit))
@@ -22,6 +24,7 @@ bool consoleUI::digitCheck(int digit)
     return false;
 }
 
+//Construct that gives you a list of options to choose from
 void consoleUI::run()
 {
     int chooseNumber;
