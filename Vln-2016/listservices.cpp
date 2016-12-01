@@ -184,7 +184,7 @@ vector<scientistList> listServices::searchBirth(int minYear, int maxYear)
 
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-      if (minYear <= _computerScientists[i].dob() && _computerScientists[i].dob() >= _computerScientists[i].dob())
+      if (minYear <= _computerScientists[i].dob() && _computerScientists[i].dob() <= maxYear)
       {
           matchingBirthYears.push_back(_computerScientists[i]);
       }

@@ -24,7 +24,8 @@ bool consoleUI::digitCheck(int digit)
     return false;
 }
 
-//Construct that gives you a list of options to choose from
+//Function that gives you a list of options to choose from
+//It prompts the user for an integer and then references the appropriate case in the switch case included.
 void consoleUI::run()
 {
     int chooseNumber;
@@ -50,6 +51,7 @@ void consoleUI::run()
     cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
     cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
     cout << "* 10: Chuck Norris.                      *                       *" << endl;
+    cout << "* 12: Exit                               *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -57,7 +59,7 @@ void consoleUI::run()
     cin >> chooseNumber;
 
 
-    if((chooseNumber < 1) || (chooseNumber > 11) || digitCheck(chooseNumber))
+    if((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber))
     {
         cout << "Please enter a valid input: " << endl;
         exit(1);
@@ -227,13 +229,16 @@ void consoleUI::run()
         norris.changeTo(_scientist.chuckNorris());
         print();
         printNames(norris);
-
+}
+        break;
+    case 12:
+        stillLooping = false;
         break;
     }
     }
 
 }
-}
+
 
 
 
