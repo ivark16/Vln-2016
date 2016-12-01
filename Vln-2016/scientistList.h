@@ -38,6 +38,8 @@ public:
     char getSex () const;
     int getAwards() const;
 
+    void setFirstName(string name);
+    void setLastName(string name);
 
 };
 

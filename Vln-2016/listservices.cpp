@@ -47,6 +47,10 @@ int listServices::getAwardsFromList(int i) const
     return _computerScientists[i].getAwards();
 }
 
+
+
+
+//A constructor for listServices.  readFile reads data from a .txt file and puts it in the member vector _computerScientists.
 listServices::listServices()
 {
         scientistList nextScientist;
@@ -146,6 +150,22 @@ void   listServices::addNew(string firstName, string lastName, char gender, int 
 }
 //This function creates and returns a new vector containing only the scientists whose last names match the name being searched.
 //The name being searched is the string that is taken in as an argument.
+
+
+vector<scientistList> listServices::searchName(string searchTerm)
+{
+    vector<scientistList> matchingscientists;
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        //If the names match, the scientist is added to the new vector.
+        if (searchTerm == _computerScientists[i].getLastName() || searchTerm == _computerScientists[i].getFirstName() )
+        {
+            matchingscientists.push_back(_computerScientists[i]);
+        }
+    }
+    return matchingscientists;
+}
+/*
 vector<scientistList> listServices::searchLastName(string lastName)
 {
     vector<scientistList> matchingLastNames;
@@ -167,13 +187,14 @@ vector<scientistList> listServices::searchFirstName(string firstName)
     vector<scientistList> matchingFirstNames;
     for (unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-        if (firstName == _computerScientists[i].getFirstName())
+        if (firstName == changeToLower(_computerScientists[i].getFirstName()))
         {
             matchingFirstNames.push_back(_computerScientists[i]);
         }
     }
     return matchingFirstNames;
 }
+*/
 
 //This function creates and returns a new vector containing only the scientists whose birth years match the year being searched.
 //The year being searched is the integer that is taken in as an argument.
@@ -194,13 +215,13 @@ vector<scientistList> listServices::searchBirth(int birthYear)
 
 //This function creates and returns a new vector containing only the scientists whose death years match the year being searched.
 //The year being searched is the integer that is taken in as an argument.
-vector<scientistList> listServices::searchAlive(int deathYear)
+vector<scientistList> listServices::searchAlive()
 {
     vector<scientistList> matchingScientists;
 
     for(unsigned int k = 0; k < _computerScientists.size(); k++)
     {
-        if(_computerScientists[k].dod() == deathYear)
+        if(_computerScientists[k].dod() == 00)
         {
             matchingScientists.push_back(_computerScientists[k]);
         }
@@ -258,8 +279,33 @@ int listServices::searchLongestName()
             newLongest = theList.getLastNameFromList(i).size();
         }
     }
-
     return newLongest + 2;
-
 }
+
+
+vector<scientistList> listServices::chuckNorris()
+{
+    vector<scientistList> matchingFirstNames;
+    string firstName = "Chuck";
+    string lastName = "Norris";
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        _computerScientists[i].setFirstName(firstName);
+        _computerScientists[i].setLastName(lastName);
+
+        matchingFirstNames.push_back(_computerScientists[i]);
+
+    }
+    return matchingFirstNames;
+}
+
+string listServices::changeToLower(string input)
+{
+    for(unsigned int i = 0 ; i < input.length() ; i++)
+    {
+        input[i] = tolower(input[i]);
+    }
+    return input;
+}
+
 

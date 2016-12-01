@@ -13,12 +13,13 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     fstream myFile;
     myFile.open("turingAwardWinners.txt", ios::app);
 
+    myFile << endl;
     myFile << nafn << " ";
     myFile << nafn2 << " ";
     myFile << kyn << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
-    myFile << verdlaun << endl;
+    myFile << verdlaun;
 
     myFile.close();
 }
@@ -65,6 +66,7 @@ string scientistList::getLastName() const
 {
     return _lastName;
 }
+
 int scientistList::dob() const
 {
     return _birthYear;
@@ -89,4 +91,15 @@ string scientistList::fullName() const
 {
     string a = getFirstName() + getLastName();
     return a;
+}
+
+
+void scientistList::setFirstName(string name)
+{
+   _firstName = name;
+}
+
+void scientistList::setLastName(string name)
+{
+   _lastName = name;
 }
