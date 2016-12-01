@@ -26,7 +26,6 @@ void consoleUI::run()
 {
     int chooseNumber;
 
-
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Display entire list.               * Y.O.D = date of death *" << endl;
@@ -69,7 +68,7 @@ void consoleUI::run()
         }
             break;
 
-        //This function let's you search from either the first or last name
+        //This function lets you search for a scientist from their name (either the first or last name)
         case 2:
             {
                 listServices scientists;
@@ -83,8 +82,9 @@ void consoleUI::run()
 
             }
             break;
+
+        //This function organizes the living scientists from oldest to youngest
         case 3:
-            //sortAlive
             {
                 listServices scientists;
                 string searchTerm;
@@ -94,8 +94,9 @@ void consoleUI::run()
                 printNames(scientists);
              }
               break;
+
+        //This function sorts the scientists by the year they received the Turning award
         case 4:
-            //sortAward
             {
                 listServices scientistsByAward;
                 scientistsByAward.changeTo(_scientist.sortByAward());
@@ -185,8 +186,9 @@ void consoleUI::run()
                 _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
             }
             break;
+
+    //searchBirth
     case 6:
-        //searchBirth
         {
             int year;
             cout << "Enter year: ";
@@ -198,8 +200,9 @@ void consoleUI::run()
             printNames(scientistsBirth);
          }
           break;
+
+    //sort by name
     case 7:
-        //sort by name
     {
         listServices sort;
         sort.changeTo(_scientist.sortByName());
@@ -210,23 +213,23 @@ void consoleUI::run()
     }
         break;
 
+    //sortByBirth
     case 8:
-        //sortByBirth
-
             _scientist.changeTo(_scientist.sortByBirth());
             cout << "An organized list starting with the oldest scientist" << endl;
             print();
             printNames(_scientist);
         break;
 
+    //sortByAward
     case 9:
-        //sortByAward
             _scientist.changeTo(_scientist.sortByAward());
             cout << "An organized list of scientists in order of when they received a Turing award." << endl;
             print();
             printNames(_scientist);
          break;
 
+    //All the scientist will become infinitely more awesome because this function changes all of there names to Chuck Norris
     case 10:
     {
         listServices norris;
