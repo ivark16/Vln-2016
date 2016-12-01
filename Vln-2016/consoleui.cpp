@@ -25,7 +25,7 @@ void consoleUI::run()
     cout << "* 4:  Sort by award year.                *                       *" << endl;
     cout << "* 5:  Add new scientist.                 *                       *" << endl;
     cout << "* 6:  Search for birth year.             *                       *" << endl;
-    cout << "* 7:  Enter Function.                    *                       *" << endl;
+    cout << "* 7:  Disply list in alphabetical order  *                       *" << endl;
     cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
     cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
     cout << "* 10: Chuck Norris.                      *                       *" << endl;
@@ -189,7 +189,7 @@ void consoleUI::run()
 
 
         norris.changeTo(_scientist.chuckNorris());
-        //print();
+        print();
         printNames(norris);
 
         break;
@@ -209,11 +209,11 @@ void consoleUI::print()
     cout.width(10);
     cout << "gender" << left;
     cout.width(10);
-    cout << "D.O.B" << left;
+    cout << "Y.O.B" << left;
     cout.width(10);
-    cout << "D.O.D" << left;
+    cout << "Y.O.D" << left;
     cout.width(scientists.searchLongestName());
-    cout << "Y.O.A." << left << endl;
+    cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
         cout << "--------";
