@@ -43,6 +43,7 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
         file >> bla._TuringAwards;
         science.push_back(bla);
      }
+    science.pop_back();
         file.close();
 }
 
