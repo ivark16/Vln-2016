@@ -13,12 +13,13 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     fstream myFile;
     myFile.open("turingAwardWinners.txt", ios::app);
 
+    myFile << endl;
     myFile << nafn << " ";
     myFile << nafn2 << " ";
     myFile << kyn << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
-    myFile << verdlaun << endl;
+    myFile << verdlaun;
 
     myFile.close();
 }
@@ -43,7 +44,6 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
         file >> bla._TuringAwards;
         science.push_back(bla);
      }
-    science.pop_back();
         file.close();
 }
 
