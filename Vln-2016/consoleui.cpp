@@ -307,7 +307,7 @@ void consoleUI::run()
                }
         break;
 
-        //This case sorts the scientists by the year they received an award
+        //This case Deletes scientist from database
         case 4:
         {
             listServices scientist;
@@ -320,6 +320,7 @@ void consoleUI::run()
                 cout << "Enter name: ";
                 cin >> name;
                 print();
+                //here it prints the users that have the name that users wants to delete
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
                     if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
@@ -392,6 +393,7 @@ void consoleUI::run()
                 cout << "Are you sure you want to delete ?: write Yes to delete or any character to abort: "<< endl;
                 cin >> doubleCheck;
                 scientist.changeToLower(doubleCheck);
+                //here it checks if the user wants to delete and deletes the scientist from the vector
                 if(doubleCheck == "yes")
                 {
                     scientist.deleteFromList(ID);

@@ -35,7 +35,7 @@ public:
 
     void setFirstName(string name);
     void setLastName(string name);
-    void writeToFile(vector<scientistList> newFile);
+    void writeToFile(vector<scientistList> &newFile);
 
 };
 
