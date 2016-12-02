@@ -20,3 +20,4 @@ Stephen Cook m American 1939 0 1982
 Ken Thompson m American 1943 0 1983
 Dennis Ritchie m American 1941 2011 1983
 Niklaus Wirth m Swiss 1934 0 1984
+Ada Lovelace f English 1815 1852 0

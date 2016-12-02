@@ -12,7 +12,7 @@ scientistList::scientistList()
 scientistList::scientistList(string nafn, string nafn2, char kyn, string nationality, int faedingarAr, int danarar, int verdlaun)
 {
     fstream myFile;
-    myFile.open("turingAwardWinners.txt", ios::app);
+    myFile.open("Scientists.txt", ios::app);
 
     myFile << endl;
     myFile << nafn << " ";
@@ -26,12 +26,12 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, string nationa
     myFile.close();
 }
 
-// Reading from file turingAwardWinners.txt, this function reads from file and imports it to vector that is sent from the
+// Reading from file scientists.txt, this function reads from file and imports it to vector that is sent from the
 // function from listServices.
 void scientistList::readFile (vector <scientistList>& science)  //returns true if it is not the end of the file.
 {
     fstream file;
-    file.open("turingAwardWinners.txt");
+    file.open("Scientists.txt");
     if(file.fail())
     {
         exit(1);
@@ -56,8 +56,8 @@ void scientistList::writeToFile(vector<scientistList> newFile)
 {
     deleteNewLineInFile(newFile);
     ofstream myfile;
-    remove("turingAwardWinners.txt");
-    myfile.open("turingAwardWinners.txt");
+    remove("Scientists.txt");
+    myfile.open("Scientists.txt");
     if(myfile.is_open())
     {
         for(unsigned int i = 0 ; i < newFile.size() ; i++)
