@@ -23,11 +23,8 @@ public:
     vector<scientistList> sortByName(); // Returns vectors with names in alphabetical order
     vector<scientistList>   sortByBirth(); // Returns vector with dob in correct order (lowest first and so on)
     vector<scientistList>   sortByAward(); // Returns vector with Turing awards in correct order (lowest first and so on)
-    // This function adds new names to the file by calling constructor in scientistList.
-    vector<scientistList> sortByAlive();
+    // The function below adds a new scientist to the file by calling constructor in scientistList.
     void   addNew(string firstName, string lastName, char gender, string nationality, int birthYear, int deathYear, int awardYear);
-
-
     vector<scientistList>   searchLastName(string lastName); // Searches last name and returns the persons in vector
     vector<scientistList>   searchFirstName(string firstName); // Searches first name and returns the persons in vector
     vector<scientistList>   searchBirth(int minYear, int maxYear); // Searches scientists with same birthdays as the user inputs and returns vector
@@ -38,10 +35,8 @@ public:
     int getSize (); // Returns size of vector
     int searchLongestName(); // returns size of longest name
     string changeToLower(string input); // Changes uppercase letters to lower case letters
-    void deleteFromList(int ID);
-    void writeNewFile();
-
-
+    void deleteFromList(int ID); //Deletes a scientist from the list
+    void writeNewFile(); //Overwrites the vector to a new .txt file
 };
 
 #endif // LISTSERVICES_H
