@@ -14,6 +14,7 @@ class scientistList
 private:
     string _firstName;
     string _lastName;
+    string _nationality;
     int _birthYear;
     int _deathYear;
     char _sex;
@@ -21,10 +22,11 @@ private:
 
 public:
     scientistList();
-    scientistList(string nafn1, string nafn2 , char kyn, int faedingarAr, int danarar, int verdlaun); // Constructor that appends to file
+    scientistList(string nafn1, string nafn2, char kyn, string nationality, int faedingarAr, int danarar, int verdlaun); // Constructor that appends to file
     void readFile (vector <scientistList>& science); // Reads from file into vector from Listservices
     string getFirstName() const;
     string getLastName() const;
+    string getNationality() const;
     string fullName() const; // Returns full name
     int dob() const; // Returns date of birth
     int dod() const; // Returns date of death
