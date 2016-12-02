@@ -144,6 +144,7 @@ void consoleUI::run()
                 string firstName;
                 string lastName;
                 char gender;
+                string nationality;
                 int birthYear;
                 char isAlive;
                 int deathYear;
@@ -156,6 +157,8 @@ void consoleUI::run()
                 firstName = nameChecker("first name");
                 lastName = nameChecker("last name");
                 gender = genderChecker();
+                cout << "Nationality: ";
+                cin >> nationality;
                 cout << "Enter the scientist's birth year: ";
                 cin >> birthYear;
                 cout << "Is the scientist still alive? (y/n) ";
@@ -189,7 +192,7 @@ void consoleUI::run()
                     cout << "Invalid entry.  Please enter either y (yes) or n (no)";
                 }
 
-                _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
+                _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
             }
             break;
 
@@ -249,11 +252,13 @@ void consoleUI::run()
         //Delete from database
         listServices scientist;
         int ID = 0;
+        bool personInDatabase = true;
+        string doubleCheck;
         string name;
         cout << "Enter name: ";
         cin >> name;
         print();
-        for(int i = 0 ; i < scientist.getSize();)
+        for(int i = 0 ; i < scientist.getSize(); i++)
         {
             if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
             {
@@ -293,26 +298,44 @@ void consoleUI::run()
                 cout << scientist.getAwardsFromList(i) << left;;
                 cout << "   *" << endl;
 
-
-
-                i++;
             }
-            else
+            else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
             {
-                i++;
+                if(i == scientist.getSize() - 1)
+                {
+                    cout << "Person is not in database!" << endl;
+                    personInDatabase = false;
+                    break;
+                }
             }
         }
-        for(int i = 0 ; i < 9 ; i++)
+        for(int i = 0 ; i < 8 ; i++)
         {
             cout << "--------";
+        }
+        if(personInDatabase == false)
+        {
+            break;
         }
         cout << endl;
         cout << "Enter number for scientist you want to delete: ";
         cin >> ID;
-        scientist.deleteFromList(ID);
-        print();
-        printNames(scientist);
-        scientist.writeNewFile();
+        cout << "Are you sure you want to delete ?: " << endl;
+        cout << "write Yes to delete or any character to abort: "<< endl;
+        cin >> doubleCheck;
+        scientist.changeToLower(doubleCheck);
+        if(doubleCheck == "yes")
+        {
+            scientist.deleteFromList(ID);
+            print();
+            printNames(scientist);
+            scientist.writeNewFile();
+        }
+        else
+        {
+            break;
+        }
+
     }
         break;
 
@@ -320,12 +343,13 @@ void consoleUI::run()
         stillLooping = false;
         break;
  }
-
+if(stillLooping)
+{
 string thisDoesNothing;
-cout << "Enter any letter and press enter to continue." << endl;
+cout << "Enter any letter and press enter to continue.";
 cin >> thisDoesNothing;
 cout << endl << endl << endl << endl;
-
+}
 
 }
 
@@ -409,6 +433,8 @@ void consoleUI::print()
     cout.width(10);
     cout << "gender" << left;
     cout.width(10);
+    cout << "nationality" << left;
+    cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
     cout << "Y.O.D" << left;
@@ -449,6 +475,8 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout << scientistsToPrint.getLastNameFromList(i) << left;
         cout.width(10);
         cout << sex << left;
+        cout.width(10);
+        cout << scientistsToPrint.getNationalityFromList(i) << left;
         cout.width(10);
         cout << scientistsToPrint.dobFromList(i) << left;
         if(scientistsToPrint.dodFromList(i) == 0)

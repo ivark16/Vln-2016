@@ -9,7 +9,7 @@ scientistList::scientistList()
 }
 
 // Constructor to input new Scientist to file, this does not overrite the file, only append the file.
-scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarAr, int danarar, int verdlaun)
+scientistList::scientistList(string nafn, string nafn2, char kyn, string nationality, int faedingarAr, int danarar, int verdlaun)
 {
     fstream myFile;
     myFile.open("turingAwardWinners.txt", ios::app);
@@ -18,6 +18,7 @@ scientistList::scientistList(string nafn, string nafn2, char kyn, int faedingarA
     myFile << nafn << " ";
     myFile << nafn2 << " ";
     myFile << kyn << " ";
+    myFile << nationality << " ";
     myFile << faedingarAr << " ";
     myFile << danarar << " ";
     myFile << verdlaun;
@@ -41,6 +42,7 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
         file >> bla._firstName;
         file >> bla._lastName;
         file >> bla._sex;
+        file >> bla._nationality;
         file >> bla._birthYear;
         file >> bla._deathYear;
         file >> bla._TuringAwards;
@@ -62,6 +64,7 @@ void scientistList::writeToFile(vector<scientistList> newFile)
             myfile << newFile[i].getFirstName() << " ";
             myfile << newFile[i].getLastName() << " ";
             myfile << newFile[i].getSex() << " ";
+            myfile << newFile[i].getNationality() << " ";
             myfile << newFile[i].dob() << " ";
             myfile << newFile[i].dod() << " ";
             myfile << newFile[i].getAwards() << " " << endl;
@@ -81,6 +84,10 @@ string scientistList::getFirstName() const
 string scientistList::getLastName() const
 {
     return _lastName;
+}
+string scientistList::getNationality() const
+{
+    return _nationality;
 }
 
 // Returning date of birth
