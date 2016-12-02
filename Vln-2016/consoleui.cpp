@@ -72,8 +72,6 @@ void consoleUI::run()
             }
         }
 
-
-
     //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
@@ -112,7 +110,6 @@ void consoleUI::run()
                        invalidInput = false;
                     }
                 }
-
 
                 if (displayScientist == 1)
                 {
@@ -169,9 +166,6 @@ void consoleUI::run()
                     printNames(norris);
                     break;
                  }
-
-
-
         }
             break;
 
@@ -282,8 +276,6 @@ void consoleUI::run()
 
                     break;
                 }
-
-
         }
         break;
 
@@ -299,8 +291,6 @@ void consoleUI::run()
                int deathYear;
                char isWinner;
                int awardYear;
-
-
 
                firstName = nameChecker("first name");
                lastName = nameChecker("last name");
@@ -352,12 +342,9 @@ void consoleUI::run()
                 string name;
                 cout << "Enter name: ";
                 cin >> name;
-<<<<<<< HEAD
-                print();
-                //here it prints the users that have the name that users wants to delete
-=======
+
                 print(scientist);
->>>>>>> fbd51c9bbe2020a821fb82bec74fbc330561ce4a
+                //here it prints the users that have the name that users wants to delete
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
                     if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
@@ -401,11 +388,9 @@ void consoleUI::run()
                         cout << "   *" << endl;
                         counter++;
                         checker = i;
-
                     }
                     else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
                     {
-
                         if(i == (scientist.getSize() - 1) + counter)
                         {
                             cout << "Person is not in database!" << endl;
@@ -413,8 +398,6 @@ void consoleUI::run()
                             break;
                         }
                     }
-
-
                 }
                 for(int i = 0 ; i < 9 ; i++)
                 {
@@ -437,14 +420,9 @@ void consoleUI::run()
                     print(scientist);
                     printNames(scientist);
                     scientist.writeNewFile();
-
                 }
-
             }
                 break;
-
-
-
         case 5:
             stillLooping = false;
             break;
