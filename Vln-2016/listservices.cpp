@@ -178,13 +178,13 @@ vector<scientistList> listServices::searchName(string searchTerm)
 
 //This function creates and returns a new vector containing only the scientists whose birth years match the year being searched.
 //The year being searched is the integer that is taken in as an argument.
-vector<scientistList> listServices::searchBirth(int birthYear)
+vector<scientistList> listServices::searchBirth(int minYear, int maxYear)
 {
     vector<scientistList> matchingBirthYears;
 
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-      if (birthYear == _computerScientists[i].dob())
+      if (minYear <= _computerScientists[i].dob() && _computerScientists[i].dob() <= maxYear)
       {
           matchingBirthYears.push_back(_computerScientists[i]);
       }
@@ -291,4 +291,20 @@ string listServices::changeToLower(string input)
     return input;
 }
 
+void listServices::deleteFromList(int ID)
+{
+    _computerScientists.erase(_computerScientists.begin() + ID);
+}
+
+void listServices::writeNewFile()
+{
+    vector<scientistList> rewrite;
+    rewrite = _computerScientists;
+    _data.writeToFile(rewrite);
+    for(unsigned int i = 0 ; i < _computerScientists.size() ; i++)
+    {
+        cout << _computerScientists[i].getFirstName() << endl;
+    }
+
+}
 

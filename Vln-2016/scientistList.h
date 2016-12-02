@@ -5,6 +5,7 @@
 #include <fstream>
 #include <algorithm>
 
+
 using namespace std;
 
 
@@ -32,6 +33,7 @@ public:
 
     void setFirstName(string name);
     void setLastName(string name);
+    void writeToFile(vector<scientistList> newFile);
 
 };
 
