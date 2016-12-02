@@ -114,7 +114,7 @@ void consoleUI::run()
                         cin.ignore(1000,'\n');
                         cout << "Not valid input, please try again: ";
                     }
-                    if(!((displayScientist > 0) && (displayScientist < 6)))
+                    if(!((displayScientist > 0) && (displayScientist < 7)))
                     {
                         cout << "Not valid input, please try again: ";
                         invalidInput = true;
@@ -256,165 +256,174 @@ void consoleUI::run()
         // This case allows the user to add in another scientist (or even create a person - that is not real)
         case 3:
             {
-                string firstName;
-                string lastName;
-                char gender;
-                string nationality;
-                int birthYear;
-                char isAlive;
-                int deathYear;
-                char isWinner;
-                int awardYear;
-                bool cont = false;
-                bool hasOnlyChar = true;
+               string firstName;
+               string lastName;
+               char gender;
+               string nationality;
+               int birthYear;
+               char isAlive;
+               int deathYear;
+               char isWinner;
+               int awardYear;
+               bool cont = false;
+               bool hasOnlyChar = true;
 
 
-                firstName = nameChecker("first name");
-                lastName = nameChecker("last name");
-                gender = genderChecker();
-                cout << "Nationality: ";
-                nationality = nationalityChecker();
-                birthYear = yearChecker(1, 0, 0);
-                cin >> nationality;
-                cout << "Is the scientist still alive? (y/n) ";
-                cin >> isAlive;
-                if(isAlive == 'n')
-                {
-                    deathYear = yearChecker(2, birthYear, 0);
-                }
-                else if(isAlive == 'y')
-                {
-                    deathYear = 0;
-                }
-                else
-                {
-                    cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-                }
-                cout << "Did the scientist win a Turing award? (y/n)";
-                cin >> isWinner;
-                if(isWinner == 'y')
-                {
-                   awardYear = yearChecker(3, birthYear, deathYear);
-                }
-                else if(isWinner == 'n')
-                {
-                    awardYear = 0;
-                }
-                else
-                {
-                    cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-                }
+               firstName = nameChecker("first name");
+               lastName = nameChecker("last name");
+               gender = genderChecker();
+               nationality = nationalityChecker();
+               birthYear = yearChecker(1, 0, 0);
+               cout << "Is the scientist still alive? (y/n) ";
+               cin >> isAlive;
+               if(isAlive == 'n')
+               {
+                   deathYear = yearChecker(2, birthYear, 0);
+               }
+               else if(isAlive == 'y')
+               {
+                   deathYear = 0;
+               }
+               else
+               {
+                   cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+               }
+               cout << "Did the scientist win a Turing award? (y/n)";
+               cin >> isWinner;
+               if(isWinner == 'y')
+               {
+                  awardYear = yearChecker(3, birthYear, deathYear);
+               }
+               else if(isWinner == 'n')
+               {
+                   awardYear = 0;
+               }
+               else
+               {
+                   cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+               }
 
-                _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
-        }
+               _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
+               }
         break;
-
 
         //This case sorts the scientists by the year they received an award
         case 4:
         {
-            //Delete from database
             listServices scientist;
-            int ID = 0;
-            bool personInDatabase = true;
-            string doubleCheck;
-            string name;
-            cout << "Enter name: ";
-            cin >> name;
-            print();
-            for(int i = 0 ; i < scientist.getSize(); i++)
-            {
-                if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
-                {
-                    string sex;
-                    string isDead;
-
-                    if(scientist.getSexFromList(i) == 'm')
-                    {
-                        sex = "male";
-                    }
-                    else
-                    {
-                        sex = "female";
-                    }
-                    cout.width(5);
-                    cout << left << i;
-                    cout.width(10);
-                    cout << scientist.getFirstNameFromList(i) << left;
-                    cout.width(10);
-                    cout << scientist.getLastNameFromList(i) << left;
-                    cout.width(10);
-                    cout << sex << left;
-                    cout.width(10);
-                    cout << scientist.dobFromList(i) << left;
-                    if(scientist.dodFromList(i) == 0)
-                    {
-                        isDead = "Alive";
-                        cout.width(10);
-                        cout << isDead << left;
-                    }
-                    else
-                    {
-                        cout.width(10);
-                        cout << scientist.dodFromList(i) << left;
-                    }
-                    cout.width(10);
-                    cout << scientist.getAwardsFromList(i) << left;;
-                    cout << "   *" << endl;
-
-                }
-                else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
-                {
-                    if(i == scientist.getSize() - 1)
-                    {
-                        cout << "Person is not in database!" << endl;
-                        personInDatabase = false;
-                        break;
-                    }
-                }
-            }
-            for(int i = 0 ; i < 8 ; i++)
-            {
-                cout << "--------";
-            }
-            if(personInDatabase == false)
-            {
-                break;
-            }
-            cout << endl;
-            cout << "Enter number for scientist you want to delete: ";
-            cin >> ID;
-            cout << "Are you sure you want to delete ?: " << endl;
-            cout << "write Yes to delete or any character to abort: "<< endl;
-            cin >> doubleCheck;
-            scientist.changeToLower(doubleCheck);
-            if(doubleCheck == "yes")
-            {
-                scientist.deleteFromList(ID);
+                int ID = 0;
+                bool personInDatabase = true;
+                int counter = 0;
+                int checker = 0;
+                string doubleCheck;
+                string name;
+                cout << "Enter name: ";
+                cin >> name;
                 print();
-                printNames(scientist);
-                scientist.writeNewFile();
-            }
-            else
-            {
-                break;
-            }
+                for(int i = 0 ; i < scientist.getSize(); i++)
+                {
+                    if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
+                    {
+                        string sex;
+                        string isDead;
 
-        }
-        break;
+                        if(scientist.getSexFromList(i) == 'm')
+                        {
+                            sex = "male";
+                        }
+                        else
+                        {
+                            sex = "female";
+                        }
+                        cout.width(5);
+                        cout << left << i;
+                        cout.width(10);
+                        cout << scientist.getFirstNameFromList(i) << left;
+                        cout.width(10);
+                        cout << scientist.getLastNameFromList(i) << left;
+                        cout.width(10);
+                        cout << sex << left;
+                        cout.width(10);
+                        cout << scientist.getNationalityFromList(i) << left;
+                        cout.width(10);
+                        cout << scientist.dobFromList(i) << left;
+                        if(scientist.dodFromList(i) == 0)
+                        {
+                            isDead = "Alive";
+                            cout.width(10);
+                            cout << isDead << left;
+                        }
+                        else
+                        {
+                            cout.width(10);
+                            cout << scientist.dodFromList(i) << left;
+                        }
+                        cout.width(10);
+                        cout << scientist.getAwardsFromList(i) << left;;
+                        cout << "   *" << endl;
+                        counter++;
+                        checker = i;
+
+                    }
+                    else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
+                    {
+
+                        if(i == (scientist.getSize() - 1) + counter)
+                        {
+                            cout << "Person is not in database!" << endl;
+                            personInDatabase = false;
+                            break;
+                        }
+                    }
+
+
+                }
+                for(int i = 0 ; i < 9 ; i++)
+                {
+                    cout << "--------";
+                }
+                if(personInDatabase == false)
+                {
+                    break;
+                }
+                cout << endl;
+                cout << "Enter ID for scientist you want to delete: ";
+                cin >> ID;
+                cout << "Are you sure you want to delete ?: write Yes to delete or any character to abort: "<< endl;
+                cin >> doubleCheck;
+                scientist.changeToLower(doubleCheck);
+                if(doubleCheck == "yes")
+                {
+                    scientist.deleteFromList(ID);
+                    print();
+                    printNames(scientist);
+                    scientist.writeNewFile();
+
+                }
+
+            }
+                break;
+
 
 
         case 5:
             stillLooping = false;
             break;
-
          }
         if(stillLooping)
         {
             string thisDoesNothing;
-            cout << "Enter any letter and press enter to continue." << endl;
+            cout << "Enter any letter and press enter to continue!";
             cin >> thisDoesNothing;
-            cout << endl << endl << endl << endl;
+            for(int i = 0 ; i <= 4 ; i++)
+        {
+            for(int j = 0 ; j < 8 ; j++ )
+            {
+                cout << "--------";
+            }
+        cout << endl;
+        }
+    //cout << endl << endl << endl << endl;
         }
     }
 }
@@ -479,31 +488,30 @@ char consoleUI::genderChecker()
     return gender[0];
 }
 
-
-
 void consoleUI::print()
 {
     listServices scientists;
+    int width = scientists.searchLongestName();
 
-    cout.width(4);
+    cout.width(5);
     cout << left << "No.";
-    cout.width(scientists.searchLongestName());
+    cout.width(width);
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(width);
     cout << "Lastname" << left;
     cout.width(10);
     cout << "gender" << left;
-    cout.width(10);
-    cout << "nationality" << left;
+    cout.width(width);
+    cout << "nation" << left;
     cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
     cout << "Y.O.D" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
@@ -530,13 +538,14 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        cout.width(10);
+        int width = scientistsToPrint.searchLongestName();
+        cout.width(width);
         cout << scientistsToPrint.getFirstNameFromList(i) << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getLastNameFromList(i) << left;
         cout.width(10);
         cout << sex << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getNationalityFromList(i) << left;
         cout.width(10);
         cout << scientistsToPrint.dobFromList(i) << left;
@@ -558,7 +567,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
@@ -639,11 +648,11 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
           cout << "Invalid year." << endl;
       }
-      else if(TYPE == 2 && (year >2016 || year<1791) && year <= birthYear)
+      else if(TYPE == 2 && (year >2016 || year<1791 || year <= birthYear))
       {
           cout << "Invalid year." << endl;
       }
-      else if(TYPE == 3 && (year <1966 || year > 2016) && (year < birthYear || (year > deathYear && deathYear != 0)))
+      else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
       {
           cout << "Invalid year." << endl;
       }
@@ -652,6 +661,7 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
           //end the loop and return the year.
           //this happens when the input is valid.
           cont = false;
+
       }
   }
   return year;
