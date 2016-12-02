@@ -262,7 +262,6 @@ void consoleUI::run()
                 else if (searchScientist == 2)
                 {
                     listServices scientists;
-                    //listServices searchName2;
                     string searchTerm;
                     cout << "Enter a single name to search: ";
                     cin >> searchTerm;
@@ -275,8 +274,12 @@ void consoleUI::run()
                 //This case sorts the scientists by the year they recived the Turning Award
                 else if (searchScientist == 3)
                 {
+                    listServices scientists;
+                    cout << "Etner a single year to search: ";
+                    int year;
+                    cin >> year;
+                    scientists.changeTo(_scientist.searchAward(year));
 
-                    //search turing award
                     break;
                 }
 
@@ -296,8 +299,7 @@ void consoleUI::run()
                int deathYear;
                char isWinner;
                int awardYear;
-               bool cont = false;
-               bool hasOnlyChar = true;
+
 
 
                firstName = nameChecker("first name");
@@ -338,7 +340,7 @@ void consoleUI::run()
                }
         break;
 
-        //This case sorts the scientists by the year they received an award
+        //This case Deletes scientist from database
         case 4:
         {
             listServices scientist;
@@ -350,7 +352,12 @@ void consoleUI::run()
                 string name;
                 cout << "Enter name: ";
                 cin >> name;
+<<<<<<< HEAD
+                print();
+                //here it prints the users that have the name that users wants to delete
+=======
                 print(scientist);
+>>>>>>> fbd51c9bbe2020a821fb82bec74fbc330561ce4a
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
                     if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
@@ -423,6 +430,7 @@ void consoleUI::run()
                 cout << "Are you sure you want to delete ?: write Yes to delete or any character to abort: "<< endl;
                 cin >> doubleCheck;
                 scientist.changeToLower(doubleCheck);
+                //here it checks if the user wants to delete and deletes the scientist from the vector
                 if(doubleCheck == "yes")
                 {
                     scientist.deleteFromList(ID);
@@ -459,7 +467,7 @@ void consoleUI::run()
     }
 }
 
-
+//this is an error check.  It checks the validity of the name and prompts the user for a new one until one is valid.
 string consoleUI::nameChecker(string nameType)
 {
     string name;
@@ -470,6 +478,7 @@ string consoleUI::nameChecker(string nameType)
        {
        cout << "Please enter the scientist's " << nameType << ": ";
        cin >> name;
+       //check whether it has anything that is a non-alphabet character in it.  If so, it is an invalid entry.
        for(unsigned int i = 0; i < name.length(); i++)
        {
            if(!isalpha(name[i]) && name[i] != '.')
@@ -477,6 +486,7 @@ string consoleUI::nameChecker(string nameType)
                hasOnlyChar = false;
            }
        }
+       //the length must be between 2 and 16 for it to be valid.
        if(name.length() <2 || name.length()>16)
           {
            cout <<"Error: Names must be between 2 and 16 characters." << endl;
@@ -495,7 +505,7 @@ string consoleUI::nameChecker(string nameType)
        return name;
 }
 
-//prompts the user for
+//prompts the user for a gender and checks its validity.  If it is invalid it asks again until it receives a valid gender.
 char consoleUI::genderChecker()
 {
     bool cont = false;
@@ -505,7 +515,7 @@ char consoleUI::genderChecker()
     {
         cout << "Enter the scientist's gender (m/f/o) : " ;
         cin >> gender;
-
+        //checks that the entry is only a single character, that is either m, f or o
         if(isalpha(gender[0]) && (gender[0] == 'm' || gender[0] == 'f' || gender[0] == 'o') && gender.size() == 1)
         {
             cont = true;

@@ -256,10 +256,12 @@ string listServices::changeToLower(string input)
     }
     return input;
 }
+// This function takes ID input from the user in consoleui and deletes the scientist from the vector
 void listServices::deleteFromList(int ID)
 {
     _computerScientists.erase(_computerScientists.begin() + ID);
 }
+// This function forwards the vector into scientistlist writeToFile function
 void listServices::writeNewFile()
 {
     _data.writeToFile(_computerScientists);
