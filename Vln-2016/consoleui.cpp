@@ -52,18 +52,11 @@ void consoleUI::run()
     {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display entire list.               * Y.O.D = year of death *" << endl;
-    cout << "* 2:  Search by name.                    * Y.O.B = year of birth *"<< endl;
-    cout << "* 3:  Search if alive.                   * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Sort by award year.                *                       *" << endl;
-    cout << "* 5:  Add new scientist.                 *                       *" << endl;
-    cout << "* 6:  Search for birth year.             *                       *" << endl;
-    cout << "* 7:  Disply list in alphabetical order  *                       *" << endl;
-    cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
-    cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
-    cout << "* 10: Chuck Norris.                      *                       *" << endl;
-    cout << "* 11: Delete scientis.                   *                       *" << endl;
-    cout << "* 12: Exit.                              *                       *" << endl;
+    cout << "* 1:  Display list.                      * Y.O.D = year of death *" << endl;
+    cout << "* 2:  Search for scientist.              * Y.O.B = year of birth *"<< endl;
+    cout << "* 3:  Add new scientist.                 * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Delete scientist.                  *                       *" << endl;
+    cout << "* 5:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -80,7 +73,7 @@ void consoleUI::run()
                 cin.ignore(1000,'\n');
                 cout << "Not valid input, please try again: ";
             }
-            if(!((chooseNumber > 0) && (chooseNumber < 13)))
+            if(!((chooseNumber > 0) && (chooseNumber < 6)))
             {
                 cout << "Not valid input, please try again: ";
                 invalidInput = true;
@@ -95,56 +88,173 @@ void consoleUI::run()
     //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
-        //This case displays a list of all the scientists (that is there full names, dob, dod and year of award)
         case 1:
-        {
-            listServices scientists;
-            cout << "***List of all scientists***" << endl;
-            print();
-            printNames(scientists);
+            {
+               int displayScientist;
+                cout << "------------------------------------------------------------------" << endl;
+                cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+                cout << "* 1:  Display all scientists.            * Y.O.D = year of death *" << endl;
+                cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
+                cout << "* 3:  Display in order of birth year.    * Y.O.B = year of birth *" << endl;
+                cout << "* 4:  Display by award                   * Y.O.A = year of award *" << endl;
+                cout << "* 5:  Display living scientists          *                       *" << endl;
+                cout << "* 6:  Chuck Norris                       *                       *" << endl;
+                cout << "*----------------------------------------*-----------------------*" << endl;
+                cout << "-----------------------------------------------------------------" << endl;
+                cout << "Enter number: ";
+
+                bool invalidInput = true;
+                while(invalidInput)
+                {
+                    //cin >> displayScientist;
+                    //invalidInput = false;
+                    while (!(cin >> displayScientist))
+                    {
+                        cin.clear();
+                        cin.ignore(1000,'\n');
+                        cout << "Not valid input, please try again: ";
+                    }
+                    if(!((displayScientist > 0) && (displayScientist < 6)))
+                    {
+                        cout << "Not valid input, please try again: ";
+                        invalidInput = true;
+
+                    } else {
+                       invalidInput = false;
+                    }
+                }
+
+
+                if (displayScientist == 1)
+                {
+                    listServices scientists;
+                    cout << "***List of all scientists***" << endl;
+                    print();
+                    printNames(scientists);
+                    break;
+                }
+                else if (displayScientist == 2)
+                {
+                    listServices sort;
+                    sort.changeTo(_scientist.sortByName());
+                    cout << "A list of scientists in alphabetical order" << endl;
+                    print();
+                    printNames(sort);
+                    break;
+                }
+                 //This case displays the scientists in an organized list from oldest to youngest
+                 else if (displayScientist == 3)
+                    {
+                        _scientist.changeTo(_scientist.sortByBirth());
+                        cout << "An organized list starting with the oldest scientist" << endl;
+                        print();
+                        printNames(_scientist);
+                    break;
+                    }
+                //This case sorts the scientists by the year they recived the Turning Award
+                else if (displayScientist == 4)
+                {
+                    _scientist.changeTo(_scientist.sortByAward());
+                    cout << "An organized list of scientists in order of when they received a Turing award." << endl;
+                    print();
+                    printNames(_scientist);
+                    break;
+                }
+                    //This case organizes the living scientists from oldest to youngest
+                else if (displayScientist == 5)
+                {
+                    listServices scientists;
+                    string searchTerm;
+                    scientists.changeTo(_scientist.searchAlive());
+                    cout << "An organized list starting with the oldest living scientist" << endl;
+                    print();
+                    printNames(scientists);
+                    break;
+                }
+                else if (displayScientist == 6)
+                {
+
+                    listServices norris;
+                    norris.changeTo(_scientist.chuckNorris());
+                    print();
+                    printNames(norris);
+                    break;
+                 }
+
+
+
         }
             break;
 
         //This case lets you search for a scientist from their name (either the first or last name)
         case 2:
             {
-                listServices scientists;
-                //listServices searchName2;
-                string searchTerm;
-                cout << "Enter a single name to search: ";
-                cin >> searchTerm;
-                scientists.changeTo(_scientist.searchName(searchTerm));
-                print();
-                printNames(scientists);
+                int searchScientist;
+                cout << "------------------------------------------------------------------" << endl;
+                cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+                cout << "* 1:  Search for birth year.             * Y.O.D = year of death *" << endl;
+                cout << "* 2:  Search for name.                   * Y.O.B = year of birth *"<< endl;
+                cout << "* 3:  search for Turing awards.          * Y.O.A = year of award *" << endl;
+                cout << "*----------------------------------------*-----------------------*" << endl;
+                cout << "-----------------------------------------------------------------" << endl;
+                cout << "Enter number: ";
 
-            }
-            break;
+                bool invalidInput = true;
+                while(invalidInput)
+                {
+                    while (!(cin >> searchScientist))
+                    {
+                        cin.clear();
+                        cin.ignore(1000,'\n');
+                        cout << "Not valid input, please try again: ";
+                    }
+                    if(!((searchScientist > 0) && (searchScientist < 4)))
+                    {
+                        cout << "Not valid input, please try again: ";
+                        invalidInput = true;
 
-        //This case organizes the living scientists from oldest to youngest
-        case 3:
-            {
-                listServices scientists;
-                string searchTerm;
-                scientists.changeTo(_scientist.searchAlive());
-                cout << "An organized list starting with the oldest living scientist" << endl;
-                print();
-                printNames(scientists);
-             }
-              break;
+                    }
+                    else
+                    {
+                        invalidInput = false;
+                    }
+                }
 
-        //This case sorts the scientists by the year they received an award
-        case 4:
-            {
-                listServices scientistsByAward;
-                scientistsByAward.changeTo(_scientist.sortByAward());
-                cout << "An organized list of scientists in order of when they received the Turing award." << endl;
-                print();
-                printNames(scientistsByAward);
-             }
-            break;
+
+                if (searchScientist == 1)
+                {
+                    listServices scientistsBirth;
+                    CheckNumbers(scientistsBirth);
+                    break;
+                }
+
+                //This case lets you search for a scientist from their name (either the first or last name)
+                else if (searchScientist == 2)
+                {
+                    listServices scientists;
+                    //listServices searchName2;
+                    string searchTerm;
+                    cout << "Enter a single name to search: ";
+                    cin >> searchTerm;
+                    scientists.changeTo(_scientist.searchName(searchTerm));
+                    print();
+                    printNames(scientists);
+                    break;
+                 }
+
+                //This case sorts the scientists by the year they recived the Turning Award
+                else if (searchScientist == 3)
+                {
+                    // A ad koma search for turing award
+                 break;
+                }
+
+
+        }
+        break;
 
         // This case allows the user to add in another scientist (or even create a person - that is not real)
-        case 5:
+        case 3:
             {
                 string firstName;
                 string lastName;
@@ -196,170 +306,118 @@ void consoleUI::run()
                 }
 
                 _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
-            }
-            break;
-
-    //searchBirth
-    case 6:
-        {
-            listServices scientistsBirth;
-            CheckNumbers(scientistsBirth);
         }
-          break;
-
-    //This case sorts all the scientists by their name in an alpabetical order
-    case 7:
-    {
-        listServices sort;
-        sort.changeTo(_scientist.sortByName());
-        cout << "A list of scientists in alphabetical order" << endl;
-        print();
-        printNames(sort);
-
-    }
         break;
 
-    //This case displays the scientists in an organized list from oldest to youngest
-    case 8:
-            _scientist.changeTo(_scientist.sortByBirth());
-            cout << "An organized list starting with the oldest scientist" << endl;
-            print();
-            printNames(_scientist);
-        break;
 
-    //This case sorts the scientists by the year they recived the Turning Award
-    case 9:
-            _scientist.changeTo(_scientist.sortByAward());
-            cout << "An organized list of scientists in order of when they received a Turing award." << endl;
-            print();
-            printNames(_scientist);
-         break;
-
-    //All the scientist will become infinitely more awesome because this case changes all of their names to Chuck Norris
-    case 10:
-    {
-        listServices norris;
- /* for(int i = 0; i < _scientist.chuckNorris(); i++){
-       _scientist.chu
-  }*/
-
-
-        norris.changeTo(_scientist.chuckNorris());
-        print();
-        printNames(norris);
-}
-        break;
-
-    case 11:
-    {
-        //Delete from database
-        listServices scientist;
-        int ID = 0;
-        bool personInDatabase = true;
-        string doubleCheck;
-        string name;
-        cout << "Enter name: ";
-        cin >> name;
-        print();
-        for(int i = 0 ; i < scientist.getSize(); i++)
+        //This case sorts the scientists by the year they received an award
+        case 4:
         {
-            if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
+            //Delete from database
+            listServices scientist;
+            int ID = 0;
+            bool personInDatabase = true;
+            string doubleCheck;
+            string name;
+            cout << "Enter name: ";
+            cin >> name;
+            print();
+            for(int i = 0 ; i < scientist.getSize(); i++)
             {
-                string sex;
-                string isDead;
+                if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
+                {
+                    string sex;
+                    string isDead;
 
-                if(scientist.getSexFromList(i) == 'm')
-                {
-                    sex = "male";
-                }
-                else
-                {
-                    sex = "female";
-                }
-                cout.width(5);
-                cout << left << i;
-                cout.width(10);
-                cout << scientist.getFirstNameFromList(i) << left;
-                cout.width(10);
-                cout << scientist.getLastNameFromList(i) << left;
-                cout.width(10);
-                cout << sex << left;
-                cout.width(10);
-                cout << scientist.dobFromList(i) << left;
-                if(scientist.dodFromList(i) == 0)
-                {
-                    isDead = "Alive";
+                    if(scientist.getSexFromList(i) == 'm')
+                    {
+                        sex = "male";
+                    }
+                    else
+                    {
+                        sex = "female";
+                    }
+                    cout.width(5);
+                    cout << left << i;
                     cout.width(10);
-                    cout << isDead << left;
-                }
-                else
-                {
+                    cout << scientist.getFirstNameFromList(i) << left;
                     cout.width(10);
-                    cout << scientist.dodFromList(i) << left;
-                }
-                cout.width(10);
-                cout << scientist.getAwardsFromList(i) << left;;
-                cout << "   *" << endl;
+                    cout << scientist.getLastNameFromList(i) << left;
+                    cout.width(10);
+                    cout << sex << left;
+                    cout.width(10);
+                    cout << scientist.dobFromList(i) << left;
+                    if(scientist.dodFromList(i) == 0)
+                    {
+                        isDead = "Alive";
+                        cout.width(10);
+                        cout << isDead << left;
+                    }
+                    else
+                    {
+                        cout.width(10);
+                        cout << scientist.dodFromList(i) << left;
+                    }
+                    cout.width(10);
+                    cout << scientist.getAwardsFromList(i) << left;;
+                    cout << "   *" << endl;
 
+                }
+                else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
+                {
+                    if(i == scientist.getSize() - 1)
+                    {
+                        cout << "Person is not in database!" << endl;
+                        personInDatabase = false;
+                        break;
+                    }
+                }
             }
-            else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
+            for(int i = 0 ; i < 8 ; i++)
             {
-                if(i == scientist.getSize() - 1)
-                {
-                    cout << "Person is not in database!" << endl;
-                    personInDatabase = false;
-                    break;
-                }
+                cout << "--------";
             }
-        }
-        for(int i = 0 ; i < 8 ; i++)
-        {
-            cout << "--------";
-        }
-        if(personInDatabase == false)
-        {
-            break;
-        }
-        cout << endl;
-        cout << "Enter number for scientist you want to delete: ";
-        cin >> ID;
-        cout << "Are you sure you want to delete ?: " << endl;
-        cout << "write Yes to delete or any character to abort: "<< endl;
-        cin >> doubleCheck;
-        scientist.changeToLower(doubleCheck);
-        if(doubleCheck == "yes")
-        {
-            scientist.deleteFromList(ID);
-            print();
-            printNames(scientist);
-            scientist.writeNewFile();
-        }
-        else
-        {
-            break;
-        }
+            if(personInDatabase == false)
+            {
+                break;
+            }
+            cout << endl;
+            cout << "Enter number for scientist you want to delete: ";
+            cin >> ID;
+            cout << "Are you sure you want to delete ?: " << endl;
+            cout << "write Yes to delete or any character to abort: "<< endl;
+            cin >> doubleCheck;
+            scientist.changeToLower(doubleCheck);
+            if(doubleCheck == "yes")
+            {
+                scientist.deleteFromList(ID);
+                print();
+                printNames(scientist);
+                scientist.writeNewFile();
+            }
+            else
+            {
+                break;
+            }
 
+        }
+        break;
+
+
+        case 5:
+            stillLooping = false;
+            break;
+
+         }
+        if(stillLooping)
+        {
+            string thisDoesNothing;
+            cout << "Enter any letter and press enter to continue." << endl;
+            cin >> thisDoesNothing;
+            cout << endl << endl << endl << endl;
+        }
     }
-        break;
-
-    case 12:
-        stillLooping = false;
-        break;
- }
-if(stillLooping)
-{
-//string thisDoesNothing;
-cout << "Enter any letter and press enter to continue." << endl;
-cin.get();
-cout << endl << endl << endl << endl;
 }
-
-}
-
-
-}
-
-
 
 
 string consoleUI::nameChecker(string nameType)
