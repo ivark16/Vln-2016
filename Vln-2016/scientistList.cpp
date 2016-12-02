@@ -53,6 +53,7 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
 
 void scientistList::writeToFile(vector<scientistList> newFile)
 {
+    deleteNewLineInFile(newFile);
     ofstream myfile;
     remove("turingAwardWinners.txt");
     myfile.open("turingAwardWinners.txt");
@@ -66,12 +67,26 @@ void scientistList::writeToFile(vector<scientistList> newFile)
             myfile << newFile[i].getNationality() << " ";
             myfile << newFile[i].dob() << " ";
             myfile << newFile[i].dod() << " ";
-            myfile << newFile[i].getAwards() << " " << endl;
+            myfile << newFile[i].getAwards() << endl;
         }
+        deleteNewLineInFile(newFile);
         myfile.close();
     }
 }
 
+void scientistList::deleteNewLineInFile (vector<scientistList>& deleteNewLine)
+{
+    for (int i = 0; i < deleteNewLine.size(); i++)
+    {
+        string a = deleteNewLine[i].getFirstName();
+        if (a.size() == 0)
+        {
+           deleteNewLine.erase(deleteNewLine.begin() + i);
+        }
+    }
+}
+
+// Tried to make delete function to delete the newLine that always appends to the file and gives us errors
 string scientistList::getFirstName() const
 {
     return _firstName;
