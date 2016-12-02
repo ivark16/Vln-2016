@@ -273,7 +273,6 @@ void consoleUI::run()
                 else if (searchScientist == 2)
                 {
                     listServices scientists;
-                    //listServices searchName2;
                     string searchTerm;
                     cout << "Enter a single name to search: ";
                     cin >> searchTerm;
@@ -286,8 +285,11 @@ void consoleUI::run()
                 //This case sorts the scientists by the year they recived the Turning Award
                 else if (searchScientist == 3)
                 {
-
-                    //search turing award
+                    listServices scientists;
+                    cout << "Etner a single year to search: ";
+                    int year;
+                    cin >> year;
+                    scientists.changeTo(_scientist.searchAward(year));
                     break;
                 }
 
@@ -307,8 +309,7 @@ void consoleUI::run()
                int deathYear;
                char isWinner;
                int awardYear;
-               bool cont = false;
-               bool hasOnlyChar = true;
+
 
 
                firstName = nameChecker("first name");
