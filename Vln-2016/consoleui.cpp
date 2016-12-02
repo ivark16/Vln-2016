@@ -361,12 +361,13 @@ void consoleUI::run()
         stillLooping = false;
         break;
  }
-
+if(stillLooping)
+{
 string thisDoesNothing;
-cout << "Enter any letter and press enter to continue." << endl;
+cout << "Enter any letter and press enter to continue.";
 cin >> thisDoesNothing;
 cout << endl << endl << endl << endl;
-
+}
 
 }
 
