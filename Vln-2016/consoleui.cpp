@@ -294,6 +294,8 @@ void consoleUI::run()
         listServices scientist;
         int ID = 0;
         bool personInDatabase = true;
+        int counter = 0;
+        int checker = 0;
         string doubleCheck;
         string name;
         cout << "Enter name: ";
@@ -323,6 +325,8 @@ void consoleUI::run()
                 cout.width(10);
                 cout << sex << left;
                 cout.width(10);
+                cout << scientist.getNationalityFromList(i) << left;
+                cout.width(10);
                 cout << scientist.dobFromList(i) << left;
                 if(scientist.dodFromList(i) == 0)
                 {
@@ -338,19 +342,24 @@ void consoleUI::run()
                 cout.width(10);
                 cout << scientist.getAwardsFromList(i) << left;;
                 cout << "   *" << endl;
+                counter++;
+                checker = i;
 
             }
             else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
             {
-                if(i == scientist.getSize() - 1)
+
+                if(i == (scientist.getSize() - 1) + counter)
                 {
                     cout << "Person is not in database!" << endl;
                     personInDatabase = false;
                     break;
                 }
             }
+
+
         }
-        for(int i = 0 ; i < 8 ; i++)
+        for(int i = 0 ; i < 9 ; i++)
         {
             cout << "--------";
         }
@@ -359,7 +368,7 @@ void consoleUI::run()
             break;
         }
         cout << endl;
-        cout << "Enter number for scientist you want to delete: ";
+        cout << "Enter ID for scientist you want to delete: ";
         cin >> ID;
         cout << "Are you sure you want to delete ?: " << endl;
         cout << "write Yes to delete or any character to abort: "<< endl;
@@ -371,28 +380,24 @@ void consoleUI::run()
             print();
             printNames(scientist);
             scientist.writeNewFile();
-        }
-        else
-        {
-            break;
+
         }
 
     }
         break;
-
     case 12:
         stillLooping = false;
         break;
  }
-if(stillLooping)
-{
-string thisDoesNothing;
-cout << "Enter any letter and press enter to continue.";
-cin >> thisDoesNothing;
-cout << endl << endl << endl << endl;
-}
+    if(stillLooping)
+    {
+        string thisDoesNothing;
+        cout << "Enter any letter and press enter to continue.";
+        cin >> thisDoesNothing;
+        cout << endl << endl << endl << endl;
+    }
 
-}
+    }
 
 
 }
