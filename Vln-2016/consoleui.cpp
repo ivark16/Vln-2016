@@ -341,6 +341,7 @@ void consoleUI::run()
                 int checker = 0;
                 string doubleCheck;
                 string name;
+
                 cout << "Enter name: ";
                 cin >> name;
 
@@ -404,6 +405,7 @@ void consoleUI::run()
                 {
                     cout << "--------";
                 }
+                cout << endl;
                 if(personInDatabase == false)
                 {
                     break;
@@ -530,7 +532,7 @@ void consoleUI::print(listServices scientistsToPrint)
     cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "-----------";
+        cout << "---------";
     }
     cout << endl;
 }
@@ -598,7 +600,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "-----------";
+        cout << "---------";
     }
     cout << endl;
 }
