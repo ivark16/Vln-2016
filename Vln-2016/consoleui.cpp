@@ -68,11 +68,8 @@ void consoleUI::run()
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
-<<<<<<< HEAD
-
     cin >> chooseNumber;
-=======
->>>>>>> 8171b2a759c070e7b0546e6a4aac135c8c51c4bc
+
 
 
         bool invalidInput = true;
