@@ -261,7 +261,9 @@ void consoleUI::run()
                         int minYear = yearChecker(1,0,0);
                         int maxYear = yearChecker(1,0,0);
                         listServices scientistsBirth;
-                        scientistsBirth.searchBirth(minYear, maxYear);
+                        scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
+                        print(scientistsBirth);
+                        printNames(scientistsBirth);
                     }
                     break;
                 }
