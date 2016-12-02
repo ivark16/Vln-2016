@@ -263,6 +263,7 @@ int listServices::searchLongestName()
         }
     }
     return newLongest + 2;
+    cout << newLongest;
 }
 
 // Binni med Chuck Norris grin
