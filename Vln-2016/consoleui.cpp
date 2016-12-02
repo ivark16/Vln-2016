@@ -477,13 +477,14 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        cout.width(10);
+        int width = scientistsToPrint.searchLongestName();
+        cout.width(width);
         cout << scientistsToPrint.getFirstNameFromList(i) << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getLastNameFromList(i) << left;
         cout.width(10);
         cout << sex << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getNationalityFromList(i) << left;
         cout.width(10);
         cout << scientistsToPrint.dobFromList(i) << left;
