@@ -21,7 +21,7 @@ public:
     char genderChecker();
 
 
-    void print();
+    void print(listServices scientistsToPrint);
     void printNames (listServices scientistsToPrint);
     bool digitCheck(int num);
     void CheckNumbers (listServices checkNumbersForScientist);
