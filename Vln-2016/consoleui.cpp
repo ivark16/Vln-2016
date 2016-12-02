@@ -162,10 +162,8 @@ void consoleUI::run()
                 firstName = nameChecker("first name");
                 lastName = nameChecker("last name");
                 gender = genderChecker();
-                cout << "Nationality: ";
                 nationality = nationalityChecker();
                 birthYear = yearChecker(1, 0, 0);
-                cin >> nationality;
                 cout << "Is the scientist still alive? (y/n) ";
                 cin >> isAlive;
                 if(isAlive == 'n')
@@ -486,13 +484,14 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        cout.width(10);
+        int width = scientistsToPrint.searchLongestName();
+        cout.width(width);
         cout << scientistsToPrint.getFirstNameFromList(i) << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getLastNameFromList(i) << left;
         cout.width(10);
         cout << sex << left;
-        cout.width(10);
+        cout.width(width);
         cout << scientistsToPrint.getNationalityFromList(i) << left;
         cout.width(10);
         cout << scientistsToPrint.dobFromList(i) << left;
@@ -595,11 +594,11 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
           cout << "Invalid year." << endl;
       }
-      else if(TYPE == 2 && (year >2016 || year<1791) && year <= birthYear)
+      else if(TYPE == 2 && (year >2016 || year<1791 || year <= birthYear))
       {
           cout << "Invalid year." << endl;
       }
-      else if(TYPE == 3 && (year <1966 || year > 2016) && (year < birthYear || (year > deathYear && deathYear != 0)))
+      else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
       {
           cout << "Invalid year." << endl;
       }
@@ -608,6 +607,7 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
           //end the loop and return the year.
           //this happens when the input is valid.
           cont = false;
+
       }
   }
   return year;
