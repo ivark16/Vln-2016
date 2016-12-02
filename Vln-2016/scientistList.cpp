@@ -50,7 +50,7 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
      }
      file.close();
 }
-// This function deletes file and creates new file with the same name and writes the vector into it when a scientist has been deleted
+// This function writes to file after scientist has been deleted.
 void scientistList::writeToFile(vector<scientistList> newFile)
 {
     deleteNewLineInFile(newFile);
@@ -73,7 +73,7 @@ void scientistList::writeToFile(vector<scientistList> newFile)
         myfile.close();
     }
 }
-
+// This function deletes file and creates new file with the same name and writes the vector into it when a scientist has been deleted
 void scientistList::deleteNewLineInFile (vector<scientistList>& deleteNewLine)
 {
     for (unsigned int i = 0; i < deleteNewLine.size(); i++)
