@@ -198,47 +198,6 @@ void consoleUI::run()
         {
             listServices scientistsBirth;
             CheckNumbers(scientistsBirth);
-            //char answear;
-            /*do {
-                int year;
-                //char answear2;
-                cout << "Enter year: ";
-                while (!(cin >> year))
-                {
-                    cin.clear();
-                    cin.ignore(1000,'\n');
-                    cout << "Not valid input, please try again: ";
-                }
-
-                listServices scientistsBirth;
-                scientistsBirth.changeTo(scientistsBirth.searchBirth(year, year));
-                if (scientistsBirth.getSize() == 0)
-                {
-                        cout << "Sorry, no scientists where born this year. Do you wanna input another year (y/n)? ";
-                        do {
-                           cin >> answear;
-                           if (answear == 'y')
-                           {
-                                break;
-                           } else if (answear == 'n')
-                           {
-                                break;
-                           } else {
-                               cout << "Not valid input, please try again: ";
-                               answear = 'y';
-                               break;
-                           }
-                        } while (answear == 'y');
-
-
-                } else
-                    {
-                    cout << "A list of scientists born in your year of choice" << endl;
-                    print();
-                    printNames(scientistsBirth);
-                    answear = 'n';
-                    }
-                } while (answear == 'y');*/
         }
           break;
 
