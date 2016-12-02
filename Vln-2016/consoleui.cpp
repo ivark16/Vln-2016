@@ -82,7 +82,6 @@ void consoleUI::run()
             }
             if(!((chooseNumber > 0) && (chooseNumber < 13)))
             {
-                cout << "Hallo";
                 cout << "Not valid input, please try again: ";
                 invalidInput = true;
 
@@ -349,9 +348,9 @@ void consoleUI::run()
  }
 if(stillLooping)
 {
-string thisDoesNothing;
-cout << "Enter any letter and press enter to continue.";
-cin >> thisDoesNothing;
+//string thisDoesNothing;
+cout << "Enter any letter and press enter to continue." << endl;
+cin.get();
 cout << endl << endl << endl << endl;
 }
 
