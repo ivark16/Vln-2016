@@ -14,17 +14,6 @@ consoleUI::consoleUI(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
-bool consoleUI::digitCheck(int num)
-{
-    if(isdigit(num))
-    {
-        return true;
-        cout << "INNI ISDIGIT" << endl;
-    }
-    return false;
-    cout << "INNI ISDIGIT" << endl;
-}
-
 //Function that gives you a list of options to choose from
 //It prompts the user for an integer and then references the appropriate case in the switch case included.
 void consoleUI::run()
