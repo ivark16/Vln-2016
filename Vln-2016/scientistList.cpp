@@ -5,10 +5,10 @@ using namespace std;
 
 scientistList::scientistList()
 {
-
+ //empty constructor
 }
 
-// Constructor to input new Scientist to file, this does not overrite the file, only append the file.
+// Constructor to input new Scientist to file, this does not overwrite the file, only append to the file.
 scientistList::scientistList(string nafn, string nafn2, char kyn, string nationality, int faedingarAr, int danarar, int verdlaun)
 {
     fstream myFile;
@@ -48,12 +48,11 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
         file >> bla._TuringAwards;
         science.push_back(bla);
      }
-        file.close();
+     file.close();
 }
 
 void scientistList::writeToFile(vector<scientistList> newFile)
 {
-
     ofstream myfile;
     remove("turingAwardWinners.txt");
     myfile.open("turingAwardWinners.txt");
@@ -68,12 +67,9 @@ void scientistList::writeToFile(vector<scientistList> newFile)
             myfile << newFile[i].dob() << " ";
             myfile << newFile[i].dod() << " ";
             myfile << newFile[i].getAwards() << " " << endl;
-
         }
         myfile.close();
     }
-
-
 }
 
 string scientistList::getFirstName() const

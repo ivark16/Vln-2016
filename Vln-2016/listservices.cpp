@@ -8,7 +8,8 @@ using namespace std;
 
 
 // This struct is used to print code in alphabetical order.
-struct ScientistComparison {
+struct ScientistComparison
+{
     bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
 };
 //This function is used to return the (first) name of the Scientists at intex i
@@ -21,12 +22,12 @@ string listServices::getLastNameFromList(int i)
 {
     return _computerScientists[i].getLastName();
 }
-//Will return the (full) name of the Scientists at intex i
-string listServices::getNationalityFromList(int i)   //---------------------------------------------------
+//Returns nationality of scientist at index i
+string listServices::getNationalityFromList(int i)
 {
     return _computerScientists[i].getNationality();
 }
-
+//Will return the (full) name of the Scientists at intex i
 string listServices::fullNameFromList(int i) const
 {
     return _computerScientists[i].fullName();
@@ -51,37 +52,28 @@ int listServices::getAwardsFromList(int i) const
 {
     return _computerScientists[i].getAwards();
 }
-
-
 //A constructor for listServices.  readFile reads data from a .txt file and puts it in the member vector _computerScientists.
 listServices::listServices()
 {
         scientistList nextScientist;
         nextScientist.readFile(_computerScientists);
 }
-
-// This function returns vector in alphabetical order. It uses ScientistComparison that is struct. We didn't know any good
+// This function returns a _computerScientists in alphabetical order. It uses ScientistComparison which is a struct. We didn't know any good
 // way to do this so we got the idea from the King him self, Daniel Brandur, that used sort function. Thanks Daniel!
 vector<scientistList> listServices::sortByName()
 {
     vector<scientistList> sortedByName;
     sortedByName = _computerScientists;
-
     ScientistComparison cmp;
-
     std::sort(sortedByName.begin(), sortedByName.end(), cmp);
     cout << sortedByName.size();
-
     return sortedByName;
 }
-
-
 //This function sorts the scientists by their birth year in ascending order.
 //In every iteration it finds the lowest birth year, barring the one it found in the last loop and puts it in the index corresponding to the loop number.
 vector<scientistList> listServices::sortByBirth()
 {
     int currentSmallest;
-
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
         currentSmallest = _computerScientists[i].dob();  //in the first iteration, the smallest number is the first number
@@ -97,43 +89,24 @@ vector<scientistList> listServices::sortByBirth()
            }
         }
     }
-
     return _computerScientists;
-}
-//This function sorts the vector of scientists by status.  It puts all living scientists first in the vector.
-vector<scientistList>   listServices::sortByAlive()
-{
-  for(unsigned int i = 0; i < _computerScientists.size(); i++)
-  {
-      int currentYear;
-      currentYear = _computerScientists[i].dod();
-      for(unsigned int j = i ; j < _computerScientists.size(); j++)
-      {
-          // if the year of death is listed as 0, the scientist is still alive.  This loop puts the living scientists first in the vector.
-          if(_computerScientists[j].dod() == 0)
-          {
-              scientistList temp = _computerScientists[i];
-              _computerScientists[i] = _computerScientists[j];
-              _computerScientists[j] = temp;
-          }
-
-      }
-  }
-return _computerScientists;
 }
 // This function sorts the vector of scientists by what year they received the Turing award in ascending order.
 //It puts the recipients of the award first, followed by those who did not receive it.
 vector<scientistList>   listServices::sortByAward()
 {
-
     vector<scientistList> sortedList;
     int currentSmallest;
-
+    //This outer for loop runs through the entire vector, and at each index it puts the smallest number out of itself and the ones that come after it
+    //at the index i.
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
+        //In the first run the smallest is the number already there
         currentSmallest = _computerScientists[i].getAwards();
+        //then it checks every single index after it, and if it is smaller than the number already at i, they switch.
         for(unsigned int j = i; j < _computerScientists.size(); j++)
-        { //In the if sentence below, a 0 in getAwards indicates that the scientist has never received the award.
+        {
+          //In the if sentence below, a 0 in getAwards indicates that the scientist has never received the award.
           //This if statement switches the current index being checked with the index we are attempting to put the next lowest year in
           //if and only if the scientist won the award before the scientist who is currently stored at that index.
            if(_computerScientists[j].getAwards() < currentSmallest && _computerScientists[j].getAwards() != 0)
@@ -143,6 +116,8 @@ vector<scientistList>   listServices::sortByAward()
                _computerScientists[j] = _computerScientists[i];
                _computerScientists[i] = temp;
            }
+           //if the number at index i is 0, it will switch with whatever number is at j.
+           //this is to ensure that those who have not received the award appear at the end of the list.
            if(_computerScientists[i].getAwards() == 0 && _computerScientists[j].getAwards() != 0)
            {
                scientistList temp;
@@ -161,8 +136,6 @@ void   listServices::addNew(string firstName, string lastName, char gender, stri
     scientistList newScientist(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
     _computerScientists.push_back(newScientist);
 }
-
-
 //This function creates and returns a new vector containing only the scientists whose names match the name being searched.
 //The name being searched is the string that is taken in as an argument.
 vector<scientistList> listServices::searchName(string searchTerm)
@@ -192,16 +165,14 @@ vector<scientistList> listServices::searchBirth(int minYear, int maxYear)
           matchingBirthYears.push_back(_computerScientists[i]);
       }
     }
-
     return matchingBirthYears;
 }
-
-//This function creates and returns a new vector containing only the scientists whose death years match the year being searched.
-//The year being searched is the integer that is taken in as an argument.
+//This function creates and returns a new vector containing only living scientists.
 vector<scientistList> listServices::searchAlive()
 {
     vector<scientistList> matchingScientists;
-
+    //this loop goes through all scientists and adds them to the matchingScientists vector if and only if their year of death is listed as 0
+    // which means that they are still living.
     for(unsigned int k = 0; k < _computerScientists.size(); k++)
     {
         if(_computerScientists[k].dod() == 00)
@@ -226,8 +197,6 @@ vector<scientistList> listServices::searchAward(int awardYear)
     }
     return matchingAwardYear;
 }
-
-
 // This function is used to assign a vector rhs to another vector
 void listServices::changeTo(vector<scientistList> rhs)
 {
@@ -239,14 +208,11 @@ int listServices::getSize ()
 {
     return _computerScientists.size();
 }
-
-
 // binni kallinn með smá snúning
 int listServices::searchLongestName()
 {
     listServices theList;
     unsigned int longest = 7;
-
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
         if(longest < theList.getFirstNameFromList(i).size())
@@ -255,7 +221,6 @@ int listServices::searchLongestName()
         }
     }
     unsigned int newLongest = longest;
-
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
         if(newLongest < theList.getLastNameFromList(i).size())
@@ -266,7 +231,6 @@ int listServices::searchLongestName()
     return newLongest + 2;
     cout << newLongest;
 }
-
 // Binni med Chuck Norris grin
 vector<scientistList> listServices::chuckNorris()
 {
@@ -283,7 +247,6 @@ vector<scientistList> listServices::chuckNorris()
     }
     return matchingFirstNames;
 }
-
 // This function changes upper case letters to lower case letters. It takes in string and uses the tolower function. It
 // checks every letter and if it is upper case letter than it changes it to lower case letter
 string listServices::changeToLower(string input)
@@ -294,14 +257,11 @@ string listServices::changeToLower(string input)
     }
     return input;
 }
-
 void listServices::deleteFromList(int ID)
 {
     _computerScientists.erase(_computerScientists.begin() + ID);
 }
-
 void listServices::writeNewFile()
 {
     _data.writeToFile(_computerScientists);
 }
-
