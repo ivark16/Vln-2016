@@ -74,12 +74,12 @@ void consoleUI::run()
         bool invalidInput = true;
         while(invalidInput)
         {
-        cout << "Please enter a valid input: " << endl;
-        cin >> chooseNumber;
-        if(!((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber)))
-        {
-            invalidInput = false;
-        }
+            cout << "Please enter a valid input: ";
+            cin >> chooseNumber;
+            if(!((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber)))
+            {
+                invalidInput = false;
+            }
         }
     }
     else
@@ -528,8 +528,10 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
             cin.ignore(1000,'\n');
             cout << "Not valid input, please try again: ";
         }
-        checkNumbersForScientist.changeTo(checkNumbersForScientist.searchBirth(year, year));
-        if (checkNumbersForScientist.getSize() == 0)
+        listServices scientist;
+        scientist = checkNumbersForScientist;
+        scientist.changeTo(scientist.searchBirth(year, year));
+        if (scientist.getSize() == 0)
         {
                 cout << "Sorry, no scientists where born this year. Do you wanna input another year (y/n)? ";
                 do {
@@ -552,7 +554,7 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
             {
             cout << "A list of scientists born in your year of choice" << endl;
             print();
-            printNames(checkNumbersForScientist);
+            printNames(scientist);
             answear = 'n';
             }
         } while (answear == 'y');
