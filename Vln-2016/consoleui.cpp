@@ -220,12 +220,51 @@ void consoleUI::run()
                     }
                 }
 
-
+                //this case allows you to search for scientists using birth years.
                 if (searchScientist == 1)
                 {
-                    listServices scientistsBirth;
-                    CheckNumbers(scientistsBirth);
+                    int rangeOrSingle;
+                    cout << "------------------------------------------------------------------" << endl;
+                    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+                    cout << "* 1:  Search for a single year           * Y.O.D = year of death *" << endl;
+                    cout << "* 2:  Search for a range                 * Y.O.B = year of birth *"<< endl;
+                    cout << "*----------------------------------------*-----------------------*" << endl;
+                    cout << "-----------------------------------------------------------------" << endl;
+                    cout << "Enter number: ";
+
+                    bool invalidInput = true;
+                    while(invalidInput)
+                    {
+                        while (!(cin >> rangeOrSingle))
+                        {
+                            cin.clear();
+                            cin.ignore(1000,'\n');
+                            cout << "Not valid input, please try again: ";
+                        }
+                        if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
+                        {
+                            cout << "Not valid input, please try again: ";
+                            invalidInput = true;
+
+                        }
+                        else
+                        {
+                            invalidInput = false;
+                        }
+                    if(rangeOrSingle == 1)
+                    {
+                        listServices scientistsBirth;
+                        CheckNumbers(scientistsBirth);
+                    }
+                    else if(rangeOrSingle == 2)
+                    {
+                        int minYear = yearChecker(1,0,0);
+                        int maxYear = yearChecker(1,0,0);
+                        listServices scientistsBirth;
+                        scientistsBirth.searchBirth(minYear, maxYear);
+                    }
                     break;
+                }
                 }
 
                 //This case lets you search for a scientist from their name (either the first or last name)
@@ -245,8 +284,9 @@ void consoleUI::run()
                 //This case sorts the scientists by the year they recived the Turning Award
                 else if (searchScientist == 3)
                 {
-                    // A ad koma search for turing award
-                 break;
+
+                    //search turing award
+                    break;
                 }
 
 
