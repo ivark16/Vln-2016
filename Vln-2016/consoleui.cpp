@@ -360,14 +360,12 @@ void consoleUI::run()
                 int checker = 0;
                 string doubleCheck;
                 string name;
+
                 cout << "Enter name: ";
                 cin >> name;
-<<<<<<< HEAD
-                print();
-                //here it prints the users that have the name that users wants to delete
-=======
+
                 print(scientist);
->>>>>>> fbd51c9bbe2020a821fb82bec74fbc330561ce4a
+                //here it prints the users that have the name that users wants to delete
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
                     if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
@@ -430,6 +428,7 @@ void consoleUI::run()
                 {
                     cout << "--------";
                 }
+                cout << endl;
                 if(personInDatabase == false)
                 {
                     break;
@@ -559,7 +558,7 @@ void consoleUI::print(listServices scientistsToPrint)
     cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "-----------";
+        cout << "---------";
     }
     cout << endl;
 }
@@ -627,7 +626,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "-----------";
+        cout << "---------";
     }
     cout << endl;
 }
