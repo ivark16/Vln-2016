@@ -72,8 +72,16 @@ void consoleUI::run()
 
     if((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber))
     {
+        bool invalidInput = true;
+        while(invalidInput)
+        {
         cout << "Please enter a valid input: " << endl;
-        exit(1);
+        cin >> chooseNumber;
+        if(!((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber)))
+        {
+            invalidInput = false;
+        }
+        }
     }
     else
     {
