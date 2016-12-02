@@ -163,14 +163,14 @@ void consoleUI::run()
                 lastName = nameChecker("last name");
                 gender = genderChecker();
                 cout << "Nationality: ";
-                cin >> nationality;
-                birthYear = yearChecker(1);
+                nationality = nationalityChecker();
+                birthYear = yearChecker(1, 0, 0);
                 cin >> nationality;
                 cout << "Is the scientist still alive? (y/n) ";
                 cin >> isAlive;
                 if(isAlive == 'n')
                 {
-                    deathYear = yearChecker(2);
+                    deathYear = yearChecker(2, birthYear, 0);
                 }
                 else if(isAlive == 'y')
                 {
@@ -184,7 +184,7 @@ void consoleUI::run()
                 cin >> isWinner;
                 if(isWinner == 'y')
                 {
-                   awardYear = yearChecker(3);
+                   awardYear = yearChecker(3, birthYear, deathYear);
                 }
                 else if(isWinner == 'n')
                 {
@@ -212,7 +212,7 @@ void consoleUI::run()
     {
         listServices sort;
         sort.changeTo(_scientist.sortByName());
-        cout << "A list of scinetists in alphabetical order" << endl;
+        cout << "A list of scientists in alphabetical order" << endl;
         print();
         printNames(sort);
 
@@ -549,8 +549,8 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
         } while (answear == 'y');
 }
 
-
-int consoleUI::yearChecker(const int TYPE)
+//This function checks whehter years are valid.
+int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
 {
   int year;
   bool cont = true;
@@ -569,28 +569,68 @@ int consoleUI::yearChecker(const int TYPE)
       {
       cout << "Please enter the year the scientist won the award.";
       }
+      //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
       {
           cin.clear();
           cin.ignore(1000,'\n');
           cout << "Not valid input, please try again: ";
       }
+      //The TYPE is used to denote whether you are looking for a birth year, death year or a turing award year.
       if(TYPE == 1 && (year < 1791 || year > 2016))
-      {
-          cout << "Invalid birth year" << endl;
-      }
-      else if(TYPE == 2 && (year >2016 || year<1791))
       {
           cout << "Invalid year." << endl;
       }
-      else if(TYPE == 3 && (year <1966 || year > 2016))
+      else if(TYPE == 2 && (year >2016 || year<1791) && year <= birthYear)
       {
-          cout << "There is no existing Turing award for that year.";
+          cout << "Invalid year." << endl;
+      }
+      else if(TYPE == 3 && (year <1966 || year > 2016) && (year < birthYear || (year > deathYear && deathYear != 0)))
+      {
+          cout << "Invalid year." << endl;
       }
       else
       {
+          //end the loop and return the year.
+          //this happens when the input is valid.
           cont = false;
       }
   }
   return year;
+}
+
+//checks the validity of the nationality.
+string consoleUI::nationalityChecker()
+{
+    string nationality;
+    bool cont = false;
+    bool hasOnlyChar = true;
+
+       while(!cont)
+       {
+       cout << "Please enter the scientist's nationality: ";
+       cin >> nationality;
+       for(unsigned int i = 0; i < nationality.length(); i++)
+       {
+           if(!isalpha(nationality[i]) && nationality[i] != '.')
+           {
+               hasOnlyChar = false;
+           }
+       }
+       if(nationality.length() <5 || nationality.length()>16)
+          {
+           cout <<"Error: Nationalities must be between 5 and 16 characters." << endl;
+           }
+       else if(!hasOnlyChar)
+       {
+          cout << "Error: Nationalities can only contain characters from the latin alphabet." << endl;
+          hasOnlyChar = true;
+       }
+       else
+       {
+          cont = true;
+       }
+       }
+
+       return nationality;
 }
