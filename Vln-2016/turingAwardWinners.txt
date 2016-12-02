@@ -1,23 +1,22 @@
-Alan Perils m 1922 1990 1966
-Maurice Wilkes m 1913 2010 1967
-Richard Hamming m 1915 1998 1968
-Marvin Minsky m 1915 1998 1969
-James Wilkinson m 1919 1986 1970
-John McCarthy m 1927 2011 1971
-Edsger Dijkstra m 1930 2002 1972
-Charles Bachman m 1924 0 1973
-Ervin Knuth m 1938 0 1974
-Allen Newell m 1927 1992 1975
-Herbert Simon m 1916 2001 1975
-Michael Rabin m 1931 0 1976
-Dana scott m 1932 0 1976
-John Backus m 1924 2007 1977
-Robert Floyd m 1936 2001 1978
-Kenneth Iverson m 1920 2004 1979
-Tony Hoare m 1934 0 1980
-Edgar Codd m 1923 2003 1981
-Stephen Cook m 1939 0 1982
-Ken Thompson m 1943 0 1983
-Dennis Ritchie m 1941 2011 1983
-Niklaus Wirth m 1934 0 1984
-
+Alan Perils m American 1922 1990 1966
+Maurice Wilkes m British 1913 2010 1967
+Richard Hamming m American 1915 1998 1968
+Marvin Minsky m American 1915 1998 1969
+James Wilkinson m English 1919 1986 1970
+John McCarthy m American 1927 2011 1971
+Edsger Dijkstra m Dutch 1930 2002 1972
+Charles Bachman m American 1924 0 1973
+Ervin Knuth m American 1938 0 1974
+Allen Newell m American 1927 1992 1975
+Herbert Simon m American 1916 2001 1975
+Michael Rabin m Israeli 1931 0 1976
+Dana scott m American 1932 0 1976
+John Backus m American 1924 2007 1977
+Robert Floyd m American 1936 2001 1978
+Kenneth Iverson m Canadian 1920 2004 1979
+Tony Hoare m British 1934 0 1980
+Edgar Codd m English 1923 2003 1981
+Stephen Cook m American 1939 0 1982
+Ken Thompson m American 1943 0 1983
+Dennis Ritchie m American 1941 2011 1983
+Niklaus Wirth m Swiss 1934 0 1984
