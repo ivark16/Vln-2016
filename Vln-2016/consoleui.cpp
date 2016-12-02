@@ -159,14 +159,13 @@ void consoleUI::run()
                 gender = genderChecker();
                 cout << "Nationality: ";
                 cin >> nationality;
-                cout << "Enter the scientist's birth year: ";
-                cin >> birthYear;
+                birthYear = yearChecker(1);
+                cin >> nationality;
                 cout << "Is the scientist still alive? (y/n) ";
                 cin >> isAlive;
                 if(isAlive == 'n')
                 {
-                    cout << "Enter the scientist's year of death: ";
-                    cin >>  deathYear;
+                    deathYear = yearChecker(2);
                 }
                 else if(isAlive == 'y')
                 {
@@ -180,8 +179,7 @@ void consoleUI::run()
                 cin >> isWinner;
                 if(isWinner == 'y')
                 {
-                    cout << "Enter the year the scientist won: ";
-                    cin >>  awardYear;
+                   awardYear = yearChecker(3);
                 }
                 else if(isWinner == 'n')
                 {
@@ -293,11 +291,13 @@ void consoleUI::run()
         //Delete from database
         listServices scientist;
         int ID = 0;
+        bool personInDatabase = true;
+        string doubleCheck;
         string name;
         cout << "Enter name: ";
         cin >> name;
         print();
-        for(int i = 0 ; i < scientist.getSize();)
+        for(int i = 0 ; i < scientist.getSize(); i++)
         {
             if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
             {
@@ -337,26 +337,44 @@ void consoleUI::run()
                 cout << scientist.getAwardsFromList(i) << left;;
                 cout << "   *" << endl;
 
-
-
-                i++;
             }
-            else
+            else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
             {
-                i++;
+                if(i == scientist.getSize() - 1)
+                {
+                    cout << "Person is not in database!" << endl;
+                    personInDatabase = false;
+                    break;
+                }
             }
         }
-        for(int i = 0 ; i < 9 ; i++)
+        for(int i = 0 ; i < 8 ; i++)
         {
             cout << "--------";
+        }
+        if(personInDatabase == false)
+        {
+            break;
         }
         cout << endl;
         cout << "Enter number for scientist you want to delete: ";
         cin >> ID;
-        scientist.deleteFromList(ID);
-        print();
-        printNames(scientist);
-        scientist.writeNewFile();
+        cout << "Are you sure you want to delete ?: " << endl;
+        cout << "write Yes to delete or any character to abort: "<< endl;
+        cin >> doubleCheck;
+        scientist.changeToLower(doubleCheck);
+        if(doubleCheck == "yes")
+        {
+            scientist.deleteFromList(ID);
+            print();
+            printNames(scientist);
+            scientist.writeNewFile();
+        }
+        else
+        {
+            break;
+        }
+
     }
         break;
 
@@ -568,6 +586,7 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
 }
 
 
+<<<<<<< HEAD
 
 
 
@@ -586,3 +605,49 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
 
 
 
+=======
+int consoleUI::yearChecker(const int TYPE)
+{
+  int year;
+  bool cont = true;
+
+  while(cont)
+  {
+      if(TYPE == 1)
+      {
+      cout << "Please enter the scientists birth year.";
+      }
+      else if(TYPE == 2)
+      {
+      cout << "Please enter the scientists year of death.";
+      }
+      else if(TYPE == 3)
+      {
+      cout << "Please enter the year the scientist won the award.";
+      }
+      while (!(cin >> year))
+      {
+          cin.clear();
+          cin.ignore(1000,'\n');
+          cout << "Not valid input, please try again: ";
+      }
+      if(TYPE == 1 && (year < 1791 || year > 2016))
+      {
+          cout << "Invalid birth year" << endl;
+      }
+      else if(TYPE == 2 && (year >2016 || year<1791))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if(TYPE == 3 && (year <1966 || year > 2016))
+      {
+          cout << "There is no existing Turing award for that year.";
+      }
+      else
+      {
+          cont = false;
+      }
+  }
+  return year;
+}
+>>>>>>> 467efe42301022703d242b206778030d69353441
