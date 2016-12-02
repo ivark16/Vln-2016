@@ -11,6 +11,7 @@ public:
     listServices();
     string getFirstNameFromList(int i);
     string getLastNameFromList(int i);
+    string getNationalityFromList(int i);
     string fullNameFromList(int i) const; // Returns full name from scientistList
     int dobFromList(int i) const; // Returns date of birth from scientistList
     int dodFromList(int i) const; // Returns date of death from scientistList
@@ -24,7 +25,7 @@ public:
     vector<scientistList>   sortByAward(); // Returns vector with Turing awards in correct order (lowest first and so on)
     // This function adds new names to the file by calling constructor in scientistList.
     vector<scientistList> sortByAlive();
-    void   addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear);
+    void   addNew(string firstName, string lastName, char gender, string nationality, int birthYear, int deathYear, int awardYear);
 
 
     vector<scientistList>   searchLastName(string lastName); // Searches last name and returns the persons in vector

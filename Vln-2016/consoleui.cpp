@@ -144,6 +144,7 @@ void consoleUI::run()
                 string firstName;
                 string lastName;
                 char gender;
+                string nationality;
                 int birthYear;
                 char isAlive;
                 int deathYear;
@@ -156,6 +157,8 @@ void consoleUI::run()
                 firstName = nameChecker("first name");
                 lastName = nameChecker("last name");
                 gender = genderChecker();
+                cout << "Nationality: ";
+                cin >> nationality;
                 cout << "Enter the scientist's birth year: ";
                 cin >> birthYear;
                 cout << "Is the scientist still alive? (y/n) ";
@@ -189,7 +192,7 @@ void consoleUI::run()
                     cout << "Invalid entry.  Please enter either y (yes) or n (no)";
                 }
 
-                _scientist.addNew(firstName, lastName, gender, birthYear, deathYear, awardYear);
+                _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
             }
             break;
 
@@ -451,6 +454,8 @@ void consoleUI::print()
     cout.width(10);
     cout << "gender" << left;
     cout.width(10);
+    cout << "nationality" << left;
+    cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
     cout << "Y.O.D" << left;
@@ -491,6 +496,8 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout << scientistsToPrint.getLastNameFromList(i) << left;
         cout.width(10);
         cout << sex << left;
+        cout.width(10);
+        cout << scientistsToPrint.getNationalityFromList(i) << left;
         cout.width(10);
         cout << scientistsToPrint.dobFromList(i) << left;
         if(scientistsToPrint.dodFromList(i) == 0)

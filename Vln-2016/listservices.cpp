@@ -14,16 +14,19 @@ struct ScientistComparison {
 //This function is used to return the (first) name of the Scientists at intex i
 string listServices::getFirstNameFromList(int i)
 {
-    string name;
     return _computerScientists[i].getFirstName();
 }
 //This function is used to return the (last) name of the Scientists at intex i
 string listServices::getLastNameFromList(int i)
 {
-    string name;
     return _computerScientists[i].getLastName();
 }
 //Will return the (full) name of the Scientists at intex i
+string listServices::getNationalityFromList(int i)   //---------------------------------------------------
+{
+    return _computerScientists[i].getNationality();
+}
+
 string listServices::fullNameFromList(int i) const
 {
     return _computerScientists[i].fullName();
@@ -153,9 +156,9 @@ vector<scientistList>   listServices::sortByAward()
     return sortedList;
 }
 //This function adds a new scientist to the list.  It creates a new instance of scientistList by calling a constructor that adds a new entry to the .txt file.
-void   listServices::addNew(string firstName, string lastName, char gender, int birthYear, int deathYear, int awardYear)
+void   listServices::addNew(string firstName, string lastName, char gender, string nationality, int birthYear, int deathYear, int awardYear)
 {
-    scientistList newScientist(firstName, lastName, gender, birthYear, deathYear, awardYear);
+    scientistList newScientist(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
     _computerScientists.push_back(newScientist);
 }
 
