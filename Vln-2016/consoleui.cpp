@@ -432,26 +432,27 @@ char consoleUI::genderChecker()
 void consoleUI::print()
 {
     listServices scientists;
+    int width = scientists.searchLongestName();
 
-    cout.width(4);
+    cout.width(5);
     cout << left << "No.";
-    cout.width(scientists.searchLongestName());
+    cout.width(width);
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(width);
     cout << "Lastname" << left;
     cout.width(10);
     cout << "gender" << left;
-    cout.width(10);
+    cout.width(width);
     cout << "nation" << left;
     cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
     cout << "Y.O.D" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
@@ -507,7 +508,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
