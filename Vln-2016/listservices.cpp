@@ -298,13 +298,6 @@ void listServices::deleteFromList(int ID)
 
 void listServices::writeNewFile()
 {
-    vector<scientistList> rewrite;
-    rewrite = _computerScientists;
-    _data.writeToFile(rewrite);
-    for(unsigned int i = 0 ; i < _computerScientists.size() ; i++)
-    {
-        cout << _computerScientists[i].getFirstName() << endl;
-    }
-
+    _data.writeToFile(_computerScientists);
 }
 
