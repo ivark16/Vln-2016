@@ -35,10 +35,6 @@ public:
 
     void setFirstName(string name);
     void setLastName(string name);
-<<<<<<< HEAD
-
-=======
->>>>>>> 5044f8fd6d5762d1c2f175255642b95abdde812a
     void writeToFile(vector<scientistList> newFile); // writes to file after deleting scientist
     void deleteNewLineInFile (vector<scientistList>& deleteNewLine);
 
