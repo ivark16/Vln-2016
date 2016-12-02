@@ -19,8 +19,10 @@ bool consoleUI::digitCheck(int num)
     if(isdigit(num))
     {
         return true;
+        cout << "INNI ISDIGIT" << endl;
     }
     return false;
+    cout << "INNI ISDIGIT" << endl;
 }
 
 //Function that gives you a list of options to choose from
@@ -66,25 +68,28 @@ void consoleUI::run()
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
-    cin >> chooseNumber;
 
 
-    if((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber))
-    {
         bool invalidInput = true;
         while(invalidInput)
         {
-            cout << "Please enter a valid input: ";
-            cin >> chooseNumber;
-            if(!((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber)))
+                //cin >> chooseNumber;
+            while (!(cin >> chooseNumber))
             {
+                cin.clear();
+                cin.ignore(1000,'\n');
+                cout << "Not valid input, please try again: ";
+            }
+            if(!((chooseNumber > 0) && (chooseNumber < 13)))
+            {
+                cout << "Not valid input, please try again: ";
+                invalidInput = true;
+
+            } else {
                 invalidInput = false;
             }
         }
-    }
-    else
-    {
-    }
+
 
 
     //This function sends you (from the number you pick) to the right corresponding case
@@ -158,15 +163,14 @@ void consoleUI::run()
                 lastName = nameChecker("last name");
                 gender = genderChecker();
                 cout << "Nationality: ";
+                nationality = nationalityChecker();
+                birthYear = yearChecker(1, 0, 0);
                 cin >> nationality;
-                cout << "Enter the scientist's birth year: ";
-                cin >> birthYear;
                 cout << "Is the scientist still alive? (y/n) ";
                 cin >> isAlive;
                 if(isAlive == 'n')
                 {
-                    cout << "Enter the scientist's year of death: ";
-                    cin >>  deathYear;
+                    deathYear = yearChecker(2, birthYear, 0);
                 }
                 else if(isAlive == 'y')
                 {
@@ -180,8 +184,7 @@ void consoleUI::run()
                 cin >> isWinner;
                 if(isWinner == 'y')
                 {
-                    cout << "Enter the year the scientist won: ";
-                    cin >>  awardYear;
+                   awardYear = yearChecker(3, birthYear, deathYear);
                 }
                 else if(isWinner == 'n')
                 {
@@ -201,47 +204,6 @@ void consoleUI::run()
         {
             listServices scientistsBirth;
             CheckNumbers(scientistsBirth);
-            //char answear;
-            /*do {
-                int year;
-                //char answear2;
-                cout << "Enter year: ";
-                while (!(cin >> year))
-                {
-                    cin.clear();
-                    cin.ignore(1000,'\n');
-                    cout << "Not valid input, please try again: ";
-                }
-
-                listServices scientistsBirth;
-                scientistsBirth.changeTo(scientistsBirth.searchBirth(year, year));
-                if (scientistsBirth.getSize() == 0)
-                {
-                        cout << "Sorry, no scientists where born this year. Do you wanna input another year (y/n)? ";
-                        do {
-                           cin >> answear;
-                           if (answear == 'y')
-                           {
-                                break;
-                           } else if (answear == 'n')
-                           {
-                                break;
-                           } else {
-                               cout << "Not valid input, please try again: ";
-                               answear = 'y';
-                               break;
-                           }
-                        } while (answear == 'y');
-
-
-                } else
-                    {
-                    cout << "A list of scientists born in your year of choice" << endl;
-                    print();
-                    printNames(scientistsBirth);
-                    answear = 'n';
-                    }
-                } while (answear == 'y');*/
         }
           break;
 
@@ -250,7 +212,7 @@ void consoleUI::run()
     {
         listServices sort;
         sort.changeTo(_scientist.sortByName());
-        cout << "A list of scinetists in alphabetical order" << endl;
+        cout << "A list of scientists in alphabetical order" << endl;
         print();
         printNames(sort);
 
@@ -389,6 +351,7 @@ void consoleUI::run()
         stillLooping = false;
         break;
  }
+
     if(stillLooping)
     {
         string thisDoesNothing;
@@ -396,6 +359,7 @@ void consoleUI::run()
         cin >> thisDoesNothing;
         cout << endl << endl << endl << endl;
     }
+
 
     }
 
@@ -590,4 +554,90 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
             answear = 'n';
             }
         } while (answear == 'y');
+}
+
+//This function checks whehter years are valid.
+int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
+{
+  int year;
+  bool cont = true;
+
+  while(cont)
+  {
+      if(TYPE == 1)
+      {
+      cout << "Please enter the scientists birth year.";
+      }
+      else if(TYPE == 2)
+      {
+      cout << "Please enter the scientists year of death.";
+      }
+      else if(TYPE == 3)
+      {
+      cout << "Please enter the year the scientist won the award.";
+      }
+      //This loops until there is a valid input from the user, it ignores up to 1000 things.
+      while (!(cin >> year))
+      {
+          cin.clear();
+          cin.ignore(1000,'\n');
+          cout << "Not valid input, please try again: ";
+      }
+      //The TYPE is used to denote whether you are looking for a birth year, death year or a turing award year.
+      if(TYPE == 1 && (year < 1791 || year > 2016))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if(TYPE == 2 && (year >2016 || year<1791) && year <= birthYear)
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if(TYPE == 3 && (year <1966 || year > 2016) && (year < birthYear || (year > deathYear && deathYear != 0)))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else
+      {
+          //end the loop and return the year.
+          //this happens when the input is valid.
+          cont = false;
+      }
+  }
+  return year;
+}
+
+//checks the validity of the nationality.
+string consoleUI::nationalityChecker()
+{
+    string nationality;
+    bool cont = false;
+    bool hasOnlyChar = true;
+
+       while(!cont)
+       {
+       cout << "Please enter the scientist's nationality: ";
+       cin >> nationality;
+       for(unsigned int i = 0; i < nationality.length(); i++)
+       {
+           if(!isalpha(nationality[i]) && nationality[i] != '.')
+           {
+               hasOnlyChar = false;
+           }
+       }
+       if(nationality.length() <5 || nationality.length()>16)
+          {
+           cout <<"Error: Nationalities must be between 5 and 16 characters." << endl;
+           }
+       else if(!hasOnlyChar)
+       {
+          cout << "Error: Nationalities can only contain characters from the latin alphabet." << endl;
+          hasOnlyChar = true;
+       }
+       else
+       {
+          cont = true;
+       }
+       }
+
+       return nationality;
 }
