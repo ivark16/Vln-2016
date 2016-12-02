@@ -14,17 +14,6 @@ consoleUI::consoleUI(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
-bool consoleUI::digitCheck(int num)
-{
-    if(isdigit(num))
-    {
-        return true;
-        cout << "INNI ISDIGIT" << endl;
-    }
-    return false;
-    cout << "INNI ISDIGIT" << endl;
-}
-
 //Function that gives you a list of options to choose from
 //It prompts the user for an integer and then references the appropriate case in the switch case included.
 void consoleUI::run()
@@ -83,8 +72,6 @@ void consoleUI::run()
             }
         }
 
-
-
     //This function sends you (from the number you pick) to the right corresponding case
     switch (chooseNumber)
     {
@@ -123,7 +110,6 @@ void consoleUI::run()
                        invalidInput = false;
                     }
                 }
-
 
                 if (displayScientist == 1)
                 {
@@ -180,9 +166,6 @@ void consoleUI::run()
                     printNames(norris);
                     break;
                  }
-
-
-
         }
             break;
 
@@ -290,10 +273,10 @@ void consoleUI::run()
                     int year;
                     cin >> year;
                     scientists.changeTo(_scientist.searchAward(year));
+                    print(scientists);
+                    printNames(scientists);
                     break;
                 }
-
-
         }
         break;
 
@@ -309,8 +292,6 @@ void consoleUI::run()
                int deathYear;
                char isWinner;
                int awardYear;
-
-
 
                firstName = nameChecker("first name");
                lastName = nameChecker("last name");
@@ -409,11 +390,9 @@ void consoleUI::run()
                         cout << "   *" << endl;
                         counter++;
                         checker = i;
-
                     }
                     else if(name !=  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name != scientist.changeToLower(scientist.getLastNameFromList(i)))
                     {
-
                         if(i == (scientist.getSize() - 1) + counter)
                         {
                             cout << "Person is not in database!" << endl;
@@ -421,8 +400,6 @@ void consoleUI::run()
                             break;
                         }
                     }
-
-
                 }
                 for(int i = 0 ; i < 9 ; i++)
                 {
@@ -446,14 +423,9 @@ void consoleUI::run()
                     print(scientist);
                     printNames(scientist);
                     scientist.writeNewFile();
-
                 }
-
             }
                 break;
-
-
-
         case 5:
             stillLooping = false;
             break;
@@ -476,7 +448,7 @@ void consoleUI::run()
     }
 }
 
-
+//this is an error check.  It checks the validity of the name and prompts the user for a new one until one is valid.
 string consoleUI::nameChecker(string nameType)
 {
     string name;
@@ -487,6 +459,7 @@ string consoleUI::nameChecker(string nameType)
        {
        cout << "Please enter the scientist's " << nameType << ": ";
        cin >> name;
+       //check whether it has anything that is a non-alphabet character in it.  If so, it is an invalid entry.
        for(unsigned int i = 0; i < name.length(); i++)
        {
            if(!isalpha(name[i]) && name[i] != '.')
@@ -494,6 +467,7 @@ string consoleUI::nameChecker(string nameType)
                hasOnlyChar = false;
            }
        }
+       //the length must be between 2 and 16 for it to be valid.
        if(name.length() <2 || name.length()>16)
           {
            cout <<"Error: Names must be between 2 and 16 characters." << endl;
@@ -512,7 +486,7 @@ string consoleUI::nameChecker(string nameType)
        return name;
 }
 
-//prompts the user for
+//prompts the user for a gender and checks its validity.  If it is invalid it asks again until it receives a valid gender.
 char consoleUI::genderChecker()
 {
     bool cont = false;
@@ -522,7 +496,7 @@ char consoleUI::genderChecker()
     {
         cout << "Enter the scientist's gender (m/f/o) : " ;
         cin >> gender;
-
+        //checks that the entry is only a single character, that is either m, f or o
         if(isalpha(gender[0]) && (gender[0] == 'm' || gender[0] == 'f' || gender[0] == 'o') && gender.size() == 1)
         {
             cont = true;
