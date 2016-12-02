@@ -19,8 +19,10 @@ bool consoleUI::digitCheck(int num)
     if(isdigit(num))
     {
         return true;
+        cout << "INNI ISDIGIT" << endl;
     }
     return false;
+    cout << "INNI ISDIGIT" << endl;
 }
 
 //Function that gives you a list of options to choose from
@@ -66,25 +68,29 @@ void consoleUI::run()
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
-    cin >> chooseNumber;
 
 
-    if((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber))
-    {
         bool invalidInput = true;
         while(invalidInput)
         {
-            cout << "Please enter a valid input: ";
-            cin >> chooseNumber;
-            if(!((chooseNumber < 1) || (chooseNumber > 12) || digitCheck(chooseNumber)))
+                //cin >> chooseNumber;
+            while (!(cin >> chooseNumber))
             {
+                cin.clear();
+                cin.ignore(1000,'\n');
+                cout << "Not valid input, please try again: ";
+            }
+            if(!((chooseNumber > 0) && (chooseNumber < 13)))
+            {
+                cout << "Hallo";
+                cout << "Not valid input, please try again: ";
+                invalidInput = true;
+
+            } else {
                 invalidInput = false;
             }
         }
-    }
-    else
-    {
-    }
+
 
 
     //This function sends you (from the number you pick) to the right corresponding case
