@@ -367,6 +367,12 @@ void consoleUI::run()
         break;
  }
 
+string thisDoesNothing;
+cout << "Enter any letter and press enter to continue." << endl;
+cin >> thisDoesNothing;
+cout << endl << endl << endl << endl;
+
+
 }
 
 
