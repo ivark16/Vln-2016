@@ -1,0 +1,4 @@
+1. -When attempting to delete multiple scientists from the database, it will create new lines which are entered into the vector.
+    The Delete function was made in an attempt to delete the new lines it generates in the text file but did not solve our issue.
+2. -When the user is prompted to enter a year, if the year is followed by a character it will not have the desired effect.
+    The year will be entered as desired but the character will be passed forward to the next cin.
