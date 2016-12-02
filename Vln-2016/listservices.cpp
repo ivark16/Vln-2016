@@ -291,4 +291,20 @@ string listServices::changeToLower(string input)
     return input;
 }
 
+void listServices::deleteFromList(int ID)
+{
+    _computerScientists.erase(_computerScientists.begin() + ID);
+}
+
+void listServices::writeNewFile()
+{
+    vector<scientistList> rewrite;
+    rewrite = _computerScientists;
+    _data.writeToFile(rewrite);
+    for(unsigned int i = 0 ; i < _computerScientists.size() ; i++)
+    {
+        cout << _computerScientists[i].getFirstName() << endl;
+    }
+
+}
 

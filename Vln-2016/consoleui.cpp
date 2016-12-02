@@ -275,8 +275,83 @@ void consoleUI::run()
     case 12:
         stillLooping = false;
         break;
+
+
+    case 11:
+    {
+        //Delete from database
+        listServices scientist;
+        int ID = 0;
+        string name;
+        cout << "Enter name: ";
+        cin >> name;
+        print();
+        for(int i = 0 ; i < scientist.getSize();)
+        {
+            if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
+            {
+                string sex;
+                string isDead;
+
+                if(scientist.getSexFromList(i) == 'm')
+                {
+                    sex = "male";
+                }
+                else
+                {
+                    sex = "female";
+                }
+                cout.width(5);
+                cout << left << i;
+                cout.width(10);
+                cout << scientist.getFirstNameFromList(i) << left;
+                cout.width(10);
+                cout << scientist.getLastNameFromList(i) << left;
+                cout.width(10);
+                cout << sex << left;
+                cout.width(10);
+                cout << scientist.dobFromList(i) << left;
+                if(scientist.dodFromList(i) == 0)
+                {
+                    isDead = "Alive";
+                    cout.width(10);
+                    cout << isDead << left;
+                }
+                else
+                {
+                    cout.width(10);
+                    cout << scientist.dodFromList(i) << left;
+                }
+                cout.width(10);
+                cout << scientist.getAwardsFromList(i) << left;;
+                cout << "   *" << endl;
+
+
+
+                i++;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        for(int i = 0 ; i < 9 ; i++)
+        {
+            cout << "--------";
+        }
+        cout << endl;
+        cout << "Enter number for scientist you want to delete: ";
+        cin >> ID;
+        scientist.deleteFromList(ID);
+        print();
+        printNames(scientist);
+        scientist.writeNewFile();
     }
-    }
+        break;
+ }
+
+}
+
 
 }
 
@@ -341,6 +416,7 @@ char consoleUI::genderChecker()
 
     return gender[0];
 }
+
 
 
 void consoleUI::print()
