@@ -129,7 +129,7 @@ void consoleUI::run()
                 {
                     listServices scientists;
                     cout << "***List of all scientists***" << endl;
-                    print();
+                    print(scientists);
                     printNames(scientists);
                     break;
                 }
@@ -138,7 +138,7 @@ void consoleUI::run()
                     listServices sort;
                     sort.changeTo(_scientist.sortByName());
                     cout << "A list of scientists in alphabetical order" << endl;
-                    print();
+                    print(sort);
                     printNames(sort);
                     break;
                 }
@@ -147,7 +147,7 @@ void consoleUI::run()
                     {
                         _scientist.changeTo(_scientist.sortByBirth());
                         cout << "An organized list starting with the oldest scientist" << endl;
-                        print();
+                        print(_scientist);
                         printNames(_scientist);
                     break;
                     }
@@ -156,7 +156,7 @@ void consoleUI::run()
                 {
                     _scientist.changeTo(_scientist.sortByAward());
                     cout << "An organized list of scientists in order of when they received a Turing award." << endl;
-                    print();
+                    print(_scientist);
                     printNames(_scientist);
                     break;
                 }
@@ -167,7 +167,7 @@ void consoleUI::run()
                     string searchTerm;
                     scientists.changeTo(_scientist.searchAlive());
                     cout << "An organized list starting with the oldest living scientist" << endl;
-                    print();
+                    print(scientists);
                     printNames(scientists);
                     break;
                 }
@@ -176,7 +176,7 @@ void consoleUI::run()
 
                     listServices norris;
                     norris.changeTo(_scientist.chuckNorris());
-                    print();
+                    print(norris);
                     printNames(norris);
                     break;
                  }
@@ -276,7 +276,7 @@ void consoleUI::run()
                     cout << "Enter a single name to search: ";
                     cin >> searchTerm;
                     scientists.changeTo(_scientist.searchName(searchTerm));
-                    print();
+                    print(scientists);
                     printNames(scientists);
                     break;
                  }
@@ -359,7 +359,7 @@ void consoleUI::run()
                 string name;
                 cout << "Enter name: ";
                 cin >> name;
-                print();
+                print(scientist);
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
                     if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
@@ -435,7 +435,7 @@ void consoleUI::run()
                 if(doubleCheck == "yes")
                 {
                     scientist.deleteFromList(ID);
-                    print();
+                    print(scientist);
                     printNames(scientist);
                     scientist.writeNewFile();
 
@@ -528,10 +528,9 @@ char consoleUI::genderChecker()
     return gender[0];
 }
 
-void consoleUI::print()
+void consoleUI::print(listServices scientistsToPrint)
 {
-    listServices scientists;
-    int width = scientists.searchLongestName();
+    int width = scientistsToPrint.searchLongestName();
 
     cout.width(5);
     cout << left << "No.";
@@ -649,7 +648,7 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
         } else
             {
             cout << "A list of scientists born in your year of choice" << endl;
-            print();
+            print(scientist);
             printNames(scientist);
             answear = 'n';
             }
