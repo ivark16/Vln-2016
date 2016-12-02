@@ -66,6 +66,7 @@ void consoleUI::run()
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
+
     cin >> chooseNumber;
 
 
@@ -472,7 +473,7 @@ void consoleUI::print()
     cout.width(10);
     cout << "gender" << left;
     cout.width(10);
-    cout << "nationality" << left;
+    cout << "nation" << left;
     cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
@@ -586,26 +587,6 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
 }
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 int consoleUI::yearChecker(const int TYPE)
 {
   int year;
@@ -650,4 +631,3 @@ int consoleUI::yearChecker(const int TYPE)
   }
   return year;
 }
->>>>>>> 467efe42301022703d242b206778030d69353441
