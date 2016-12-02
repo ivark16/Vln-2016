@@ -25,6 +25,7 @@ public:
     void print();
     void printNames (listServices scientistsToPrint);
     bool digitCheck(int num);
+    void CheckNumbers (listServices checkNumbersForScientist);
 
 };
 

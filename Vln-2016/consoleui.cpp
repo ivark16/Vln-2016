@@ -14,7 +14,7 @@ consoleUI::consoleUI(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
-//Constructor
+
 bool consoleUI::digitCheck(int digit)
 {
     if(isdigit(digit))
@@ -34,6 +34,16 @@ void consoleUI::run()
     cout << "          |   |   |       |   __ \\   |   |   __ \\    |  __  |" << endl;
     cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
     cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
+    cout << "*                        Brynjar Barkarsson                      *"<< endl;
+    cout << "*                        Dagmar Loftsdottir                      *" << endl;
+    cout << "*                     Gabriela Jona Olfafsdottir                 *" << endl;
+    cout << "*                       Ivar Orn Kristjansson                    *" << endl;
+    cout << "*                          Stefan Hjartarson                     *" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << endl;
+
 
     bool stillLooping = true;
 
@@ -51,7 +61,8 @@ void consoleUI::run()
     cout << "* 8:  Sort by birthyear.                 *                       *" << endl;
     cout << "* 9:  Search for Turing award winner.    *                       *" << endl;
     cout << "* 10: Chuck Norris.                      *                       *" << endl;
-    cout << "* 12: Exit                               *                       *" << endl;
+    cout << "* 11: Delete scientis.                   *                       *" << endl;
+    cout << "* 12: Exit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -178,8 +189,10 @@ void consoleUI::run()
     //searchBirth
     case 6:
         {
-            char answear;
-            do {
+            listServices scientistsBirth;
+            CheckNumbers(scientistsBirth);
+            //char answear;
+            /*do {
                 int year;
                 //char answear2;
                 cout << "Enter year: ";
@@ -218,7 +231,7 @@ void consoleUI::run()
                     printNames(scientistsBirth);
                     answear = 'n';
                     }
-                } while (answear == 'y');
+                } while (answear == 'y');*/
         }
           break;
 
@@ -264,10 +277,6 @@ void consoleUI::run()
         printNames(norris);
 }
         break;
-    case 12:
-        stillLooping = false;
-        break;
-
 
     case 11:
     {
@@ -339,6 +348,10 @@ void consoleUI::run()
         printNames(scientist);
         scientist.writeNewFile();
     }
+        break;
+
+    case 12:
+        stillLooping = false;
         break;
  }
 
@@ -487,4 +500,46 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout << "--------";
     }
     cout << endl;
+}
+
+void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
+{
+    char answear;
+    do {
+        int year;
+        cout << "Enter year: ";
+        while (!(cin >> year))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        checkNumbersForScientist.changeTo(checkNumbersForScientist.searchBirth(year, year));
+        if (checkNumbersForScientist.getSize() == 0)
+        {
+                cout << "Sorry, no scientists where born this year. Do you wanna input another year (y/n)? ";
+                do {
+                   cin >> answear;
+                   if (answear == 'y')
+                   {
+                        break;
+                   } else if (answear == 'n')
+                   {
+                        break;
+                   } else {
+                       cout << "Not valid input, please try again: ";
+                       answear = 'y';
+                       break;
+                   }
+                } while (answear == 'y');
+
+
+        } else
+            {
+            cout << "A list of scientists born in your year of choice" << endl;
+            print();
+            printNames(checkNumbersForScientist);
+            answear = 'n';
+            }
+        } while (answear == 'y');
 }
