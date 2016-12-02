@@ -25,6 +25,8 @@ public:
     void printNames (listServices scientistsToPrint);
     bool digitCheck(int num);
     void CheckNumbers (listServices checkNumbersForScientist);
+    int yearChecker(const int year);
+
 
 };
 

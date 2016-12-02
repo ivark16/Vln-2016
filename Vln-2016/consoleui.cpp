@@ -165,14 +165,13 @@ void consoleUI::run()
                 gender = genderChecker();
                 cout << "Nationality: ";
                 cin >> nationality;
-                cout << "Enter the scientist's birth year: ";
-                cin >> birthYear;
+                birthYear = yearChecker(1);
+                cin >> nationality;
                 cout << "Is the scientist still alive? (y/n) ";
                 cin >> isAlive;
                 if(isAlive == 'n')
                 {
-                    cout << "Enter the scientist's year of death: ";
-                    cin >>  deathYear;
+                    deathYear = yearChecker(2);
                 }
                 else if(isAlive == 'y')
                 {
@@ -186,8 +185,7 @@ void consoleUI::run()
                 cin >> isWinner;
                 if(isWinner == 'y')
                 {
-                    cout << "Enter the year the scientist won: ";
-                    cin >>  awardYear;
+                   awardYear = yearChecker(3);
                 }
                 else if(isWinner == 'n')
                 {
@@ -550,4 +548,50 @@ void consoleUI::CheckNumbers (listServices checkNumbersForScientist)
             answear = 'n';
             }
         } while (answear == 'y');
+}
+
+
+int consoleUI::yearChecker(const int TYPE)
+{
+  int year;
+  bool cont = true;
+
+  while(cont)
+  {
+      if(TYPE == 1)
+      {
+      cout << "Please enter the scientists birth year.";
+      }
+      else if(TYPE == 2)
+      {
+      cout << "Please enter the scientists year of death.";
+      }
+      else if(TYPE == 3)
+      {
+      cout << "Please enter the year the scientist won the award.";
+      }
+      while (!(cin >> year))
+      {
+          cin.clear();
+          cin.ignore(1000,'\n');
+          cout << "Not valid input, please try again: ";
+      }
+      if(TYPE == 1 && (year < 1791 || year > 2016))
+      {
+          cout << "Invalid birth year" << endl;
+      }
+      else if(TYPE == 2 && (year >2016 || year<1791))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if(TYPE == 3 && (year <1966 || year > 2016))
+      {
+          cout << "There is no existing Turing award for that year.";
+      }
+      else
+      {
+          cont = false;
+      }
+  }
+  return year;
 }
