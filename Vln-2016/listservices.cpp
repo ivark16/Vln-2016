@@ -211,21 +211,20 @@ int listServices::getSize ()
 // binni kallinn með smá snúning
 int listServices::searchLongestName()
 {
-    listServices theList;
     unsigned int longest = 7;
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-        if(longest < theList.getFirstNameFromList(i).size())
+        if(longest < getFirstNameFromList(i).size())
         {
-            longest = theList.getFirstNameFromList(i).size();
+            longest = getFirstNameFromList(i).size();
         }
     }
     unsigned int newLongest = longest;
     for(unsigned int i = 0; i < _computerScientists.size(); i++)
     {
-        if(newLongest < theList.getLastNameFromList(i).size())
+        if(newLongest < getLastNameFromList(i).size())
         {
-            newLongest = theList.getLastNameFromList(i).size();
+            newLongest = getLastNameFromList(i).size();
         }
     }
     return newLongest + 2;

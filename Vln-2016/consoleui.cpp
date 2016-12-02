@@ -67,6 +67,7 @@ void consoleUI::run()
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
+    cin >> chooseNumber;
 
 
 
@@ -330,8 +331,7 @@ void consoleUI::run()
         cout << endl;
         cout << "Enter ID for scientist you want to delete: ";
         cin >> ID;
-        cout << "Are you sure you want to delete ?: " << endl;
-        cout << "write Yes to delete or any character to abort: "<< endl;
+        cout << "Are you sure you want to delete ?: write Yes to delete or any character to abort: "<< endl;
         cin >> doubleCheck;
         scientist.changeToLower(doubleCheck);
         if(doubleCheck == "yes")
@@ -353,9 +353,17 @@ void consoleUI::run()
     if(stillLooping)
     {
         string thisDoesNothing;
-        cout << "Enter any letter and press enter to continue.";
+        cout << "Enter any letter and press enter to continue!";
         cin >> thisDoesNothing;
-        cout << endl << endl << endl << endl;
+        for(int i = 0 ; i <= 4 ; i++)
+        {
+            for(int j = 0 ; j < 8 ; j++ )
+            {
+                cout << "********";
+            }
+            cout << endl;
+        }
+        //cout << endl << endl << endl << endl;
     }
 
 
@@ -431,26 +439,27 @@ char consoleUI::genderChecker()
 void consoleUI::print()
 {
     listServices scientists;
+    int width = scientists.searchLongestName();
 
-    cout.width(4);
+    cout.width(5);
     cout << left << "No.";
-    cout.width(scientists.searchLongestName());
+    cout.width(width);
     cout << "Firstname" << left;
-    cout.width(10);
+    cout.width(width);
     cout << "Lastname" << left;
     cout.width(10);
     cout << "gender" << left;
-    cout.width(10);
-    cout << "nationality" << left;
+    cout.width(width);
+    cout << "nation" << left;
     cout.width(10);
     cout << "Y.O.B" << left;
     cout.width(10);
     cout << "Y.O.D" << left;
-    cout.width(scientists.searchLongestName());
+    cout.width(10);
     cout << "Y.O.A" << left << endl;
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
@@ -506,7 +515,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "--------";
+        cout << "-----------";
     }
     cout << endl;
 }
