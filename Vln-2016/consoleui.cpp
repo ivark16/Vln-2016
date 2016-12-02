@@ -14,10 +14,9 @@ consoleUI::consoleUI(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
-
-bool consoleUI::digitCheck(int digit)
+bool consoleUI::digitCheck(int num)
 {
-    if(isdigit(digit))
+    if(isdigit(num))
     {
         return true;
     }
