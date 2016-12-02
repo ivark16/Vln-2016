@@ -556,7 +556,7 @@ void consoleUI::print(listServices scientistsToPrint)
     }
     cout << endl;
 }
-
+// This function prints all names in a table to the console
 void consoleUI::printNames (listServices scientistsToPrint)
 {
     int counter = 1;
@@ -580,6 +580,7 @@ void consoleUI::printNames (listServices scientistsToPrint)
         cout << left << counter;
         counter++;
         int width = scientistsToPrint.searchLongestName();
+        //adjusts width to longest name
         cout.width(width);
         cout << scientistsToPrint.getFirstNameFromList(i) << left;
         cout.width(width);
@@ -602,7 +603,18 @@ void consoleUI::printNames (listServices scientistsToPrint)
             cout << scientistsToPrint.dodFromList(i) << left;
         }
         cout.width(10);
-        cout << scientistsToPrint.getAwardsFromList(i) << left;;
+        if(scientistsToPrint.getAwardsFromList(i) == 0)
+        {
+            isDead = "None";
+            cout.width(10);
+            cout << isDead << left;
+        }
+        else
+        {
+            cout.width(10);
+            cout << scientistsToPrint.getAwardsFromList(i) << left;
+        }
+        cout.width(10);
         cout << "   *" << endl;
 
     }
