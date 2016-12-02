@@ -273,7 +273,8 @@ void consoleUI::run()
                     int year;
                     cin >> year;
                     scientists.changeTo(_scientist.searchAward(year));
-
+                    print(scientists);
+                    printNames(scientists);
                     break;
                 }
         }
