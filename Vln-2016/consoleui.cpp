@@ -242,7 +242,7 @@ void consoleUI::run()
                     else if(rangeOrSingle == 2)
                     {
                         int minYear = yearChecker(1,0,0);
-                        int maxYear = yearChecker(1,0,0);
+                        int maxYear = yearChecker(4,minYear,0);
                         listServices scientistsBirth;
                         scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
                         print(scientistsBirth);
@@ -269,7 +269,7 @@ void consoleUI::run()
                 else if (searchScientist == 3)
                 {
                     listServices scientists;
-                    cout << "Etner a single year to search: ";
+                    cout << "Enter a single year to search: ";
                     int year;
                     cin >> year;
                     scientists.changeTo(_scientist.searchAward(year));
@@ -667,6 +667,10 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
       cout << "Please enter the year the scientist won the award.";
       }
+      else if (TYPE == 4)
+      {
+          cout << "Please insert second year.";
+      }
       //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
       {
@@ -684,6 +688,10 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
           cout << "Invalid year." << endl;
       }
       else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if (TYPE == 4 && (birthYear > year))
       {
           cout << "Invalid year." << endl;
       }
