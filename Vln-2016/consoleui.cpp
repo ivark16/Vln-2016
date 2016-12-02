@@ -331,8 +331,7 @@ void consoleUI::run()
         cout << endl;
         cout << "Enter ID for scientist you want to delete: ";
         cin >> ID;
-        cout << "Are you sure you want to delete ?: " << endl;
-        cout << "write Yes to delete or any character to abort: "<< endl;
+        cout << "Are you sure you want to delete ?: write Yes to delete or any character to abort: "<< endl;
         cin >> doubleCheck;
         scientist.changeToLower(doubleCheck);
         if(doubleCheck == "yes")
@@ -354,9 +353,17 @@ void consoleUI::run()
     if(stillLooping)
     {
         string thisDoesNothing;
-        cout << "Enter any letter and press enter to continue.";
+        cout << "Enter any letter and press enter to continue!";
         cin >> thisDoesNothing;
-        cout << endl << endl << endl << endl;
+        for(int i = 0 ; i <= 4 ; i++)
+        {
+            for(int j = 0 ; j < 8 ; j++ )
+            {
+                cout << "********";
+            }
+            cout << endl;
+        }
+        //cout << endl << endl << endl << endl;
     }
 
 
