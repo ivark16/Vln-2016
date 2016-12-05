@@ -1,5 +1,6 @@
 QT += core
 QT -= gui
+QT += core gui sql
 
 CONFIG += c++11
 
@@ -12,9 +13,15 @@ TEMPLATE = app
 SOURCES += main.cpp \
     consoleui.cpp \
     listservices.cpp \
-    scientistList.cpp
+    scientistList.cpp \
+    DataLayer.cpp \
+    scientist.cpp \
+    computer.cpp
 
 HEADERS += \
     consoleui.h \
     listservices.h \
-    scientistList.h
+    scientistList.h \
+    DataLayer.h \
+    scientist.h \
+    computer.h
