@@ -35,6 +35,7 @@ void scientistList::readFile (vector <scientistList>& science)  //returns true i
     if(file.fail())
     {
         exit(1);
+        cout << "Fail"<< endl;
     }
     while(!file.eof())
     {
