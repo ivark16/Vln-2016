@@ -5,7 +5,7 @@
 //#include <sql.h>
 
 
-ScientisListFromSQL::ScientisListFromSQL()
+DataLayer::DataLayer(const QString &path)
 {
     QSqlDatabase m_db;
 
@@ -21,4 +21,29 @@ ScientisListFromSQL::ScientisListFromSQL()
           qDebug() << "Database: connection ok";
        }
 }
+
+DataLayer::~DataLayer()
+{
+    if (m_db.isOpen())
+    {
+        m_db.close();
+    }
+}
+
+void DataLayer::readAllFromDataBase() const
+{
+    qDebug() << "Persons in Database: ";
+    QSqlQuery query("SELECT * FROM Scientists");
+    int idName = query.record().indexOf("name");
+    while(query.next())
+    {
+        QString name = query.value(idName).toString();
+        qDebug() << "=====" << name;
+        cout << "HaLLOOO" << endl;
+    }
+}
+
+
+
+
 
