@@ -348,7 +348,7 @@ void consoleUI::run()
                 //here it prints the users that have the name that users wants to delete
                 for(int i = 0 ; i < scientist.getSize(); i++)
                 {
-                    if(name ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || name == scientist.changeToLower(scientist.getLastNameFromList(i)))
+                    if(scientist.changeToLower(name) ==  scientist.changeToLower(scientist.getFirstNameFromList(i)) || scientist.changeToLower(name) == scientist.changeToLower(scientist.getLastNameFromList(i)))
                     {
                         string sex;
                         string isDead;
@@ -481,7 +481,8 @@ string consoleUI::nameChecker(string nameType)
           cont = true;
        }
        }
-
+       //returnName = name;
+       name[0] = toupper(name[0]);
        return name;
 }
 

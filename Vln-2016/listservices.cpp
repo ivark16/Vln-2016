@@ -144,7 +144,7 @@ vector<scientistList> listServices::searchName(string searchTerm)
     for (unsigned int i = 0; i < _computerScientists.size(); i++)
     {
         //If the names match, the scientist is added to the new vector.
-        if (searchTerm == changeToLower(_computerScientists[i].getLastName()) || searchTerm == changeToLower(_computerScientists[i].getFirstName()))
+        if (changeToLower(searchTerm) == changeToLower(_computerScientists[i].getLastName()) || changeToLower(searchTerm) == changeToLower(_computerScientists[i].getFirstName()))
         {
             matchingscientists.push_back(_computerScientists[i]);
         }
