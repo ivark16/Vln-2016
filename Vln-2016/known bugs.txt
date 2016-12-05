@@ -1,4 +1,8 @@
-1. -When attempting to delete multiple scientists from the database, it will create new lines which are entered into the vector.
+1. -When attempting to delete scientists from the database, it will create new lines which are entered into the vector.
     The Delete function was made in an attempt to delete the new lines it generates in the text file but did not solve our issue.
 2. -When the user is prompted to enter a year, if the year is followed by a character it will not have the desired effect.
     The year will be entered as desired but the character will be passed forward to the next cin.
+3. -When sorting the database into alphabetical order, if there is a scientist in the database with a 
+    fully lower-case name it will not sort correctly
+4. -Everybody worked equally in the assignment but not everybody could push into git. So sometimes we had to 
+    push for eachother. 

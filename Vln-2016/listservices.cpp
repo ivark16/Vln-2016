@@ -66,7 +66,7 @@ vector<scientistList> listServices::sortByName()
     sortedByName = _computerScientists;
     ScientistComparison cmp;
     std::sort(sortedByName.begin(), sortedByName.end(), cmp);
-    cout << sortedByName.size();
+
     return sortedByName;
 }
 //This function sorts the scientists by their birth year in ascending order.

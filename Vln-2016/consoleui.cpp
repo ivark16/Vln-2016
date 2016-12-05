@@ -83,9 +83,8 @@ void consoleUI::run()
                 cout << "* 1:  Display all scientists.            * Y.O.D = year of death *" << endl;
                 cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
                 cout << "* 3:  Display in order of birth year.    * Y.O.B = year of birth *" << endl;
-                cout << "* 4:  Display by award                   * Y.O.A = year of award *" << endl;
-                cout << "* 5:  Display living scientists          *                       *" << endl;
-                cout << "* 6:  Chuck Norris                       *                       *" << endl;
+                cout << "* 4:  Display living scientists          *                       *" << endl;
+                cout << "* 5:  Chuck Norris                       *                       *" << endl;
                 cout << "*----------------------------------------*-----------------------*" << endl;
                 cout << "-----------------------------------------------------------------" << endl;
                 cout << "Enter number: ";
@@ -101,7 +100,7 @@ void consoleUI::run()
                         cin.ignore(1000,'\n');
                         cout << "Not valid input, please try again: ";
                     }
-                    if(!((displayScientist > 0) && (displayScientist < 7)))
+                    if(!((displayScientist > 0) && (displayScientist < 6)))
                     {
                         cout << "Not valid input, please try again: ";
                         invalidInput = true;
@@ -122,7 +121,7 @@ void consoleUI::run()
                 else if (displayScientist == 2)
                 {
                     listServices sort;
-                    sort.changeTo(_scientist.sortByName());
+                    sort.changeTo(sort.sortByName());
                     cout << "A list of scientists in alphabetical order" << endl;
                     print(sort);
                     printNames(sort);
@@ -131,37 +130,29 @@ void consoleUI::run()
                  //This case displays the scientists in an organized list from oldest to youngest
                  else if (displayScientist == 3)
                     {
-                        _scientist.changeTo(_scientist.sortByBirth());
+                        listServices sort;
+                        sort.changeTo(sort.sortByBirth());
                         cout << "An organized list starting with the oldest scientist" << endl;
                         print(_scientist);
                         printNames(_scientist);
                     break;
                     }
-                //This case sorts the scientists by the year they recived the Turning Award
-                else if (displayScientist == 4)
-                {
-                    _scientist.changeTo(_scientist.sortByAward());
-                    cout << "An organized list of scientists in order of when they received a Turing award." << endl;
-                    print(_scientist);
-                    printNames(_scientist);
-                    break;
-                }
                     //This case organizes the living scientists from oldest to youngest
-                else if (displayScientist == 5)
+                else if (displayScientist == 4)
                 {
                     listServices scientists;
                     string searchTerm;
-                    scientists.changeTo(_scientist.searchAlive());
+                    scientists.changeTo(scientists.searchAlive());
                     cout << "An organized list starting with the oldest living scientist" << endl;
                     print(scientists);
                     printNames(scientists);
                     break;
                 }
-                else if (displayScientist == 6)
+                else if (displayScientist == 5)
                 {
 
                     listServices norris;
-                    norris.changeTo(_scientist.chuckNorris());
+                    norris.changeTo(norris.chuckNorris());
                     print(norris);
                     printNames(norris);
                     break;
@@ -242,7 +233,7 @@ void consoleUI::run()
                     else if(rangeOrSingle == 2)
                     {
                         int minYear = yearChecker(1,0,0);
-                        int maxYear = yearChecker(1,0,0);
+                        int maxYear = yearChecker(4,minYear,0);
                         listServices scientistsBirth;
                         scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
                         print(scientistsBirth);
@@ -259,20 +250,28 @@ void consoleUI::run()
                     string searchTerm;
                     cout << "Enter a single name to search: ";
                     cin >> searchTerm;
-                    scientists.changeTo(_scientist.searchName(searchTerm));
+                    scientists.changeTo(scientists.searchName(searchTerm));
                     print(scientists);
-                    printNames(scientists);
-                    break;
+                    if (scientists.getSize() == 0)
+                    {
+                        cout << "Person is not in database!" << endl;
+                        cout << "-------------------------------------------------------------" << endl;
+                        break;
+                    } else {
+                        printNames(scientists);
+                        break;
+                    }
+
                  }
 
                 //This case sorts the scientists by the year they recived the Turning Award
                 else if (searchScientist == 3)
                 {
                     listServices scientists;
-                    cout << "Etner a single year to search: ";
+                    cout << "Enter a single year to search: ";
                     int year;
                     cin >> year;
-                    scientists.changeTo(_scientist.searchAward(year));
+                    scientists.changeTo(scientists.searchAward(year));
                     print(scientists);
                     printNames(scientists);
                     break;
@@ -669,6 +668,10 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
       cout << "Please enter the year the scientist won the award.";
       }
+      else if (TYPE == 4)
+      {
+          cout << "Please insert second year.";
+      }
       //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
       {
@@ -686,6 +689,10 @@ int consoleUI::yearChecker(const int TYPE, int birthYear, int deathYear)
           cout << "Invalid year." << endl;
       }
       else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
+      {
+          cout << "Invalid year." << endl;
+      }
+      else if (TYPE == 4 && (birthYear > year))
       {
           cout << "Invalid year." << endl;
       }
