@@ -1,8 +1,6 @@
 #include "DataLayer.h"
 #include <iostream>
 #include <vector>
-//#include <sqlite3.h>
-//#include <sql.h>
 
 
 DataLayer::DataLayer()
@@ -33,12 +31,13 @@ DataLayer::~DataLayer()
 void DataLayer::readAllFromDataBase() const
 {
     qDebug() << "Persons in Database: ";
-    QSqlQuery query("SELECT * FROM Scientists");
-    int idFirstName = query.record().indexOf("FirstName");
+    QSqlQuery query("SELECT * FROM scientist");
+    int idFirstName = query.record().indexOf("firstname");
     while(query.next())
     {
         QString name = query.value(idFirstName).toString();
         qDebug() << "=====" << name;
+        cout << "Hello";
     }
 }
 
