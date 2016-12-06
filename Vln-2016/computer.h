@@ -1,6 +1,5 @@
 #ifndef COMPUTER_H
 #define COMPUTER_H
-#include "DataLayer.h"
 #include <iostream>
 #include <vector>
 #include <string>
