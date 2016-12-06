@@ -20,7 +20,10 @@ public:
     DataLayer();
     ~DataLayer();
     vector<Scientist> readAllFromDataBase();
-    void deleteFunction(string x);
+
+    bool deleteFunction(string x);
+
+    vector<Scientist> searchForNameFromDatabase(string name);
 
 };
 

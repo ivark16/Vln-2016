@@ -13,5 +13,15 @@ int main(int argc, char *argv[])
 
     DataLayer db;
     db.readAllFromDataBase();
+    vector<Scientist> s;
+    s = db.searchForNameFromDatabase("Clifford");
+
+    if (db.deleteFunction("ABC"))
+    {
+        cout << "Person deleted" << endl;
+    } else {
+        cout  << endl << "Fail" << endl;
+    }
+
     return 0;
 }
