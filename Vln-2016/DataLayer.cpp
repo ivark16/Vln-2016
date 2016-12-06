@@ -43,16 +43,16 @@ vector<Scientist> DataLayer::readAllFromDataBase()
     int idname6 = query.record().indexOf("YOA");
     while(query.next())
     {
-        s.firstName = query.value(idName).toString().toStdString();
-        s.lastName = query.value(idname1).toString().toStdString();
-        s.sex = query.value(idname2).toString().toStdString()[0];
-        s.nationality = query.value(idname3).toString().toStdString();
-        s.birthYear = query.value(idname4).toInt();
-        s.deathYear = query.value(idname5).toInt();
-        s.awardYear = query.value(idname6).toInt();
-
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        cout << s.getFirstName();
         returnScientist.push_back(s);
-
     }
     return returnScientist;
 }
