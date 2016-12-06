@@ -56,3 +56,14 @@ vector<Scientist> DataLayer::readAllFromDataBase()
     }
     return returnScientist;
 }
+
+void DataLayer::deleteFunction(string name)
+{
+    bool check;
+    QSqlQuery myQuery;
+    myQuery.prepare(("SELECT firstName FROM scientist WHERE name = (:name)"));
+    myQuery.addBindValue(":name" , name);
+    {
+
+    }
+}
