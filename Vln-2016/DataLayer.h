@@ -20,6 +20,8 @@ public:
     DataLayer();
     ~DataLayer();
     vector<Scientist> readAllFromDataBase();
+    vector<Scientist> searchForNameFromDatabase(string name);
+
 
 };
 
