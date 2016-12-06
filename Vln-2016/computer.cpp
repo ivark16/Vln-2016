@@ -5,27 +5,27 @@ Computer::Computer()
     //empty constructor
 }
 
-Computer::Computer(string cNames, string cType, string tComputers, int yoBuild)
+Computer::Computer(string cName, string cType, int yoBuild, bool wBuilt)
 {
-    _computerNames = cNames;
+    _computerName = cName;
     _computerType = cType;
-    _tableComputers = tComputers;
     _yearOfBuild = yoBuild;
+    _wasBuilt = wBuilt;
 }
 
-string Computer::getComputerNames()
+string Computer::getComputerName()
 {
-    return _computerNames;
+    return _computerName;
 }
 string Computer::getComputerType()
 {
     return _computerType;
 }
-string Computer::getTableComputers()
-{
-    return _tableComputers;
-}
 int Computer::getYearOfBuild()
 {
     return _yearOfBuild;
+}
+bool Computer::getWasBuilt()
+{
+    return _wasBuilt;
 }
