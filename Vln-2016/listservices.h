@@ -17,7 +17,8 @@ public:
     string fullNameFromList(int i) const; // Returns full name from scientistList
     int dobFromList(int i) const; // Returns date of birth from scientistList
     int dodFromList(int i) const; // Returns date of death from scientistList
-    char getSexFromList(int i) const;
+    int getSizeOfScientistList();
+    char getGenderFromListAt(int i);
     int getAwardsFromList(int i) const;
 
     //FREEESH

@@ -22,6 +22,8 @@ public:
     vector<Scientist> readAllFromDataBase();
 
     void searchForNameFromDatabase(string name);
+    int getSizeOfScientists();
+    char getGenderAt(int i);
     bool deleteFunction(string x);
 
 };

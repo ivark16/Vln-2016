@@ -115,4 +115,14 @@ void DataLayer::searchForNameFromDatabase(string name)
     }
 }
 
+int DataLayer::getSizeOfScientists()
+{
+    return _scientists.size();
+}
+
+char DataLayer::getGenderAt(int i)
+{
+    return _scientists[i].getGender();
+}
+
 
