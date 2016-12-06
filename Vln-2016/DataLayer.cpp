@@ -12,13 +12,13 @@ DataLayer::DataLayer(const QString &path)
        m_db = QSqlDatabase::addDatabase("QSQLITE");
        m_db.setDatabaseName("Scientists.sqlite");
 
-       if (!m_db.open())
+       if (m_db.isOpen())
        {
-          qDebug() << "Error: connection with database fail";
+           qDebug() << "Database: connection ok";
        }
        else
        {
-          qDebug() << "Database: connection ok";
+           qDebug() << "Error: connection with database fail";
        }
 }
 
@@ -33,13 +33,16 @@ DataLayer::~DataLayer()
 void DataLayer::readAllFromDataBase() const
 {
     qDebug() << "Persons in Database: ";
-    QSqlQuery query("SELECT * FROM Scientists");
-    int idName = query.record().indexOf("name");
+    QSqlQuery query;
+    query.exec("SELECT * FROM Scientists");
+    //cout << idName;
     while(query.next())
     {
-        QString name = query.value(idName).toString();
-        qDebug() << "=====" << name;
-        cout << "HaLLOOO" << endl;
+        cout << "test";
+        int idName = query.value(0).toInt();
+        QString name = query.value(1).toString();
+        qDebug() << idName << name;
+        cout << "HaLLOOO"<< endl;
     }
 }
 
