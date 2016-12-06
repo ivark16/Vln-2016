@@ -6,8 +6,8 @@
 #include <QSqlRecord>
 #include <QDebug>
 #include <vector>
-//#include <scientist.h>
-//#include <computer.h>
+#include <scientist.h>
+#include <computer.h>
 
 
 class DataLayer
