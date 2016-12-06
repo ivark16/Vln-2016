@@ -11,11 +11,15 @@ using namespace std;
 class Computer
 {
     string _firstComputer;
+    string _tableComputers;
+    int _yearOfBuild;
 
 public:
     Computer();
-    Computer(string fComputer);
+    Computer(string fComputer, string tComputers, int yoBuild);
     string getFirstComputer();
+    string getTableComputers();
+    int getYearOfBuild();
 
 };
 

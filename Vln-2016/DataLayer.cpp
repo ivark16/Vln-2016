@@ -52,8 +52,3 @@ void DataLayer::readAllFromDataBase() const
         qDebug() << firstName << lastName << gender << nationality << YOB << YOD << YOA;
     }
 }
-
-
-
-
-
