@@ -14,8 +14,15 @@ int main(int argc, char *argv[])
     DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
-    //db.readAllFromDataBase();
+    db.readAllFromScientistsDataBase();
     db.searchForNameFromDatabase("Clifford");
+
+    if (db.deleteFunction("Clifford"))
+    {
+        cout << "Person deleted" << endl;
+    } else {
+        cout  << endl << "Fail" << endl;
+    }
 
     return 0;
 }

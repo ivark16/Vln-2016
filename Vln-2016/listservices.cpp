@@ -17,6 +17,12 @@ void listServices::searchForName(string name)
     _myData.searchForNameFromDatabase(name);
 }
 
+int listServices::getSizeOfScientistList()
+{
+   return _myData.getSizeOfScientists();
+}
+
+
 
 
 // This struct is used to print code in alphabetical order.
@@ -55,9 +61,9 @@ int listServices::dodFromList(int i) const
     return _computerScientists[i].dod();
 }
 //This function is returning the Scientists gender at intex i
-char listServices::getSexFromList(int i) const
+char listServices::getGenderFromListAt(int i)
 {
-    return _computerScientists[i].getSex();
+    return _myData.getGenderAt(i);
 }
 //This function returns the Awards from the list at intex i
 int listServices::getAwardsFromList(int i) const

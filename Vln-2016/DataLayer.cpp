@@ -102,7 +102,34 @@ vector<searching> DataLayer::readAllDataFromSearchingDatabse()
     return _searching;
 }
 
+
+bool DataLayer::deleteFunction(string x)
+{
+    QSqlQuery myQuery;
+    QString qName = QString::fromStdString(x);
+    myQuery.prepare(("SELECT firstname FROM scientist WHERE firstname = (:x)"));
+    myQuery.addBindValue(qName);
+
+    if (myQuery.exec())
+    {
+        if (myQuery.next())
+        {
+            cout << "bla" << endl;
+            myQuery.prepare("DELETE FROM scientist WHERE firstname = (:x)");
+            myQuery.addBindValue(qName);
+            myQuery.exec();
+            return true;
+        }
+    }
+    else
+    {
+          return false;
+    }
+}
+
+
 void DataLayer::searchForNameFromDatabase(string name)
+
 {
     vector<Scientist> scientists;
     QSqlQuery query;
@@ -127,11 +154,21 @@ void DataLayer::searchForNameFromDatabase(string name)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-        cout << firstName;
+        //cout << firstName;
         Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
         scientists.push_back(s);
 
         _scientists = scientists;
     }
+}
+
+int DataLayer::getSizeOfScientists()
+{
+    return _scientists.size();
+}
+
+char DataLayer::getGenderAt(int i)
+{
+    return _scientists[i].getGender();
 }
 

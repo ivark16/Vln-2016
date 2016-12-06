@@ -25,8 +25,11 @@ public:
     vector<Computer> readAllFromDataComputerBase();
     vector<searching> readAllDataFromSearchingDatabse();
     vector<Scientist> readAllFromScientistsDataBase();
-    void searchForNameFromDatabase(string name);
 
+    void searchForNameFromDatabase(string name);
+    int getSizeOfScientists();
+    char getGenderAt(int i);
+    bool deleteFunction(string x);
 
 };
 
