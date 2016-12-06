@@ -6,20 +6,20 @@
 #include <QSqlRecord>
 #include <QDebug>
 #include <vector>
-//#include <scientist.h>
+#include <scientist.h>
 //#include <computer.h>
+using namespace std;
 
 
 class DataLayer
 {
-
-    //vector<Scientist> _dataFromDatabase;
+    vector<Scientist> _dataFromDatabase;
     //vector<Computer> _computerDataFromDatabase;
     QSqlDatabase m_db;
 public:
     DataLayer();
     ~DataLayer();
-    void readAllFromDataBase() const;
+    vector<Scientist> readAllFromDataBase();
 
 };
 

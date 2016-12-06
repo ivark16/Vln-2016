@@ -28,8 +28,10 @@ DataLayer::~DataLayer()
     }
 }
 
-void DataLayer::readAllFromDataBase() const
+vector<Scientist> DataLayer::readAllFromDataBase()
 {
+    vector<Scientist> returnScientist;
+    Scientist s;
     qDebug() << "Persons in Database: ";
     QSqlQuery query("SELECT * FROM scientist");
     int idName = query.record().indexOf("firstname");
@@ -41,17 +43,18 @@ void DataLayer::readAllFromDataBase() const
     int idname6 = query.record().indexOf("YOA");
     while(query.next())
     {
-        QString firstName = query.value(idName).toString();
-        QString lastName = query.value(idname1).toString();
-        QString gender = query.value(idname2).toString();
-        QString nationality = query.value(idname3).toString();
-        QString YOB = query.value(idname4).toString();
-        QString YOD = query.value(idname5).toString();
-        QString YOA = query.value(idname6).toString();
+        s.firstName = query.value(idName).toString().toStdString();
+        s.lastName = query.value(idname1).toString().toStdString();
+        s.sex = query.value(idname2).toString().toStdString()[0];
+        s.nationality = query.value(idname3).toString().toStdString();
+        s.birthYear = query.value(idname4).toInt();
+        s.deathYear = query.value(idname5).toInt();
+        s.awardYear = query.value(idname6).toInt();
 
-        qDebug() << firstName << lastName << gender << nationality << YOB << YOD << YOA;
+        returnScientist.push_back(s);
 
     }
+    return returnScientist;
 }
 
 

@@ -15,13 +15,13 @@ Scientist::Scientist(string fName, string lName, string nationality, int bYear, 
     _sex = gender;
     _awardYear = aYear;
 
-    DataLayer writer;
+    //DataLayer writer;
     //writer.addNewScientist(fName, lName, nationality, bYear, dYear, gender, aYear); ADD THIS FUNCTION TO DATALAYER
 }
 
 void Scientist::readFile(vector<Scientist>& scientists)
 {
-    DataLayer reader;
+    //DataLayer reader;
     /*  WRITE THESE FUNCTIONS TO DATALAYER
     do(
     _firstName = reader.getFirstName(i);
