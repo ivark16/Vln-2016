@@ -7,6 +7,18 @@
 using namespace std;
 
 
+
+
+
+
+
+void listServices::searchForName(string name)
+{
+    _myData.searchForNameFromDatabase(name);
+}
+
+
+
 // This struct is used to print code in alphabetical order.
 struct ScientistComparison
 {

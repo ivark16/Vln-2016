@@ -13,8 +13,7 @@ int main(int argc, char *argv[])
 
     DataLayer db;
     db.readAllFromDataBase();
-    vector<Scientist> s;
-    s = db.searchForNameFromDatabase("Clifford");
+    db.searchForNameFromDatabase("Clifford");
 
     return 0;
 }
