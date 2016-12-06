@@ -7,23 +7,22 @@
 #include <QDebug>
 #include <vector>
 #include <scientist.h>
-//#include <computer.h>
+#include <computer.h>
 using namespace std;
 
 
 class DataLayer
 {
-    vector<Scientist> _dataFromDatabase;
-    //vector<Computer> _computerDataFromDatabase;
+    vector<Scientist> _scientists;
+    vector<Computer> _computer;
     QSqlDatabase m_db;
 public:
     DataLayer();
     ~DataLayer();
     vector<Scientist> readAllFromDataBase();
 
+    void searchForNameFromDatabase(string name);
     bool deleteFunction(string x);
-
-    vector<Scientist> searchForNameFromDatabase(string name);
 
 };
 

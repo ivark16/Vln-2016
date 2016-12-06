@@ -80,9 +80,11 @@ bool DataLayer::deleteFunction(string x)
     }
 }
 
-vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
+
+void DataLayer::searchForNameFromDatabase(string name)
+
 {
-    vector<Scientist> returnScientist;
+    vector<Scientist> scientists;
     QSqlQuery query;
     QString qName = QString::fromStdString(name);
     query.prepare("SELECT * FROM scientist WHERE firstname= (:x) OR lastname = (:y)");
@@ -107,9 +109,10 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
         int awardYear = query.value(idname6).toInt();
         cout << firstName;
         Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
-        returnScientist.push_back(s);
+        scientists.push_back(s);
+
+        _scientists = scientists;
     }
-    return returnScientist;
 }
 
 
