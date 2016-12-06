@@ -5,7 +5,7 @@
 //#include <sql.h>
 
 
-DataLayer::DataLayer(const QString &path)
+DataLayer::DataLayer()
 {
     QSqlDatabase m_db;
 
@@ -34,10 +34,10 @@ void DataLayer::readAllFromDataBase() const
 {
     qDebug() << "Persons in Database: ";
     QSqlQuery query("SELECT * FROM Scientists");
-    int idName = query.record().indexOf("name");
+    int idFirstName = query.record().indexOf("FirstName");
     while(query.next())
     {
-        QString name = query.value(idName).toString();
+        QString name = query.value(idFirstName).toString();
         qDebug() << "=====" << name;
         cout << "HaLLOOO" << endl;
     }

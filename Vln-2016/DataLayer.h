@@ -15,7 +15,7 @@ class DataLayer
     vector<Scientist> _dataFromDatabase;
     QSqlDatabase m_db;
 public:
-    DataLayer(const QString &path);
+    DataLayer();
     ~DataLayer();
     void readAllFromDataBase() const;
     vector<Scientist> searchForName(string name);
