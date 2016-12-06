@@ -28,10 +28,12 @@ DataLayer::~DataLayer()
     }
 }
 
-vector<Scientist> DataLayer::readAllFromScientistDataBase()
+vector<Scientist> DataLayer::readAllFromScientistsDataBase()
 {
 
     Scientist s;
+    vector<Scientist> returnScientist;
+    qDebug() << "Persons in Database: ";
     QSqlQuery query("SELECT * FROM scientist");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -51,9 +53,9 @@ vector<Scientist> DataLayer::readAllFromScientistDataBase()
         int awardYear = query.value(idname6).toInt();
         Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
         cout << s.getFirstName();
-        _dataFromDatabase.push_back(s);
+        _scientists.push_back(s);
     }
-    return _dataFromDatabase;
+    return _scientists;
 }
 
 vector<Computer> DataLayer::readAllFromDataComputerBase()
@@ -72,9 +74,9 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
         Computer s(name, type, yearbuilt, wasbuilt);
-        _computerDataFromDatabase.push_back(s);
+        _computer.push_back(s);
     }
-    return _computerDataFromDatabase;
+    return _computer;
 }
 
 vector<searching> DataLayer::readAllDataFromSearchingDatabse()
@@ -93,10 +95,43 @@ vector<searching> DataLayer::readAllDataFromSearchingDatabse()
         string compname = query.value(idName3).toString().toStdString();
         int yearbuilt = query.value(idName4).toInt();
         searching s(firstname, lastname, compname, yearbuilt);
-        _joinSearchFromDatabase.push_back(s);
+        _searching.push_back(s);
 
     }
     cout << "helloo" << endl;
-    return _joinSearchFromDatabase;
+    return _searching;
+}
+
+void DataLayer::searchForNameFromDatabase(string name)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(name);
+    query.prepare("SELECT * FROM scientist WHERE firstname= (:x) OR lastname = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(qName);
+    query.exec();
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        cout << firstName;
+        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        scientists.push_back(s);
+
+        _scientists = scientists;
+    }
 }
 

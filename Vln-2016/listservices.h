@@ -1,11 +1,13 @@
 #ifndef LISTSERVICES_H
 #define LISTSERVICES_H
 #include "scientistList.h"
+#include "DataLayer.h"
 #include <vector>
 
 class listServices
 {
     vector<scientistList> _computerScientists;
+    DataLayer _myData;
     scientistList _data;
 public:
     listServices();
@@ -18,7 +20,15 @@ public:
     char getSexFromList(int i) const;
     int getAwardsFromList(int i) const;
 
+    //FREEESH
+    void searchForName(string name);
 
+
+
+
+
+
+    //GAMALT
     vector<scientistList> searchName(string searchTerm); // Returns vector with scientists with same name as the string
     vector<scientistList> sortByName(); // Returns vectors with names in alphabetical order
     vector<scientistList>   sortByBirth(); // Returns vector with dob in correct order (lowest first and so on)
