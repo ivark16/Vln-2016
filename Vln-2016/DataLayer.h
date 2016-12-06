@@ -13,6 +13,7 @@ class DataLayer
 {
 
     vector<Scientist> _dataFromDatabase;
+    vector<Computer> _computerDataFromDatabase;
     QSqlDatabase m_db;
 public:
     DataLayer(const QString &path);
