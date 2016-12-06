@@ -250,9 +250,10 @@ void consoleUI::run()
                     string searchTerm;
                     cout << "Enter a single name to search: ";
                     cin >> searchTerm;
-                    scientists.changeTo(scientists.searchName(searchTerm));
+                    //scientists.changeTo(scientists.searchName(searchTerm));
+                    _myData.searchForNameFromDatabase(searchTerm);
                     print(scientists);
-                    if (scientists.getSize() == 0)
+                    if (_myData.getSizeOfScientists() == 0)
                     {
                         cout << "Person is not in database!" << endl;
                         cout << "-------------------------------------------------------------" << endl;
@@ -354,7 +355,7 @@ void consoleUI::run()
                         string sex;
                         string isDead;
 
-                        if(scientist.getSexFromList(i) == 'm')
+                        if(scientist.getGenderFromListAt(i) == 'm')
                         {
                             sex = "male";
                         }
@@ -541,15 +542,15 @@ void consoleUI::print(listServices scientistsToPrint)
 void consoleUI::printNames (listServices scientistsToPrint)
 {
     int counter = 1;
-    for(int i = 0; i < scientistsToPrint.getSize() ; i++)
+    for(int i = 0; i < scientistsToPrint.getSizeOfScientistList() ; i++)
     {
         string sex;
         string isDead;
-        if(scientistsToPrint.getSexFromList(i) == 'm')
+        if(scientistsToPrint.getGenderFromListAt(i) == 'm')
         {
             sex = "male";
         }
-        else if(scientistsToPrint.getSexFromList(i) == 'f')
+        else if(scientistsToPrint.getGenderFromListAt(i) == 'f')
         {
             sex = "female";
         }

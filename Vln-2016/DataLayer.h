@@ -21,6 +21,9 @@ public:
     ~DataLayer();
     vector<Scientist> readAllFromDataBase();
     void searchForNameFromDatabase(string name);
+    int getSizeOfScientists();
+    char getGenderAt(int i);
+
 
 
 };
