@@ -56,8 +56,3 @@ vector<Scientist> DataLayer::readAllFromDataBase()
     }
     return returnScientist;
 }
-
-
-
-
-
