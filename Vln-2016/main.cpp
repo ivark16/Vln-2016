@@ -12,6 +12,6 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     DataLayer db;
-    db.readAllFromDataBase();
+    db.readAllDataFromSearchingDatabse();
     return 0;
 }

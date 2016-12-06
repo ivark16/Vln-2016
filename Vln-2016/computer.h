@@ -12,10 +12,11 @@ class Computer
     string _firstComputer;
     string _tableComputers;
     int _yearOfBuild;
+    bool _wasbuilt;
 
 public:
     Computer();
-    Computer(string fComputer, string tComputers, int yoBuild);
+    Computer(string fComputer, string tComputers, int yoBuild, bool wasbuilt);
     string getFirstComputer();
     string getTableComputers();
     int getYearOfBuild();
