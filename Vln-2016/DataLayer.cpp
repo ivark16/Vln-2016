@@ -39,7 +39,6 @@ void DataLayer::readAllFromDataBase() const
     {
         QString name = query.value(idFirstName).toString();
         qDebug() << "=====" << name;
-        cout << "HaLLOOO" << endl;
     }
 }
 
