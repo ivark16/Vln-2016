@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "DataLayer.h"
 
 using namespace std;
 
@@ -15,10 +16,21 @@ class Scientist
     int _birthYear;
     int _deathYear;
     char _sex;
-    int _TuringAwards;
+    int _awardYear;
 
 public:
     Scientist();
+    Scientist(string fName, string lName, string nationality, int bYear, int dYear, char gender, int aYear);
+    void readFile(vector<Scientist>& scientists);
+    string getFirstName();
+    string getLastName();
+    string getNationality();
+    int getBirthYear();
+    int getDeathYear();
+    char getGender();
+    int getAwardYear();
+
+
 };
 
 #endif // SCIENTIST_H
