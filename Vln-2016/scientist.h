@@ -20,6 +20,7 @@ class Scientist
 public:
     Scientist();
     Scientist(string fName, string lName, string nationality, int bYear, int dYear, char gender, int aYear);
+    void readFile(vector<Scientist>& scientists);
     string getFirstName();
     string getLastName();
     string getNationality();

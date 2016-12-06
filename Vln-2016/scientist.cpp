@@ -16,6 +16,10 @@ Scientist::Scientist(string fName, string lName, string nationality, int bYear, 
     _awardYear = aYear;
 }
 
+void Scientist::readFile(vector<Scientist>& scientists)
+{
+
+}
 string Scientist::getFirstName()
 {
     return _firstName;
