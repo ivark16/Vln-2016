@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
     //consoleUI Master;
     //Master.run();
 
-    //QCoreApplication a(argc, argv);
+    QCoreApplication a(argc, argv);
 
-    //DataLayer db;
+    DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
 
@@ -41,10 +41,10 @@ int main(int argc, char *argv[])
 
 
     //db.deleteFunctionComputer("bla");
-    //db.checkInComputer("ABC");
+    db.checkInComputer("AB");
 
-    ui Master;
-    Master.run();
+   // ui Master;
+   // Master.run();
 
     return 0;
 }

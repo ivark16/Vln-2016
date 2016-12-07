@@ -26,7 +26,7 @@ void ui::run()
      cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
      cout << "*                        Brynjar Barkarson                       *"<< endl;
      cout << "*                        Dagmar Loftsdottir                      *" << endl;
-     cout << "*                     Gabriela Jona Olfafsdottir                 *" << endl;
+     cout << "*                     Gabriela Jona Olafsdottir                  *" << endl;
      cout << "*                       Ivar Orn Kristjansson                    *" << endl;
      cout << "*                          Stefan Hjartarson                     *" << endl;
      cout << "------------------------------------------------------------------" << endl;
@@ -117,7 +117,7 @@ void ui::run()
 
                      cout << "***List of all scientists***" << endl;
                      newvector = scientists.displayScientist();
-                     print(scientists);
+                     //print(scientists);
                      for(unsigned int i = 0 ; i < newvector.size() ; i++)
                      {
                          cout << newvector[i].getFirstName()  << "\t";
@@ -325,7 +325,7 @@ void ui::run()
     }
 }
 
-void ui::print(listServices scientistsToPrint)
+/*void ui::print(listServices scientistsToPrint)
 {
     int width = scientistsToPrint.searchLongestName();
 
@@ -422,4 +422,4 @@ void ui::printNames (listServices scientistsToPrint)
     }
     cout << endl;
 
-}
+}*/
