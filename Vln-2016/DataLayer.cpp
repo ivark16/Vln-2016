@@ -196,6 +196,11 @@ char DataLayer::getGenderAt(int i)
     return _scientists[i].getGender();
 }
 
+int DataLayer::getBirthYearAt(int i)
+{
+    return _scientists[i].getBirthYear();
+}
+
 vector<Scientist> DataLayer::readInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
