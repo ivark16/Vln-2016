@@ -133,8 +133,8 @@ void consoleUI::run()
                         listServices sort;
                         sort.changeTo(sort.sortByBirth());
                         cout << "An organized list starting with the oldest scientist" << endl;
-                        print(_scientist);
-                        printNames(_scientist);
+                       // print(_scientist);
+                        //printNames(_scientist);
                     break;
                     }
                     //This case organizes the living scientists from oldest to youngest
@@ -327,7 +327,7 @@ void consoleUI::run()
                    cout << "Invalid entry.  Please enter either y (yes) or n (no)";
                }
 
-               _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
+              // _scientist.addNew(firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
                }
         break;
 

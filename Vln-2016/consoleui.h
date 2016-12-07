@@ -9,7 +9,7 @@ using namespace std;
 class consoleUI
 {
     int _chooseNumber;
-    listServices _scientist;
+    //listServices _scientist;
     DataLayer _myData;
 public:
     consoleUI();

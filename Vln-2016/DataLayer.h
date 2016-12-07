@@ -25,6 +25,8 @@ public:
     int getSizeOfScientists();
     char getGenderAt(int i);
     bool deleteFunction(string x);
+    bool addFunction(string name1, string name2, char gender, string nation, int yob, int yod, int yoa);
+    vector<Scientist> readInAlphabeticalOrder();
 
 };
 
