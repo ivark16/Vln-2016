@@ -24,9 +24,9 @@ void ui::run()
      cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
-     cout << "*                        Brynjar Barkarsson                      *"<< endl;
+     cout << "*                        Brynjar Barkarson                       *"<< endl;
      cout << "*                        Dagmar Loftsdottir                      *" << endl;
-     cout << "*                     Gabriela Jona Olfafsdottir                 *" << endl;
+     cout << "*                     Gabriela Jona Olafsdottir                  *" << endl;
      cout << "*                       Ivar Orn Kristjansson                    *" << endl;
      cout << "*                          Stefan Hjartarson                     *" << endl;
      cout << "------------------------------------------------------------------" << endl;

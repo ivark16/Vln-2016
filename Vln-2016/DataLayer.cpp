@@ -412,7 +412,7 @@ vector<Computer> DataLayer::checkInComputer(string x)
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
 
-    query.prepare("SELECT * FROM computer WHERE computer.name = (:x)");
+    query.prepare("SELECT * FROM computer c WHERE c.name LIKE (:x)");
     query.addBindValue(qName);
     query.exec();
     int idName = query.record().indexOf("name");
