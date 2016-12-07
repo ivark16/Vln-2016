@@ -23,6 +23,8 @@ public:
 
     //FREEESH
     void searchForName(string name);
+    vector<Scientist> displayScientist();
+    int getSizeOfData();
 
 
 

@@ -113,6 +113,7 @@ void consoleUI::run()
                 if (displayScientist == 1)
                 {
                     listServices scientists;
+
                     cout << "***List of all scientists***" << endl;
                     print(scientists);
                     printNames(scientists);

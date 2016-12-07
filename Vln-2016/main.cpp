@@ -1,5 +1,6 @@
 #include "consoleui.h"
 #include "DataLayer.h"
+#include "ui.h"
 using namespace std;
 
     static const QString path = "Scientists.db";
@@ -9,12 +10,12 @@ int main(int argc, char *argv[])
     //consoleUI Master;
     //Master.run();
 
-    QCoreApplication a(argc, argv);
+    //QCoreApplication a(argc, argv);
 
-    DataLayer db;
+    //DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
-    db.readAllFromScientistsDataBase();
+    /*db.readAllFromScientistsDataBase();
     db.searchForNameFromDatabase("Clifford");
 
     if (db.deleteFunction("Ivar"))
@@ -32,7 +33,10 @@ int main(int argc, char *argv[])
         cout << "add function failed" << endl;
     }
 
-    db.readInAlphabeticalOrder();
+    db.readInAlphabeticalOrder();*/
+
+    ui Master;
+    Master.run();
 
     return 0;
 }

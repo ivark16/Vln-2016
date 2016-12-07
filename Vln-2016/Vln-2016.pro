@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     DataLayer.cpp \
     scientist.cpp \
     computer.cpp \
-    searching.cpp
+    searching.cpp \
+    ui.cpp
 
 HEADERS += \
     consoleui.h \
@@ -27,4 +28,5 @@ HEADERS += \
     DataLayer.h \
     scientist.h \
     computer.h \
-    searching.h
+    searching.h \
+    ui.h
