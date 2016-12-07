@@ -741,10 +741,12 @@ string consoleUI::nationalityChecker()
        {
           cont = true;
        }
-       }
+    }
 
        return nationality;
 }
+
+
 
 int consoleUI::birthYearChecker()
 {
@@ -769,7 +771,53 @@ int consoleUI::birthYearChecker()
     return year;
 }
 
+//
+int consoleUI::deathYearChecker()
+{
+    bool cont = false;
+    int dyear;
 
+    while(!cont)
+    {
+        cout << "Enter the scientists' year of death: " ;
+        cin >> dyear;
+        //checks that the entry is legit
+        if(isdigit(dyear))
+        {
+            cont = true;
+        }
+        else
+        {
+            cout << "Invalid input.  Please enter a valid year of death." << endl;
+        }
+    }
+
+    return dyear;
+}
+
+//
+int consoleUI::awardYearChecker()
+{
+    bool cont = false;
+    int ayear;
+
+    while(!cont)
+    {
+        cout << "Enter the scientists' year of Award: " ;
+        cin >> ayear;
+        //checks that the entry is legit
+        if(isdigit(ayear))
+        {
+            cont = true;
+        }
+        else
+        {
+            cout << "Invalid input.  Please enter a valid year of death." << endl;
+        }
+    }
+
+    return ayear;
+}
 
 
 

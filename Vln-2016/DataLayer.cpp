@@ -201,6 +201,16 @@ int DataLayer::getBirthYearAt(int i)
     return _scientists[i].getBirthYear();
 }
 
+int DataLayer::getDeathYearAt(int i)
+{
+    return _scientists[i].getDeathYear();
+}
+int DataLayer::getAwardYearAt(int i)
+
+{
+    return _scientists[i].getAwardYear();
+}
+
 vector<Scientist> DataLayer::readInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
