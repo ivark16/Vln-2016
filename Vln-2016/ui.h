@@ -14,8 +14,8 @@ public:
     ui();
     ui(int chooseNumber);
     void run();
-    void print(listServices scientistsToPrint);
-    void printNames (vector<Scientist> scientistsToPrint);
+    void print(scientistList scientistsToPrint);
+    void printNames(scientistList scientistsToPrint);
 };
 
 #endif // UI_H

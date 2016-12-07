@@ -27,7 +27,7 @@ void ui::run()
      cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
-     cout << "*                        Brynjar Barkarsson                      *"<< endl;
+     cout << "*                        Brynjar Barkarson                       *"<< endl;
      cout << "*                        Dagmar Loftsdottir                      *" << endl;
      cout << "*                     Gabriela Jona Olfafsdottir                 *" << endl;
      cout << "*                       Ivar Orn Kristjansson                    *" << endl;
@@ -206,17 +206,16 @@ void ui::print(listServices scientistsToPrint)
 }
 
 // This function prints all names in a table to the console
-void ui::printNames (vector<Scientist> scientistsToPrint)
+void ui::printNames (listServices scientistsToPrint)
 {
-    listServices printer;
     int counter = 1;
-    cout << printer.getSizeOfScientistList();
-    for(int i = 0; i < printer.getSizeOfScientistList() ; i++)
+    cout << scientistsToPrint.getSizeOfScientistList();
+    for(int i = 0; i < scientistsToPrint.getSizeOfScientistList() ; i++)
     {
         string sex;
         string isDead;
 
-       /* if(scientistsToPrint.getGenderFromListAt(i) == 'm')
+        if(scientistsToPrint.getGenderFromListAt(i) == 'm')
         {
             sex = "male";
         }
@@ -268,7 +267,7 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
             cout << scientistsToPrint.getAwardsFromList(i) << left;
         }
         cout.width(10);
-        cout << "   *" << endl;*/
+        cout << "   *" << endl;
     }
     for(int i = 0 ; i < 9 ; i++)
     {
