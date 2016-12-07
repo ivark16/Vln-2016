@@ -26,7 +26,7 @@ void ui::run()
      cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
      cout << "*                        Brynjar Barkarson                       *"<< endl;
      cout << "*                        Dagmar Loftsdottir                      *" << endl;
-     cout << "*                     Gabriela Jona Olfafsdottir                 *" << endl;
+     cout << "*                     Gabriela Jona Olafsdottir                  *" << endl;
      cout << "*                       Ivar Orn Kristjansson                    *" << endl;
      cout << "*                          Stefan Hjartarson                     *" << endl;
      cout << "------------------------------------------------------------------" << endl;
@@ -138,7 +138,7 @@ void ui::run()
 
                     cout << "***List of all computers***" << endl;
                     newvector = scientists.displayComputer();
-                    for(int i = 0 ; i < newvector.size() ; i++)
+                    for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
                         cout << newvector[i].getComputerName() << "\t";
                         cout << newvector[i].getComputerType() << "\t";
