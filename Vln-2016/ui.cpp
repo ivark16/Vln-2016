@@ -138,7 +138,7 @@ void ui::run()
 
                     cout << "***List of all computers***" << endl;
                     newvector = scientists.displayComputer();
-                    for(int i = 0 ; i < newvector.size() ; i++)
+                    for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
                         cout << newvector[i].getComputerName() << "\t";
                         cout << newvector[i].getComputerType() << "\t";
