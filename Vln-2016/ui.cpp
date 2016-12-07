@@ -116,7 +116,7 @@ void ui::run()
 
                      cout << "***List of all scientists***" << endl;
                      newvector = scientists.displayScientist();
-                     print(scientists);
+                     //print(scientists);
                      for(unsigned int i = 0 ; i < newvector.size() ; i++)
                      {
                          cout << newvector[i].getFirstName()  << "\t";
@@ -193,7 +193,7 @@ void ui::run()
      }
 }
 
-void ui::print(listServices scientistsToPrint)
+/*void ui::print(listServices scientistsToPrint)
 {
     int width = scientistsToPrint.searchLongestName();
 
@@ -290,4 +290,4 @@ void ui::printNames (listServices scientistsToPrint)
     }
     cout << endl;
 
-}
+}*/
