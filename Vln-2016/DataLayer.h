@@ -30,6 +30,8 @@ public:
     int getSizeOfScientists();
     char getGenderAt(int i);
     int getBirthYearAt(int i);
+    int getDeathYearAt(int i);
+    int getAwardYearAt(int i);
     bool deleteFunction(string x);
     bool addFunction(string name1, string name2, char gender1, string nation, int yob, int yod, int yoa);
     vector<Scientist> readInAlphabeticalOrder();
@@ -40,6 +42,8 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1);
     bool deleteFunctionComputer(string x);
+    vector<Computer> checkInComputer(string x);
+
     bool checkIfExists(string x);
 };
 

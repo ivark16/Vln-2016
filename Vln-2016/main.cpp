@@ -40,9 +40,11 @@ int main(int argc, char *argv[])
     //db.readInAlphabeticalOrderComputer();
 
 
+    //db.deleteFunctionComputer("bla");
+    //db.checkInComputer("ABC");
+
     ui Master;
     Master.run();
-
 
     return 0;
 }
