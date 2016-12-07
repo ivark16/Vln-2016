@@ -20,6 +20,7 @@ public:
     void searchLastName();
     string nameChecker(string nameType);
     char genderChecker();
+    int birthYearChecker();
 
 
     void print(listServices scientistsToPrint);
