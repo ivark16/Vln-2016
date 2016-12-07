@@ -745,3 +745,4 @@ string consoleUI::nationalityChecker()
 
        return nationality;
 }
+

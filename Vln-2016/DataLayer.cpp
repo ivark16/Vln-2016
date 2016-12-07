@@ -390,3 +390,27 @@ bool DataLayer::deleteFunctionComputer(string x)
           return false;
     }
 }
+
+bool DataLayer::checkIfExists(string x)
+{
+    bool exists = false;
+
+    QSqlQuery checkQuery;
+    QString qName = QString::fromStdString(x);
+    checkQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x)");
+    checkQuery.addBindValue(qName);
+
+    if (checkQuery.exec())
+    {
+        if(checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        exists = false;
+    }
+
+    return exists;
+}
