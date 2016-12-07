@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
     DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
-    db.readAllFromScientistsDataBase();
-    db.searchForNameFromDatabase("Clifford");
+    //db.readAllFromScientistsDataBase();
+    //db.searchForNameFromDatabase("Clifford");
 
-    if (db.deleteFunction("Ivar"))
+    /*if (db.deleteFunction("Ivar"))
 
     {
         cout << "Person deleted" << endl;
@@ -30,9 +30,13 @@ int main(int argc, char *argv[])
         cout << "Person added to database" << endl;
     } else {
         cout << "add function failed" << endl;
-    }
+    }*/
 
-    db.readInAlphabeticalOrder();
+    //db.readInAlphabeticalOrder();
+
+    db.readInOldestOrder();
+    cout << endl << endl;
+    db.readInYoungestOrder();
 
     return 0;
 }

@@ -32,7 +32,8 @@ public:
     bool deleteFunction(string x);
     bool addFunction(string name1, string name2, char gender, string nation, int yob, int yod, int yoa);
     vector<Scientist> readInAlphabeticalOrder();
-
+    vector<Scientist> readInOldestOrder();
+    vector<Scientist> readInYoungestOrder();
 };
 
 #endif // SCIENTISLISTFROMSQL_H
