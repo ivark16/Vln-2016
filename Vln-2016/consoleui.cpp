@@ -746,3 +746,26 @@ string consoleUI::nationalityChecker()
        return nationality;
 }
 
+int consoleUI::birthYearChecker()
+{
+    bool cont = false;
+    int year;
+
+    while(!cont)
+    {
+        cout << "Enter the scientist's birth year: " ;
+        cin >> year;
+        //checks that the entry is legit
+        if(isdigit(year))
+        {
+            cont = true;
+        }
+        else
+        {
+            cout << "Invalid input.  Please enter a valid birth year" << endl;
+        }
+    }
+
+    return year;
+}
+
