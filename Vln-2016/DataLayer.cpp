@@ -60,6 +60,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
 vector<Computer> DataLayer::readAllFromDataComputerBase()
 {
     Computer s;
+    vector<Computer> displayComputer;
     QSqlQuery query("SELECT * FROM computer");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -73,9 +74,9 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
         Computer s(name, type, yearbuilt, wasbuilt);
-        _computer.push_back(s);
+        displayComputer.push_back(s);
     }
-    return _computer;
+    return displayComputer;
 }
 
 vector<searching> DataLayer::readAllDataFromSearchingDatabse()

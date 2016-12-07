@@ -18,9 +18,6 @@ void ui::run()
 {
      int chooseNumber;
 
-     cout << "Enter Number: ";
-     cin >> chooseNumber;
-
      cout << "           _______ _______ ______ _______ ______      ______ " << endl;
      cout << "          |   |   |       |   __ \\   |   |   __ \\    |  __  |" << endl;
      cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
@@ -82,10 +79,11 @@ void ui::run()
                  cout << "------------------------------------------------------------------" << endl;
                  cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
                  cout << "* 1:  Display all scientists.            * Y.O.D = year of death *" << endl;
-                 cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
-                 cout << "* 3:  Display in order of birth year.    * Y.O.B = year of birth *" << endl;
-                 cout << "* 4:  Display living scientists          *                       *" << endl;
-                 cout << "* 5:  Chuck Norris                       *                       *" << endl;
+                 cout << "* 2:  Display all computers.             *                       *" << endl;
+                 cout << "* 3:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
+                 cout << "* 4:  Display in order of birth year.    * Y.O.B = year of birth *" << endl;
+                 cout << "* 5:  Display living scientists          *                       *" << endl;
+                 cout << "* 6:  Chuck Norris                       *                       *" << endl;
                  cout << "*----------------------------------------*-----------------------*" << endl;
                  cout << "-----------------------------------------------------------------" << endl;
                  cout << "Enter number: ";
@@ -118,6 +116,7 @@ void ui::run()
 
                      cout << "***List of all scientists***" << endl;
                      newvector = scientists.displayScientist();
+                     print(scientists);
                      for(unsigned int i = 0 ; i < newvector.size() ; i++)
                      {
                          cout << newvector[i].getFirstName()  << "\t";
@@ -132,7 +131,23 @@ void ui::run()
                      }
                      break;
                  }
-                 else if (displayScientist == 2)
+                 else if(displayScientist == 2)
+                 {
+                    listServices scientists;
+                    vector<Computer> newvector;
+
+                    cout << "***List of all computers***" << endl;
+                    newvector = scientists.displayComputer();
+                    for(int i = 0 ; i < newvector.size() ; i++)
+                    {
+                        cout << newvector[i].getComputerName() << "\t";
+                        cout << newvector[i].getComputerType() << "\t";
+                        cout << newvector[i].getYearOfBuild() << "\t";
+                        cout << newvector[i].getWasBuilt();
+                        cout << endl;
+                    }
+                 }
+                 else if (displayScientist == 3)
                  {
                      listServices sort;
                      sort.changeTo(sort.sortByName());
@@ -142,7 +157,7 @@ void ui::run()
                      break;
                  }
                   //This case displays the scientists in an organized list from oldest to youngest
-                  else if (displayScientist == 3)
+                  else if (displayScientist == 4)
                      {
                          listServices sort;
                          sort.changeTo(sort.sortByBirth());
@@ -152,7 +167,7 @@ void ui::run()
                      break;
                      }
                      //This case organizes the living scientists from oldest to youngest
-                 else if (displayScientist == 4)
+                 else if (displayScientist == 5)
                  {
                      listServices scientists;
                      string searchTerm;
@@ -162,7 +177,7 @@ void ui::run()
                      //printNames(scientists);
                      break;
                  }
-                 else if (displayScientist == 5)
+                 else if (displayScientist == 6)
                  {
 
                      listServices norris;

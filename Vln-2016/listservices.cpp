@@ -26,10 +26,15 @@ vector<Scientist> listServices::displayScientist()
 {
     vector<Scientist> display;
     display = _myData.readAllFromScientistsDataBase();
-    cout << display.size() << endl;
     return display;
 }
 
+vector<Computer> listServices::displayComputer()
+{
+    vector<Computer> display;
+    display = _myData.readAllFromDataComputerBase();
+    return display;
+}
 
 
 // This struct is used to print code in alphabetical order.
