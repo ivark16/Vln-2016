@@ -5,7 +5,7 @@ Scientist::Scientist()
  //empty constructor
 }
 
-Scientist::Scientist(string fName, string lName, string nationality, int bYear, int dYear, char gender, int aYear)
+Scientist::Scientist(string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear)
 {
     _firstName = fName;
     _lastName = lName;

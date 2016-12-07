@@ -20,7 +20,7 @@ class Scientist
 public:
 
     Scientist();
-    Scientist(string fName, string lName, string nationality, int bYear, int dYear, char gender, int aYear);
+    Scientist(string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear);
     void readFile(vector<Scientist>& scientists);
     string getFirstName();
     string getLastName();
@@ -29,6 +29,7 @@ public:
     int getDeathYear();
     char getGender();
     int getAwardYear();
+    int getSizeOfScientist();
 
 
 };

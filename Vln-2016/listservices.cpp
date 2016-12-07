@@ -22,6 +22,13 @@ int listServices::getSizeOfScientistList()
    return _myData.getSizeOfScientists();
 }
 
+vector<Scientist> listServices::displayScientist()
+{
+    vector<Scientist> display;
+    display = _myData.readAllFromScientistsDataBase();
+    cout << display.size() << endl;
+    return display;
+}
 
 
 
@@ -73,8 +80,7 @@ int listServices::getAwardsFromList(int i) const
 //A constructor for listServices.  readFile reads data from a .txt file and puts it in the member vector _computerScientists.
 listServices::listServices()
 {
-        scientistList nextScientist;
-        nextScientist.readFile(_computerScientists);
+
 }
 // This function returns a _computerScientists in alphabetical order. It uses ScientistComparison which is a struct. We didn't know any good
 // way to do this so we got the idea from the King him self, Daniel Brandur, that used sort function. Thanks Daniel!

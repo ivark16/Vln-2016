@@ -51,11 +51,10 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
-        cout << s.getFirstName();
-        _scientists.push_back(s);
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        returnScientist.push_back(s);
     }
-    return _scientists;
+    return returnScientist;
 }
 
 vector<Computer> DataLayer::readAllFromDataComputerBase()
@@ -179,7 +178,7 @@ void DataLayer::searchForNameFromDatabase(string name)
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
         //cout << firstName;
-        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
 
         _scientists = scientists;
@@ -194,6 +193,21 @@ int DataLayer::getSizeOfScientists()
 char DataLayer::getGenderAt(int i)
 {
     return _scientists[i].getGender();
+}
+
+int DataLayer::getBirthYearAt(int i)
+{
+    return _scientists[i].getBirthYear();
+}
+
+int DataLayer::getDeathYearAt(int i)
+{
+    return _scientists[i].getDeathYear();
+}
+int DataLayer::getAwardYearAt(int i)
+
+{
+    return _scientists[i].getAwardYear();
 }
 
 vector<Scientist> DataLayer::readInAlphabeticalOrder()
@@ -217,7 +231,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         cout << s.getFirstName() << " ";
         returnScientist.push_back(s);
     }
@@ -245,7 +259,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         cout << s.getFirstName() << " ";
         returnScientist.push_back(s);
     }
@@ -273,7 +287,7 @@ vector<Scientist> DataLayer::readInYoungestOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-        Scientist s(firstName, lastName, nationality, sex, birthYear, deathYear, awardYear);
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         cout << s.getFirstName() << " ";
         returnScientist.push_back(s);
     }
@@ -416,4 +430,28 @@ vector<Computer> DataLayer::checkInComputer(string x)
         myVector.push_back(s);
     }
     return myVector;
+}
+
+bool DataLayer::checkIfExists(string x)
+{
+    bool exists = false;
+
+    QSqlQuery checkQuery;
+    QString qName = QString::fromStdString(x);
+    checkQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x)");
+    checkQuery.addBindValue(qName);
+
+    if (checkQuery.exec())
+    {
+        if(checkQuery.next())
+        {
+            exists = true;
+        }
+    }
+    else
+    {
+        exists = false;
+    }
+
+    return exists;
 }
