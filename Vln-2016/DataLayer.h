@@ -42,6 +42,7 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1);
     bool deleteFunctionComputer(string x);
+    bool checkIfExists(string x);
 };
 
 #endif // SCIENTISLISTFROMSQL_H

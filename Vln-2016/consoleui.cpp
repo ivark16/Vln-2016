@@ -113,6 +113,7 @@ void consoleUI::run()
                 if (displayScientist == 1)
                 {
                     listServices scientists;
+
                     cout << "***List of all scientists***" << endl;
                     print(scientists);
                     printNames(scientists);
@@ -746,8 +747,6 @@ string consoleUI::nationalityChecker()
        return nationality;
 }
 
-
-
 int consoleUI::birthYearChecker()
 {
     bool cont = false;
@@ -803,7 +802,7 @@ int consoleUI::awardYearChecker()
 
     while(!cont)
     {
-        cout << "Enter the scientists' year of Award: " ;
+        cout << "Enter the scientists' year of award: " ;
         cin >> ayear;
         //checks that the entry is legit
         if(isdigit(ayear))
@@ -812,12 +811,10 @@ int consoleUI::awardYearChecker()
         }
         else
         {
-            cout << "Invalid input.  Please enter a valid year of death." << endl;
+            cout << "Invalid input.  Please enter a valid year of award." << endl;
         }
     }
 
     return ayear;
 }
-
-
 
