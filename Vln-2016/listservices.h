@@ -26,6 +26,11 @@ public:
     vector<Scientist> displayScientist();
     vector<Computer> displayComputer();
     int getSizeOfData();
+    vector<Scientist> scientistInAlphabeticalOrder();
+    vector<Computer> computerInAlphabeticalOrder();
+    int searchLongestNameScientist();
+    int searchLongestNameComputer();
+    vector<Scientist> oldestOrderScientist();
 
 
 

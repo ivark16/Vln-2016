@@ -41,10 +41,10 @@ int main(int argc, char *argv[])
 
 
     //db.deleteFunctionComputer("bla");
-    db.checkInComputer("AB");
+    //db.checkInComputer("ABC");
 
-   // ui Master;
-   // Master.run();
+    ui Master;
+    Master.run();
 
     return 0;
 }

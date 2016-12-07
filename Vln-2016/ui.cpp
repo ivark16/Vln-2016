@@ -195,8 +195,7 @@ void ui::run()
 
 void ui::print(listServices scientistsToPrint)
 {
-    int width = scientistsToPrint.searchLongestName();
-
+    int width = scientistsToPrint.searchLongestNameScientist();
      cout.width(5);
      cout << left << "No.";
      cout.width(width);
@@ -221,7 +220,7 @@ void ui::print(listServices scientistsToPrint)
 }
 
 // This function prints all names in a table to the console
-void ui::printNames (listServices scientistsToPrint)
+/*void ui::printNames (Scientist scientistsToPrint)
 {
     int counter = 1;
     cout << scientistsToPrint.getSizeOfScientistList();
@@ -290,4 +289,4 @@ void ui::printNames (listServices scientistsToPrint)
     }
     cout << endl;
 
-}
+}*/

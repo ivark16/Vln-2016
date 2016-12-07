@@ -7,11 +7,6 @@
 using namespace std;
 
 
-
-
-
-
-
 void listServices::searchForName(string name)
 {
     _myData.searchForNameFromDatabase(name);
@@ -34,6 +29,65 @@ vector<Computer> listServices::displayComputer()
     vector<Computer> display;
     display = _myData.readAllFromDataComputerBase();
     return display;
+}
+
+vector<Scientist> listServices::scientistInAlphabeticalOrder()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInAlphabeticalOrder();
+    return returnScientist;
+}
+
+vector<Computer> listServices::computerInAlphabeticalOrder()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.readInAlphabeticalOrderComputer();
+    return returnComputer;
+}
+
+vector<Scientist> listServices::oldestOrderScientist()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInOldestOrder();
+    return returnScientist;
+}
+
+int listServices::searchLongestNameScientist()
+{
+    vector<Scientist> display;
+    display = _myData.readAllFromScientistsDataBase();
+    unsigned int longest = 7;
+    for(unsigned int i = 0; i < display.size(); i++)
+    {
+        if(longest < display[i].getFirstName().size())
+        {
+            longest = display[i].getFirstName().size();
+        }
+    }
+    unsigned int newLongest = longest;
+    for(unsigned int i = 0; i < display.size(); i++)
+    {
+        if(newLongest < display[i].getLastName().size())
+        {
+            newLongest = display[i].getLastName().size();
+        }
+    }
+    return newLongest + 2;
+}
+
+int listServices::searchLongestNameComputer()
+{
+    vector<Computer> display;
+    display = _myData.readAllFromDataComputerBase();
+    unsigned int longest = 7;
+    for(unsigned int i = 0; i < display.size(); i++)
+    {
+        if(longest < display[i].getComputerName().size())
+        {
+            longest = display[i].getComputerName().size();
+        }
+    }
+    return longest + 2;
 }
 
 
@@ -257,7 +311,6 @@ int listServices::searchLongestName()
         }
     }
     return newLongest + 2;
-    cout << newLongest;
 }
 // Binni med Chuck Norris grin
 vector<scientistList> listServices::chuckNorris()
