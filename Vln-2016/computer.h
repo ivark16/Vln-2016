@@ -16,7 +16,7 @@ class Computer
 
 public:
     Computer();
-    Computer(string cName, string cType, int yoBuild, bool wBuilt);
+    Computer(string fComputer, string tComputers, int yoBuild, bool wBuilt);
     string getComputerName();
     string getComputerType();
     int getYearOfBuild();

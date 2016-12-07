@@ -18,13 +18,6 @@ class Scientist
     int _awardYear;
 
 public:
-    string firstName;
-    string lastName;
-    string nationality;
-    int birthYear;
-    int deathYear;
-    char sex;
-    int awardYear;
 
     Scientist();
     Scientist(string fName, string lName, string nationality, int bYear, int dYear, char gender, int aYear);

@@ -12,10 +12,13 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     DataLayer db;
-    db.readAllFromDataBase();
+
+    //db.readAllDataFromSearchingDatabse();
+    db.readAllFromScientistsDataBase();
     db.searchForNameFromDatabase("Clifford");
 
     if (db.deleteFunction("Ivar"))
+
     {
         cout << "Person deleted" << endl;
     } else {

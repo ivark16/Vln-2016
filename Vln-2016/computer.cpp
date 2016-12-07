@@ -6,6 +6,7 @@ Computer::Computer()
 }
 
 Computer::Computer(string cName, string cType, int yoBuild, bool wBuilt)
+
 {
     _computerName = cName;
     _computerType = cType;
