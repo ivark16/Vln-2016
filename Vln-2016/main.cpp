@@ -34,9 +34,20 @@ int main(int argc, char *argv[])
 
     //db.readInAlphabeticalOrder();
 
-    db.readInOldestOrder();
-    cout << endl << endl;
-    db.readInYoungestOrder();
+    //db.readInOldestOrder();
+    //cout << endl << endl;
+    //db.readInYoungestOrder();
+
+    //db.readInAlphabeticalOrderComputer();
+
+    if (db.addFunctionComputer("bla", "Electronic", 1956 , false))
+    {
+        cout << "Computer added to database" << endl;
+    } else {
+        cout << "add function failed" << endl;
+    }
+
+    db.deleteFunctionComputer("bla");
 
     return 0;
 }
