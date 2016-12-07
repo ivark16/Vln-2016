@@ -14,8 +14,8 @@ public:
     ui();
     ui(int chooseNumber);
     void run();
-    void print(scientistList scientistsToPrint);
-    void printNames(scientistList scientistsToPrint);
+    void print(listServices scientistsToPrint);
+    void printNames(listServices scientistsToPrint);
 };
 
 #endif // UI_H

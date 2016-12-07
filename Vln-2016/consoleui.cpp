@@ -41,11 +41,12 @@ void consoleUI::run()
     {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display list.                      * Y.O.D = year of death *" << endl;
-    cout << "* 2:  Search for scientist.              * Y.O.B = year of birth *"<< endl;
-    cout << "* 3:  Add new scientist.                 * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Delete scientist.                  *                       *" << endl;
-    cout << "* 5:  Quit.                              *                       *" << endl;
+    cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
+    cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
+    cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Add new scientist/computers.       *                       *" << endl;
+    cout << "* 5:  Delete scientist/computers         *                       *" << endl;
+    cout << "* 6:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
