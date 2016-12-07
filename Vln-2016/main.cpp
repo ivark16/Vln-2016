@@ -47,7 +47,8 @@ int main(int argc, char *argv[])
         cout << "add function failed" << endl;
     }
 
-    db.deleteFunctionComputer("bla");
+    //db.deleteFunctionComputer("bla");
+    db.checkInComputer("ABC");
 
     return 0;
 }
