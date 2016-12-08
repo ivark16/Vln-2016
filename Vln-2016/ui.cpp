@@ -614,12 +614,10 @@ void ui::run()
              }
              if(addScientistOrComputer == 2)
              {
-                string name;
-                string type;
-                int YOB;
-                bool wasBuilt;
-                cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
-                cin >> name >> type >> YOB >> wasBuilt;
+                string name = computerNameChecker();
+                string type = computerTypeChecker();
+                int YOB = yearChecker(5, 0, 0);
+                bool wasBuilt = boolChecker();
                 Computer newComputer(name, type, YOB, wasBuilt);
                 _lists.addComputerToDatabase(newComputer);
 
@@ -943,7 +941,7 @@ string ui::computerNameChecker()
        //the length must be between 2 and 20 for it to be valid.
        if(name.length() <2 || name.length()>20)
           {
-           cout <<"Error: Names must be between 2 and 20 characters." << endl;
+              cout <<"Error: Names must be between 2 and 20 characters." << endl;
            }
        else
        {
@@ -953,7 +951,27 @@ string ui::computerNameChecker()
        name[0] = toupper(name[0]);
        return name;
 }
-
+string ui::computerTypeChecker()
+{
+    string name;
+    bool cont = false;
+       while(!cont)
+       {
+       cout << "Please enter the computer's type: ";
+       cin >> name;
+       //the length must be between 2 and 20 for it to be valid.
+       if(name.length() <2 || name.length()>20)
+          {
+             cout <<"Error: Names must be between 2 and 20 characters." << endl;
+           }
+       else
+       {
+          cont = true;
+       }
+       }
+       name[0] = toupper(name[0]);
+       return name;
+}
 
 //prompts the user for a gender and checks its validity.  If it is invalid it asks again until it receives a valid gender.
 char ui::genderChecker()
@@ -989,19 +1007,23 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
   {
       if(TYPE == 1)
       {
-      cout << "Please enter the scientists birth year.";
+      cout << "Please enter the scientists birth year: ";
       }
       else if(TYPE == 2)
       {
-      cout << "Please enter the scientists year of death.";
+      cout << "Please enter the scientists year of death: ";
       }
       else if(TYPE == 3)
       {
-      cout << "Please enter the year the scientist won the award.";
+      cout << "Please enter the year the scientist won the award: ";
       }
       else if (TYPE == 4)
       {
-          cout << "Please insert second year.";
+          cout << "Please insert second year: ";
+      }
+      else if (TYPE == 5)
+      {
+          cout << "Please enter the year the computer was designed: ";
       }
       //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
@@ -1027,6 +1049,10 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
           cout << "Invalid year." << endl;
       }
+      else if (TYPE == 5 && (year < 1822 || year > 2016))
+      {
+          cout << "Invalid year." << endl;
+      }
       else
       {
           //end the loop and return the year.
@@ -1036,6 +1062,31 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
       }
   }
   return year;
+}
+
+//gets valid yes-or-no input from the user
+bool ui::boolChecker()
+{
+    string input;
+    cout << "Please enter either 'yes' or 'no" << endl;
+    while(true)
+    {
+        cin >> input;
+        if(input == "yes" || input == "Yes")
+        {
+            return true;
+            break;
+        }
+        else if(input == "no" || input == "No")
+        {
+            return false;
+            break;
+        }
+        else
+        {
+            cout << "invalid input, please enter either 'yes' or 'no" << endl;
+        }
+    }
 }
 
 //checks the validity of the nationality.
@@ -1074,73 +1125,3 @@ string ui::nationalityChecker()
        return nationality;
 }
 
-int ui::birthYearChecker()
-{
-    bool cont = false;
-    int year;
-
-    while(!cont)
-    {
-        cout << "Enter the scientist's birth year: " ;
-        cin >> year;
-        //checks that the entry is legit
-        if(isdigit(year))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid birth year" << endl;
-        }
-    }
-
-    return year;
-}
-
-//
-int ui::deathYearChecker()
-{
-    bool cont = false;
-    int dyear;
-
-    while(!cont)
-    {
-        cout << "Enter the scientists' year of death: " ;
-        cin >> dyear;
-        //checks that the entry is legit
-        if(isdigit(dyear))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid year of death." << endl;
-        }
-    }
-
-    return dyear;
-}
-
-//Checks for the validi
-int ui::awardYearChecker()
-{
-    bool cont = false;
-    int ayear;
-
-    while(!cont)
-    {
-        cout << "Enter the scientists' year of award: " ;
-        cin >> ayear;
-        //checks that the entry is legitemate
-        if(isdigit(ayear))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid year of award." << endl;
-        }
-    }
-
-    return ayear;
-}

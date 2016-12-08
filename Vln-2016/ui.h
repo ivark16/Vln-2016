@@ -31,8 +31,11 @@ public:
     int awardYearChecker();
     int birthYearChecker();
     string nameChecker(string nameType);
-    string computerNameChecker();
     char genderChecker();
+    string computerNameChecker();
+    string computerTypeChecker();
+    bool boolChecker();
+
 
 
 
