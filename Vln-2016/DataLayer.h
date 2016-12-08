@@ -44,6 +44,7 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(Computer newComputer);
     bool deleteFunctionComputer(string x);
+    bool deleteConnectionFunction(int x);
     vector<Computer> checkInComputer(string x);
 
     bool checkIfExists(string x);

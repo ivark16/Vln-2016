@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     scientist.cpp \
     computer.cpp \
     searching.cpp \
-    ui.cpp
+    ui.cpp \
+    connection.cpp
 
 HEADERS += \
     consoleui.h \
@@ -29,4 +30,5 @@ HEADERS += \
     scientist.h \
     computer.h \
     searching.h \
-    ui.h
+    ui.h \
+    connection.h

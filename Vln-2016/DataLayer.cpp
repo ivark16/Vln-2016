@@ -126,6 +126,27 @@ bool DataLayer::deleteFunction(string x)
     }
 }
 
+bool DataLayer::deleteConnectionFunction(int x)
+{
+    QSqlQuery myQuery;
+    myQuery.prepare(("SELECT * FROM connect WHERE scientist_id = (:x)"));
+    myQuery.addBindValue(x);
+    if(myQuery.exec())
+    {
+        if(myQuery.next())
+        {
+            myQuery.prepare(("DELETE * FROM scientist WHERE scientist_id = (:x)"));
+            myQuery.addBindValue(x);
+            myQuery.exec();
+            return true;
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool DataLayer::addFunction(Scientist newScientist)
 {
     QSqlQuery query;
