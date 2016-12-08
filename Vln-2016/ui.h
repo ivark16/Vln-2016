@@ -22,6 +22,19 @@ public:
     void printComputers(vector<Computer> computersToPrint);
     void printS();
     void printC();
+
+    //check functions
+    void CheckNumbers (listServices checkNumbersForScientist);
+    int yearChecker(const int TYPE, int birthYear, int deathYear);
+    string nationalityChecker();
+    int deathYearChecker();
+    int awardYearChecker();
+    int birthYearChecker();
+
+
+
+
+
 };
 
 #endif // UI_H
