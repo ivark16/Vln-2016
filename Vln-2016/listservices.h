@@ -36,10 +36,7 @@ public:
     vector<Computer> youngestOrderComputer();
     bool checkIfScientistIsInDataBase (string x);
     bool checkIfComputerIsInDataBase (string x);
-    vector<Scientist> addNewScientist(string firstName, string lastName, char gender, string nationality, int birthYear, int deathYear, int awardYear);
-    bool deleteScientist(string x);
-    bool deleteComputer(string x);
-    vector<Scientist> searchAliveScientist();
+
 
 
 
