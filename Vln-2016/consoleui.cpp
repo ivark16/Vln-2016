@@ -752,3 +752,9 @@ int consoleUI::awardYearChecker()
     return ayear;
 }
 
+void consoleUI::printNames (listServices scientistsToPrint)
+{
+    //bara nett bug fix
+}
+
+
