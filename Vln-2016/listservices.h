@@ -26,6 +26,7 @@ public:
     vector<Scientist> displayScientist();
     vector<Computer> displayComputer();
     int getSizeOfData();
+    void addScientistToDatabase(Scientist newScientist);
     vector<Scientist> scientistInAlphabeticalOrder();
     vector<Computer> computerInAlphabeticalOrder();
     int searchLongestNameScientist();

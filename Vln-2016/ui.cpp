@@ -337,6 +337,55 @@ void ui::run()
                 break;
             case 4:
             {
+            //add new scientist to the database
+            //CHECK FUNCTIONS NEEDED
+             int addScientistOrComputer;
+             cout << "------------------------------------------------------------------" << endl;
+             cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+             cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
+             cout << "* 2:  Add a computer.                    *                       *" << endl;
+             cout << "*----------------------------------------*-----------------------*" << endl;
+             cout << "-----------------------------------------------------------------" << endl;
+             cout << "Enter number: ";
+
+             bool invalidInput = true;
+             while(invalidInput)
+             {
+                 while (!(cin >> addScientistOrComputer))
+                 {
+                     cin.clear();
+                     cin.ignore(1000,'\n');
+                     cout << "Not valid input, please try again: ";
+                 }
+                 if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 3)))
+                 {
+                     cout << "Not valid input, please try again: ";
+                     invalidInput = true;
+                 }
+                 else
+                 {
+                     invalidInput = false;
+                 }
+             }
+
+             if(addScientistOrComputer == 1)
+             {
+                 string fName;
+                 string lName;
+                 char gender;
+                 string nationality;
+                 int bYear;
+                 int dYear;
+                 int aYear;
+                 cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
+                 cin >> fName >> lName >> gender >> nationality >> bYear >> dYear >> aYear;  //AMEND
+                 Scientist newScientist( fName, lName, gender, nationality, bYear, dYear, aYear);
+                 _lists.addScientistToDatabase(newScientist);
+             }
+             if(addScientistOrComputer == 2)
+             {
+
+             }
 
             }
                 break;
