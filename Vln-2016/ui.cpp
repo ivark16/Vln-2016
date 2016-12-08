@@ -611,6 +611,13 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
     cout << endl;
 
 }
+
+void ui::printComputers()
+{
+    //TEMPORARY.  delete this when you uncomment the original.
+}
+
+
 /*
 void ui::printComputers()
 {
