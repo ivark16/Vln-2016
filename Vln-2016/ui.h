@@ -19,7 +19,7 @@ public:
     void print(listServices scientistsToPrint);
     void printNames(vector<Scientist> scientistsToPrint);
     void printComputers();
-
+    void printScientist();
 };
 
 #endif // UI_H

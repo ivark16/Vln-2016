@@ -642,3 +642,32 @@ void ui::printComputers()
     cout << endl;
 
 }*/
+void ui::printScientist()
+{
+
+    int width = _lists.searchLongestNameScientist();
+
+    cout.width(5);
+    cout << left << "No.";
+    cout.width(width);
+    cout << "First name" << left;
+    cout.width(width);
+    cout << "Last name" << left;
+    cout.width(width);
+    cout << "Gender" << left;
+    cout.width(width);
+    cout << "Nationality" << left;
+    cout.width(width);
+    cout << "Year of birth" << left;
+    cout.width(width);
+    cout << "Year of death" << left;
+    cout.width(width);
+    cout << "Year of award" << left;
+
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "--------";
+    }
+    cout << endl;
+
+}
