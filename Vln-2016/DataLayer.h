@@ -33,7 +33,7 @@ public:
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
     bool deleteFunction(string x);
-    bool addFunction(string name1, string name2, char gender1, string nation, int yob, int yod, int yoa);
+    bool addFunction(vector<Scientist> addNew);
     vector<Scientist> readInAlphabeticalOrder();
     vector<Scientist> readInOldestOrder();
     vector<Scientist> readInYoungestOrder();

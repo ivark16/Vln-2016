@@ -33,7 +33,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
 
     Scientist s;
     vector<Scientist> returnScientist;
-    qDebug() << "Persons in Database: ";
+    //qDebug() << "Persons in Database: ";
     QSqlQuery query("SELECT * FROM scientist");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -109,14 +109,14 @@ bool DataLayer::deleteFunction(string x)
 {
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare(("SELECT firstname FROM scientist WHERE firstname = (:x)"));
+    myQuery.prepare(("SELECT * FROM scientist WHERE firstname = (:x) OR lastname = (:x)"));
     myQuery.addBindValue(qName);
 
     if (myQuery.exec())
     {
         if (myQuery.next())
         {
-            myQuery.prepare("DELETE FROM scientist WHERE firstname = (:x)");
+            myQuery.prepare("DELETE FROM scientist WHERE firstname = (:x) OR lastname = (:x)");
             myQuery.addBindValue(qName);
             myQuery.exec();
             return true;
@@ -128,8 +128,16 @@ bool DataLayer::deleteFunction(string x)
     }
 }
 
-bool DataLayer::addFunction(string name1, string name2, char gender1, string nation, int yob, int yod, int yoa)
+bool DataLayer::addFunction(vector<Scientist> addNew)
 {
+    Scientist s;
+    string name1 = addNew[0].getFirstName();
+    string name2 = addNew[0].getLastName();
+    char gender1 = addNew[0].getGender();
+    string nation = addNew[0].getNationality();
+    int yob = addNew[0].getBirthYear();
+    int yod = addNew[0].getDeathYear();
+    int yoa = addNew[0].getAwardYear();
     QSqlQuery query;
     QString qName1 = QString::fromStdString(name1);
     QString qName2 = QString::fromStdString(name2);
@@ -155,7 +163,6 @@ bool DataLayer::addFunction(string name1, string name2, char gender1, string nat
         return false;
     }
 }
-
 
 void DataLayer::searchForNameFromDatabase(string name)
 
