@@ -32,6 +32,7 @@ public:
     int birthYearChecker();
     string nameChecker(string nameType);
     string computerNameChecker();
+    string computerTypeChecker();
     char genderChecker();
 
 
