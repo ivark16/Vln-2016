@@ -316,5 +316,4 @@ vector<scientistList> listServices::chuckNorris()
     }
     return matchingFirstNames;
 }
-// This function changes upper case letters to lower case letters. It takes in string and uses the tolower function. It
-// checks every letter and if it is upper case letter than it changes it to lower case letter
+
