@@ -45,9 +45,9 @@ int main(int argc, char *argv[])
 
     //db.searchForNameFromDatabase("ring");
     //db.readInReverseAlphabeticalOrder();
-    db.readInReverseAlphabeticalOrderComputer();
-   // ui Master;
-   // Master.run();
+   // db.readInReverseAlphabeticalOrderComputer();
+    ui Master;
+    Master.run();
 
     return 0;
 }
