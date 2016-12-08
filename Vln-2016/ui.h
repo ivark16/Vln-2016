@@ -2,7 +2,8 @@
 #define UI_H
 #include "listservices.h"
 #include "DataLayer.h"
-#include"scientist.h"
+#include "scientist.h"
+#include "computer.h"
 #include <iostream>
 #include <vector>
 #include <stdio.h>
@@ -18,7 +19,7 @@ public:
     void run();
     void print(listServices scientistsToPrint);
     void printNames(vector<Scientist> scientistsToPrint);
-    void printComputers();
+    void printComputers(vector<Computer> computersToPrint);
 
 };
 

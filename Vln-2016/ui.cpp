@@ -304,15 +304,15 @@ void ui::run()
 
                     cout << "***List of all computers***" << endl;
                     newvector = _lists.displayComputer();
-                    printComputers();
-                    for(unsigned int i = 0 ; i < newvector.size() ; i++)
+                    printComputers(newvector);
+                    /*for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
                         cout << newvector[i].getComputerName() << "\t";
                         cout << newvector[i].getComputerType() << "\t";
                         cout << newvector[i].getYearOfBuild() << "\t";
                         cout << newvector[i].getWasBuilt();
                         cout << endl;
-                    }
+                    }*/
                     break;
                 }
 
@@ -619,33 +619,37 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
 
 }
 
-void ui::printComputers()
+void ui::printComputers(vector<Computer> computersToPrint)
 {
-    //TEMPORARY.  delete this when you uncomment the original.
-}
-
-
-/*
-void ui::printComputers()
-{
-
+    int counter = 1;
     int width = _lists.searchLongestNameComputer();
-
-    cout.width(5);
-    cout << left << "No.";
-    cout.width(width);
-    cout << "Name" << left;
-    cout.width(width);
-    cout << "Type" << left;
-    cout.width(10);
-    cout << "Year built" << left;
-    cout.width(width);
-    cout << "Was it complete?" << left;
-
-    for(int i = 0; i < 9; i++)
+    for(unsigned int i = 0; i < computersToPrint.size(); i++)
     {
-        cout << "--------";
+        cout.width(5);
+        cout << left << counter;
+        counter++;
+
+        //adjusts width to longest name
+        cout.width(width);
+        cout << computersToPrint[i].getComputerName() << left;
+        cout.width(width);
+        cout << computersToPrint[i].getComputerType() << left;
+        cout.width(width);
+        int yearBuilt = computersToPrint[i].getYearOfBuild();
+        if(yearBuilt == 0)
+        {
+            cout << "N/A";
+        }
+        else
+        {
+            cout << yearBuilt;
+        }
+        cout << endl;
+    }
+
+    for(int i = 0 ; i < 9 ; i++)
+    {
+        cout << "---------";
     }
     cout << endl;
-
-}*/
+}
