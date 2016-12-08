@@ -154,21 +154,55 @@ void ui::run()
                  }
                  else if (displayScientist == 3)
                  {
-                     listServices sort;
-                     sort.changeTo(sort.sortByName());
-                     cout << "A list of scientists in alphabetical order" << endl;
-                     //print(sort);
-                     //printNames(sort);
+                     vector<Scientist> living;
+
+                     cout << "***List of all living scientists***" << endl;
+                     //living = _lists.
                      break;
                  }
                   //This case displays the scientists in an organized list from oldest to youngest
                  else if (displayScientist == 4)
                  {
-                     listServices sort;
-                     sort.changeTo(sort.sortByBirth());
-                     cout << "An organized list starting with the oldest scientist" << endl;
-                    // print(_scientist);
-                     //printNames(_scientist);
+                    int numb;
+                    vector<Scientist> order;
+                    cout << "choose 1 for ascending order or 2 for descending order: ";
+                    cin >> numb;
+                    if(numb == 1)
+                    {
+                        order = _lists.youngestOrderScientist();
+                        for(unsigned int i = 0 ; i < order.size() ; i++)
+                        {
+                            cout << order[i].getFirstName()  << "\t";
+                            cout << order[i].getLastName() << "\t";
+                            cout << order[i].getNationality() << "\t";
+                            cout << order[i].getGender() << "\t";
+                            cout << order[i].getBirthYear() << "\t";
+                            cout << order[i].getDeathYear()  << "\t";
+                            cout << order[i].getAwardYear();
+                            cout << endl;
+                        }
+
+                    }
+                    else if (numb == 2)
+                    {
+                        order = _lists.oldestOrderScientist();
+                        for(unsigned int i = 0 ; i < order.size() ; i++)
+                        {
+                            cout << order[i].getFirstName()  << "\t";
+                            cout << order[i].getLastName() << "\t";
+                            cout << order[i].getNationality() << "\t";
+                            cout << order[i].getGender() << "\t";
+                            cout << order[i].getBirthYear() << "\t";
+                            cout << order[i].getDeathYear()  << "\t";
+                            cout << order[i].getAwardYear();
+                            cout << endl;
+                        }
+                    }
+                    else
+                    {
+                        cout << "wrong input" << endl;
+                    }
+
                      break;
                  }
                      //This case organizes the living scientists from oldest to youngest
