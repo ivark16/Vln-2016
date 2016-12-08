@@ -463,3 +463,27 @@ void ui::printNames (Scientist scientistsToPrint)
     cout << endl;
 
 }*/
+
+void ui::printComputers()
+{
+    listServices print;
+    int width = print.searchLongestNameComputer();
+
+    cout.width(5);
+    cout << left << "No.";
+    cout.width(width);
+    cout << "Name" << left;
+    cout.width(width);
+    cout << "Type" << left;
+    cout.width(10);
+    cout << "Year built" << left;
+    cout.width(width);
+    cout << "Was it complete?" << left;
+
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "--------";
+    }
+    cout << endl;
+
+}
