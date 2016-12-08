@@ -194,9 +194,9 @@ void ui::run()
                 cout << "------------------------------------------------------------------" << endl;
                 cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
                 cout << "* 1:  Display all Computers.             * Y.O.B = year of birth *" << endl;
-                cout << "* 2:  display all in alphabetical order  * Y.O.D = year of death *" << endl;
-                cout << "* 3:  display all when was built         * Y.O.A = year of award *" << endl;
-                cout << "* 4:  Display if was built               *                       *" << endl;
+                cout << "* 2:  display all in alphabetical order. * Y.O.D = year of death *" << endl;
+                cout << "* 3:  display all when was built.        * Y.O.A = year of award *" << endl;
+                cout << "* 4:  Display if was built.              *                       *" << endl;
                 cout << "*----------------------------------------*-----------------------*" << endl;
                 cout << "-----------------------------------------------------------------" << endl;
                 cout << "Enter number: ";
@@ -417,8 +417,8 @@ void ui::run()
                            int rangeOrSingle;
                            cout << "------------------------------------------------------------------" << endl;
                            cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-                           cout << "* 1:  Search for a single year           * Y.O.D = year of death *" << endl;
-                           cout << "* 2:  Search for a range                 * Y.O.B = year of birth *"<< endl;
+                           cout << "* 1:  Search for a single year.          * Y.O.D = year of death *" << endl;
+                           cout << "* 2:  Search for a range.                * Y.O.B = year of birth *"<< endl;
                            cout << "*----------------------------------------*-----------------------*" << endl;
                            cout << "-----------------------------------------------------------------" << endl;
                            cout << "Enter number: ";
@@ -504,8 +504,9 @@ void ui::run()
                    int searchComputers;
                    cout << "------------------------------------------------------------------" << endl;
                    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-                   cout << "* 1:  Search for a computer name.        *                       *" << endl;
-                   cout << "* 2:  Search for a computer type.        *                       *" << endl;
+                   cout << "* 1:  Search for name.                   *                       *" << endl;
+                   cout << "* 2:  Search for type.                   *                       *" << endl;
+                   cout << "* 3:  Search for year of built.          *                       *" << endl; //Ma laga
                    cout << "*----------------------------------------*-----------------------*" << endl;
                    cout << "-----------------------------------------------------------------" << endl;
                    cout << "Enter number: ";
