@@ -48,6 +48,8 @@ int main(int argc, char *argv[])
    // db.readInReverseAlphabeticalOrderComputer();
 
     //db.checkInComputerYear(1939, 1940);
+
+    //db.ComputerWasBuilt();
     ui Master;
     Master.run();
 
