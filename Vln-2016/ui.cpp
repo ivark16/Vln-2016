@@ -192,7 +192,18 @@ void ui::run()
                 {
                    vector<Scientist> dead;
                    cout << "***List of all dead scientists***" << endl;
-                   //dead = _lists.
+                   dead = _lists.searchDeadScientist();
+                   for(unsigned int i = 0 ; i < dead.size() ; i++)
+                   {
+                       cout << dead[i].getFirstName()  << "\t";
+                       cout << dead[i].getLastName() << "\t";
+                       cout << dead[i].getNationality() << "\t";
+                       cout << dead[i].getGender() << "\t";
+                       cout << dead[i].getBirthYear() << "\t";
+                       cout << dead[i].getDeathYear()  << "\t";
+                       cout << dead[i].getAwardYear();
+                       cout << endl;
+                   }
                    break;
                 }
                     //This case organizes the living scientists from oldest to youngest
@@ -205,6 +216,8 @@ void ui::run()
                     if(numb == 1)
                     {
                         order = _lists.youngestOrderScientist();
+                        printNames(order);
+                        /*
                         for(unsigned int i = 0 ; i < order.size() ; i++)
                         {
                             cout << order[i].getFirstName()  << "\t";
@@ -215,7 +228,7 @@ void ui::run()
                             cout << order[i].getDeathYear()  << "\t";
                             cout << order[i].getAwardYear();
                             cout << endl;
-                        }
+                        }*/
                     }
                     else if (numb == 2)
                     {
@@ -372,11 +385,6 @@ void ui::run()
                 //This case displays the scientists in an organized list from oldest to youngest
                 else if (displayScientist == 4)
                 {
-                    listServices sort;
-                    sort.changeTo(sort.sortByBirth());
-                    cout << "An organized list starting with the oldest scientist" << endl;
-                    //print(_scientist);
-                    //printNames(_scientist);
                     break;
                 }
 
@@ -543,7 +551,6 @@ void ui::run()
 // This function prints all names in a table to the console
 void ui::printNames (vector<Scientist> scientistsToPrint)
 {
-    listServices ls;
     int counter = 1;
     for(unsigned int i = 0; i < scientistsToPrint.size(); i++)
     {
@@ -565,7 +572,7 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        int width = ls.searchLongestNameScientist();
+        int width = _lists.searchLongestNameScientist();
 
         //adjusts width to longest name
         cout.width(width);
@@ -577,7 +584,7 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
         cout.width(width);
         cout << scientistsToPrint[i].getNationality() << left;
         cout.width(10);
-        cout << scientistsToPrint[i].getDeathYear() << left;
+        //cout << scientistsToPrint[i].getDeathYear() << left;
         if(scientistsToPrint[i].getDeathYear() == 0)
         {
             isDead = "Alive";
