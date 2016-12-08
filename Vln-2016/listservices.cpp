@@ -31,6 +31,17 @@ vector<Computer> listServices::displayComputer()
     return display;
 }
 
+void listServices::addScientistToDatabase(Scientist newScientist)
+{
+    _myData.addFunction(newScientist);
+}
+
+void listServices::addComputerToDatabase(Computer newComputer)
+{
+    _myData.addFunctionComputer(newComputer);
+}
+
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -131,9 +142,35 @@ vector<Scientist> listServices::searchAliveScientist()
     return matchingScientists;
 }
 
+//This function creates and returns a new vector containing only living scientists.
+vector<Scientist> listServices::searchDeadScientist()
+{
+    vector<Scientist> matchingScientists;
+    //this loop goes through all scientists and adds them to the matchingScientists vector if and only if their year of death is listed as 0
+    // which means that they are still living.
+    for(unsigned int k = 0; k < displayScientist().size(); k++)
+    {
+        if(!(displayScientist()[k].getDeathYear() == 00))
+        {
+            matchingScientists.push_back(displayScientist()[k]);
+        }
+    }
+    return matchingScientists;
+}
 
+vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
+{
+    vector<Computer> returnRange;
+    returnRange = _myData.checkInComputerYear(a, b);
+    return returnRange;
+}
 
-
+vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
+{
+    vector<Computer> returnRange;
+    returnRange = _myData.checkInComputerSingleYear(a);
+    return returnRange;
+}
 
 
 

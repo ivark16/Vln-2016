@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
     //db.searchForNameFromDatabase("ring");
     //db.readInReverseAlphabeticalOrder();
    // db.readInReverseAlphabeticalOrderComputer();
+
+    //db.checkInComputerYear(1939, 1940);
     ui Master;
     Master.run();
 
