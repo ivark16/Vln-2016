@@ -39,6 +39,9 @@ public:
     bool checkIfScientistIsInDataBase (string x);
     bool checkIfComputerIsInDataBase (string x);
     vector<Scientist> searchAliveScientist();
+    vector<Scientist> searchDeadScientist();
+    vector<Computer> searchWhenBuiltRange(int a, int b);
+    vector<Computer> searchWhenBuiltSingleYear(int a);
 
 
 

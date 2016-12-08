@@ -526,4 +526,53 @@ bool DataLayer::checkIfComputerExists(string x)
     return exists;
 }
 
+vector<Computer> DataLayer::checkInComputerYear(int x, int y)
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
 
+    query.prepare("SELECT * FROM computer c WHERE c.yearBuilt BETWEEN (:x) AND (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+    query.exec();
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(name, type, yearbuilt, wasbuilt);
+        cout << name << " ";
+        myVector.push_back(s);
+    }
+    return myVector;
+}
+
+vector<Computer> DataLayer::checkInComputerSingleYear(int x)
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM computer c WHERE c.yearBuilt = (:x)");
+    query.addBindValue(x);
+    query.exec();
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(name, type, yearbuilt, wasbuilt);
+        cout << name << " ";
+        myVector.push_back(s);
+    }
+    return myVector;
+}

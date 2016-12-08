@@ -48,6 +48,9 @@ public:
 
     bool checkIfExists(string x);
     bool checkIfComputerExists(string x);
+
+    vector<Computer> checkInComputerYear(int x, int y);
+    vector<Computer> checkInComputerSingleYear(int x);
 };
 
 #endif // SCIENTISLISTFROMSQL_H
