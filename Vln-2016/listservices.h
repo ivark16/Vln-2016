@@ -27,7 +27,9 @@ public:
     vector<Computer> displayComputer();
     int getSizeOfData();
     vector<Scientist> scientistInAlphabeticalOrder();
+    vector<Scientist> scientistInReverseAlphabeticalOrder();
     vector<Computer> computerInAlphabeticalOrder();
+    vector<Computer> computerInReverseAlphabeticalOrder();
     int searchLongestNameScientist();
     int searchLongestNameComputer();
     vector<Scientist> oldestOrderScientist();
@@ -36,6 +38,7 @@ public:
     vector<Computer> youngestOrderComputer();
     bool checkIfScientistIsInDataBase (string x);
     bool checkIfComputerIsInDataBase (string x);
+    vector<Scientist> searchAliveScientist();
 
 
 
