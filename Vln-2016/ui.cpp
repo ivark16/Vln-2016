@@ -112,11 +112,11 @@ void ui::run()
 
                  if (displayScientist == 1)
                  {
-                     listServices scientists;
+
                      vector<Scientist> newvector;
 
                      cout << "***List of all scientists***" << endl;
-                     newvector = scientists.displayScientist();
+                     newvector = _lists.displayScientist();
                      //print(scientists);
                      for(unsigned int i = 0 ; i < newvector.size() ; i++)
                      {
@@ -134,12 +134,12 @@ void ui::run()
                  }
                  else if(displayScientist == 2)
                  {
-                     listServices alphabeticOrder;
+
                      vector<Scientist> newVector;
 
                      cout << "***List of all scientist in alphabetic order***" << endl;
-                     newVector = alphabeticOrder.scientistInAlphabeticalOrder();
-                     for(int i = 0 ; i < newVector.size() ; i++)
+                     newVector = _lists.scientistInAlphabeticalOrder();
+                     for(unsigned int i = 0 ; i < newVector.size() ; i++)
                      {
                          cout << newVector[i].getFirstName()  << "\t";
                          cout << newVector[i].getLastName() << "\t";
@@ -154,21 +154,55 @@ void ui::run()
                  }
                  else if (displayScientist == 3)
                  {
-                     listServices sort;
-                     sort.changeTo(sort.sortByName());
-                     cout << "A list of scientists in alphabetical order" << endl;
-                     //print(sort);
-                     //printNames(sort);
+                     vector<Scientist> living;
+
+                     cout << "***List of all living scientists***" << endl;
+                     //living = _lists.
                      break;
                  }
                   //This case displays the scientists in an organized list from oldest to youngest
                  else if (displayScientist == 4)
                  {
-                     listServices sort;
-                     sort.changeTo(sort.sortByBirth());
-                     cout << "An organized list starting with the oldest scientist" << endl;
-                    // print(_scientist);
-                     //printNames(_scientist);
+                    int numb;
+                    vector<Scientist> order;
+                    cout << "choose 1 for ascending order or 2 for descending order: ";
+                    cin >> numb;
+                    if(numb == 1)
+                    {
+                        order = _lists.youngestOrderScientist();
+                        for(unsigned int i = 0 ; i < order.size() ; i++)
+                        {
+                            cout << order[i].getFirstName()  << "\t";
+                            cout << order[i].getLastName() << "\t";
+                            cout << order[i].getNationality() << "\t";
+                            cout << order[i].getGender() << "\t";
+                            cout << order[i].getBirthYear() << "\t";
+                            cout << order[i].getDeathYear()  << "\t";
+                            cout << order[i].getAwardYear();
+                            cout << endl;
+                        }
+
+                    }
+                    else if (numb == 2)
+                    {
+                        order = _lists.oldestOrderScientist();
+                        for(unsigned int i = 0 ; i < order.size() ; i++)
+                        {
+                            cout << order[i].getFirstName()  << "\t";
+                            cout << order[i].getLastName() << "\t";
+                            cout << order[i].getNationality() << "\t";
+                            cout << order[i].getGender() << "\t";
+                            cout << order[i].getBirthYear() << "\t";
+                            cout << order[i].getDeathYear()  << "\t";
+                            cout << order[i].getAwardYear();
+                            cout << endl;
+                        }
+                    }
+                    else
+                    {
+                        cout << "wrong input" << endl;
+                    }
+
                      break;
                  }
                      //This case organizes the living scientists from oldest to youngest
@@ -232,11 +266,10 @@ void ui::run()
 
                 if (displayScientist == 1)
                 {
-                    listServices scientists;
                     vector<Computer> newvector;
 
                     cout << "***List of all computers***" << endl;
-                    newvector = scientists.displayComputer();
+                    newvector = _lists.displayComputer();
                     for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
                         cout << newvector[i].getComputerName() << "\t";
@@ -250,11 +283,10 @@ void ui::run()
 
                 else if(displayScientist == 2)
                 {
-                   listServices scientists;
                    vector<Computer> newvector;
 
-                   cout << "***List of all computers***" << endl;
-                   newvector = scientists.displayComputer();
+                   cout << "***List of computer in alphabetical order***" << endl;
+                   newvector = _lists.computerInAlphabeticalOrder();
                    for(unsigned int i = 0 ; i < newvector.size() ; i++)
                    {
                        cout << newvector[i].getComputerName() << "\t";
@@ -361,7 +393,7 @@ void ui::run()
 }
 
 // This function prints all names in a table to the console
-/*void ui::printNames (Scientist scientistsToPrint)
+void ui::printNames (Scientist scientistsToPrint)
 {
     int counter = 1;
     cout << scientistsToPrint.getSizeOfScientistList();
@@ -431,3 +463,27 @@ void ui::run()
     cout << endl;
 
 }*/
+
+void ui::printComputers()
+{
+    listServices print;
+    int width = print.searchLongestNameComputer();
+
+    cout.width(5);
+    cout << left << "No.";
+    cout.width(width);
+    cout << "Name" << left;
+    cout.width(width);
+    cout << "Type" << left;
+    cout.width(10);
+    cout << "Year built" << left;
+    cout.width(width);
+    cout << "Was it complete?" << left;
+
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "--------";
+    }
+    cout << endl;
+
+}

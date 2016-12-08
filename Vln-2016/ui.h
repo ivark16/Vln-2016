@@ -10,12 +10,15 @@ class ui
 {
     int _chooseNumber;
     Scientist _scientist;
+    listServices _lists;
 public:
     ui();
     ui(int chooseNumber);
     void run();
     void print(listServices scientistsToPrint);
     void printNames(Scientist scientistsToPrint);
+    void printComputers();
+
 };
 
 #endif // UI_H
