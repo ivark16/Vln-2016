@@ -41,6 +41,10 @@ void listServices::addComputerToDatabase(Computer newComputer)
     _myData.addFunctionComputer(newComputer);
 }
 
+void listServices::addConnectionToDatabase(connection newConnection)
+{
+    _myData.addFunctionConnect(newConnection);
+}
 
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {

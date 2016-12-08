@@ -448,6 +448,23 @@ bool DataLayer::addFunctionComputer(Computer newComputer)
     }
 }
 
+bool DataLayer::addFunctionConnect(connection newConnection)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO connect (Scientist_ID, Computer_ID) VALUES (:scientistId, :computerId)");
+    query.addBindValue(newConnection.getScientistId());
+    query.addBindValue(newConnection.getComputersId());
+
+    if (query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool DataLayer::deleteFunctionComputer(string x)
 {
     QSqlQuery myQuery;
@@ -613,7 +630,6 @@ vector<Computer> DataLayer::ComputerWasBuilt()
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
         Computer s(name, type, yearbuilt, wasbuilt);
-        cout << name << " ";
         myVector.push_back(s);
     }
     return myVector;

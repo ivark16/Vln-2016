@@ -28,6 +28,7 @@ public:
     int getSizeOfData();
     void addScientistToDatabase(Scientist newScientist);
     void addComputerToDatabase(Computer newComputer);
+    void addConnectionToDatabase(connection newConnection);
     void deleteScientistFromDatabase();
     void deleteComputerFromDatabase();
     vector<Scientist> scientistInAlphabeticalOrder();
