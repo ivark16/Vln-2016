@@ -347,8 +347,191 @@ void ui::run()
             case 3:
             {
 
+             //Search for a scientist or computers.
+                int searchScientistOrComputers;
+                cout << "------------------------------------------------------------------" << endl;
+                cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+                cout << "* 1:  Search scientist.                  * Y.O.B = year of birth *" << endl;
+                cout << "* 2:  Search computers.                  *                       *" << endl;
+                cout << "*----------------------------------------*-----------------------*" << endl;
+                cout << "-----------------------------------------------------------------" << endl;
+                cout << "Enter number: ";
+
+              bool invalidInput = true;
+              while(invalidInput)
+              {
+                  while (!(cin >> searchScientistOrComputers))
+                  {
+                      cin.clear();
+                      cin.ignore(1000,'\n');
+                      cout << "Not valid input, please try again: ";
+                  }
+                  if(!((searchScientistOrComputers > 0) && (searchScientistOrComputers < 3)))
+                  {
+                      cout << "Not valid input, please try again: ";
+                      invalidInput = true;
+                  }
+                  else
+                  {
+                      invalidInput = false;
+                  }
+              }
+
+              if(searchScientistOrComputers == 1)
+              {
+                    int searchScientist;
+                    cout << "------------------------------------------------------------------" << endl;
+                    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+                    cout << "* 1:  Search for birth year.             * Y.O.D = year of death *" << endl;
+                    cout << "* 2:  Search for name.                   * Y.O.B = year of birth *"<< endl;
+                    cout << "* 3:  search for Turing awards.          * Y.O.A = year of award *" << endl;
+                    cout << "*----------------------------------------*-----------------------*" << endl;
+                    cout << "-----------------------------------------------------------------" << endl;
+                    cout << "Enter number: ";
+
+                    bool invalidInput = true;
+                    while(invalidInput)
+                    {
+                           while (!(cin >> searchScientist))
+                           {
+                               cin.clear();
+                               cin.ignore(1000,'\n');
+                               cout << "Not valid input, please try again: ";
+                           }
+                           if(!((searchScientist > 0) && (searchScientist < 4)))
+                           {
+                               cout << "Not valid input, please try again: ";
+                               invalidInput = true;
+
+                           }
+                           else
+                           {
+                               invalidInput = false;
+                           }
+                    }
+
+                       //this case allows you to search for scientists using birth years.
+                       if (searchScientist == 1)
+                       {
+                           int rangeOrSingle;
+                           cout << "------------------------------------------------------------------" << endl;
+                           cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+                           cout << "* 1:  Search for a single year           * Y.O.D = year of death *" << endl;
+                           cout << "* 2:  Search for a range                 * Y.O.B = year of birth *"<< endl;
+                           cout << "*----------------------------------------*-----------------------*" << endl;
+                           cout << "-----------------------------------------------------------------" << endl;
+                           cout << "Enter number: ";
+
+                           bool invalidInput = true;
+                           /*while(invalidInput)
+                           {
+                               while (!(cin >> rangeOrSingle))
+                               {
+                                   cin.clear();
+                                   cin.ignore(1000,'\n');
+                                   cout << "Not valid input, please try again: ";
+                               }
+                               if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
+                               {
+                                   cout << "Not valid input, please try again: ";
+                                   invalidInput = true;
+                               }
+                               else
+                               {
+                                   invalidInput = false;
+                               }
+                               if(rangeOrSingle == 1)
+                               {
+                                   listServices scientistsBirth;
+                                   CheckNumbers(scientistsBirth);
+                               }
+                               else if(rangeOrSingle == 2)
+                               {
+                                   int minYear = yearChecker(1,0,0);
+                                   int maxYear = yearChecker(4,minYear,0);
+                                   listServices scientistsBirth;
+                                   scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
+                                   print(scientistsBirth);
+                                   printNames(scientistsBirth);
+                               }
+                                break;
+                            }*/
+                       }
+
+                       //This case lets you search for a scientist from their name (either the first or last name)
+                       else if (searchScientist == 2)
+                       {
+                           /*listServices scientists;
+                           string searchTerm;
+                           cout << "Enter a single name to search: ";
+                           cin >> searchTerm;
+                           //scientists.changeTo(scientists.searchName(searchTerm));
+                           _myData.searchForNameFromDatabase(searchTerm);
+                           print(scientists);
+                           if (_myData.getSizeOfScientists() == 0)
+                           {
+                               cout << "Person is not in database!" << endl;
+                               cout << "-------------------------------------------------------------" << endl;
+                               break;
+                           }
+                           else
+                           {
+                               printNames(scientists);
+                               break;
+                           }*/
+
+                        }
+
+                       //This case sorts the scientists by the year they recived the Turning Award
+                       else if (searchScientist == 3)
+                       {
+                           /*listServices scientists;
+                           cout << "Enter a single year to search: ";
+                           int year;
+                           cin >> year;
+                           scientists.changeTo(scientists.searchAward(year));
+                           print(scientists);
+                           printNames(scientists);
+                           break;*/
+                       }
+                }
+
+
+              if(searchScientistOrComputers == 2)
+              {
+                  //Search for computers.
+                   int searchComputers;
+                   cout << "------------------------------------------------------------------" << endl;
+                   cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+                   cout << "* 1:  Search for a computer name.        *                       *" << endl;
+                   cout << "* 2:  Search for a computer type.        *                       *" << endl;
+                   cout << "*----------------------------------------*-----------------------*" << endl;
+                   cout << "-----------------------------------------------------------------" << endl;
+                   cout << "Enter number: ";
+
+                   bool invalidInput = true;
+                   while(invalidInput)
+                   {
+                      while (!(cin >> searchComputers))
+                      {
+                          cin.clear();
+                          cin.ignore(1000,'\n');
+                          cout << "Not valid input, please try again: ";
+                      }
+                      if(!((searchComputers > 0) && (searchComputers < 3)))
+                      {
+                          cout << "Not valid input, please try again: ";
+                          invalidInput = true;
+                      }
+                      else
+                      {
+                          invalidInput = false;
+                      }
+                    }
+                }
             }
                 break;
+
             case 4:
             {
             //add new scientist to the database
