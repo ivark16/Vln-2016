@@ -447,15 +447,51 @@ void ui::run()
                 Computer newComputer(name, type, YOB, wasBuilt);
                 _lists.addComputerToDatabase(newComputer);
 
-
-
-
              }
 
             }
                 break;
             case 5:
             {
+             //DELETE a nice boy
+             int deleteScientistOrComputer;
+             cout << "------------------------------------------------------------------" << endl;
+             cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+             cout << "* 1:  Delete a scientist.                * Y.O.B = year of birth *" << endl;
+             cout << "* 2:  Delete a computer.                 *                       *" << endl;
+             cout << "*----------------------------------------*-----------------------*" << endl;
+             cout << "-----------------------------------------------------------------" << endl;
+             cout << "Enter number: ";
+
+             bool invalidInput = true;
+             while(invalidInput)
+             {
+                 while (!(cin >> deleteScientistOrComputer))
+                 {
+                     cin.clear();
+                     cin.ignore(1000,'\n');
+                     cout << "Not valid input, please try again: ";
+                 }
+                 if(!((deleteScientistOrComputer > 0) && (deleteScientistOrComputer < 3)))
+                 {
+                     cout << "Not valid input, please try again: ";
+                     invalidInput = true;
+                 }
+                 else
+                 {
+                     invalidInput = false;
+                 }
+             }
+             if(deleteScientistOrComputer == 1)
+             {
+                    //DELETE SCIENTIST
+             }
+             if(deleteScientistOrComputer == 2)
+             {
+                    //DELETE COMPUTER
+             }
+
+
 
             }
             case 6:
@@ -577,6 +613,13 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
     cout << endl;
 
 }
+
+void ui::printComputers()
+{
+    //TEMPORARY.  delete this when you uncomment the original.
+}
+
+
 /*
 void ui::printComputers()
 {

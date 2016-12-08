@@ -28,6 +28,8 @@ public:
     int getSizeOfData();
     void addScientistToDatabase(Scientist newScientist);
     void addComputerToDatabase(Computer newComputer);
+    void deleteScientistFromDatabase();
+    void deleteComputerFromDatabase();
     vector<Scientist> scientistInAlphabeticalOrder();
     vector<Scientist> scientistInReverseAlphabeticalOrder();
     vector<Computer> computerInAlphabeticalOrder();
