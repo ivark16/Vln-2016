@@ -620,9 +620,7 @@ void ui::run()
                 string name = computerNameChecker();
                 string type = computerTypeChecker();
                 int YOB = yearChecker(5, 0, 0);
-                bool wasBuilt;
-                cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
-                cin >> name >> type >> YOB >> wasBuilt;
+                bool wasBuilt = boolChecker();
                 Computer newComputer(name, type, YOB, wasBuilt);
                 _lists.addComputerToDatabase(newComputer);
 
@@ -987,23 +985,23 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
   {
       if(TYPE == 1)
       {
-      cout << "Please enter the scientists birth year.";
+      cout << "Please enter the scientists birth year: ";
       }
       else if(TYPE == 2)
       {
-      cout << "Please enter the scientists year of death.";
+      cout << "Please enter the scientists year of death: ";
       }
       else if(TYPE == 3)
       {
-      cout << "Please enter the year the scientist won the award.";
+      cout << "Please enter the year the scientist won the award: ";
       }
       else if (TYPE == 4)
       {
-          cout << "Please insert second year.";
+          cout << "Please insert second year: ";
       }
       else if (TYPE == 5)
       {
-          cout << "Please enter the year the computer was built.";
+          cout << "Please enter the year the computer was designed: ";
       }
       //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
@@ -1042,6 +1040,31 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
       }
   }
   return year;
+}
+
+//gets valid yes-or-no input from the user
+bool ui::boolChecker()
+{
+    string input;
+    cout << "Please enter either 'yes' or 'no" << endl;
+    while(true)
+    {
+        cin >> input;
+        if(input == "yes" || input == "Yes")
+        {
+            return true;
+            break;
+        }
+        else if(input == "no" || input == "No")
+        {
+            return false;
+            break;
+        }
+        else
+        {
+            cout << "invalid input, please enter either 'yes' or 'no" << endl;
+        }
+    }
 }
 
 //checks the validity of the nationality.
