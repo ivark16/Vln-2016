@@ -31,6 +31,11 @@ public:
     int searchLongestNameScientist();
     int searchLongestNameComputer();
     vector<Scientist> oldestOrderScientist();
+    vector<Computer> oldestOrderComputer();
+    vector<Scientist> youngestOrderScientist();
+    vector<Computer> youngestOrderComputer();
+    bool checkIfScientistIsInDataBase (string x);
+    bool checkIfComputerIsInDataBase (string x);
 
 
 

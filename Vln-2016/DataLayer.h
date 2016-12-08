@@ -45,6 +45,7 @@ public:
     vector<Computer> checkInComputer(string x);
 
     bool checkIfExists(string x);
+    bool checkIfComputerExists(string x);
 };
 
 #endif // SCIENTISLISTFROMSQL_H
