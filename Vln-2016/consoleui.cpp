@@ -1,4 +1,4 @@
-#include "consoleui.h"
+/* #include "consoleui.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -123,7 +123,7 @@ void consoleUI::run()
                 else if (displayScientist == 2)
                 {
                     listServices sort;
-                    sort.changeTo(sort.sortByName());
+                    sort.changeTo(sort.scientistInAlphabeticalOrder());
                     cout << "A list of scientists in alphabetical order" << endl;
                     print(sort);
                     printNames(sort);
@@ -133,7 +133,7 @@ void consoleUI::run()
                  else if (displayScientist == 3)
                     {
                         listServices sort;
-                        sort.changeTo(sort.sortByBirth());
+                        sort.changeTo(sort.oldestOrderScientist());
                         cout << "An organized list starting with the oldest scientist" << endl;
                        // print(_scientist);
                         //printNames(_scientist);
@@ -756,5 +756,5 @@ void consoleUI::printNames (listServices scientistsToPrint)
 {
     //bara nett bug fix
 }
-
+*/
 

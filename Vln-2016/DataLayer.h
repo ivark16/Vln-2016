@@ -42,12 +42,17 @@ public:
     vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
-    bool addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1);
+    bool addFunctionComputer(Computer newComputer);
     bool deleteFunctionComputer(string x);
     vector<Computer> checkInComputer(string x);
 
     bool checkIfExists(string x);
     bool checkIfComputerExists(string x);
+
+    vector<Computer> checkInComputerYear(int x, int y);
+    vector<Computer> checkInComputerSingleYear(int x);
+    vector<Computer> ComputerWasBuilt();
+    vector<Computer> ComputerWasNotBuilt();
 };
 
 #endif // SCIENTISLISTFROMSQL_H
