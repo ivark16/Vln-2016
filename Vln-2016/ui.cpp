@@ -115,7 +115,7 @@ void ui::run()
                     vector<Scientist> newvector;
                     cout << "***List of all scientists***" << endl;
                     newvector = _lists.displayScientist();
-                    printNames(newvector);
+                    printScientists(newvector);
                     break;
                 }
                 else if(displayScientist == 2)
@@ -128,12 +128,12 @@ void ui::run()
                     if(numb == 1)
                     {
                         newVector = _lists.scientistInAlphabeticalOrder();
-                        printNames(newVector);
+                        printScientists(newVector);
                     }
                     else if(numb == 2)
                     {
                         newVector = _lists.scientistInReverseAlphabeticalOrder();
-                        printNames(newVector);
+                        printScientists(newVector);
                     }
                 }
                 else if (displayScientist == 3)
@@ -142,7 +142,7 @@ void ui::run()
 
                     cout << "***List of all living scientists***" << endl;
                     living = _lists.searchAliveScientist();
-                    printNames(living);
+                    printScientists(living);
                     break;
                 }
                 else if (displayScientist == 4)
@@ -150,7 +150,7 @@ void ui::run()
                    vector<Scientist> dead;
                    cout << "***List of all dead scientists***" << endl;
                    dead = _lists.searchDeadScientist();
-                   printNames(dead);
+                   printScientists(dead);
                    break;
                 }
                     //This case organizes the living scientists from oldest to youngest
@@ -163,13 +163,13 @@ void ui::run()
                     if(numb == 1)
                     {
                         order = _lists.youngestOrderScientist();
-                        printNames(order);
+                        printScientists(order);
                     }
                     else if (numb == 2)
                     {
                         order = _lists.oldestOrderScientist();
                         for(unsigned int i = 0 ; i < order.size() ; i++)
-                        printNames(order);
+                        printScientists(order);
                     }
                     else
                     {
@@ -183,7 +183,7 @@ void ui::run()
                     listServices norris;
                     //norris.changeTo(norris.chuckNorris());
                     //print(norris);
-                    //printNames(norris);
+                    //printScientists(norris);
                     break;
                 }
             }
@@ -230,6 +230,7 @@ void ui::run()
 
                     cout << "***List of all computers***" << endl;
                     newvector = _lists.displayComputer();
+                    printC();
                     printComputers(newvector);
                     /*for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
@@ -452,7 +453,7 @@ void ui::run()
                                    listServices scientistsBirth;
                                    scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
                                    print(scientistsBirth);
-                                   printNames(scientistsBirth);
+                                   printScientists(scientistsBirth);
                                }
                                 break;
                             }*/
@@ -476,7 +477,7 @@ void ui::run()
                            }
                            else
                            {
-                               printNames(scientists);
+                               printScientists(scientists);
                                break;
                            }*/
 
@@ -491,7 +492,7 @@ void ui::run()
                            cin >> year;
                            scientists.changeTo(scientists.searchAward(year));
                            print(scientists);
-                           printNames(scientists);
+                           printScientists(scientists);
                            break;*/
                        }
                 }
@@ -686,7 +687,7 @@ void ui::run()
 }*/
 
 // This function prints all names in a table to the console
-void ui::printNames (vector<Scientist> scientistsToPrint)
+void ui::printScientists (vector<Scientist> scientistsToPrint)
 {
     int counter = 1;
     for(unsigned int i = 0; i < scientistsToPrint.size(); i++)
@@ -789,13 +790,10 @@ void ui::printComputers(vector<Computer> computersToPrint)
         cout << "---------";
     }
     cout << endl;
-<<<<<<< HEAD
-=======
+}
 
-}*/
-void ui::printScientist()
+void ui::printS()
 {
-
     int width = _lists.searchLongestNameScientist();
 
     cout.width(5);
@@ -820,6 +818,19 @@ void ui::printScientist()
         cout << "--------";
     }
     cout << endl;
+}
 
->>>>>>> 383d732c22352ffe39eca498c1350c6f296cfaeb
+void ui::printC()
+{
+    int width = _lists.searchLongestNameComputer();
+
+    cout.width(5);
+    cout << left << "No.";
+    cout.width(width);
+    cout << "Name" << left;
+    cout.width(width);
+    cout << "Type" << left;
+    cout.width(width);
+    cout << "Year built" << left;
+    cout << endl;
 }
