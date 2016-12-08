@@ -10,7 +10,7 @@ class consoleUI
 {
     int _chooseNumber;
     //listServices _scientist;
-    DataLayer _myData;
+    //DataLayer _myData;
 public:
     consoleUI();
     consoleUI(int chooseNumber);
