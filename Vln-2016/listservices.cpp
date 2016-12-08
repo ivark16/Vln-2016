@@ -43,10 +43,24 @@ vector<Scientist> listServices::scientistInAlphabeticalOrder()
     return returnScientist;
 }
 
+vector<Scientist> listServices::scientistInReverseAlphabeticalOrder()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInReverseAlphabeticalOrder();
+    return returnScientist;
+}
+
 vector<Computer> listServices::computerInAlphabeticalOrder()
 {
     vector<Computer> returnComputer;
     returnComputer = _myData.readInAlphabeticalOrderComputer();
+    return returnComputer;
+}
+
+vector<Computer> listServices::computerInReverseAlphabeticalOrder()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.readInReverseAlphabeticalOrderComputer();
     return returnComputer;
 }
 
@@ -106,7 +120,21 @@ bool listServices::checkIfComputerIsInDataBase (string x)
     return bla;
 }
 
-
+//This function creates and returns a new vector containing only living scientists.
+vector<Scientist> listServices::searchAliveScientist()
+{
+    vector<Scientist> matchingScientists;
+    //this loop goes through all scientists and adds them to the matchingScientists vector if and only if their year of death is listed as 0
+    // which means that they are still living.
+    for(unsigned int k = 0; k < displayScientist().size(); k++)
+    {
+        if(displayScientist()[k].getDeathYear() == 00)
+        {
+            matchingScientists.push_back(displayScientist()[k]);
+        }
+    }
+    return matchingScientists;
+}
 
 
 
