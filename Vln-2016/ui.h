@@ -16,6 +16,7 @@ public:
     void run();
     void print(listServices scientistsToPrint);
     void printNames(Scientist scientistsToPrint);
+    void printComputers();
 
 };
 
