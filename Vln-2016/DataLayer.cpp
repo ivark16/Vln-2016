@@ -126,22 +126,22 @@ bool DataLayer::deleteFunction(string x)
     }
 }
 
-bool DataLayer::addFunction(string name1, string name2, char gender1, string nation, int yob, int yod, int yoa)
+bool DataLayer::addFunction(Scientist newScientist)
 {
     QSqlQuery query;
-    QString qName1 = QString::fromStdString(name1);
-    QString qName2 = QString::fromStdString(name2);
-    QString qGender = QChar(gender1);
-    QString qNat = QString::fromStdString(nation);
+    QString qName1 = QString::fromStdString(newScientist.getFirstName());
+    QString qName2 = QString::fromStdString(newScientist.getLastName());
+    QString qGender = QChar(newScientist.getGender());
+    QString qNat = QString::fromStdString(newScientist.getNationality());
 
     query.prepare("INSERT INTO scientist (firstname, lastname, gender, nationality, YOB, YOD, YOA) VALUES (:name1, :name2, :gender1, :nation, :yob, :yod, :yoa)");
     query.addBindValue(qName1);
     query.addBindValue(qName2);
     query.addBindValue(qGender);
     query.addBindValue(qNat);
-    query.addBindValue(yob);
-    query.addBindValue(yod);
-    query.addBindValue(yoa);
+    query.addBindValue(newScientist.getBirthYear());
+    query.addBindValue(newScientist.getDeathYear());
+    query.addBindValue(newScientist.getAwardYear());
 
 
     if (query.exec())
@@ -408,16 +408,16 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     return returnComputer;
 }
 
-bool DataLayer::addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1)
+bool DataLayer::addFunctionComputer(Computer newComputer)
 {
     QSqlQuery query;
-    QString qName1 = QString::fromStdString(name1);
-    QString qType1 = QString::fromStdString(type1);
+    QString qName1 = QString::fromStdString(newComputer.getComputerName());
+    QString qType1 = QString::fromStdString(newComputer.getComputerType());
     query.prepare("INSERT INTO computer (name, type, yearBuilt, wasbuilt) VALUES (:name1, :type1, :yob, :wasbuilt1)");
     query.addBindValue(qName1);
     query.addBindValue(qType1);
-    query.addBindValue(yob);
-    query.addBindValue(wasbuilt1);
+    query.addBindValue(newComputer.getYearOfBuild());
+    query.addBindValue(newComputer.getWasBuilt());
 
     if (query.exec())
     {
