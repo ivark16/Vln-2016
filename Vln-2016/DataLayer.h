@@ -35,9 +35,11 @@ public:
     bool deleteFunction(string x);
     bool addFunction(vector<Scientist> addNew);
     vector<Scientist> readInAlphabeticalOrder();
+    vector<Scientist> readInReverseAlphabeticalOrder();
     vector<Scientist> readInOldestOrder();
     vector<Scientist> readInYoungestOrder();
     vector<Computer> readInAlphabeticalOrderComputer();
+    vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1);
