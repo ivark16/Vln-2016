@@ -569,16 +569,50 @@ void ui::run()
 
              if(addScientistOrComputer == 1)
              {
-                 string fName;
-                 string lName;
+                 string firstName;
+                 string lastName;
                  char gender;
                  string nationality;
-                 int bYear;
-                 int dYear;
-                 int aYear;
-                 cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
-                 cin >> fName >> lName >> gender >> nationality >> bYear >> dYear >> aYear;  //AMEND
-                 Scientist newScientist( fName, lName, gender, nationality, bYear, dYear, aYear);
+                 int birthYear;
+                 char isAlive;
+                 int deathYear;
+                 char isWinner;
+                 int awardYear;
+
+                 firstName = nameChecker("first name");
+                 lastName = nameChecker("last name");
+                 gender = genderChecker();
+                 nationality = nationalityChecker();
+                 birthYear = yearChecker(1, 0, 0);
+                 cout << "Is the scientist still alive? (y/n) ";
+                 cin >> isAlive;
+                 if(isAlive == 'n')
+                 {
+                     deathYear = yearChecker(2, birthYear, 0);
+                 }
+                 else if(isAlive == 'y')
+                 {
+                     deathYear = 0;
+                 }
+                 else
+                 {
+                     cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+                 }
+                 cout << "Did the scientist win a Turing award? (y/n)";
+                 cin >> isWinner;
+                 if(isWinner == 'y')
+                 {
+                    awardYear = yearChecker(3, birthYear, deathYear);
+                 }
+                 else if(isWinner == 'n')
+                 {
+                     awardYear = 0;
+                 }
+                 else
+                 {
+                     cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+                 }
+                 Scientist newScientist( firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
                  _lists.addScientistToDatabase(newScientist);
              }
              if(addScientistOrComputer == 2)
@@ -836,53 +870,92 @@ void ui::printC()
     cout << endl;
 }
 
-//Checks for validity
-
-/*
-void ui::CheckNumbers (listServices checkNumbersForScientist)
+//this is an error check.  It checks the validity of the name and prompts the user for a new one until one is valid.
+string ui::nameChecker(string nameType)
 {
-    char answear;
-    do {
-        int year;
-        cout << "Enter year: ";
-        while (!(cin >> year))
-        {
-            cin.clear();
-            cin.ignore(1000,'\n');
-            cout << "Not valid input, please try again: ";
-        }
+    string name;
+    bool cont = false;
+    bool hasOnlyChar = true;
 
-        scientist = checkNumbersForScientist;
-        scientist.changeTo(scientist.searchBirth(year, year));
-        if (scientist.getSize() == 0)
-        {
-                cout << "Sorry, no scientists where born this year. Do you wanna input another year (y/n)? ";
-                do {
-                   cin >> answear;
-                   if (answear == 'y')
-                   {
-                        break;
-                   } else if (answear == 'n')
-                   {
-                        break;
-                   } else {
-                       cout << "Not valid input, please try again: ";
-                       answear = 'y';
-                       break;
-                   }
-                } while (answear == 'y');
-
-
-        } else
-            {
-            cout << "A list of scientists born in your year of choice" << endl;
-            print(scientist);
-            printNames(scientist);
-            answear = 'n';
-            }
-        } while (answear == 'y');
+       while(!cont)
+       {
+       cout << "Please enter the scientist's " << nameType << ": ";
+       cin >> name;
+       //check whether it has anything that is a non-alphabet character in it.  If so, it is an invalid entry.
+       for(unsigned int i = 0; i < name.length(); i++)
+       {
+           if(!isalpha(name[i]) && name[i] != '.')
+           {
+               hasOnlyChar = false;
+           }
+       }
+       //the length must be between 2 and 16 for it to be valid.
+       if(name.length() <2 || name.length()>16)
+          {
+           cout <<"Error: Names must be between 2 and 16 characters." << endl;
+           }
+       else if(!hasOnlyChar)
+       {
+          cout << "Error: Names can only contain characters from the latin alphabet." << endl;
+          hasOnlyChar = true;
+       }
+       else
+       {
+          cont = true;
+       }
+       }
+       //returnName = name;
+       name[0] = toupper(name[0]);
+       return name;
 }
-*/
+
+//This function prompts the user for a name, then checks
+string ui::computerNameChecker()
+{
+    string name;
+    bool cont = false;
+       while(!cont)
+       {
+       cout << "Please enter the computer's name: ";
+       cin >> name;
+       //the length must be between 2 and 20 for it to be valid.
+       if(name.length() <2 || name.length()>20)
+          {
+           cout <<"Error: Names must be between 2 and 20 characters." << endl;
+           }
+       else
+       {
+          cont = true;
+       }
+       }
+       name[0] = toupper(name[0]);
+       return name;
+}
+
+
+//prompts the user for a gender and checks its validity.  If it is invalid it asks again until it receives a valid gender.
+char ui::genderChecker()
+{
+    bool cont = false;
+    string gender;
+
+    while(!cont)
+    {
+        cout << "Enter the scientist's gender (m/f/o) : " ;
+        cin >> gender;
+        //checks that the entry is only a single character, that is either m, f or o
+        if(isalpha(gender[0]) && (gender[0] == 'm' || gender[0] == 'f' || gender[0] == 'o') && gender.size() == 1)
+        {
+            cont = true;
+        }
+        else
+        {
+            cout << "Invalid input.  Please enter either 'm' for male or 'f' for female or 'o' for other." << endl;
+        }
+    }
+
+    return gender[0];
+}
 
 //This function checks whehter years are valid.
 int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
@@ -1026,7 +1099,7 @@ int ui::deathYearChecker()
     return dyear;
 }
 
-//
+//Checks for the validi
 int ui::awardYearChecker()
 {
     bool cont = false;

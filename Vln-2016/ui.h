@@ -30,6 +30,11 @@ public:
     int deathYearChecker();
     int awardYearChecker();
     int birthYearChecker();
+    string nameChecker(string nameType);
+    string computerNameChecker();
+    char genderChecker();
+
+
 
 
 
