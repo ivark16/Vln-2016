@@ -1,6 +1,7 @@
 #ifndef UI_H
 #define UI_H
 #include "listservices.h"
+#include "DataLayer.h"
 #include"scientist.h"
 #include <iostream>
 #include <vector>
@@ -16,7 +17,7 @@ public:
     ui(int chooseNumber);
     void run();
     void print(listServices scientistsToPrint);
-    void printNames(Scientist scientistsToPrint);
+    void printNames(vector<Scientist> scientistsToPrint);
     void printComputers();
 
 };
