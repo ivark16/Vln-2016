@@ -545,7 +545,6 @@ void ui::run()
 // This function prints all names in a table to the console
 void ui::printNames (vector<Scientist> scientistsToPrint)
 {
-    listServices ls;
     int counter = 1;
     for(unsigned int i = 0; i < scientistsToPrint.size(); i++)
     {
@@ -567,7 +566,7 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        int width = ls.searchLongestNameScientist();
+        int width = _lists.searchLongestNameScientist();
 
         //adjusts width to longest name
         cout.width(width);
@@ -579,7 +578,7 @@ void ui::printNames (vector<Scientist> scientistsToPrint)
         cout.width(width);
         cout << scientistsToPrint[i].getNationality() << left;
         cout.width(10);
-        cout << scientistsToPrint[i].getDeathYear() << left;
+        //cout << scientistsToPrint[i].getDeathYear() << left;
         if(scientistsToPrint[i].getDeathYear() == 0)
         {
             isDead = "Alive";
