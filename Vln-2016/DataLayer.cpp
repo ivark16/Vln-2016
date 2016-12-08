@@ -630,7 +630,6 @@ vector<Computer> DataLayer::ComputerWasBuilt()
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
         Computer s(name, type, yearbuilt, wasbuilt);
-        cout << name << " ";
         myVector.push_back(s);
     }
     return myVector;

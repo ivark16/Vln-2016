@@ -42,7 +42,7 @@ void ui::run()
          cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
          cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
          cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
-         cout << "* 4:  Add new scientist/computers.       *                       *" << endl;
+         cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
          cout << "* 5:  Delete scientist/computers         *                       *" << endl;
          cout << "* 6:  Quit.                              *                       *" << endl;
          cout << "*----------------------------------------*-----------------------*" << endl;
@@ -81,7 +81,7 @@ void ui::run()
                 cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
                 cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
                 cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-                cout << "* 4:  Display all dead scientist.        *                       *" << endl;
+                cout << "* 4:  Display all dead scientist.        *  N/A = Not applicable *" << endl;
                 cout << "* 5:  Display in order of birth.         *                       *" << endl;
                 cout << "* 6:  Chuck Norris.                      *                       *" << endl;
                 cout << "*----------------------------------------*-----------------------*" << endl;
@@ -115,6 +115,7 @@ void ui::run()
                     vector<Scientist> newvector;
                     cout << "***List of all scientists***" << endl;
                     newvector = _lists.displayScientist();
+                    printS();
                     printScientists(newvector);
                     break;
                 }
@@ -128,11 +129,13 @@ void ui::run()
                     if(numb == 1)
                     {
                         newVector = _lists.scientistInAlphabeticalOrder();
+                        printS();
                         printScientists(newVector);
                     }
                     else if(numb == 2)
                     {
                         newVector = _lists.scientistInReverseAlphabeticalOrder();
+                        printS();
                         printScientists(newVector);
                     }
                 }
@@ -142,6 +145,7 @@ void ui::run()
 
                     cout << "***List of all living scientists***" << endl;
                     living = _lists.searchAliveScientist();
+                    printS();
                     printScientists(living);
                     break;
                 }
@@ -150,6 +154,7 @@ void ui::run()
                    vector<Scientist> dead;
                    cout << "***List of all dead scientists***" << endl;
                    dead = _lists.searchDeadScientist();
+                   printS();
                    printScientists(dead);
                    break;
                 }
@@ -160,27 +165,31 @@ void ui::run()
                     vector<Scientist> order;
                     cout << "choose 1 for order of youngest or 2 for order of oldest: ";
                     cin >> numb;
-                    if(numb == 1)
+                    do
                     {
-                        order = _lists.youngestOrderScientist();
-                        printScientists(order);
-                    }
-                    else if (numb == 2)
-                    {
-                        order = _lists.oldestOrderScientist();
-                        for(unsigned int i = 0 ; i < order.size() ; i++)
-                        printScientists(order);
-                    }
-                    else
-                    {
-                        cout << "wrong input" << endl;
-                    }
+                        if(numb == 1)
+                        {
+                            order = _lists.youngestOrderScientist();
+                            printS();
+                            printScientists(order);
+                        }
+                        else if (numb == 2)
+                        {
+                            order = _lists.oldestOrderScientist();
+                            printS();
+                            printScientists(order);
+                        }
+                        else
+                        {
+                            cout << "wrong input" << endl;
+                        }
+                    } while (numb ==1 || numb == 2);
                     break;
                 }
                 else if (displayScientist == 6)
                 {
 
-                    listServices norris;
+                    //listServices norris;
                     //norris.changeTo(norris.chuckNorris());
                     //print(norris);
                     //printScientists(norris);
@@ -283,11 +292,13 @@ void ui::run()
                     if(numb == 1)
                     {
                         built = _lists.myComputerWasBuilt();
+                        printC();
                         printComputers(built);
                     }
                     else if(numb == 2)
                     {
                         built = _lists.myComputerWasNotBuilt();
+                        printC();
                         printComputers(built);
                     }
                     break;
@@ -585,6 +596,7 @@ void ui::run()
                     connection newConnection(scientistId, computerId);
                     _lists.addConnectionToDatabase(newConnection);
                 }
+
             }
                 break;
             case 5:
@@ -686,12 +698,13 @@ void ui::printScientists (vector<Scientist> scientistsToPrint)
     {
         string sex;
         string isDead;
+        string bla;
 
-        if(scientistsToPrint[i].getGender() == 'm')
+        if(scientistsToPrint[i].getGender() == 'm' || scientistsToPrint[i].getGender() == 'M')
         {
             sex = "male";
         }
-        else if(scientistsToPrint[i].getGender() == 'f')
+        else if(scientistsToPrint[i].getGender() == 'f' || scientistsToPrint[i].getGender() == 'F')
         {
             sex = "female";
         }
@@ -714,7 +727,7 @@ void ui::printScientists (vector<Scientist> scientistsToPrint)
         cout.width(width);
         cout << scientistsToPrint[i].getNationality() << left;
         cout.width(10);
-        //cout << scientistsToPrint[i].getDeathYear() << left;
+        cout << scientistsToPrint[i].getBirthYear() << left;
         if(scientistsToPrint[i].getDeathYear() == 0)
         {
             isDead = "Alive";
@@ -729,9 +742,9 @@ void ui::printScientists (vector<Scientist> scientistsToPrint)
         cout.width(10);
         if(scientistsToPrint[i].getAwardYear() == 0)
         {
-            isDead = "None";
+            bla = "None";
             cout.width(10);
-            cout << isDead << left;
+            cout << bla;
         }
         else
         {
@@ -755,6 +768,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
     int width = _lists.searchLongestNameComputer();
     for(unsigned int i = 0; i < computersToPrint.size(); i++)
     {
+        string na;
         cout.width(5);
         cout << left << counter;
         counter++;
@@ -762,19 +776,35 @@ void ui::printComputers(vector<Computer> computersToPrint)
         //adjusts width to longest name
         cout.width(width);
         cout << computersToPrint[i].getComputerName() << left;
-        cout.width(width);
+        cout.width(width+3);
         cout << computersToPrint[i].getComputerType() << left;
         cout.width(width);
         int yearBuilt = computersToPrint[i].getYearOfBuild();
         if(yearBuilt == 0)
         {
-            cout << "N/A";
+            na = "N/A";
+            cout << na;
         }
         else
         {
             cout << yearBuilt;
         }
-        cout << endl;
+        if (computersToPrint[i].getWasBuilt() == 1)
+        {
+            cout << "True";
+        }
+        else
+        {
+            cout << "False";
+        }
+        if (na == "N/A")
+        {
+            cout << "     *" << endl;
+        }
+        else
+        {
+            cout << "      *" << endl;
+        }
     }
 
     for(int i = 0 ; i < 9 ; i++)
@@ -794,20 +824,20 @@ void ui::printS()
     cout << "First name" << left;
     cout.width(width);
     cout << "Last name" << left;
-    cout.width(width);
+    cout.width(width-3);
     cout << "Gender" << left;
-    cout.width(width);
+    cout.width(width+2);
     cout << "Nationality" << left;
+    cout.width(width-2);
+    cout << "Y.O.B." << left;
     cout.width(width);
-    cout << "Year of birth" << left;
+    cout << "Y.O.D." << left;
     cout.width(width);
-    cout << "Year of death" << left;
-    cout.width(width);
-    cout << "Year of award" << left;
+    cout << "Y.O.A." << endl;
 
     for(int i = 0; i < 9; i++)
     {
-        cout << "--------";
+        cout << "---------";
     }
     cout << endl;
 }
@@ -818,12 +848,19 @@ void ui::printC()
 
     cout.width(5);
     cout << left << "No.";
-    cout.width(width);
+    cout.width(width+2);
     cout << "Name" << left;
     cout.width(width);
     cout << "Type" << left;
     cout.width(width);
-    cout << "Year built" << left;
+    cout << "Y.O.B." << left;
+    cout.width(width);
+    cout << "Was built?";
+    cout << endl;
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "---------";
+    }
     cout << endl;
 }
 
@@ -878,7 +915,7 @@ string ui::computerNameChecker()
        //the length must be between 2 and 20 for it to be valid.
        if(name.length() <2 || name.length()>20)
           {
-           cout <<"Error: Names must be between 2 and 20 characters." << endl;
+              cout <<"Error: Names must be between 2 and 20 characters." << endl;
            }
        else
        {
@@ -888,7 +925,27 @@ string ui::computerNameChecker()
        name[0] = toupper(name[0]);
        return name;
 }
-
+string ui::computerTypeChecker()
+{
+    string name;
+    bool cont = false;
+       while(!cont)
+       {
+       cout << "Please enter the computer's type: ";
+       cin >> name;
+       //the length must be between 2 and 20 for it to be valid.
+       if(name.length() <2 || name.length()>20)
+          {
+             cout <<"Error: Names must be between 2 and 20 characters." << endl;
+           }
+       else
+       {
+          cont = true;
+       }
+       }
+       name[0] = toupper(name[0]);
+       return name;
+}
 
 //prompts the user for a gender and checks its validity.  If it is invalid it asks again until it receives a valid gender.
 char ui::genderChecker()
@@ -924,19 +981,23 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
   {
       if(TYPE == 1)
       {
-      cout << "Please enter the scientists birth year.";
+      cout << "Please enter the scientists birth year: ";
       }
       else if(TYPE == 2)
       {
-      cout << "Please enter the scientists year of death.";
+      cout << "Please enter the scientists year of death: ";
       }
       else if(TYPE == 3)
       {
-      cout << "Please enter the year the scientist won the award.";
+      cout << "Please enter the year the scientist won the award: ";
       }
       else if (TYPE == 4)
       {
-          cout << "Please insert second year.";
+          cout << "Please insert second year: ";
+      }
+      else if (TYPE == 5)
+      {
+          cout << "Please enter the year the computer was designed: ";
       }
       //This loops until there is a valid input from the user, it ignores up to 1000 things.
       while (!(cin >> year))
@@ -962,6 +1023,10 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
       {
           cout << "Invalid year." << endl;
       }
+      else if (TYPE == 5 && (year < 1822 || year > 2016))
+      {
+          cout << "Invalid year." << endl;
+      }
       else
       {
           //end the loop and return the year.
@@ -971,6 +1036,31 @@ int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
       }
   }
   return year;
+}
+
+//gets valid yes-or-no input from the user
+bool ui::boolChecker()
+{
+    string input;
+    cout << "Please enter either 'yes' or 'no" << endl;
+    while(true)
+    {
+        cin >> input;
+        if(input == "yes" || input == "Yes")
+        {
+            return true;
+            break;
+        }
+        else if(input == "no" || input == "No")
+        {
+            return false;
+            break;
+        }
+        else
+        {
+            cout << "invalid input, please enter either 'yes' or 'no" << endl;
+        }
+    }
 }
 
 //checks the validity of the nationality.
@@ -1009,73 +1099,3 @@ string ui::nationalityChecker()
        return nationality;
 }
 
-int ui::birthYearChecker()
-{
-    bool cont = false;
-    int year;
-
-    while(!cont)
-    {
-        cout << "Enter the scientist's birth year: " ;
-        cin >> year;
-        //checks that the entry is legit
-        if(isdigit(year))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid birth year" << endl;
-        }
-    }
-
-    return year;
-}
-
-//
-int ui::deathYearChecker()
-{
-    bool cont = false;
-    int dyear;
-
-    while(!cont)
-    {
-        cout << "Enter the scientists' year of death: " ;
-        cin >> dyear;
-        //checks that the entry is legit
-        if(isdigit(dyear))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid year of death." << endl;
-        }
-    }
-
-    return dyear;
-}
-
-//Checks for the validi
-int ui::awardYearChecker()
-{
-    bool cont = false;
-    int ayear;
-
-    while(!cont)
-    {
-        cout << "Enter the scientists' year of award: " ;
-        cin >> ayear;
-        //checks that the entry is legitemate
-        if(isdigit(ayear))
-        {
-            cont = true;
-        }
-        else
-        {
-            cout << "Invalid input.  Please enter a valid year of award." << endl;
-        }
-    }
-
-    return ayear;
-}
