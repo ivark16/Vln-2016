@@ -514,7 +514,7 @@ void ui::run()
     }
 }
 
-/*void ui::print(listServices scientistsToPrint)
+/*void ui::print(vector<Scientist> scientistsToPrint)
 {
     int width = scientistsToPrint.searchLongestNameScientist();
      cout.width(5);
@@ -538,23 +538,23 @@ void ui::run()
          cout << "---------";
      }
          cout << endl;
-}
+}*/
 
 // This function prints all names in a table to the console
-void ui::printNames (Scientist scientistsToPrint)
+void ui::printNames (vector<Scientist> scientistsToPrint)
 {
+    listServices ls;
     int counter = 1;
-    cout << scientistsToPrint.getSizeOfScientistList();
-    for(int i = 0; i < scientistsToPrint.getSizeOfScientistList() ; i++)
+    for(unsigned int i = 0; i < scientistsToPrint.size(); i++)
     {
         string sex;
         string isDead;
 
-        if(scientistsToPrint.getGenderFromListAt(i) == 'm')
+        if(scientistsToPrint[i].getGender() == 'm')
         {
             sex = "male";
         }
-        else if(scientistsToPrint.getGenderFromListAt(i) == 'f')
+        else if(scientistsToPrint[i].getGender() == 'f')
         {
             sex = "female";
         }
@@ -565,20 +565,20 @@ void ui::printNames (Scientist scientistsToPrint)
         cout.width(5);
         cout << left << counter;
         counter++;
-        int width = scientistsToPrint.searchLongestName();
+        int width = ls.searchLongestNameScientist();
 
         //adjusts width to longest name
         cout.width(width);
-        cout << scientistsToPrint.getFirstNameFromList(i) << left;
+        cout << scientistsToPrint[i].getFirstName() << left;
         cout.width(width);
-        cout << scientistsToPrint.getLastNameFromList(i) << left;
+        cout << scientistsToPrint[i].getLastName() << left;
         cout.width(10);
         cout << sex << left;
         cout.width(width);
-        cout << scientistsToPrint.getNationalityFromList(i) << left;
+        cout << scientistsToPrint[i].getNationality() << left;
         cout.width(10);
-        cout << scientistsToPrint.dobFromList(i) << left;
-        if(scientistsToPrint.dodFromList(i) == 0)
+        cout << scientistsToPrint[i].getDeathYear() << left;
+        if(scientistsToPrint[i].getDeathYear() == 0)
         {
             isDead = "Alive";
             cout.width(10);
@@ -587,10 +587,10 @@ void ui::printNames (Scientist scientistsToPrint)
         else
         {
             cout.width(10);
-            cout << scientistsToPrint.dodFromList(i) << left;
+            cout << scientistsToPrint[i].getDeathYear() << left;
         }
         cout.width(10);
-        if(scientistsToPrint.getAwardsFromList(i) == 0)
+        if(scientistsToPrint[i].getAwardYear() == 0)
         {
             isDead = "None";
             cout.width(10);
@@ -599,7 +599,7 @@ void ui::printNames (Scientist scientistsToPrint)
         else
         {
             cout.width(10);
-            cout << scientistsToPrint.getAwardsFromList(i) << left;
+            cout << scientistsToPrint[i].getAwardYear() << left;
         }
         cout.width(10);
         cout << "   *" << endl;
@@ -610,8 +610,8 @@ void ui::printNames (Scientist scientistsToPrint)
     }
     cout << endl;
 
-}*/
-
+}
+/*
 void ui::printComputers()
 {
 
@@ -634,4 +634,4 @@ void ui::printComputers()
     }
     cout << endl;
 
-}
+}*/
