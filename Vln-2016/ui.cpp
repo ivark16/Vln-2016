@@ -205,6 +205,8 @@ void ui::run()
                     if(numb == 1)
                     {
                         order = _lists.youngestOrderScientist();
+                        printNames(order);
+                        /*
                         for(unsigned int i = 0 ; i < order.size() ; i++)
                         {
                             cout << order[i].getFirstName()  << "\t";
@@ -215,7 +217,7 @@ void ui::run()
                             cout << order[i].getDeathYear()  << "\t";
                             cout << order[i].getAwardYear();
                             cout << endl;
-                        }
+                        }*/
                     }
                     else if (numb == 2)
                     {
