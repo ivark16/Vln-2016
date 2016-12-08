@@ -27,6 +27,7 @@ public:
     vector<Computer> displayComputer();
     int getSizeOfData();
     void addScientistToDatabase(Scientist newScientist);
+    void addComputerToDatabase(Computer newComputer);
     vector<Scientist> scientistInAlphabeticalOrder();
     vector<Scientist> scientistInReverseAlphabeticalOrder();
     vector<Computer> computerInAlphabeticalOrder();

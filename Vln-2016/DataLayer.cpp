@@ -408,16 +408,16 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     return returnComputer;
 }
 
-bool DataLayer::addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1)
+bool DataLayer::addFunctionComputer(Computer newComputer)
 {
     QSqlQuery query;
-    QString qName1 = QString::fromStdString(name1);
-    QString qType1 = QString::fromStdString(type1);
+    QString qName1 = QString::fromStdString(newComputer.getComputerName());
+    QString qType1 = QString::fromStdString(newComputer.getComputerType());
     query.prepare("INSERT INTO computer (name, type, yearBuilt, wasbuilt) VALUES (:name1, :type1, :yob, :wasbuilt1)");
     query.addBindValue(qName1);
     query.addBindValue(qType1);
-    query.addBindValue(yob);
-    query.addBindValue(wasbuilt1);
+    query.addBindValue(newComputer.getYearOfBuild());
+    query.addBindValue(newComputer.getWasBuilt());
 
     if (query.exec())
     {

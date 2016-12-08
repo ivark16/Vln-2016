@@ -36,6 +36,12 @@ void listServices::addScientistToDatabase(Scientist newScientist)
     _myData.addFunction(newScientist);
 }
 
+void listServices::addComputerToDatabase(Computer newComputer)
+{
+    _myData.addFunctionComputer(newComputer);
+}
+
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;

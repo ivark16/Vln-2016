@@ -384,6 +384,17 @@ void ui::run()
              }
              if(addScientistOrComputer == 2)
              {
+                string name;
+                string type;
+                int YOB;
+                bool wasBuilt;
+                cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
+                cin >> name >> type >> YOB >> wasBuilt;
+                Computer newComputer(name, type, YOB, wasBuilt);
+                _lists.addComputerToDatabase(newComputer);
+
+
+
 
              }
 

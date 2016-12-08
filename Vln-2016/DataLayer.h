@@ -42,7 +42,7 @@ public:
     vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
-    bool addFunctionComputer(string name1, string type1, int yob, bool wasbuilt1);
+    bool addFunctionComputer(Computer newComputer);
     bool deleteFunctionComputer(string x);
     vector<Computer> checkInComputer(string x);
 
