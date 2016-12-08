@@ -46,6 +46,8 @@ public:
     vector<Scientist> searchDeadScientist();
     vector<Computer> searchWhenBuiltRange(int a, int b);
     vector<Computer> searchWhenBuiltSingleYear(int a);
+    vector<Computer> myComputerWasNotBuilt();
+    vector<Computer> myComputerWasBuilt();
 
 
 

@@ -172,6 +172,37 @@ vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
     return returnRange;
 }
 
+vector<Computer> listServices::myComputerWasBuilt()
+{
+    vector<Computer> returnRange;
+    returnRange = _myData.ComputerWasBuilt();
+    return returnRange;
+}
+
+vector<Computer> listServices::myComputerWasNotBuilt()
+{
+    vector<Computer> returnRange;
+    returnRange = _myData.ComputerWasNotBuilt();
+    return returnRange;
+}
+
+// Binni med Chuck Norris grin
+/*vector<Scientist> listServices::chuckNorrisData()
+{
+    vector<scientistList> matchingFirstNames;
+    string firstName = "Chuck";
+    string lastName = "Norris";
+    for (unsigned int i = 0; i < _computerScientists.size(); i++)
+    {
+        _computerScientists[i].setFirstName(firstName);
+        _computerScientists[i].setLastName(lastName);
+
+        matchingFirstNames.push_back(_computerScientists[i]);
+
+    }
+    return matchingFirstNames;
+}*/
+
 
 
 int listServices::searchLongestNameScientist()
