@@ -112,11 +112,11 @@ void ui::run()
 
                  if (displayScientist == 1)
                  {
-                     listServices scientists;
+
                      vector<Scientist> newvector;
 
                      cout << "***List of all scientists***" << endl;
-                     newvector = scientists.displayScientist();
+                     newvector = _lists.displayScientist();
                      //print(scientists);
                      for(unsigned int i = 0 ; i < newvector.size() ; i++)
                      {
@@ -134,12 +134,12 @@ void ui::run()
                  }
                  else if(displayScientist == 2)
                  {
-                     listServices alphabeticOrder;
+
                      vector<Scientist> newVector;
 
                      cout << "***List of all scientist in alphabetic order***" << endl;
-                     newVector = alphabeticOrder.scientistInAlphabeticalOrder();
-                     for(int i = 0 ; i < newVector.size() ; i++)
+                     newVector = _lists.scientistInAlphabeticalOrder();
+                     for(unsigned int i = 0 ; i < newVector.size() ; i++)
                      {
                          cout << newVector[i].getFirstName()  << "\t";
                          cout << newVector[i].getLastName() << "\t";
@@ -232,11 +232,10 @@ void ui::run()
 
                 if (displayScientist == 1)
                 {
-                    listServices scientists;
                     vector<Computer> newvector;
 
                     cout << "***List of all computers***" << endl;
-                    newvector = scientists.displayComputer();
+                    newvector = _lists.displayComputer();
                     for(unsigned int i = 0 ; i < newvector.size() ; i++)
                     {
                         cout << newvector[i].getComputerName() << "\t";
@@ -250,11 +249,10 @@ void ui::run()
 
                 else if(displayScientist == 2)
                 {
-                   listServices scientists;
                    vector<Computer> newvector;
 
-                   cout << "***List of all computers***" << endl;
-                   newvector = scientists.displayComputer();
+                   cout << "***List of computer in alphabetical order***" << endl;
+                   newvector = _lists.computerInAlphabeticalOrder();
                    for(unsigned int i = 0 ; i < newvector.size() ; i++)
                    {
                        cout << newvector[i].getComputerName() << "\t";
@@ -361,7 +359,7 @@ void ui::run()
 }
 
 // This function prints all names in a table to the console
-/*void ui::printNames (Scientist scientistsToPrint)
+void ui::printNames (Scientist scientistsToPrint)
 {
     int counter = 1;
     cout << scientistsToPrint.getSizeOfScientistList();

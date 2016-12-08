@@ -10,6 +10,7 @@ class ui
 {
     int _chooseNumber;
     Scientist _scientist;
+    listServices _lists;
 public:
     ui();
     ui(int chooseNumber);
