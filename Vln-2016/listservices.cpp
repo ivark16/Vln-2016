@@ -52,6 +52,63 @@ vector<Scientist> listServices::oldestOrderScientist()
     return returnScientist;
 }
 
+vector<Computer> listServices::oldestOrderComputer()
+{
+    vector<Computer> display;
+    display = _myData.readInOldestOrderComputer();
+    return display;
+}
+
+vector<Scientist> listServices::youngestOrderScientist()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInYoungestOrder();
+    return returnScientist;
+}
+
+vector<Computer> listServices::youngestOrderComputer()
+{
+    vector<Computer> display;
+    display = _myData.readInYoungestOrderComputer();
+    return display;
+}
+
+bool listServices::checkIfScientistIsInDataBase (string x)
+{
+    bool bla;
+    if (_myData.checkIfExists(x))
+    {
+        bla = true;
+    }
+    else
+    {
+        bla = false;
+    }
+    return bla;
+}
+
+bool listServices::checkIfComputerIsInDataBase (string x)
+{
+    bool bla;
+    if (_myData.checkIfComputerExists(x))
+    {
+        bla = true;
+    }
+    else
+    {
+        bla = false;
+    }
+    return bla;
+}
+
+
+
+
+
+
+
+
+
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;

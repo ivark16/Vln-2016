@@ -41,8 +41,11 @@ int main(int argc, char *argv[])
 
 
     //db.deleteFunctionComputer("bla");
-    //db.checkInComputer("ABC");
+    //db.checkInComputer("B");
 
+    //db.searchForNameFromDatabase("ring");
+    //db.readInReverseAlphabeticalOrder();
+   // db.readInReverseAlphabeticalOrderComputer();
     ui Master;
     Master.run();
 
