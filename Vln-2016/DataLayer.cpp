@@ -240,7 +240,6 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
         Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
-        cout << s.getFirstName() << " ";
         returnScientist.push_back(s);
     }
     return returnScientist;
