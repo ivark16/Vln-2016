@@ -289,104 +289,16 @@ void ui::run()
 
                  if(addScientistOrComputer == 1)
                  {
-                     int id = 0;
-                     string firstName;
-                     string lastName;
-                     char gender;
-                     string nationality;
-                     int birthYear;
-                     char isAlive;
-                     int deathYear;
-                     char isWinner;
-                     int awardYear;
-
-                     firstName = nameChecker("first name");
-                     lastName = nameChecker("last name");
-                     gender = genderChecker();
-                     nationality = nationalityChecker();
-                     birthYear = yearChecker(1, 0, 0);
-                     cout << "Is the scientist still alive? (y/n) ";
-                     cin >> isAlive;
-                     if(isAlive == 'n')
-                     {
-                         deathYear = yearChecker(2, birthYear, 0);
-                     }
-                     else if(isAlive == 'y')
-                     {
-                         deathYear = 0;
-                     }
-                     else
-                     {
-                         cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-                     }
-                     cout << "Did the scientist win a Turing award? (y/n)";
-                     cin >> isWinner;
-                     if(isWinner == 'y')
-                     {
-                        awardYear = yearChecker(3, birthYear, deathYear);
-                     }
-                     else if(isWinner == 'n')
-                     {
-                         awardYear = 0;
-                     }
-                     else
-                     {
-                         cout << "Invalid entry.  Please enter either y (yes) or n (no)";
-                     }
-                     Scientist newScientist(id, firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
-                     _lists.addScientistToDatabase(newScientist);
+                    addScientist();
                  }
                  if(addScientistOrComputer == 2)
                  {
-                    int id = 0;
-                    string name = computerNameChecker();
-                    string type = computerTypeChecker();
-                    int YOB = yearChecker(5,0,0);
-                    bool wasBuilt = boolChecker();
-                   // cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
-                   // cin >> name >> type >> YOB >> wasBuilt;
-
-
-                    Computer newComputer(id, name, type, YOB, wasBuilt);
-                    _lists.addComputerToDatabase(newComputer);
-                }
-                if(addScientistOrComputer == 3)
-                {
-                    bool checkerS = false;
-                    bool checkerC = false;
-                    vector<Scientist> cs;
-                    vector<Computer> cc;
-                    cs = _lists.displayScientist();
-                    cc = _lists.displayComputer();
-                    int scientistId;
-                    int computerId;
-                    cout << "Enter ID for connection" << endl;
-                    cin >> scientistId >> computerId;
-                    for(int i = 0 ; i < cs.size(); i++)
-                    {
-                        if(scientistId == cs[i].getID())
-                        {
-                            checkerS = true;
-                        }
-                    }
-                    for(int i = 0; i < cc.size() ; i++)
-                    {
-                        if(computerId == cc[i].getID())
-                        {
-                            checkerC = true;
-                        }
-                    }
-                    if(checkerS == true && checkerC == true)
-                    {
-                        connection newConnection(scientistId, computerId);
-                        _lists.addConnectionToDatabase(newConnection);
-                    }
-                    else
-                    {
-                        cout << "*ERROR* scientist or computer not found!" << endl;
-                    }
-
-                }
+                    addComputer();
+                 }
+                 if(addScientistOrComputer == 3)
+                 {
+                     addConnection();
+                 }
 
             }
             else if (chooseNumber == "5")
@@ -416,7 +328,14 @@ void ui::run()
                 }
                 if(deleteScientistOrComputer == 1)
                 {
+                    string scientName;
+                    vector<Scientist> ceckForDeleteS;
                     int idDelete;
+                    cout << "Enter name for scientist you want to delete";
+                    cin >> scientName;
+                    _lists.searchForName(scientName);
+                    printS();
+                    printScientists(ceckForDeleteS);
                     cout << "Enter id for scientist to delete" << endl;
                     cin >> idDelete;
                     _lists.deleteScientistFromDatabase(idDelete);
@@ -424,6 +343,13 @@ void ui::run()
                 if(deleteScientistOrComputer == 2)
                 {
                        //DELETE COMPUTER
+                    string compName;
+                    vector<Computer> checkForDeleteC;
+                    cout << "Enter name for computer u want to delete";
+                    cin >> compName;
+                    _lists.searchForNameComputer(compName);
+                    printC();
+                    printComputers(checkForDeleteC);
                     int idDelete;
                     cout << "Enter id for computer to delete" << endl;
                     cin >> idDelete;
@@ -930,68 +856,68 @@ char ui::genderChecker()
 //This function checks whehter years are valid.
 int ui::yearChecker(const int TYPE, int birthYear, int deathYear)
 {
-  int year;
-  bool cont = true;
+    int year;
+    bool cont = true;
 
-  while(cont)
-  {
-      if(TYPE == 1)
-      {
-      cout << "Please enter the scientists birth year: ";
-      }
-      else if(TYPE == 2)
-      {
-      cout << "Please enter the scientists year of death: ";
-      }
-      else if(TYPE == 3)
-      {
-      cout << "Please enter the year the scientist won the award: ";
-      }
-      else if (TYPE == 4)
-      {
+    while(cont)
+    {
+        if(TYPE == 1)
+        {
+        cout << "Please enter the scientists birth year: ";
+        }
+        else if(TYPE == 2)
+        {
+        cout << "Please enter the scientists year of death: ";
+        }
+        else if(TYPE == 3)
+        {
+        cout << "Please enter the year the scientist won the award: ";
+        }
+        else if (TYPE == 4)
+        {
           cout << "Please insert second year: ";
-      }
-      else if (TYPE == 5)
-      {
+        }
+        else if (TYPE == 5)
+        {
           cout << "Please enter the year the computer was designed: ";
-      }
-      //This loops until there is a valid input from the user, it ignores up to 1000 things.
-      while (!(cin >> year))
-      {
+        }
+        //This loops until there is a valid input from the user, it ignores up to 1000 things.
+        while (!(cin >> year))
+        {
           cin.clear();
           cin.ignore(1000,'\n');
           cout << "Not valid input, please try again: ";
-      }
-      //The TYPE is used to denote whether you are looking for a birth year, death year or a turing award year.
-      if(TYPE == 1 && (year < 1791 || year > 2016))
-      {
+        }
+        //The TYPE is used to denote whether you are looking for a birth year, death year or a turing award year.
+        if(TYPE == 1 && (year < 1791 || year > 2016))
+        {
           cout << "Invalid year." << endl;
-      }
-      else if(TYPE == 2 && (year >2016 || year<1791 || year <= birthYear))
-      {
+        }
+        else if(TYPE == 2 && (year >2016 || year<1791 || year <= birthYear))
+        {
           cout << "Invalid year." << endl;
-      }
-      else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
-      {
+        }
+        else if(TYPE == 3 && (year <1966 || year > 2016 || year < birthYear || (year > deathYear && deathYear != 0)))
+        {
           cout << "Invalid year." << endl;
-      }
-      else if (TYPE == 4 && (birthYear > year))
-      {
+        }
+        else if (TYPE == 4 && (birthYear > year))
+        {
           cout << "Invalid year." << endl;
-      }
-      else if (TYPE == 5 && (year < 1822 || year > 2016))
-      {
+        }
+        else if (TYPE == 5 && (year < 1822 || year > 2016))
+        {
           cout << "Invalid year." << endl;
-      }
-      else
-      {
+        }
+        else
+        {
           //end the loop and return the year.
           //this happens when the input is valid.
           cont = false;
 
-      }
-  }
-  return year;
+        }
+    }
+    return year;
 }
 
 //gets valid yes-or-no input from the user
@@ -1369,77 +1295,78 @@ void ui::searchComputers()
     }
  }
  vector<Computer> searchResults;
- if(searchComputers == 1)
- {
-     string searchTerm;
-     cout << "Enter a single name to search: ";
-     cin >> searchTerm;
-     searchResults = _lists.searchForNameComputer(searchTerm);
-     printC();
-     printComputers(searchResults);
- }
- else if(searchComputers == 2)
- {
-     cout << "Enter a type to search: ";
-     string type;
-     cin >> type;
-     searchResults = _lists.searchForTypeComputer(type);
-     printC();
-     printComputers(searchResults);
- }
- else if(searchComputers == 3)
- {
-     //Search for computers.
-      int searchComputers;
-      cout << "------------------------------------------------------------------" << endl;
-      cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-      cout << "* 1:  Search for a single year.          *                       *" << endl;
-      cout << "* 2:  Search a range of years.           *                       *" << endl;
-      cout << "*----------------------------------------*-----------------------*" << endl;
-      cout << "-----------------------------------------------------------------" << endl;
-      cout << "Enter number: ";
 
-      bool invalidInput = true;
-      while(invalidInput)
-      {
-         while (!(cin >> searchComputers))
-         {
-             cin.clear();
-             cin.ignore(1000,'\n');
-             cout << "Not valid input, please try again: ";
-         }
-         if(!((searchComputers > 0) && (searchComputers < 3)))
-         {
+    if(searchComputers == 1)
+    {
+        string searchTerm;
+        cout << "Enter a single name to search: ";
+        cin >> searchTerm;
+        searchResults = _lists.searchForNameComputer(searchTerm);
+        printC();
+        printComputers(searchResults);
+    }
+    else if(searchComputers == 2)
+    {
+        cout << "Enter a type to search: ";
+        string type;
+        cin >> type;
+        searchResults = _lists.searchForTypeComputer(type);
+        printC();
+        printComputers(searchResults);
+    }
+        else if(searchComputers == 3)
+        {
+        //Search for computers.
+        int searchComputers;
+        cout << "------------------------------------------------------------------" << endl;
+        cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+        cout << "* 1:  Search for a single year.          *                       *" << endl;
+        cout << "* 2:  Search a range of years.           *                       *" << endl;
+        cout << "*----------------------------------------*-----------------------*" << endl;
+        cout << "-----------------------------------------------------------------" << endl;
+        cout << "Enter number: ";
+
+        bool invalidInput = true;
+        while(invalidInput)
+    {
+    while (!(cin >> searchComputers))
+    {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((searchComputers > 0) && (searchComputers < 3)))
+        {
              cout << "Not valid input, please try again: ";
              invalidInput = true;
-         }
-         else
-         {
+        }
+        else
+        {
              invalidInput = false;
-         }
-     }
-     if(searchComputers == 1)
-     {
-         cout << "Enter a single year to search: ";
-         int year;
-         cin >> year;
-         searchResults = _lists.searchWhenBuiltSingleYear(year);
-         printC();
-         printComputers(searchResults);
-     }
-     else if(searchComputers == 2)
-     {
-         cout << "Enter the lower bound (a year): ";
-         int year1;
-         cin >> year1;
-         cout << "Enter the upper bound (a year): ";
-         int year2;
-         cin >> year2;
-         searchResults = _lists.searchWhenBuiltRange(year1, year2);
-         printC();
-         printComputers(searchResults);
-     }
- }
+        }
+    }
+    if(searchComputers == 1)
+    {
+        cout << "Enter a single year to search: ";
+        int year;
+        cin >> year;
+        searchResults = _lists.searchWhenBuiltSingleYear(year);
+        printC();
+        printComputers(searchResults);
+    }
+    else if(searchComputers == 2)
+    {
+     cout << "Enter the lower bound (a year): ";
+     int year1;
+     cin >> year1;
+     cout << "Enter the upper bound (a year): ";
+     int year2;
+     cin >> year2;
+     searchResults = _lists.searchWhenBuiltRange(year1, year2);
+     printC();
+     printComputers(searchResults);
+    }
+    }
 }
 
 void ui::searchConnections()
@@ -1505,3 +1432,104 @@ void ui::printBird()
     cout << "Unfortunately, there are no bird scientists." << endl;
 }
 
+void ui::addScientist()
+{
+    int id = 0;
+    string firstName;
+    string lastName;
+    char gender;
+    string nationality;
+    int birthYear;
+    char isAlive;
+    int deathYear;
+    char isWinner;
+    int awardYear;
+
+    firstName = nameChecker("first name");
+    lastName = nameChecker("last name");
+    gender = genderChecker();
+    nationality = nationalityChecker();
+    birthYear = yearChecker(1, 0, 0);
+    cout << "Is the scientist still alive? (y/n) ";
+    cin >> isAlive;
+    if(isAlive == 'n')
+    {
+        deathYear = yearChecker(2, birthYear, 0);
+    }
+    else if(isAlive == 'y')
+    {
+        deathYear = 0;
+    }
+    else
+    {
+        cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+    }
+    cout << "Did the scientist win a Turing award? (y/n)";
+    cin >> isWinner;
+    if(isWinner == 'y')
+    {
+       awardYear = yearChecker(3, birthYear, deathYear);
+    }
+    else if(isWinner == 'n')
+    {
+        awardYear = 0;
+    }
+    else
+    {
+        cout << "Invalid entry.  Please enter either y (yes) or n (no)";
+    }
+    Scientist newScientist(id, firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
+    _lists.addScientistToDatabase(newScientist);
+}
+
+void ui::addComputer()
+{
+    int id = 0;
+    string name = computerNameChecker();
+    string type = computerTypeChecker();
+    int YOB = yearChecker(5,0,0);
+    bool wasBuilt = boolChecker();
+   // cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
+   // cin >> name >> type >> YOB >> wasBuilt;
+
+
+    Computer newComputer(id, name, type, YOB, wasBuilt);
+    _lists.addComputerToDatabase(newComputer);
+}
+
+void ui::addConnection()
+{
+    bool checkerS = false;
+    bool checkerC = false;
+    vector<Scientist> cs;
+    vector<Computer> cc;
+    cs = _lists.displayScientist();
+    cc = _lists.displayComputer();
+    int scientistId;
+    int computerId;
+    cout << "Enter ID for connection" << endl;
+    cin >> scientistId >> computerId;
+    for(int i = 0 ; i < cs.size(); i++)
+    {
+        if(scientistId == cs[i].getID())
+        {
+            checkerS = true;
+        }
+    }
+    for(int i = 0; i < cc.size() ; i++)
+    {
+        if(computerId == cc[i].getID())
+        {
+            checkerC = true;
+        }
+    }
+    if(checkerS == true && checkerC == true)
+    {
+        connection newConnection(scientistId, computerId);
+        _lists.addConnectionToDatabase(newConnection);
+    }
+    else
+    {
+        cout << "*ERROR* scientist or computer not found!" << endl;
+    }
+}

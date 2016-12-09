@@ -63,6 +63,11 @@ public:
     void searchConnections();
     void searchScientistByAward();
 
+    //Add function for case 4
+    void addScientist();
+    void addComputer();
+    void addConnection();
+
 
 
 
