@@ -53,10 +53,10 @@ int main(int argc, char *argv[])
     //db.checkInComputerYear(1939, 1940);
 
     //db.ComputerWasBuilt();
-   // ui Master;
-   // Master.run();
+    ui Master;
+    Master.run();
 
-   playGame game;
+   /*playGame game;
 
         cout << "press Q to quit" << endl;
         char ticTacToeTable[3][3] =
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
             {'7', '8', '9'}
         };
         game.printTable(ticTacToeTable);
-        game.theGame(ticTacToeTable);
+        game.theGame(ticTacToeTable); */
 
 
     return 0;
