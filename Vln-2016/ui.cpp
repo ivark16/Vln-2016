@@ -518,12 +518,11 @@ void ui::printC()
     }
     cout << endl;
 }
-
+//Prints a header for the join table.  N
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-    cout << "WIDTH IS" << width;
-    cout.width(5);
+    cout.width(11);
     cout << left << "First name" << left;
     cout.width(width+2);
     cout << "Last name" << left;
