@@ -504,6 +504,7 @@ void ui::run()
                  cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
                  cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
                  cout << "* 2:  Add a computer.                    *                       *" << endl;
+                 cout << "* 3:  Add a connection.                  *                       *" << endl;
                  cout << "*----------------------------------------*-----------------------*" << endl;
                  cout << "-----------------------------------------------------------------" << endl;
                  cout << "Enter number: ";
@@ -517,7 +518,7 @@ void ui::run()
                          cin.ignore(1000,'\n');
                          cout << "Not valid input, please try again: ";
                      }
-                     if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 3)))
+                     if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 4)))
                      {
                          cout << "Not valid input, please try again: ";
                          invalidInput = true;

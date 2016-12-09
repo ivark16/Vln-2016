@@ -25,7 +25,7 @@ public:
     DataLayer();
     ~DataLayer();
     vector<Computer> readAllFromDataComputerBase();
-    vector<searching> readAllDataFromSearchingDatabse();
+    vector<searching> readAllDataFromSearchingDatabse(string x);
     vector<Scientist> readAllFromScientistsDataBase();
 
     void searchForNameFromDatabase(string name);

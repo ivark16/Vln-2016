@@ -80,11 +80,15 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
-vector<searching> DataLayer::readAllDataFromSearchingDatabse()
+vector<searching> DataLayer::readAllDataFromSearchingDatabse(string x)
 {
-    searching s;
+
+    QSqlQuery myQuery;
+    QString qName = QString::fromStdString(x);
     QSqlQuery query("SELECT scientist.firstname, scientist.lastname, computer.name, computer.yearbuilt FROM Connect "
-                    "JOIN computer ON Connect.Computer_ID =  computer.IDJOIN scientist ON Connect.scientist_ID = scientist.ID;");
+                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
+                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
+                    "WHERE scientist.firstname = (:x)");
     int idName = query.record().indexOf("firstname");
     int idName2 = query.record().indexOf("lastname");
     int idName3 = query.record().indexOf("name");
@@ -107,7 +111,7 @@ bool DataLayer::deleteFunction(string x)
 {
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare(("SELECT firstname FROM scientist WHERE firstname = (:x)"));
+    myQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x)");
     myQuery.addBindValue(qName);
 
     if (myQuery.exec())
@@ -129,13 +133,13 @@ bool DataLayer::deleteFunction(string x)
 bool DataLayer::deleteConnectionFunction(int x)
 {
     QSqlQuery myQuery;
-    myQuery.prepare(("SELECT * FROM connect WHERE scientist_id = (:x)"));
+    myQuery.prepare("SELECT * FROM connect WHERE scientist_id = (:x)");
     myQuery.addBindValue(x);
     if(myQuery.exec())
     {
         if(myQuery.next())
         {
-            myQuery.prepare(("DELETE * FROM scientist WHERE scientist_id = (:x)"));
+            myQuery.prepare("DELETE * FROM scientist WHERE scientist_id = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
             return true;
@@ -469,7 +473,7 @@ bool DataLayer::deleteFunctionComputer(string x)
 {
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare(("SELECT name FROM computer WHERE name = (:x)"));
+    myQuery.prepare("SELECT name FROM computer WHERE name = (:x)");
     myQuery.addBindValue(qName);
 
     if (myQuery.exec())

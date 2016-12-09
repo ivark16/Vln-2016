@@ -15,6 +15,10 @@ class searching
 public:
     searching();
     searching(string firstname, string lastname,string computername,int yearbuilt);
+    string getSearchFirstName();
+    string getSearchLastName();
+    string getSearchComputerName();
+    int getSearchYearBuilt();
 };
 
 #endif // SEARCHING_H
