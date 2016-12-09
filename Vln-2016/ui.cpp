@@ -1496,14 +1496,14 @@ void ui::addConnection()
         cin.ignore(1000,'\n');
         cout << "Invalid input, please try again!" << endl;
     }
-    for(int i = 0 ; i < cs.size(); i++)
+    for(unsigned int i = 0 ; i < cs.size(); i++)
     {
         if(scientistId == cs[i].getID())
         {
             checkerS = true;
         }
     }
-    for(int i = 0; i < cc.size() ; i++)
+    for(unsigned int i = 0; i < cc.size() ; i++)
     {
         if(computerId == cc[i].getID())
         {

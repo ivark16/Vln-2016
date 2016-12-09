@@ -833,6 +833,7 @@ vector<Computer> DataLayer::ComputerWasBuilt()
     return myVector;
 }
 
+// Checks what computers did not get built in database and returns a vector with those computers
 vector<Computer> DataLayer::ComputerWasNotBuilt()
 {
     vector<Computer> myVector;
@@ -858,6 +859,7 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
     return myVector;
 }
 
+// Updates data base for first in scientist, takes in ID and changes that scientist
 bool DataLayer::updateFirstName(string x, int y)
 {
     bool check;
@@ -882,6 +884,7 @@ bool DataLayer::updateFirstName(string x, int y)
     return check;
 }
 
+// Updates data base for last name in scientist, takes in ID and changes that scientist
 bool DataLayer::updateLastName(string x, int y)
 {
     bool check;
@@ -906,6 +909,7 @@ bool DataLayer::updateLastName(string x, int y)
     return check;
 }
 
+// Updates data base for scientist for y, takes in ID and changes that scientist
 bool DataLayer::updateGender(char g, int y)
 {
     bool check;
@@ -930,6 +934,7 @@ bool DataLayer::updateGender(char g, int y)
     return check;
 }
 
+// Updates data base for nationality in scientist, takes in ID and changes that scientist
 bool DataLayer::updateNationality(string x, int y)
 {
     bool check;
@@ -954,6 +959,7 @@ bool DataLayer::updateNationality(string x, int y)
     return check;
 }
 
+// Updates data base for scientist for year of birth, takes in ID and changes that scientist
 bool DataLayer::updateYOB (int x, int y)
 {
     bool check;
@@ -977,6 +983,7 @@ bool DataLayer::updateYOB (int x, int y)
     return check;
 }
 
+// Updates data base for scientist for year of death, takes in ID and changes that scientist
 bool DataLayer::updateYOD (int x, int y)
 {
     bool check;
@@ -1000,6 +1007,7 @@ bool DataLayer::updateYOD (int x, int y)
     return check;
 }
 
+// Updates data base for scientist for year of award, takes in ID and changes that scientist
 bool DataLayer::updateYOA (int x, int y)
 {
     bool check;
@@ -1023,6 +1031,7 @@ bool DataLayer::updateYOA (int x, int y)
     return check;
 }
 
+// Updates data base for name of computer, takes in new name and ID for that computer and changes it
 bool DataLayer::updateNameComputer(string x, int y)
 {
     bool check;
@@ -1047,6 +1056,7 @@ bool DataLayer::updateNameComputer(string x, int y)
     return check;
 }
 
+// Updates data base for type of computer, takes in the new type and computer ID and changes that computer
 bool DataLayer::updateTypeComputer(string x, int y)
 {
     bool check;
@@ -1071,6 +1081,7 @@ bool DataLayer::updateTypeComputer(string x, int y)
     return check;
 }
 
+// Updates data base for year of built, takes in new year and ID and changes computer with same ID
 bool DataLayer::updateYOCComputer (int x, int y)
 {
     bool check;
@@ -1094,6 +1105,7 @@ bool DataLayer::updateYOCComputer (int x, int y)
     return check;
 }
 
+// Updates in datalayer if computer was built
 bool DataLayer::updateWasComputerBuilt (int x, int y)
 {
     bool check;

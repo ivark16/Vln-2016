@@ -24,49 +24,59 @@ class DataLayer
 public:
     DataLayer();
     ~DataLayer();
-    vector<Computer> readAllFromDataComputerBase();
+
+    //Join functions
     vector<searching> searchForScientistFromSearchingDatabse(string x);
     vector<searching> searchForComputerFromSearchingDatabase(string x);
-    vector<Scientist> readAllFromScientistsDataBase();
 
-    vector<Scientist> searchForNameFromDatabase(string name);
     int getSizeOfScientists();
     int getSizeOfComputer();
     char getGenderAt(int i);
     int getBirthYearAt(int i);
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
+
+    //Delete functions
     bool deleteFunction(int x);
     bool deleteFunctionComputer(int x);
     bool deleteConnectionFunctionScientist(int x);
     bool deleteConnectionFunctionComputer(int x);
-    bool addFunction(Scientist newScientist);
+
+    //Display functions for scientist
     vector<Scientist> readInAlphabeticalOrder();
     vector<Scientist> readInReverseAlphabeticalOrder();
     vector<Scientist> readInOldestOrder();
     vector<Scientist> readInYoungestOrder();
+    vector<Scientist> readAllFromScientistsDataBase();
+
+    //Search functions for scientists
     vector<Scientist> searchForTuringAwardWinners(int x);
     vector<Scientist> searchForYearOfBirth(int x);
     vector<Scientist> searchRangeForYearOfBirth(int x, int y);
+    vector<Scientist> searchForNameFromDatabase(string name);
 
+    //Display functions for computer
     vector<Computer> readInAlphabeticalOrderComputer();
     vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
+    vector<Computer> readAllFromDataComputerBase();
+
+    //Add functions for computer, connect and scientist
     bool addFunctionComputer(Computer newComputer);
     bool addFunctionConnect(connection newConnection);
+    bool addFunction(Scientist newScientist);
+
+    //Check functions for computer
     vector<Computer> checkInComputer(string x);
-
-
-    bool checkIfExists(string x);
-    bool checkIfComputerExists(string x);
-
     vector<Computer> checkInComputerYear(int x, int y);
     vector<Computer> checkInComputerSingleYear(int x);
     vector<Computer> checkInComputerType(string x);
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 
+
+    //Functions for updating scientist database
     bool updateFirstName(string x, int y);
     bool updateLastName(string x, int y);
     bool updateGender(char g, int y);
@@ -75,6 +85,7 @@ public:
     bool updateYOD (int x, int y);
     bool updateYOA (int x, int y);
 
+    //Functions for updating computer database
     bool updateNameComputer(string x, int y);
     bool updateTypeComputer(string x, int y);
     bool updateYOCComputer (int x, int y);
