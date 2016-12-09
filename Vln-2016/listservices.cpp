@@ -12,9 +12,14 @@ void listServices::searchForName(string name)
     _myData.searchForNameFromDatabase(name);
 }
 
-int listServices::getSizeOfScientistList()
+int listServices::getSizeOfScientist()
 {
    return _myData.getSizeOfScientists();
+}
+
+int listServices::getSizeOfComputer()
+{
+    return _myData.getSizeOfComputer();
 }
 
 vector<Scientist> listServices::displayScientist()

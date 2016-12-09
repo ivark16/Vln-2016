@@ -13,6 +13,7 @@
 class ui
 {
     int _chooseNumber;
+    Computer _computer;
     Scientist _scientist;
     listServices _lists;
 public:

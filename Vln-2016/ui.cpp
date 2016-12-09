@@ -276,7 +276,7 @@ void ui::run()
                      cin.ignore(1000,'\n');
                      cout << "Not valid input, please try again: ";
                  }
-                 if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 3)))
+                 if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 4)))
                  {
                      cout << "Not valid input, please try again: ";
                      invalidInput = true;
@@ -350,12 +350,40 @@ void ui::run()
                 }
                 if(addScientistOrComputer == 3)
                 {
+                    bool checkerS = false;
+                    bool checkerC = false;
+                    vector<Scientist> cs;
+                    vector<Computer> cc;
+                    cs = _lists.displayScientist();
+                    cc = _lists.displayComputer();
                     int scientistId;
                     int computerId;
                     cout << "Enter ID for connection" << endl;
                     cin >> scientistId >> computerId;
-                    connection newConnection(scientistId, computerId);
-                    _lists.addConnectionToDatabase(newConnection);
+                    for(int i = 0 ; i < cs.size(); i++)
+                    {
+                        if(scientistId == cs[i].getID())
+                        {
+                            checkerS = true;
+                        }
+                    }
+                    for(int i = 0; i < cc.size() ; i++)
+                    {
+                        if(computerId == cc[i].getID())
+                        {
+                            checkerC = true;
+                        }
+                    }
+                    if(checkerS == true && checkerS == true)
+                    {
+                        connection newConnection(scientistId, computerId);
+                        _lists.addConnectionToDatabase(newConnection);
+                    }
+                    else
+                    {
+                        cout << "*ERROR* scientist or computer not found!" << endl;
+                    }
+
                 }
 
             }
