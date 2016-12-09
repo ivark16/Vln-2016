@@ -147,6 +147,7 @@ bool listServices::checkIfComputerIsInDataBase (string x)
 void listServices::deleteScientistFromDatabase(int x)
 {
     _myData.deleteFunction(x);
+    _myData.deleteConnectionFunctionScientist(x);
 
 }
 
