@@ -1032,7 +1032,7 @@ void ui::caseFiveCase()
             invalidInput = false;
         }
     }
-
+    //this function deletes a scientist
     if(deleteScientistOrComputer == 1)
     {
         string scientName;
@@ -1048,6 +1048,7 @@ void ui::caseFiveCase()
         _lists.deleteScientistFromDatabase(idDelete);
     }
 
+    //this function deletes a computer
     if(deleteScientistOrComputer == 2)
     {
            //DELETE COMPUTER
@@ -1066,6 +1067,7 @@ void ui::caseFiveCase()
 
 }
 
+//print case six header for editing scientists and computers
 void ui::caseSixCase()
 {
     cout << "------------------------------------------------------------------" << endl;
@@ -1075,8 +1077,8 @@ void ui::caseSixCase()
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
-
 }
+//search for a scientist from the database.  This displays a menu of options and calls other functions.
 void ui::searchScientist()
 {
 
@@ -1165,6 +1167,7 @@ void ui::searchScientistByBirthYear()
         }
    }
    vector<Scientist> searchResults;
+   //search a scientist by a single year
    if(rangeOrSingle == 1)
    {
        int yearToCheck = yearChecker(1,0,0);
@@ -1172,6 +1175,7 @@ void ui::searchScientistByBirthYear()
        printS();
        printScientists(searchResults);
    }
+   //search a scientist by range of years
    else if(rangeOrSingle == 2)
    {
        int minYear = yearChecker(1,0,0);
@@ -1181,10 +1185,9 @@ void ui::searchScientistByBirthYear()
        printScientists(searchResults);
    }
 }
-
+//search a scientist by name
 void ui::searchScientistByName()
 {
-
     string searchTerm;
     cout << "Enter a single name to search: ";
     cin >> searchTerm;
@@ -1209,9 +1212,14 @@ void ui::searchScientistByName()
     }
 }
 
+//search for a scientist by award
 void ui::searchScientistByAward()
 {
-
+    vector<Scientist> searchResults;
+        int yearToCheck = yearChecker(3,0,0);
+        searchResults = _lists.checkForAward(yearToCheck);
+        printS();
+        printScientists(searchResults);
 }
 
 //Search for computers.
@@ -1247,7 +1255,7 @@ void ui::searchComputers()
     }
  }
  vector<Computer> searchResults;
-
+    //search computers by name
     if(searchComputers == 1)
     {
         string searchTerm;
@@ -1257,6 +1265,7 @@ void ui::searchComputers()
         printC();
         printComputers(searchResults);
     }
+    //search computers by type
     else if(searchComputers == 2)
     {
         cout << "Enter a type to search: ";
@@ -1266,9 +1275,10 @@ void ui::searchComputers()
         printC();
         printComputers(searchResults);
     }
-        else if(searchComputers == 3)
-        {
-        //Search for computers.
+
+     //Search for computers.
+     else if(searchComputers == 3)
+     {
         int searchComputers;
         cout << "--------------------------------------------------------------------" << endl;
         cout << "*------ Database for Computers --------*---------Glossary----------*" << endl;
@@ -1279,8 +1289,8 @@ void ui::searchComputers()
         cout << "--------------------------------------------------------------------" << endl;
         cout << "Enter number: ";
 
-        bool invalidInput = true;
-        while(invalidInput)
+     bool invalidInput = true;
+    while(invalidInput)
     {
     while (!(cin >> searchComputers))
     {
@@ -1298,6 +1308,7 @@ void ui::searchComputers()
              invalidInput = false;
         }
     }
+    //search for a single year
     if(searchComputers == 1)
     {
         cout << "Enter a single year to search: ";
@@ -1307,6 +1318,7 @@ void ui::searchComputers()
         printC();
         printComputers(searchResults);
     }
+    //allows you to search for a range of years of creation for computers
     else if(searchComputers == 2)
     {
      cout << "Enter the lower bound (a year): ";
@@ -1321,7 +1333,7 @@ void ui::searchComputers()
     }
     }
 }
-
+//allows you to search for connections
 void ui::searchConnections()
 {
     //Search for connections.
@@ -1355,6 +1367,7 @@ void ui::searchConnections()
         }
      }
      vector<searching> connections;
+     //search for connections by scientist
      if(searchC == 1)
      {
          string searchTerm;
@@ -1372,6 +1385,7 @@ void ui::searchConnections()
          }
 
      }
+     //search for connections by computer
      else if(searchC == 2)
      {
          string searchTerm;
@@ -1400,7 +1414,7 @@ void ui::printBird()
     cout << "      L\\_               _/I        L\\_    " << endl;
     cout << "Unfortunately, there are no bird scientists." << endl;
 }
-
+//add a scientist
 void ui::addScientist()
 {
     int id = 0;
@@ -1450,7 +1464,7 @@ void ui::addScientist()
     Scientist newScientist(id, firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
     _lists.addScientistToDatabase(newScientist);
 }
-
+//add a computer
 void ui::addComputer()
 {
     int id = 0;
@@ -1465,7 +1479,7 @@ void ui::addComputer()
     Computer newComputer(id, name, type, YOB, wasBuilt);
     _lists.addComputerToDatabase(newComputer);
 }
-
+//add a new connection between a scientist and a computer
 void ui::addConnection()
 {
     bool checkerS = false;
