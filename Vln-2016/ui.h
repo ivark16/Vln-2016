@@ -28,6 +28,8 @@ public:
     void printC();
     void printConnection();
     void printJoin(vector<searching>);
+    void printBird();
+
 
     //check functions
     void CheckNumbers (listServices checkNumbersForScientist);

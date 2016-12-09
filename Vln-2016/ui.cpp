@@ -1312,17 +1312,22 @@ void ui::searchScientistByName()
     cout << "Enter a single name to search: ";
     cin >> searchTerm;
     vector<Scientist> nameSearch = _lists.checkName(searchTerm);
-    printS();
     if (nameSearch.size() == 0)
     {
+        if(searchTerm == "bird" || searchTerm == "Bird")
+        {
+            printBird();
+        }
+        else
+        {
+        printS();
         cout << "Person is not in database!" << endl;
         cout << "-------------------------------------------------------------" << endl;
-        //break;
+        }
     }
     else
     {
         printScientists(nameSearch);
-      //  break;
     }
 }
 
@@ -1485,3 +1490,15 @@ void ui::searchConnections()
          //MISSING PRINT FUNCTIONS
      }
 }
+
+//This function is for the bird easter egg.  When you search for "bird" or "Bird" the console will display a bird.
+void ui::printBird()
+{
+    cout << endl << endl << endl << endl;
+    cout << "      __ _             _ __        __ _   " << endl;
+    cout << "     /  ('>-         -<')  \\      /  ('>- " << endl;
+    cout << "     \\__/               \\__/      \\__/    " << endl;
+    cout << "      L\\_               _/I        L\\_    " << endl;
+    cout << "Unfortunately, there are no bird scientists." << endl;
+}
+
