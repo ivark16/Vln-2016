@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
+//#include <curses.h>
 
 using namespace std;
 
@@ -147,9 +148,8 @@ void ui::run()
                 //printing menu for caseTwoCase
                 do
                 {
-
                     caseTwoCase();
-
+                    cin >> displayScientist;
                     if (displayScientist == "1")
                     {
                         vector<Computer> newvector;
@@ -394,9 +394,125 @@ void ui::run()
                 if(deleteScientistOrComputer == 2)
                 {
                        //DELETE COMPUTER
+                    int idDelete;
+                    cout << "Enter id for computer to delete" << endl;
+                    cin >> idDelete;
+                    _lists.deleteComputerFromDatabase(idDelete);
                 }
             }
             else if (chooseNumber == "6")
+            {
+                string input;
+                do
+                {
+                    caseSixCase();
+                    cin >> input;
+
+                    if (input == "1")
+                    {
+                        string name;
+                        bool check;
+                        bool check2;
+                        int id;
+                        vector<Scientist> editScientist;
+                        do
+                        {
+                            cout << "Please insert name of scientist you want to edit: ";
+                            cin >> name;
+                            editScientist = _lists.searchForName(name);
+                            //id = editScientist[0].
+                            if (editScientist.size() == 0)
+                            {
+                                check2 = false;
+                            }
+                            else
+                            {
+                                check2 = true;
+                            }
+                        }while (check2 == false);
+                        do
+                        {
+                            printS();
+                            printScientists(editScientist);
+                            cout << "Please insert what you would like to edit (example: insert firstname to edit Scientists firstname): ";
+                            cin >> name;
+                            if (name == "firstname" || name == "firstName")
+                            {
+                                string firstname;
+                                cout << "Input new first name: ";
+                                cin >> firstname;
+                                _lists.updateFirstNameScientist(firstname, id);
+                                check = true;
+                                break;
+                            }
+                            else if (name == "lastname" || name == "lastName")
+                            {
+                                string lastname;
+                                cout << "Input new first name: ";
+                                cin >> lastname;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "gender" || name == "Gender")
+                            {
+                                char sex;
+                                cout << "Input new gender";
+                                cin >> sex;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "nationality" || name == "Nationality")
+                            {
+                                string nationality;
+                                cout << "Input new nationality: ";
+                                cin >> nationality;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yob" || name == "YOB")
+                            {
+                                int yob;
+                                cout << "Input new year of birth: ";
+                                cin >> yob;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yod" || name == "YOD")
+                            {
+                                int yod;
+                                cout << "Input new year of death: ";
+                                cin >> yod;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yoa" || name == "YOA")
+                            {
+                                int yoa;
+                                cout << "Input new year of award: ";
+                                cin >> yoa;
+                                check = true;
+                                break;
+                            }
+                            else
+                            {
+                                cout << "Invalid input, please try again" << endl;
+                                cout << "Valid inputs are: firstname, lastname, gender, Nationality, YOB, YOD, YOA" << endl;
+                                check = false;
+                            }
+                        }while (check == false);
+                    }
+                    else if (input == "2")
+                    {
+
+                    }
+                    else
+                    {
+                        cout << "Invalid input, please try agian" << endl;
+                    }
+                } while (input != "1" || input != "2");
+                break;
+            }
+            else if (chooseNumber == "7")
             {
                 break;
             }
@@ -407,11 +523,20 @@ void ui::run()
             }
             if(stillLooping == true && (chooseNumber == "1" || chooseNumber == "2" || chooseNumber == "3" || chooseNumber == "4" || chooseNumber == "5" || chooseNumber == "6"))
             {
-                 string thisDoesNothing;
-                 cout << "Input anything and than press enter. ";
-                 cin >> thisDoesNothing;
-                 system("cls");
-                 system("clear");
+                if (getenv("windir"))
+                {
+                     string thisDoesNothing;
+                     cout << "Input anything and than press enter. ";
+                     cin >> thisDoesNothing;
+                     system("cls");
+                }
+                else
+                {
+                    string thisDoesNothing;
+                    cout << "Input anything and than press enter. ";
+                    cin >> thisDoesNothing;
+                    system("clear");
+                }
             }
         } while(stillLooping);
 }
@@ -952,7 +1077,8 @@ void ui::mainMenuCase()
     cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
     cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
-    cout << "* 6:  Quit.                              *                       *" << endl;
+    cout << "* 6:  Edit scientist/computers           *                       *" << endl;
+    cout << "* 7:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -1023,7 +1149,7 @@ void ui::caseThreeCase()
 
      if(searchScientistOrComputers == 1)
      {
-            searchScientist();
+           searchScientist();
      }
 
      if(searchScientistOrComputers == 2)
@@ -1032,51 +1158,7 @@ void ui::caseThreeCase()
      }
      if(searchScientistOrComputers == 3)
      {
-         //Search for connections.
-          int searchConnections;
-          cout << "------------------------------------------------------------------" << endl;
-          cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
-          cout << "* 1:  Search by scientist.               *                       *" << endl;
-          cout << "* 2:  Search by computer.                *                       *" << endl;
-          cout << "*----------------------------------------*-----------------------*" << endl;
-          cout << "------------------------------------------------------------------" << endl;
-          cout << "Enter number: ";
-
-          bool invalidInput = true;
-          while(invalidInput)
-          {
-             while (!(cin >> searchConnections))
-             {
-                 cin.clear();
-                 cin.ignore(1000,'\n');
-                 cout << "Not valid input, please try again: ";
-             }
-             if(!((searchConnections > 0) && (searchConnections < 3)))
-             {
-                 cout << "Not valid input, please try again: ";
-                 invalidInput = true;
-             }
-             else
-             {
-                 invalidInput = false;
-             }
-          }
-          vector<searching> connections;
-          if(searchConnections == 1)
-          {
-              string searchTerm;
-              cout << "Enter a single name to search: ";
-              cin >> searchTerm;
-              connections = _lists.displaySearchJoinScientistName(searchTerm);
-          }
-          else if(searchConnections == 2)
-          {
-              string searchTerm;
-              cout << "Enter a single name to search: ";
-              cin >> searchTerm;
-              connections = _lists.displaySearchJoinComputerName(searchTerm);
-              //MISSING PRINT FUNCTIONS
-          }
+           searchConnections();
      }
 }
 
@@ -1086,6 +1168,7 @@ void ui::caseFourCase()
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Add a computer.                    *                       *" << endl;
+    cout << "* 3:  Add a connection                   *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -1102,7 +1185,17 @@ void ui::caseFiveCase()
     cout << "Enter number: ";
 }
 
+void ui::caseSixCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Edit a scientist.                  * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  Edit a computer.                   *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
 
+}
 void ui::searchScientist()
 {
 
@@ -1141,100 +1234,98 @@ void ui::searchScientist()
          //this case allows you to search for scientists using birth years.
          if (searchScientist == 1)
          {
-             int rangeOrSingle;
-             cout << "------------------------------------------------------------------" << endl;
-             cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-             cout << "* 1:  Search for a single year.          * Y.O.D = year of death *" << endl;
-             cout << "* 2:  Search for a range.                * Y.O.B = year of birth *"<< endl;
-             cout << "*----------------------------------------*-----------------------*" << endl;
-             cout << "-----------------------------------------------------------------" << endl;
-             cout << "Enter number: ";
-
-             bool invalidInput = true;
-             while(invalidInput)
-             {
-                 while (!(cin >> rangeOrSingle))
-                 {
-                     cin.clear();
-                     cin.ignore(1000,'\n');
-                     cout << "Not valid input, please try again: ";
-                 }
-                 if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
-                 {
-                     cout << "Not valid input, please try again: ";
-                     invalidInput = true;
-                 }
-                 else
-                 {
-                     invalidInput = false;
-                 }
-            }
-            vector<Scientist> searchResults;
-            if(rangeOrSingle == 1)
-            {
-                int yearToCheck = yearChecker(1,0,0);
-                searchResults = _lists.checkBirthYear(yearToCheck);
-                printS();
-                printScientists(searchResults);
-            }
-            else if(rangeOrSingle == 2)
-            {
-                int minYear = yearChecker(1,0,0);
-                int maxYear = yearChecker(4,minYear,0);
-               // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
-                printS();
-                printScientists(searchResults);
-            }
-        }
+             searchScientistByBirthYear();
+         }
 
 
          //This case lets you search for a scientist from their name (either the first or last name)
          else if (searchScientist == 2)
          {
-             string searchTerm;
-             cout << "Enter a single name to search: ";
-             cin >> searchTerm;
-             vector<Scientist> nameSearch = _lists.checkName(searchTerm);
-             printS();
-             if (nameSearch.size() == 0)
-             {
-                 cout << "Person is not in database!" << endl;
-                 cout << "-------------------------------------------------------------" << endl;
-                 //break;
-             }
-             else
-             {
-                 printScientists(nameSearch);
-               //  break;
-             }
-          }
+             searchScientistByName();
+         }
 
          //This case sorts the scientists by the year they recived the Turning Award
          else if (searchScientist == 3)
          {
-
-             cout << "Enter a single year to search: ";
-             int year;
-             cin >> year;
-             vector<Scientist> awardSearch;
-             awardSearch = _lists.checkForAward(year);
-             printS();
-             if (awardSearch.size() == 0)
-             {
-                 cout << "There is no match in the database!" << endl;
-                 cout << "-------------------------------------------------------------" << endl;
-                // break;
-             }
-             else
-             {
-                 printScientists(awardSearch);
-               //  break;
-             }
-             printScientists(awardSearch);
-             //break;
+             searchScientistByAward();
          }
+    }
+
+//Is called by the searchScientist function and searches for either a single year or a range of years.
+void ui::searchScientistByBirthYear()
+{
+
+    int rangeOrSingle;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Search for a single year.          * Y.O.D = year of death *" << endl;
+    cout << "* 2:  Search for a range.                * Y.O.B = year of birth *"<< endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+
+    bool invalidInput = true;
+    while(invalidInput)
+    {
+        while (!(cin >> rangeOrSingle))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
+        {
+            cout << "Not valid input, please try again: ";
+            invalidInput = true;
+        }
+        else
+        {
+            invalidInput = false;
+        }
+   }
+   vector<Scientist> searchResults;
+   if(rangeOrSingle == 1)
+   {
+       int yearToCheck = yearChecker(1,0,0);
+       searchResults = _lists.checkBirthYear(yearToCheck);
+       printS();
+       printScientists(searchResults);
+   }
+   else if(rangeOrSingle == 2)
+   {
+       int minYear = yearChecker(1,0,0);
+       int maxYear = yearChecker(4,minYear,0);
+      // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
+       printS();
+       printScientists(searchResults);
+   }
 }
 
+void ui::searchScientistByName()
+{
+
+    string searchTerm;
+    cout << "Enter a single name to search: ";
+    cin >> searchTerm;
+    vector<Scientist> nameSearch = _lists.checkName(searchTerm);
+    printS();
+    if (nameSearch.size() == 0)
+    {
+        cout << "Person is not in database!" << endl;
+        cout << "-------------------------------------------------------------" << endl;
+        //break;
+    }
+    else
+    {
+        printScientists(nameSearch);
+      //  break;
+    }
+}
+
+void ui::searchScientistByAward()
+{
+
+}
 
 //Search for computers.
 void ui::searchComputers()
@@ -1340,4 +1431,53 @@ void ui::searchComputers()
          printComputers(searchResults);
      }
  }
+}
+
+void ui::searchConnections()
+{
+    //Search for connections.
+     int searchConnections;
+     cout << "------------------------------------------------------------------" << endl;
+     cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
+     cout << "* 1:  Search by scientist.               *                       *" << endl;
+     cout << "* 2:  Search by computer.                *                       *" << endl;
+     cout << "*----------------------------------------*-----------------------*" << endl;
+     cout << "------------------------------------------------------------------" << endl;
+     cout << "Enter number: ";
+
+     bool invalidInput = true;
+     while(invalidInput)
+     {
+        while (!(cin >> searchConnections))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((searchConnections > 0) && (searchConnections < 3)))
+        {
+            cout << "Not valid input, please try again: ";
+            invalidInput = true;
+        }
+        else
+        {
+            invalidInput = false;
+        }
+     }
+     vector<searching> connections;
+     if(searchConnections == 1)
+     {
+         string searchTerm;
+         cout << "Enter a single name to search: ";
+         cin >> searchTerm;
+         connections = _lists.displaySearchJoinScientistName(searchTerm);
+     }
+     else if(searchConnections == 2)
+     {
+         string searchTerm;
+         cout << "Enter a single name to search: ";
+         cin >> searchTerm;
+         connections = _lists.displaySearchJoinComputerName(searchTerm);
+         //MISSING PRINT FUNCTIONS
+     }
 }

@@ -66,6 +66,8 @@ public:
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 
+    bool updateFirstName(string x, int y);
+
 };
 
 #endif // SCIENTISLISTFROMSQL_H
