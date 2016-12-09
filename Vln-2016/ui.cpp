@@ -1480,6 +1480,8 @@ void ui::searchConnections()
          cout << "Enter a single name to search: ";
          cin >> searchTerm;
          connections = _lists.displaySearchJoinScientistName(searchTerm);
+         printConnection();
+         printJoin(connections);
      }
      else if(searchConnections == 2)
      {
@@ -1487,7 +1489,8 @@ void ui::searchConnections()
          cout << "Enter a single name to search: ";
          cin >> searchTerm;
          connections = _lists.displaySearchJoinComputerName(searchTerm);
-         //MISSING PRINT FUNCTIONS
+         printConnection();
+         printJoin(connections);
      }
 }
 

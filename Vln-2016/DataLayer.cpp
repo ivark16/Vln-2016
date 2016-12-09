@@ -87,12 +87,11 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
 vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 {
     vector<searching> joinQueryscientist;
-    QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    QSqlQuery query("SELECT SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
-                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
-                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
-                    "WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    QSqlQuery query;
+    query.prepare("SELECT SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    query.addBindValue(qName);
+    query.exec();
     int idName = query.record().indexOf("firstname");
     int idName2 = query.record().indexOf("lastname");
     int idName3 = query.record().indexOf("name");
@@ -100,6 +99,7 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     int idName5 = query.record().indexOf("yearbuilt");
     while(query.next())
     {
+        cout << "oasidghsag";
         string firstname = query.value(idName).toString().toStdString();
         string lastname = query.value(idName2).toString().toStdString();
         string compname = query.value(idName3).toString().toStdString();
@@ -115,29 +115,30 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 
 vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
 {
+    cout << "i go in";
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    QSqlQuery query("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
-                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
-                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
-                    "WHERE computer.name = (:x) COLLATE NOCASE");
-    int idName = query.record().indexOf("firstname");
-    int idName2 = query.record().indexOf("lastname");
-    int idName3 = query.record().indexOf("name");
-    int idName4 = query.record().indexOf("type");
-    int idName5 = query.record().indexOf("yearbuilt");
-    while(query.next())
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name = (:x) COLLATE NOCASE");
+    myQuery.addBindValue(qName);
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
     {
-        string firstname = query.value(idName).toString().toStdString();
-        string lastname = query.value(idName2).toString().toStdString();
-        string compname = query.value(idName3).toString().toStdString();
-        string comptype = query.value(idName4).toString().toStdString();
-        int yearbuilt = query.value(idName5).toInt();
+        cout << "hallo";
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
 
         searching s(firstname, lastname, compname, comptype, yearbuilt);
         joinQueryComputer.push_back(s);
-
     }
     return joinQueryComputer;
 }
