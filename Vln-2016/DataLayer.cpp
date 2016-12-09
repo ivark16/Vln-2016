@@ -109,6 +109,7 @@ vector<searching> DataLayer::readAllDataFromSearchingDatabse(string x)
 
 bool DataLayer::deleteFunction(string x)
 {
+    bool deleteF;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
     myQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x)");
@@ -121,17 +122,19 @@ bool DataLayer::deleteFunction(string x)
             myQuery.prepare("DELETE FROM scientist WHERE firstname = (:x)");
             myQuery.addBindValue(qName);
             myQuery.exec();
-            return true;
+            deleteF = true;
         }
     }
     else
     {
-          return false;
+          deleteF = false;
     }
+    return deleteF;
 }
 
 bool DataLayer::deleteConnectionFunction(int x)
 {
+    bool deleteF;
     QSqlQuery myQuery;
     myQuery.prepare("SELECT * FROM connect WHERE scientist_id = (:x)");
     myQuery.addBindValue(x);
@@ -142,13 +145,14 @@ bool DataLayer::deleteConnectionFunction(int x)
             myQuery.prepare("DELETE * FROM scientist WHERE scientist_id = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
-            return true;
+            deleteF = true;
         }
     }
     else
     {
-        return false;
+        deleteF = false;
     }
+    return deleteF;
 }
 
 bool DataLayer::addFunction(Scientist newScientist)
@@ -345,6 +349,94 @@ vector<Scientist> DataLayer::readInYoungestOrder()
     return returnScientist;
 }
 
+vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM scientist WHERE YOA = (:x)");
+    query.addBindValue(x);
+    query.exec();
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
+vector<Scientist> DataLayer::searchForYearOfBirth(int x)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM scientist WHERE YOB = (:x)");
+    query.addBindValue(x);
+    query.exec();
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
+vector<Scientist> searchRangeForYearOfBirth(int x, int y)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    query.prepare("SELECT * FROM scientist s WHERE s.YOB BETWEEN (:x) AND (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+    query.exec();
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
 vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
 {
     vector<Computer> returnComputer;
@@ -471,6 +563,7 @@ bool DataLayer::addFunctionConnect(connection newConnection)
 
 bool DataLayer::deleteFunctionComputer(string x)
 {
+    bool bla;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
     myQuery.prepare("SELECT name FROM computer WHERE name = (:x)");
@@ -483,13 +576,14 @@ bool DataLayer::deleteFunctionComputer(string x)
             myQuery.prepare("DELETE FROM computer WHERE name = (:x)");
             myQuery.addBindValue(qName);
             myQuery.exec();
-            return true;
+            bla = true;
         }
     }
     else
     {
-          return false;
+          bla = false;
     }
+    return bla;
 }
 
 vector<Computer> DataLayer::checkInComputer(string x)

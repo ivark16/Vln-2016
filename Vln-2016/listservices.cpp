@@ -207,7 +207,26 @@ vector<Computer> listServices::myComputerWasNotBuilt()
     return matchingFirstNames;
 }*/
 
+vector<Scientist> listServices::checkForAward(int x)
+{
+    vector<Scientist> award;
+    award = _myData.searchForTuringAwardWinners(x);
+    return award;
+}
 
+vector<Scientist> listServices::checkBirthYear(int x)
+{
+    vector<Scientist> award;
+    award = _myData.searchForYearOfBirth(x);
+    return award;
+}
+
+/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
+{
+    vector<Scientist> award1;
+    award1 = _myData.searchRangeForYearOfBirth(x, y);
+    return award1;
+}*/
 
 int listServices::searchLongestNameScientist()
 {
