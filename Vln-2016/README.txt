@@ -1,4 +1,4 @@
-Hópur 9 - Verklegt námskeið 1 2016
+Hopur 9 - Verklegt namskeid 1 2016
 Version 2
 
 HOW TO RUN:
@@ -11,18 +11,18 @@ HOW TO RUN:
 SUMMARY:
 
 The project contains a database of scientists and computers.
-You can alter the database (by adding or removing scientists or 
-computers), search through it, or sort it.
 Upon running, you will be presented with a list of available
-options.
+options. Users can both add and edit scientists and computers that are already in the system as well as add a connection between a scientist and a computer. Users can also delete both scientists and computers. If a computer that is connected to a scientist is deleted the connection between them is deleted automatically and wise versa.
+In the project there are several abbreviations and the meaning of each is given in glossary.
+
 
 NOTES:
 Please reference the Known bugs text file for known bugs.
 
 CREDITS:
-Anna Lára Sigurðardóttir
+Anna Lara Sigurdardottir
 Brynjar Barkarson
-Gabríela Jóna Ólafsdóttir
-Ívar Örn Kristjánsson
-Margrét Dagmar Loftsdóttir
-Stefán Hjartarson
+Gabriela Jona Olafsdottir
+Ivar Orn Kristjansso
+Margret Dagmar Loftsdittir
+Stefan Hjartarson
