@@ -144,6 +144,17 @@ bool listServices::checkIfComputerIsInDataBase (string x)
     return bla;
 }
 
+void listServices::deleteScientistFromDatabase(int x)
+{
+    _myData.deleteFunction(x);
+
+}
+
+void listServices::deleteComputerFromDatabase(int x)
+{
+    _myData.deleteFunctionComputer(x);
+}
+
 //This function creates and returns a new vector containing only living scientists.
 vector<Scientist> listServices::searchAliveScientist()
 {
