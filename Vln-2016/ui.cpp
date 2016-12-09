@@ -79,6 +79,10 @@ void ui::run()
                 //Play a fun trivia game
                 playGame();
             }
+            else if (chooseNumber == "8")
+            {
+                exit(1);
+            }
             else
             {
                 cout << "Invalid input, please try again!" << endl;
@@ -621,7 +625,7 @@ void ui::headerCase()
 void ui::mainMenuCase()
 {
     cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "*------ Database for Scientist ----------*-----------------------*" << endl;
     cout << "* 1:  Display list of Scientist.         *                       *" << endl;
     cout << "* 2:  Display list of Computers.         *                       *" << endl;
     cout << "* 3:  Search for scientist/computers.    *                       *" << endl;
@@ -631,7 +635,7 @@ void ui::mainMenuCase()
     cout << "* 7:  Lets play a game                   *                       *" << endl;
     cout << "* 8:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 }
 
@@ -646,7 +650,7 @@ void ui::caseOneCase()
     cout << "* 4:  Display all dead scientist.        *                       *" << endl;
     cout << "* 5:  Display in order of birth.         *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
     string displayScientist;
@@ -771,7 +775,7 @@ void ui::caseTwoCase()
     cout << "* 3:  display all when was built.        *                       *" << endl;
     cout << "* 4:  Display if was built.              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
     string displayScientist;
 
@@ -900,12 +904,12 @@ void ui::caseThreeCase()
     //Search for a scientist or computers.  It first prints a
        int searchScientistOrComputers;
        cout << "------------------------------------------------------------------" << endl;
-       cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+       cout << "*------ Database for Computers ----------*-----------------------*" << endl;
        cout << "* 1:  Search scientist.                  *                       *" << endl;
        cout << "* 2:  Search computers.                  *                       *" << endl;
        cout << "* 3:  Search connections.                *                       *" << endl;
        cout << "*----------------------------------------*-----------------------*" << endl;
-       cout << "-----------------------------------------------------------------" << endl;
+       cout << "------------------------------------------------------------------" << endl;
        cout << "Enter number: ";
 
      bool invalidInput = true;
@@ -950,7 +954,7 @@ void ui::caseThreeCase()
 void ui::caseFourCase()
 {
     cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "*------ Database for Computers ----------*-----------------------*" << endl;
     cout << "* 1:  Add a scientist.                   *                       *" << endl;
     cout << "* 2:  Add a computer.                    *                       *" << endl;
     cout << "* 3:  Add a connection                   *                       *" << endl;
@@ -1001,7 +1005,7 @@ void ui::caseFourCase()
 void ui::caseFiveCase()
 {
     cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "*------ Database for Computers ----------*-----------------------*" << endl;
     cout << "* 1:  Delete a scientist.                *                       *" << endl;
     cout << "* 2:  Delete a computer.                 *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
@@ -1065,7 +1069,7 @@ void ui::caseFiveCase()
 void ui::caseSixCase()
 {
     cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "*------ Database for Computers ----------*-----------------------*" << endl;
     cout << "* 1:  Edit a scientist.                  *                       *" << endl;
     cout << "* 2:  Edit a computer.                   *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
@@ -1266,12 +1270,13 @@ void ui::searchComputers()
         {
         //Search for computers.
         int searchComputers;
-        cout << "------------------------------------------------------------------" << endl;
-        cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-        cout << "* 1:  Search for a single year.          *                       *" << endl;
-        cout << "* 2:  Search a range of years.           *                       *" << endl;
-        cout << "*----------------------------------------*-----------------------*" << endl;
-        cout << "-----------------------------------------------------------------" << endl;
+        cout << "--------------------------------------------------------------------" << endl;
+        cout << "*------ Database for Computers --------*---------Glossary----------*" << endl;
+        cout << "* 1:  Search for a single year.        *  N.O.C.= Name of computer *" << endl;
+        cout << "* 2:  Search a range of years.         *  T.O.C.= Type of computer *" << endl;
+        cout << "* 2:                                   *  Y.O.C.= Year of creation *" << endl;
+        cout << "*--------------------------------------*---------------------------*" << endl;
+        cout << "--------------------------------------------------------------------" << endl;
         cout << "Enter number: ";
 
         bool invalidInput = true;
@@ -1322,11 +1327,11 @@ void ui::searchConnections()
     //Search for connections.
      int searchC;
      cout << "------------------------------------------------------------------" << endl;
-     cout << "*------ Database for Connections -------*--------Glossary--------*" << endl;
-     cout << "* 1:  Search by scientist.              *N.O.C.= Name of computer*" << endl;
-     cout << "* 2:  Search by computer.               *T.O.C.= Type of computer*" << endl;
-     cout << "*                                       *Y.O.C.= Year of creation*" << endl;
-     cout << "*---------------------------------------*------------------------*" << endl;
+     cout << "*------ Database for Connections ----*---------------------------*" << endl;
+     cout << "* 1:  Search by scientist.           *                           *" << endl;
+     cout << "* 2:  Search by computer.            *                           *" << endl;
+     cout << "*                                    *                           *" << endl;
+     cout << "*------------------------------------*---------------------------*" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "Enter number: ";
 
