@@ -221,12 +221,12 @@ vector<Scientist> listServices::checkBirthYear(int x)
     return award;
 }
 
-/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
+vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
 {
     vector<Scientist> award1;
     award1 = _myData.searchRangeForYearOfBirth(x, y);
     return award1;
-}*/
+}
 
 int listServices::searchLongestNameScientist()
 {

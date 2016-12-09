@@ -403,7 +403,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
     return scientists;
 }
 
-vector<Scientist> searchRangeForYearOfBirth(int x, int y)
+vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
 {
     vector<Scientist> scientists;
     QSqlQuery query;
