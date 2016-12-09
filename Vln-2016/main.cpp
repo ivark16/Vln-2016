@@ -59,19 +59,5 @@ int main(int argc, char *argv[])
     //db.updateFirstName("ASSFACE", 10);
 
 
-   /*playGame game;
-
-        cout << "press Q to quit" << endl;
-        char ticTacToeTable[3][3] =
-        {
-            {'1', '2', '3'},
-            {'4', '5', '6'},
-            {'7', '8', '9'}
-        };
-        game.printTable(ticTacToeTable);
-        game.theGame(ticTacToeTable);   */
-
-
-
     return 0;
 }

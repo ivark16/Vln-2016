@@ -122,35 +122,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     displayJoinComputer = _myData.searchForComputerFromSearchingDatabase(x);
     return displayJoinComputer;
 }
-/*
-bool listServices::checkIfScientistIsInDataBase (string x)
-{
-    bool bla;
-    if (_myData.checkIfExists(x))
-    {
-        bla = true;
-    }
-    else
-    {
-        bla = false;
-    }
-    return bla;
-}
 
-bool listServices::checkIfComputerIsInDataBase (string x)
-{
-    bool bla;
-    if (_myData.checkIfComputerExists(x))
-    {
-        bla = true;
-    }
-    else
-    {
-        bla = false;
-    }
-    return bla;
-}
-*/
 void listServices::deleteScientistFromDatabase(int x)
 {
     _myData.deleteFunction(x);
@@ -238,22 +210,6 @@ vector<Computer> listServices::myComputerWasNotBuilt()
     return returnRange;
 }
 
-// Binni med Chuck Norris grin
-/*vector<Scientist> listServices::chuckNorrisData()
-{
-    vector<scientistList> matchingFirstNames;
-    string firstName = "Chuck";
-    string lastName = "Norris";
-    for (unsigned int i = 0; i < _computerScientists.size(); i++)
-    {
-        _computerScientists[i].setFirstName(firstName);
-        _computerScientists[i].setLastName(lastName);
-
-        matchingFirstNames.push_back(_computerScientists[i]);
-
-    }
-    return matchingFirstNames;
-}*/
 
 vector<Scientist> listServices::checkForAward(int x)
 {
@@ -472,25 +428,10 @@ listServices::listServices()
 
 }
 // This function is used to assign a vector rhs to another vector
-void listServices::changeTo(vector<scientistList> rhs)
-{
-    _computerScientists  = rhs;
-}
+//void listServices::changeTo(vector<scientistList> rhs)
+//{
+   // _computerScientists  = rhs;
+//}
 
-// Binni med Chuck Norris grin
-vector<scientistList> listServices::chuckNorris()
-{
-    vector<scientistList> matchingFirstNames;
-    string firstName = "Chuck";
-    string lastName = "Norris";
-    for (unsigned int i = 0; i < _computerScientists.size(); i++)
-    {
-        _computerScientists[i].setFirstName(firstName);
-        _computerScientists[i].setLastName(lastName);
 
-        matchingFirstNames.push_back(_computerScientists[i]);
-
-    }
-    return matchingFirstNames;
-}
 

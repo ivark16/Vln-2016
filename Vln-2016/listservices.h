@@ -66,18 +66,6 @@ public:
     bool updateYOAScientist(int x, int id);
     vector<Computer> searchForTypeComputer(string s);
 
-
-
-
-
-
-
-
-    //GAMALT
-    vector<scientistList>   chuckNorris(); // Changes every scientist into Chuck Norris because Chuck Norris
-    void changeTo(vector<scientistList> rhs); // This function is used to assign a vector rhs to another vector
-
-
 };
 
 #endif // LISTSERVICES_H
