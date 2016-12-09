@@ -64,6 +64,9 @@ public:
     bool updateYOBScientist(int x, int id);
     bool updateYODScientist(int x, int id);
     bool updateYOAScientist(int x, int id);
+    bool updateNameComputer(string x, int id);
+    bool updateTypeComputer(string x, int id);
+    bool updateYOCComputer(int x, int id);
     vector<Computer> searchForTypeComputer(string s);
 
 

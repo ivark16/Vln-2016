@@ -1074,9 +1074,76 @@ bool DataLayer::updateYOA (int x, int y)
     return check;
 }
 
+bool DataLayer::updateNameComputer(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
 
+    query.prepare("UPDATE computer SET name = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
 
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
 
+bool DataLayer::updateTypeComputer(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("UPDATE computer SET type = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateYOCComputer (int x, int y)
+{
+    bool check;
+    QSqlQuery query;
+
+    query.prepare("UPDATE computer SET yearBuilt = (:x) WHERE ID = (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
 
 
 
