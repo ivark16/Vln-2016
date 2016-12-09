@@ -428,7 +428,7 @@ void ui::run()
                    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
                    cout << "* 1:  Search for name.                   *                       *" << endl;
                    cout << "* 2:  Search for type.                   *                       *" << endl;
-                   cout << "* 3:  Search for year of built.          *                       *" << endl; //Ma laga
+                   cout << "* 3:  Search for year of creation.       *                       *" << endl; //Ma laga
                    cout << "*----------------------------------------*-----------------------*" << endl;
                    cout << "-----------------------------------------------------------------" << endl;
                    cout << "Enter number: ";
@@ -442,7 +442,7 @@ void ui::run()
                           cin.ignore(1000,'\n');
                           cout << "Not valid input, please try again: ";
                       }
-                      if(!((searchComputers > 0) && (searchComputers < 3)))
+                      if(!((searchComputers > 0) && (searchComputers < 4)))
                       {
                           cout << "Not valid input, please try again: ";
                           invalidInput = true;
@@ -473,12 +473,56 @@ void ui::run()
                    }
                    else if(searchComputers == 3)
                    {
-                       cout << "Enter a single year to search: ";
-                       int year;
-                       cin >> year;
-                       searchResults = _lists.searchWhenBuiltSingleYear(year);
-                       printC();
-                       printComputers(searchResults);
+                       //Search for computers.
+                        int searchComputers;
+                        cout << "------------------------------------------------------------------" << endl;
+                        cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+                        cout << "* 1:  Search for a single year.          *                       *" << endl;
+                        cout << "* 2:  Search a range of years.           *                       *" << endl;
+                        cout << "*----------------------------------------*-----------------------*" << endl;
+                        cout << "-----------------------------------------------------------------" << endl;
+                        cout << "Enter number: ";
+
+                        bool invalidInput = true;
+                        while(invalidInput)
+                        {
+                           while (!(cin >> searchComputers))
+                           {
+                               cin.clear();
+                               cin.ignore(1000,'\n');
+                               cout << "Not valid input, please try again: ";
+                           }
+                           if(!((searchComputers > 0) && (searchComputers < 3)))
+                           {
+                               cout << "Not valid input, please try again: ";
+                               invalidInput = true;
+                           }
+                           else
+                           {
+                               invalidInput = false;
+                           }
+                       }
+                       if(searchComputers == 1)
+                       {
+                           cout << "Enter a single year to search: ";
+                           int year;
+                           cin >> year;
+                           searchResults = _lists.searchWhenBuiltSingleYear(year);
+                           printC();
+                           printComputers(searchResults);
+                       }
+                       else if(searchComputers == 2)
+                       {
+                           cout << "Enter the lower bound (a year): ";
+                           int year1;
+                           cin >> year1;
+                           cout << "Enter the upper bound (a year): ";
+                           int year2;
+                           cin >> year2;
+                           searchResults = _lists.searchWhenBuiltRange(year1, year2);
+                           printC();
+                           printComputers(searchResults);
+                       }
                    }
                 }
               if(searchScientistOrComputers == 3)
@@ -486,7 +530,7 @@ void ui::run()
                   //Search for connections.
                    int searchConnections;
                    cout << "------------------------------------------------------------------" << endl;
-                   cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+                   cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
                    cout << "* 1:  Search by scientist.               *                       *" << endl;
                    cout << "* 2:  Search by computer.                *                       *" << endl;
                    cout << "*----------------------------------------*-----------------------*" << endl;
