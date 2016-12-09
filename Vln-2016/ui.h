@@ -53,6 +53,7 @@ public:
     void caseFourCase();
     void caseFiveCase();
     void caseSixCase();
+    void caseSevenCase();
 
     //Search functions for case 3
     void searchScientist();
@@ -76,6 +77,13 @@ public:
 
 
 
+
+    //functions for case seven
+    void caseSevenCase2();
+    void caseSevenCase3();
+    void caseSevenCase4();
+    void caseSevenCase5();
+    void playGame();
 
 
 

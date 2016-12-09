@@ -6,20 +6,18 @@
 using namespace std;
 
 
-/*
 class playGame
 {
-    string _...;
-    string _....;
-    int _blabla;
+    int _answer;
+    int _userAnswer;
 
 public:
     playGame();
-    playGame(string ..., string ...., int blabla);
-    string getPlay...();
-    int getBlabla();
+    playGame(int answer, int userAnswer);
+    int getAnswer();
+    int gerUserAnswer();
 
 
-};*/
+};
 
 #endif // PLAYGAME_H
