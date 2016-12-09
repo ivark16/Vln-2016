@@ -19,6 +19,17 @@ ui::ui(int chooseNumber)
 //This function is called on in the main function.  It runs the entire program.  Important function.
 void ui::run()
 {
+
+     enterPassword();
+     if (getenv("windir"))
+     {
+          system("cls");
+     }
+     else
+     {
+         system("clear");
+     }
+
      //Displaying cool group 9 logo and credits.
      headerCase();
 
@@ -61,7 +72,7 @@ void ui::run()
             }
             else if (chooseNumber == "7")
             {
-                break;
+                playGame();
             }
             else
             {
@@ -86,6 +97,21 @@ void ui::run()
                 }
             }
         } while(stillLooping);
+}
+
+
+void ui::enterPassword()
+{
+    string password;
+    cout << "This is a password protected database."  << endl;
+    cout << "Please reference the readme.txt file included." << endl;
+    cout << "Enter password: ";
+    cin >> password;
+    if(password != "chuckNorris")
+    {
+        cout << "Incorrect password." << endl << "Please reference the readme.txt file before attempting to access the database." << endl;
+        exit(1);
+    }
 }
 
 // This function prints all names in a table to the console
@@ -305,11 +331,11 @@ void ui::printC()
     }
     cout << endl;
 }
-
+//Prints a header for the join table.  N
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-    //cout << "WIDTH IS" << width;
+
     cout.width(13);
     cout << left << "First name" << left;
     cout.width(width+2);
@@ -585,10 +611,10 @@ void ui::mainMenuCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
-    cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
-    cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
+    cout << "* 1:  Display list of Scientist.         *                       *" << endl;
+    cout << "* 2:  Display list of Computers.         *                       *" << endl;
+    cout << "* 3:  Search for scientist/computers.    *                       *" << endl;
+    cout << "* 4:  Add new scientist/computers.       *                       *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
     cout << "* 6:  Edit scientist/computers           *                       *" << endl;
     cout << "* 7:  Lets play a game                   *                       *" << endl;
@@ -606,9 +632,8 @@ void ui::caseOneCase()
     cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
     cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Display all dead scientist.        * N/A = Not applicable  *" << endl;
+    cout << "* 4:  Display all dead scientist.        *                       *" << endl;
     cout << "* 5:  Display in order of birth.         *                       *" << endl;
-    cout << "* 6:  Chuck Norris.                      *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -709,14 +734,6 @@ void ui::caseOneCase()
             } while (numb != "1" || numb != "2");
             break;
         }
-        else if (displayScientist == "6")
-        {
-
-            //listServices norris;
-            //norris.changeTo(norris.chuckNorris());
-            //print(norris);
-            //printScientists(norris);
-        }
         else
         {
             cout << "Invalid input, please try again! " << endl;
@@ -732,9 +749,9 @@ void ui::caseTwoCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display all Computers.             * Y.O.B = year of birth *" << endl;
-    cout << "* 2:  display all in alphabetical order. * Y.O.D = year of death *" << endl;
-    cout << "* 3:  display all when was built.        * Y.O.A = year of award *" << endl;
+    cout << "* 1:  Display all Computers.             *                       *" << endl;
+    cout << "* 2:  display all in alphabetical order. *                       *" << endl;
+    cout << "* 3:  display all when was built.        *                       *" << endl;
     cout << "* 4:  Display if was built.              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
@@ -1794,3 +1811,134 @@ void ui::caseSixCaseOne()
 {
 
 }
+
+int playGame;
+        // Calling headder for case 7
+
+
+void ui::playGame()
+{
+    int playGame = 0;
+    caseSevenCase(playGame);
+    caseSevenCase2(playGame);
+    caseSevenCase3(playGame);
+    caseSevenCase4(playGame);
+    caseSevenCase5(playGame);
+
+    cout << "Game over!  You answered " << playGame;
+    cout << " questions correctly out of 5 total.";
+    if (getenv("windir"))
+    {
+         string thisDoesNothing;
+         cout << "Input anything and than press enter: ";
+         cin >> thisDoesNothing;
+         system("cls");
+    }
+    else
+    {
+        string thisDoesNothing;
+        cout << "Input anything and than press enter. ";
+        cin >> thisDoesNothing;
+        system("clear");
+    }
+
+}
+
+
+
+void ui::caseSevenCase(int &playGame)
+{
+   string answer = "2";
+   string useranswer = "0";
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "* Which of these is NOT a computer?      *-----------------------*" << endl;
+   cout << "* 1:  Optiva.                            *                       *" << endl;
+   cout << "* 2:  Paseo.                             *                       *" << endl;
+   cout << "* 3:  Acorn.                             *                       *" << endl;
+   cout << "* 4:  Z1.                                *                       *" << endl;
+   cout << "*----------------------------------------*-----------------------*" << endl;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "Enter number: ";
+   cin >> useranswer;
+   if(answer == useranswer)
+   {
+       playGame++;
+   }
+}
+void ui::caseSevenCase2(int &playGame)
+{
+   string answer = "3";
+   string useranswer = "0";
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "* The first hard disk was introduced in 1956 by? *---------------*" << endl;
+   cout << "* 1:  Apple.                                     *               *" << endl;
+   cout << "* 2:  Microsoft.                                 *               *" << endl;
+   cout << "* 3:  IBM.                                       *               *" << endl;
+   cout << "* 4:  Dell.                                      *               *" << endl;
+   cout << "*------------------------------------------------*---------------*" << endl;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "Enter number: ";
+   cin >> useranswer;
+   if(answer == useranswer)
+   {
+       playGame++;
+   }
+}
+void ui::caseSevenCase3(int &playGame)
+{
+   string answer = "1";
+   string useranswer = "0";
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "* Who invented C++?                      *-----------------------*" << endl;
+   cout << "* 1:  Bjarne Stroustrup.                 *                       *" << endl;
+   cout << "* 2:  Larry Page.                        *                       *" << endl;
+   cout << "* 3:  Ken Thompson.                      *                       *" << endl;
+   cout << "* 4:  Sophie Wilson.                     *                       *" << endl;
+   cout << "*----------------------------------------*-----------------------*" << endl;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "Enter number: ";
+   cin >> useranswer;
+   if(answer == useranswer)
+   {
+       playGame++;
+   }
+}
+void ui::caseSevenCase4(int &playGame)
+{
+   string answer = "4";
+   string useranswer = "0";
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "* Who popularized the term \"Bug\"?      *-----------------------*" << endl;
+   cout << "* 1:  Frances Allen.                     *                       *" << endl;
+   cout << "* 2:  Shafi Goldwasser.                  *                       *" << endl;
+   cout << "* 3:  Adele Goldberg.                    *                       *" << endl;
+   cout << "* 4:  Grace Hopper.                      *                       *" << endl;
+   cout << "*----------------------------------------*-----------------------*" << endl;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "Enter number: ";
+   cin >> useranswer;
+   if(answer == useranswer)
+   {
+       playGame++;
+   }
+}
+void ui::caseSevenCase5(int &playGame)
+{
+   string answer = "1";
+   string useranswer;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "* What year was the Pascal calculator invented? *----------------*" << endl;
+   cout << "* 1:  1642.                                     *                *" << endl;
+   cout << "* 2:  1578.                                     *                *" << endl;
+   cout << "* 3:  1743.                                     *                *" << endl;
+   cout << "* 4:  1894.                                     *                *" << endl;
+   cout << "*-----------------------------------------------*----------------*" << endl;
+   cout << "------------------------------------------------------------------" << endl;
+   cout << "Enter number: ";
+   cin >> useranswer;
+   if(answer == useranswer)
+   {
+       playGame++;
+   }
+}
+

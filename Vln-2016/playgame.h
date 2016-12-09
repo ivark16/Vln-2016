@@ -6,15 +6,17 @@
 using namespace std;
 
 
-
 class playGame
 {
+    int _answer;
+    int _userAnswer;
+
 public:
     playGame();
-    void printTable (char ticTacToeTable [3][3]);
-    bool checkForWinner (char ticTacToeTable[3][3]);
-    bool insertCharacters(char ticTacToeTable[3][3], char place, char player);
-    int theGame (char ticTacToeTable [3][3]);
+    playGame(int answer, int userAnswer);
+    int getAnswer();
+    int gerUserAnswer();
+
 
 };
 

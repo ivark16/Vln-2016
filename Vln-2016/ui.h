@@ -31,6 +31,8 @@ public:
     void printConnection();
     void printJoin(vector<searching>);
     void printBird();
+    void enterPassword();
+
 
 
     //check functions
@@ -74,10 +76,13 @@ public:
     void caseSixMajorCase();
     void caseSixCaseOne();
 
-
-
-
-
+    //functions for case seven
+    void caseSevenCase(int &playGame);
+    void caseSevenCase2(int &playGame);
+    void caseSevenCase3(int &playGame);
+    void caseSevenCase4(int &playGame);
+    void caseSevenCase5(int &playGame);
+    void playGame();
 
 
 
