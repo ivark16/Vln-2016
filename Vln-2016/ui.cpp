@@ -464,7 +464,10 @@ void ui::run()
                    }
                    else if(searchComputers == 2)
                    {
-                       //TODO
+                       cout << "Enter a single year to search: ";
+                       int year;
+                       cin >> year;
+                       //searchResults = _lists.;
                    }
                    else if(searchComputers == 3)
                    {
