@@ -643,6 +643,33 @@ vector<Computer> DataLayer::checkInComputer(string x)
     return myVector;
 }
 
+// This function searches the database for a type of computer matching the given string.  It returns all matching comptuers.
+vector<Computer> DataLayer::checkInComputerType(string x)
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x)");
+    query.addBindValue("%" + qName + "%");
+    query.exec();
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+
+    while(query.next())
+    {
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(name, type, yearbuilt, wasbuilt);
+        myVector.push_back(s);
+    }
+    return myVector;
+}
+
 bool DataLayer::checkIfExists(string x)
 {
     bool exists = false;

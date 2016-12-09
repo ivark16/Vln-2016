@@ -61,6 +61,7 @@ public:
 
     vector<Computer> checkInComputerYear(int x, int y);
     vector<Computer> checkInComputerSingleYear(int x);
+    vector<Computer> checkInComputerType(string x);
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 

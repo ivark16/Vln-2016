@@ -56,6 +56,8 @@ public:
     vector<searching> displaySearchJoinComputerName(string x);
     vector<Scientist> checkName(string s);
     vector<Computer> searchForNameComputer(string s);
+    vector<Computer> searchForTypeComputer(string s);
+
 
 
 

@@ -464,14 +464,21 @@ void ui::run()
                    }
                    else if(searchComputers == 2)
                    {
-                       cout << "Enter a single year to search: ";
-                       int year;
-                       cin >> year;
-                       //searchResults = _lists.;
+                       cout << "Enter a type to search: ";
+                       string type;
+                       cin >> type;
+                       searchResults = _lists.searchForTypeComputer(type);
+                       printC();
+                       printComputers(searchResults);
                    }
                    else if(searchComputers == 3)
                    {
-                       //TODO
+                       cout << "Enter a single year to search: ";
+                       int year;
+                       cin >> year;
+                       searchResults = _lists.searchWhenBuiltSingleYear(year);
+                       printC();
+                       printComputers(searchResults);
                    }
                 }
               if(searchScientistOrComputers == 3)

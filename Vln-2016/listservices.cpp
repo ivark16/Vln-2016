@@ -183,6 +183,13 @@ vector<Computer> listServices::searchForNameComputer(string s)
     return returnComputers;
 }
 
+vector<Computer> listServices::searchForTypeComputer(string s)
+{
+    vector<Computer> returnComputers;
+    returnComputers = _myData.checkInComputerType(s);
+    return returnComputers;
+}
+
 vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
 {
     vector<Computer> returnRange;
