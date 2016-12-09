@@ -705,6 +705,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x)");
     query.addBindValue("%" + qName + "%");
     query.exec();
+    int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
@@ -712,11 +713,12 @@ vector<Computer> DataLayer::checkInComputerType(string x)
 
     while(query.next())
     {
+        int id = query.value(idNames).toInt();
         string name = query.value(idName).toString().toStdString();
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
-        Computer s(name, type, yearbuilt, wasbuilt);
+        Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
     return myVector;
