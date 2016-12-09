@@ -948,7 +948,7 @@ void ui::caseThreeCase()
 
      if(searchScientistOrComputers == 1)
      {
-            searchScientist();
+           searchScientist();
      }
 
      if(searchScientistOrComputers == 2)
@@ -957,51 +957,7 @@ void ui::caseThreeCase()
      }
      if(searchScientistOrComputers == 3)
      {
-         //Search for connections.
-          int searchConnections;
-          cout << "------------------------------------------------------------------" << endl;
-          cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
-          cout << "* 1:  Search by scientist.               *                       *" << endl;
-          cout << "* 2:  Search by computer.                *                       *" << endl;
-          cout << "*----------------------------------------*-----------------------*" << endl;
-          cout << "------------------------------------------------------------------" << endl;
-          cout << "Enter number: ";
-
-          bool invalidInput = true;
-          while(invalidInput)
-          {
-             while (!(cin >> searchConnections))
-             {
-                 cin.clear();
-                 cin.ignore(1000,'\n');
-                 cout << "Not valid input, please try again: ";
-             }
-             if(!((searchConnections > 0) && (searchConnections < 3)))
-             {
-                 cout << "Not valid input, please try again: ";
-                 invalidInput = true;
-             }
-             else
-             {
-                 invalidInput = false;
-             }
-          }
-          vector<searching> connections;
-          if(searchConnections == 1)
-          {
-              string searchTerm;
-              cout << "Enter a single name to search: ";
-              cin >> searchTerm;
-              connections = _lists.displaySearchJoinScientistName(searchTerm);
-          }
-          else if(searchConnections == 2)
-          {
-              string searchTerm;
-              cout << "Enter a single name to search: ";
-              cin >> searchTerm;
-              connections = _lists.displaySearchJoinComputerName(searchTerm);
-              //MISSING PRINT FUNCTIONS
-          }
+           searchConnections();
      }
 }
 
@@ -1066,51 +1022,8 @@ void ui::searchScientist()
          //this case allows you to search for scientists using birth years.
          if (searchScientist == 1)
          {
-             int rangeOrSingle;
-             cout << "------------------------------------------------------------------" << endl;
-             cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-             cout << "* 1:  Search for a single year.          * Y.O.D = year of death *" << endl;
-             cout << "* 2:  Search for a range.                * Y.O.B = year of birth *"<< endl;
-             cout << "*----------------------------------------*-----------------------*" << endl;
-             cout << "-----------------------------------------------------------------" << endl;
-             cout << "Enter number: ";
-
-             bool invalidInput = true;
-             while(invalidInput)
-             {
-                 while (!(cin >> rangeOrSingle))
-                 {
-                     cin.clear();
-                     cin.ignore(1000,'\n');
-                     cout << "Not valid input, please try again: ";
-                 }
-                 if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
-                 {
-                     cout << "Not valid input, please try again: ";
-                     invalidInput = true;
-                 }
-                 else
-                 {
-                     invalidInput = false;
-                 }
-            }
-            vector<Scientist> searchResults;
-            if(rangeOrSingle == 1)
-            {
-                int yearToCheck = yearChecker(1,0,0);
-                searchResults = _lists.checkBirthYear(yearToCheck);
-                printS();
-                printScientists(searchResults);
-            }
-            else if(rangeOrSingle == 2)
-            {
-                int minYear = yearChecker(1,0,0);
-                int maxYear = yearChecker(4,minYear,0);
-               // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
-                printS();
-                printScientists(searchResults);
-            }
-        }
+             searchScientistByBirthYear();
+         }
 
 
          //This case lets you search for a scientist from their name (either the first or last name)
@@ -1158,6 +1071,56 @@ void ui::searchScientist()
              printScientists(awardSearch);
              //break;
          }
+}
+
+//Is called by the searchScientist function and searches for either a single year or a range of years.
+void ui::searchScientistByBirthYear()
+{
+
+    int rangeOrSingle;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Search for a single year.          * Y.O.D = year of death *" << endl;
+    cout << "* 2:  Search for a range.                * Y.O.B = year of birth *"<< endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+
+    bool invalidInput = true;
+    while(invalidInput)
+    {
+        while (!(cin >> rangeOrSingle))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((rangeOrSingle > 0) && (rangeOrSingle < 3)))
+        {
+            cout << "Not valid input, please try again: ";
+            invalidInput = true;
+        }
+        else
+        {
+            invalidInput = false;
+        }
+   }
+   vector<Scientist> searchResults;
+   if(rangeOrSingle == 1)
+   {
+       int yearToCheck = yearChecker(1,0,0);
+       searchResults = _lists.checkBirthYear(yearToCheck);
+       printS();
+       printScientists(searchResults);
+   }
+   else if(rangeOrSingle == 2)
+   {
+       int minYear = yearChecker(1,0,0);
+       int maxYear = yearChecker(4,minYear,0);
+      // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
+       printS();
+       printScientists(searchResults);
+   }
 }
 
 
@@ -1265,4 +1228,53 @@ void ui::searchComputers()
          printComputers(searchResults);
      }
  }
+}
+
+void ui::searchConnections()
+{
+    //Search for connections.
+     int searchConnections;
+     cout << "------------------------------------------------------------------" << endl;
+     cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
+     cout << "* 1:  Search by scientist.               *                       *" << endl;
+     cout << "* 2:  Search by computer.                *                       *" << endl;
+     cout << "*----------------------------------------*-----------------------*" << endl;
+     cout << "------------------------------------------------------------------" << endl;
+     cout << "Enter number: ";
+
+     bool invalidInput = true;
+     while(invalidInput)
+     {
+        while (!(cin >> searchConnections))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((searchConnections > 0) && (searchConnections < 3)))
+        {
+            cout << "Not valid input, please try again: ";
+            invalidInput = true;
+        }
+        else
+        {
+            invalidInput = false;
+        }
+     }
+     vector<searching> connections;
+     if(searchConnections == 1)
+     {
+         string searchTerm;
+         cout << "Enter a single name to search: ";
+         cin >> searchTerm;
+         connections = _lists.displaySearchJoinScientistName(searchTerm);
+     }
+     else if(searchConnections == 2)
+     {
+         string searchTerm;
+         cout << "Enter a single name to search: ";
+         cin >> searchTerm;
+         connections = _lists.displaySearchJoinComputerName(searchTerm);
+         //MISSING PRINT FUNCTIONS
+     }
 }
