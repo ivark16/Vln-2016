@@ -181,11 +181,11 @@ void ui::printScientists (vector<Scientist> scientistsToPrint)
             cout << scientistsToPrint[i].getAwardYear() << left;
         }
         cout.width(10);
-        cout << "   *" << endl;
+        cout << "*" << endl;
     }
     for(int i = 0 ; i < 9 ; i++)
     {
-        cout << "---------";
+        cout << "----------";
     }
     cout << endl;
 
@@ -299,18 +299,18 @@ void ui::printS()
     cout << "Last name" << left;
     cout.width(width-3);
     cout << "Gender" << left;
-    cout.width(width+2);
+    cout.width(width-1);
     cout << "Nationality" << left;
-    cout.width(width-2);
+    cout.width(width-6);
     cout << "Y.O.B." << left;
-    cout.width(width);
+    cout.width(width-4);
     cout << "Y.O.D." << left;
-    cout.width(width);
+    cout.width(width-4);
     cout << "Y.O.A." << endl;
 
     for(int i = 0; i < 9; i++)
     {
-        cout << "---------";
+        cout << "----------";
     }
     cout << endl;
 }
