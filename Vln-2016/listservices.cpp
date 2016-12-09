@@ -14,9 +14,14 @@ vector<Scientist> listServices::searchForName(string name)
     return returnScientist;
 }
 
-int listServices::getSizeOfScientistList()
+int listServices::getSizeOfScientist()
 {
    return _myData.getSizeOfScientists();
+}
+
+int listServices::getSizeOfComputer()
+{
+    return _myData.getSizeOfComputer();
 }
 
 vector<Scientist> listServices::displayScientist()
@@ -117,7 +122,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     displayJoinComputer = _myData.searchForComputerFromSearchingDatabase(x);
     return displayJoinComputer;
 }
-
+/*
 bool listServices::checkIfScientistIsInDataBase (string x)
 {
     bool bla;
@@ -145,7 +150,7 @@ bool listServices::checkIfComputerIsInDataBase (string x)
     }
     return bla;
 }
-
+*/
 void listServices::deleteScientistFromDatabase(int x)
 {
     _myData.deleteFunction(x);

@@ -31,11 +31,15 @@ public:
 
     vector<Scientist> searchForNameFromDatabase(string name);
     int getSizeOfScientists();
+    int getSizeOfComputer();
     char getGenderAt(int i);
     int getBirthYearAt(int i);
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
     bool deleteFunction(int x);
+    bool deleteFunctionComputer(int x);
+    bool deleteConnectionFunctionScientist(int x);
+    bool deleteConnectionFunctionComputer(int x);
     bool addFunction(Scientist newScientist);
     vector<Scientist> readInAlphabeticalOrder();
     vector<Scientist> readInReverseAlphabeticalOrder();
@@ -51,9 +55,6 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(Computer newComputer);
     bool addFunctionConnect(connection newConnection);
-    bool deleteFunctionComputer(int x);
-    bool deleteConnectionFunctionScientist(int x);
-    bool deleteConnectionFunctionComputer(int x);
     vector<Computer> checkInComputer(string x);
 
 

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-
+//A default constructor for the data layer.
 DataLayer::DataLayer()
 {
     QSqlDatabase m_db;
@@ -13,10 +13,10 @@ DataLayer::DataLayer()
           {
              //qDebug() << "Error: connection with database fail";
           }
-          else
-          {
-             //qDebug() << "Database: connection ok";
-          }
+       else
+       {
+          //qDebug() << "Database: connection ok";
+       }
 }
 
 DataLayer::~DataLayer()
@@ -27,9 +27,9 @@ DataLayer::~DataLayer()
     }
 }
 
+//Returns all scientists in the dtabase.
 vector<Scientist> DataLayer::readAllFromScientistsDataBase()
 {
-
     Scientist s;
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist");
@@ -42,6 +42,8 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This while loop, like other while(query.next()) loops in this file,
+    //is intended to extract data from teh database.
     while(query.next())
     {
         int Ids = query.value(idName7).toInt();
@@ -52,13 +54,13 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
-
         Scientist s(Ids, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
     return returnScientist;
 }
 
+//Returns all computers in the database
 vector<Computer> DataLayer::readAllFromDataComputerBase()
 {
     Computer s;
@@ -84,64 +86,65 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
+//This function lets you search the joined table for a scientist.  it returns all entries in the join table that match.
 vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 {
-    vector<searching> joinQueryscientist;
+    vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    QSqlQuery query("SELECT SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
-                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
-                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
-                    "WHERE scientist.firstname = (:x) COLLATE NOCASE");
-    int idName = query.record().indexOf("firstname");
-    int idName2 = query.record().indexOf("lastname");
-    int idName3 = query.record().indexOf("name");
-    int idName4 = query.record().indexOf("type");
-    int idName5 = query.record().indexOf("yearbuilt");
-    while(query.next())
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    myQuery.addBindValue(qName);
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
     {
-        string firstname = query.value(idName).toString().toStdString();
-        string lastname = query.value(idName2).toString().toStdString();
-        string compname = query.value(idName3).toString().toStdString();
-        string comptype = query.value(idName4).toString().toStdString();
-        int yearbuilt = query.value(idName5).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
 
         searching s(firstname, lastname, compname, comptype, yearbuilt);
-        joinQueryscientist.push_back(s);
-
+        joinQueryComputer.push_back(s);
     }
-    return joinQueryscientist;
+    return joinQueryComputer;
 }
 
+//This function lets you search the joined table of computers and scientists.  It takes a computer name and searches for it, returning all relevant entries in the table.
 vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
 {
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    QSqlQuery query("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
-                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
-                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
-                    "WHERE computer.name = (:x) COLLATE NOCASE");
-    int idName = query.record().indexOf("firstname");
-    int idName2 = query.record().indexOf("lastname");
-    int idName3 = query.record().indexOf("name");
-    int idName4 = query.record().indexOf("type");
-    int idName5 = query.record().indexOf("yearbuilt");
-    while(query.next())
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name = (:x) COLLATE NOCASE");
+    myQuery.addBindValue(qName);
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
     {
-        string firstname = query.value(idName).toString().toStdString();
-        string lastname = query.value(idName2).toString().toStdString();
-        string compname = query.value(idName3).toString().toStdString();
-        string comptype = query.value(idName4).toString().toStdString();
-        int yearbuilt = query.value(idName5).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
 
         searching s(firstname, lastname, compname, comptype, yearbuilt);
         joinQueryComputer.push_back(s);
-
     }
     return joinQueryComputer;
 }
 
+//This function deletes the scientist with the ID x, where x is input from the user.
 bool DataLayer::deleteFunction(int x)
 {
     bool deleteF;
@@ -166,6 +169,7 @@ bool DataLayer::deleteFunction(int x)
     return deleteF;
 }
 
+//This function deletes the scientist with the ID x, where x is input from the user.
 bool DataLayer::deleteFunctionComputer(int x)
 {
     bool bla;
@@ -190,6 +194,8 @@ bool DataLayer::deleteFunctionComputer(int x)
     return bla;
 }
 
+//This function deletes deletes a connection between a scientist with the id x, and all computer connected with them.
+//This is called when a scientist is deleted.
 bool DataLayer::deleteConnectionFunctionScientist(int x)
 {
     bool deleteF;
@@ -213,6 +219,8 @@ bool DataLayer::deleteConnectionFunctionScientist(int x)
     return deleteF;
 }
 
+//This function deletes a connection between a computer with the id x, and all scientists connected to it.
+//This is called when a computer is deleted.
 bool DataLayer::deleteConnectionFunctionComputer(int x)
 {
     bool deleteF;
@@ -236,6 +244,7 @@ bool DataLayer::deleteConnectionFunctionComputer(int x)
     return deleteF;
 }
 
+//This function adds a new scientist to the database.
 bool DataLayer::addFunction(Scientist newScientist)
 {
     QSqlQuery query;
@@ -253,7 +262,7 @@ bool DataLayer::addFunction(Scientist newScientist)
     query.addBindValue(newScientist.getDeathYear());
     query.addBindValue(newScientist.getAwardYear());
 
-
+    //
     if (query.exec())
     {
         return true;
@@ -265,6 +274,7 @@ bool DataLayer::addFunction(Scientist newScientist)
 }
 
 
+//This function returns all scientists matching the search word entered by the user.
 vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
     vector<Scientist> scientists;
@@ -303,6 +313,11 @@ int DataLayer::getSizeOfScientists()
     return _scientists.size();
 }
 
+int DataLayer::getSizeOfComputer()
+{
+    return _computer.size();
+}
+
 char DataLayer::getGenderAt(int i)
 {
     return _scientists[i].getGender();
@@ -323,6 +338,7 @@ int DataLayer::getAwardYearAt(int i)
     return _scientists[i].getAwardYear();
 }
 
+//This function sorts all scientists in alphabetical order into a vector and returns it.
 vector<Scientist> DataLayer::readInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -352,6 +368,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
     return returnScientist;
 }
 
+//This function sorts all scientists in reverse alphabetical order into a vector and returns it.
 vector<Scientist> DataLayer::readInReverseAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -381,6 +398,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrder()
     return returnScientist;
 }
 
+//This function sorts all scientists in order of birth year in ascending order into a vector and returns it.
 vector<Scientist> DataLayer::readInOldestOrder()
 {
     vector<Scientist> returnScientist;
@@ -410,6 +428,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
     return returnScientist;
 }
 
+//This function sorts all scientists in order of birth year in descending order and returns it.
 vector<Scientist> DataLayer::readInYoungestOrder()
 {
     vector<Scientist> returnScientist;
@@ -440,6 +459,7 @@ vector<Scientist> DataLayer::readInYoungestOrder()
     return returnScientist;
 }
 
+//This returns all scientists who have won a Turing award in the year x, where x is input from the user.
 vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
 {
     vector<Scientist> scientists;
@@ -471,6 +491,7 @@ vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
     return scientists;
 }
 
+//This returns all scientists born in the year x, where x is input from the user.
 vector<Scientist> DataLayer::searchForYearOfBirth(int x)
 {
     vector<Scientist> scientists;
@@ -502,6 +523,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
     return scientists;
 }
 
+//This returns all scientists who were born between x and y, where x and y are both input from the user.
 vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
 {
     vector<Scientist> scientists;
@@ -534,6 +556,7 @@ vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
     return scientists;
 }
 
+//This returns all computers in alphabetical order in a vector.
 vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
 {
     vector<Computer> returnComputer;
@@ -557,6 +580,7 @@ vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
     return returnComputer;
 }
 
+//This returns all computers in reverse alphabetical order in a vector.
 vector<Computer> DataLayer::readInReverseAlphabeticalOrderComputer()
 {
     vector<Computer> returnComputer;
@@ -580,6 +604,7 @@ vector<Computer> DataLayer::readInReverseAlphabeticalOrderComputer()
     return returnComputer;
 }
 
+//This returns all computers in order of descending age in a vector.
 vector<Computer> DataLayer::readInOldestOrderComputer()
 {
     vector<Computer> returnComputer;
@@ -604,6 +629,7 @@ vector<Computer> DataLayer::readInOldestOrderComputer()
     return returnComputer;
 }
 
+//This returns all computers in order of ascending age in a vector
 vector<Computer> DataLayer::readInYoungestOrderComputer()
 {
     vector<Computer> returnComputer;
@@ -628,6 +654,8 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     return returnComputer;
 }
 
+//This function adds a new computer to the database.
+//The new instance of computer, newComputer has been created in another function.
 bool DataLayer::addFunctionComputer(Computer newComputer)
 {
     QSqlQuery query;
@@ -649,6 +677,7 @@ bool DataLayer::addFunctionComputer(Computer newComputer)
     }
 }
 
+//This function adds a new connection between a scientist and a computer.  The connection newConnection is created in another function.
 bool DataLayer::addFunctionConnect(connection newConnection)
 {
     QSqlQuery query;
@@ -666,6 +695,7 @@ bool DataLayer::addFunctionConnect(connection newConnection)
     }
 }
 
+//This function searches for the name x in the database and returns all relevant computers.  x is input from the user.
 vector<Computer> DataLayer::checkInComputer(string x)
 {
     vector<Computer> myVector;
@@ -723,6 +753,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     return myVector;
 }
 
+/*
 bool DataLayer::checkIfExists(string x)
 {
     bool exists = false;
@@ -747,6 +778,7 @@ bool DataLayer::checkIfExists(string x)
     return exists;
 }
 
+
 bool DataLayer::checkIfComputerExists(string x)
 {
     bool exists = false;
@@ -770,6 +802,8 @@ bool DataLayer::checkIfComputerExists(string x)
 
     return exists;
 }
+*/
+
 
 vector<Computer> DataLayer::checkInComputerYear(int x, int y)
 {

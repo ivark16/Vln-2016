@@ -5,6 +5,7 @@
 #include "scientist.h"
 #include "computer.h"
 #include "connection.h"
+#include "search.h"
 #include <iostream>
 #include <vector>
 #include <stdio.h>
@@ -13,6 +14,7 @@
 class ui
 {
     int _chooseNumber;
+    Computer _computer;
     Scientist _scientist;
     listServices _lists;
 public:
@@ -24,6 +26,10 @@ public:
     void printComputers(vector<Computer> computersToPrint);
     void printS();
     void printC();
+    void printConnection();
+    void printJoin(vector<searching>);
+    void printBird();
+
 
     //check functions
     void CheckNumbers (listServices checkNumbersForScientist);
@@ -50,7 +56,19 @@ public:
 
     //Search functions for case 3
     void searchScientist();
+    void searchScientistByBirthYear();
+    void searchScientistByName();
     void searchComputers();
+    void searchComputersByCreation();
+    void searchConnections();
+    void searchScientistByAward();
+
+    //Add function for case 4
+    void addScientist();
+    void addComputer();
+    void addConnection();
+
+
 
 
 
