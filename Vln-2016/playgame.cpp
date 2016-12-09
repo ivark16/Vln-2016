@@ -5,8 +5,7 @@ playGame::playGame()
 
 }
 
-
-const int ARRAT_SIZE = 3;
+const int ARRAT_SIZE = 3;//The table is always 3 by 3
 
 void playGame::printTable (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
 {
@@ -21,6 +20,7 @@ void playGame::printTable (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
 }
 bool playGame::checkForWinner (char ticTacToeTable[ARRAT_SIZE][ARRAT_SIZE])
 {
+
     //Horizontal Check
     for (int i = 0; i < 3; i++)
     {
@@ -76,16 +76,22 @@ bool playGame::insertCharacters(char ticTacToeTable[ARRAT_SIZE][ARRAT_SIZE], cha
         }
     }
     return valid;
+
 }
 int playGame::theGame (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
 {
+    char place;
     char player = 'X';
     int draw = 0;
-    while (draw < 9)
+    while(draw < 9)
     {
+
         cout << player << " position: ";
-        char place;
         cin >> place;
+        if(place == 'q' || place == 'Q')
+        {
+            break;
+        }
         bool isValid = insertCharacters(ticTacToeTable, place, player);
 
         if (!isValid)
@@ -104,11 +110,16 @@ int playGame::theGame (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
             player = 'X';
             draw++;
         }
+
         if (checkForWinner(ticTacToeTable) == true)
         {
             return 0;
         }
+
     }
-    cout << "Draw!" << endl;
+    if(draw == 9)
+    {
+        cout << "Draw!" << endl;
+    }
     return 0;
 }

@@ -242,7 +242,7 @@ bool DataLayer::addFunction(Scientist newScientist)
 }
 
 
-void DataLayer::searchForNameFromDatabase(string name)
+vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
     vector<Scientist> scientists;
     QSqlQuery query;
@@ -271,8 +271,8 @@ void DataLayer::searchForNameFromDatabase(string name)
         int awardYear = query.value(idname6).toInt();
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
-        _scientists = scientists;
     }
+    return scientists;
 }
 
 int DataLayer::getSizeOfScientists()
@@ -479,7 +479,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
     return scientists;
 }
 
-vector<Scientist> searchRangeForYearOfBirth(int x, int y)
+vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
 {
     vector<Scientist> scientists;
     QSqlQuery query;
@@ -690,6 +690,33 @@ vector<Computer> DataLayer::checkInComputer(string x)
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
         Computer s(id, name, type, yearbuilt, wasbuilt);
+        myVector.push_back(s);
+    }
+    return myVector;
+}
+
+// This function searches the database for a type of computer matching the given string.  It returns all matching comptuers.
+vector<Computer> DataLayer::checkInComputerType(string x)
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x)");
+    query.addBindValue("%" + qName + "%");
+    query.exec();
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+
+    while(query.next())
+    {
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
     return myVector;
