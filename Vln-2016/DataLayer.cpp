@@ -166,17 +166,41 @@ bool DataLayer::deleteFunction(int x)
     return deleteF;
 }
 
+bool DataLayer::deleteFunctionComputer(int x)
+{
+    bool bla;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT name FROM computer WHERE name = (:x)");
+    myQuery.addBindValue(x);
+
+    if (myQuery.exec())
+    {
+        if (myQuery.next())
+        {
+            myQuery.prepare("DELETE FROM computer WHERE name = (:x)");
+            myQuery.addBindValue(x);
+            myQuery.exec();
+            bla = true;
+        }
+    }
+    else
+    {
+          bla = false;
+    }
+    return bla;
+}
+
 bool DataLayer::deleteConnectionFunctionScientist(int x)
 {
     bool deleteF;
     QSqlQuery myQuery;
-    myQuery.prepare("SELECT * FROM connect WHERE scientist_id = (:x)");
+    myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
     if(myQuery.exec())
     {
         if(myQuery.next())
         {
-            myQuery.prepare("DELETE * FROM scientist WHERE scientist_id = (:x)"
+            myQuery.prepare("DELETE * FROM connect WHERE scientist_ID = (:x)"
                             "JOIN Connect ON ");
             myQuery.addBindValue(x);
             myQuery.exec();
@@ -641,30 +665,6 @@ bool DataLayer::addFunctionConnect(connection newConnection)
     {
         return false;
     }
-}
-
-bool DataLayer::deleteFunctionComputer(int x)
-{
-    bool bla;
-    QSqlQuery myQuery;
-    myQuery.prepare("SELECT name FROM computer WHERE name = (:x)");
-    myQuery.addBindValue(x);
-
-    if (myQuery.exec())
-    {
-        if (myQuery.next())
-        {
-            myQuery.prepare("DELETE FROM computer WHERE name = (:x)");
-            myQuery.addBindValue(x);
-            myQuery.exec();
-            bla = true;
-        }
-    }
-    else
-    {
-          bla = false;
-    }
-    return bla;
 }
 
 vector<Computer> DataLayer::checkInComputer(string x)
