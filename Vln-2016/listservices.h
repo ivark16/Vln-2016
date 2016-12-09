@@ -25,7 +25,8 @@ public:
     vector<Scientist> searchForName(string name);
     vector<Scientist> displayScientist();
     vector<Computer> displayComputer();
-    int getSizeOfData();
+    int getSizeOfScientist();
+    int getSizeOfComputer();
     void addScientistToDatabase(Scientist newScientist);
     void addComputerToDatabase(Computer newComputer);
     void addConnectionToDatabase(connection newConnection);

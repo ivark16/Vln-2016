@@ -303,6 +303,11 @@ int DataLayer::getSizeOfScientists()
     return _scientists.size();
 }
 
+int DataLayer::getSizeOfComputer()
+{
+    return _computer.size();
+}
+
 char DataLayer::getGenderAt(int i)
 {
     return _scientists[i].getGender();

@@ -14,9 +14,14 @@ vector<Scientist> listServices::searchForName(string name)
     return returnScientist;
 }
 
-int listServices::getSizeOfScientistList()
+int listServices::getSizeOfScientist()
 {
    return _myData.getSizeOfScientists();
+}
+
+int listServices::getSizeOfComputer()
+{
+    return _myData.getSizeOfComputer();
 }
 
 vector<Scientist> listServices::displayScientist()
