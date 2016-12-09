@@ -1106,7 +1106,8 @@ void ui::mainMenuCase()
     cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
     cout << "* 6:  Edit scientist/computers           *                       *" << endl;
-    cout << "* 7:  Quit.                              *                       *" << endl;
+    cout << "* 7:  Lets play a game                   *                       *" << endl;
+    cout << "* 8:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -1120,7 +1121,7 @@ void ui::caseOneCase()
     cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
     cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Display all dead scientist.        *  N/A = Not applicable *" << endl;
+    cout << "* 4:  Display all dead scientist.        * N/A = Not applicable  *" << endl;
     cout << "* 5:  Display in order of birth.         *                       *" << endl;
     cout << "* 6:  Chuck Norris.                      *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
