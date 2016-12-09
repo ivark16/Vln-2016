@@ -16,9 +16,10 @@ ui::ui(int chooseNumber)
     _chooseNumber = chooseNumber;
 }
 
+//This function is called on in the main function.  It runs the entire program.  Important function.
 void ui::run()
 {
-     //Displaying Group 9 case
+     //Displaying cool group 9 logo and credits.
      headerCase();
 
      bool stillLooping = true;
@@ -32,329 +33,27 @@ void ui::run()
         //This function sends you (from the number you pick) to the right corresponding case
             if (chooseNumber == "1")
             {
-                string displayScientist;
-                //Displaying Case 1 header
-                do
-                {
-                    caseOneCase();
-                    cin >> displayScientist;
-
-                    if (displayScientist == "1")
-                    {
-                        vector<Scientist> newvector;
-                        cout << "***List of all scientists***" << endl;
-                        newvector = _lists.displayScientist();
-                        printS();
-                        printScientists(newvector);
-                        break;
-                    }
-                    else if(displayScientist == "2")
-                    {
-                        string numb;
-                        vector<Scientist> newVector;
-                        do
-                        {
-                            cout << "Enter 1 for ascending order or 2 for descending order: ";
-                            cin >> numb;
-                            if(numb == "1")
-                            {
-                                newVector = _lists.scientistInAlphabeticalOrder();
-                                cout << "***List of all scientist in alphabetic order***" << endl;
-                                printS();
-                                printScientists(newVector);
-                                break;
-                            }
-                            else if(numb == "2")
-                            {
-                                newVector = _lists.scientistInReverseAlphabeticalOrder();
-                                printS();
-                                printScientists(newVector);
-                                break;
-                            }
-                            else
-                            {
-                                cout << "Invalid input, please try again! " << endl;
-                            }
-                        } while (numb != "1" || numb != "2");
-                        break;
-                    }
-                    else if (displayScientist == "3")
-                    {
-                        vector<Scientist> living;
-
-                        cout << "***List of all living scientists***" << endl;
-                        living = _lists.searchAliveScientist();
-                        printS();
-                        printScientists(living);
-                        break;
-                    }
-                    else if (displayScientist == "4")
-                    {
-                       vector<Scientist> dead;
-                       cout << "***List of all dead scientists***" << endl;
-                       dead = _lists.searchDeadScientist();
-                       printS();
-                       printScientists(dead);
-                       break;
-                    }
-                        //This case organizes the living scientists from oldest to youngest
-                    else if (displayScientist == "5")
-                    {
-                        string numb;
-                        vector<Scientist> order;
-                        do
-                        {
-                            cout << "choose 1 for order of youngest or 2 for order of oldest: ";
-                            cin >> numb;
-                            if(numb == "1")
-                            {
-                                order = _lists.youngestOrderScientist();
-                                printS();
-                                printScientists(order);
-                                break;
-                            }
-                            else if (numb == "2")
-                            {
-                                order = _lists.oldestOrderScientist();
-                                printS();
-                                printScientists(order);
-                                break;
-                            }
-                            else
-                            {
-                                cout << "Invalid input, please try again! " << endl;
-                            }
-                        } while (numb != "1" || numb != "2");
-                        break;
-                    }
-                    else if (displayScientist == "6")
-                    {
-
-                        //listServices norris;
-                        //norris.changeTo(norris.chuckNorris());
-                        //print(norris);
-                        //printScientists(norris);
-                    }
-                    else
-                    {
-                        cout << "Invalid input, please try again! " << endl;
-                    }
-                } while (displayScientist != "1" || displayScientist != "2" || displayScientist != "3" || displayScientist != "4" || displayScientist != "5" || displayScientist != "6");
+                //Displays scientists (an additional menu is inside)
+                caseOneCase();
             }
             else if (chooseNumber == "2")
             {
-                string displayScientist;
-
-                //printing menu for caseTwoCase
-                do
-                {
-                    caseTwoCase();
-                    cin >> displayScientist;
-                    if (displayScientist == "1")
-                    {
-                        vector<Computer> newvector;
-
-                        cout << "***List of all computers***" << endl;
-                        newvector = _lists.displayComputer();
-                        printC();
-                        printComputers(newvector);
-                        break;
-                    }
-
-                    else if(displayScientist == "2")
-                    {
-                        vector<Computer> newvector;
-                        string numb;
-                        do
-                        {
-                            cout << "Enter 1 for list in ascending order or 2 for descending order: ";
-                            cin >> numb;
-                            if(numb == "1")
-                            {
-                                newvector = _lists.computerInAlphabeticalOrder();
-                                cout << "***List of computer in alphabetical order***" << endl;
-                                printC();
-                                printComputers(newvector);
-                                break;
-                            }
-                            else if(numb == "2")
-                            {
-                                newvector = _lists.computerInReverseAlphabeticalOrder();
-                                cout << "***List of computer in reverse alphabetical order***" << endl;
-                                printC();
-                                printComputers(newvector);
-                                break;
-                            }
-                            else
-                            {
-                                cout << "Invalid input, please try again! " << endl;
-                            }
-                        }while (numb != "1" || numb != "2");
-                        break;
-                    }
-                    else if (displayScientist == "3")
-                    {
-                        string numb;
-                        vector<Computer> yearOfBuild;
-                        do
-                        {
-                            cout << "***List of build year***" << endl;
-                            cout << "Enter 1 for order of youngest or 2 for oldest: ";
-                            cin >> numb;
-                            if(numb == "1")
-                            {
-                                yearOfBuild = _lists.youngestOrderComputer();
-                                printC();
-                                printComputers(yearOfBuild);
-                                break;
-                            }
-                            else if(numb == "2")
-                            {
-                                yearOfBuild = _lists.oldestOrderComputer();
-                                printC();
-                                printComputers(yearOfBuild);
-                                break;
-                            }
-                            else
-                            {
-                                cout << "Invalid input, please try again!" << endl;
-                            }
-                        } while(numb != "1" || numb != "2");
-                        break;
-                    }
-
-                    //This case displays if the computer was built or not
-                    else if (displayScientist == "4")
-                    {
-                        string numb;
-                        vector<Computer> built;
-                        do
-                        {
-                            cout << "Enter 1 for list of computers that were built or 2 for not built: ";
-                            cin >> numb;
-                            if(numb == "1")
-                            {
-                                built = _lists.myComputerWasBuilt();
-                                printC();
-                                printComputers(built);
-                            }
-                            else if(numb == "2")
-                            {
-                                built = _lists.myComputerWasNotBuilt();
-                                printC();
-                                printComputers(built);
-                            }
-                            else
-                            {
-                                cout << "Invalid input, please try again!" << endl;
-                            }
-                        } while (numb != "1" || numb != "2");
-                        break;
-                    }
-                } while (displayScientist != "1" || displayScientist != "2" || displayScientist != "3" || displayScientist != "4");
-
+                //Displays all computers (an additional menu is inside)
+                 caseTwoCase();
             }
             else if (chooseNumber == "3")
             {
+                //Allows you to search through the database (an additional menu is inside)
                 caseThreeCase();
             }
 
             else if (chooseNumber == "4")
             {
-            //add new scientist to the database
-            //CHECK FUNCTIONS NEEDED
-             int addScientistOrComputer;
-             // Calling headder for case 4
-             caseFourCase();
-
-             bool invalidInput = true;
-             while(invalidInput)
-             {
-                 while (!(cin >> addScientistOrComputer))
-                 {
-                     cin.clear();
-                     cin.ignore(1000,'\n');
-                     cout << "Not valid input, please try again: ";
-                 }
-                 if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 4)))
-                 {
-                     cout << "Not valid input, please try again: ";
-                     invalidInput = true;
-                 }
-                 else
-                     {
-                         invalidInput = false;
-                     }
-                 }
-
-                 if(addScientistOrComputer == 1)
-                 {
-                    addScientist();
-                 }
-                 if(addScientistOrComputer == 2)
-                 {
-                    addComputer();
-                 }
-                 if(addScientistOrComputer == 3)
-                 {
-                     addConnection();
-                 }
-
+                caseFourCase();
             }
             else if (chooseNumber == "5")
             {
-                //DELETE a nice boy
-                int deleteScientistOrComputer;
                 caseFiveCase();
-
-                bool invalidInput = true;
-                while(invalidInput)
-                {
-                    while (!(cin >> deleteScientistOrComputer))
-                    {
-                        cin.clear();
-                        cin.ignore(1000,'\n');
-                        cout << "Not valid input, please try again: ";
-                    }
-                    if(!((deleteScientistOrComputer > 0) && (deleteScientistOrComputer < 3)))
-                    {
-                        cout << "Not valid input, please try again: ";
-                        invalidInput = true;
-                    }
-                    else
-                    {
-                        invalidInput = false;
-                    }
-                }
-                if(deleteScientistOrComputer == 1)
-                {
-                    string scientName;
-                    vector<Scientist> ceckForDeleteS;
-                    int idDelete;
-                    cout << "Enter name for scientist you want to delete";
-                    cin >> scientName;
-                    _lists.searchForName(scientName);
-                    printS();
-                    printScientists(ceckForDeleteS);
-                    cout << "Enter id for scientist to delete" << endl;
-                    cin >> idDelete;
-                    _lists.deleteScientistFromDatabase(idDelete);
-                }
-                if(deleteScientistOrComputer == 2)
-                {
-                       //DELETE COMPUTER
-                    string compName;
-                    vector<Computer> checkForDeleteC;
-                    cout << "Enter name for computer u want to delete";
-                    cin >> compName;
-                    _lists.searchForNameComputer(compName);
-                    printC();
-                    printComputers(checkForDeleteC);
-                    int idDelete;
-                    cout << "Enter id for computer to delete" << endl;
-                    cin >> idDelete;
-                    _lists.deleteComputerFromDatabase(idDelete);
-                }
             }
             else if (chooseNumber == "6")
             {
@@ -481,7 +180,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
         int yearBuilt = computersToPrint[i].getYearOfBuild();
         if(yearBuilt == 0)
         {
-            na = "N/A";
+            na = "N/A ";
             cout << na;
         }
         else
@@ -496,7 +195,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
         {
             cout << "False";
         }
-        if (na == "N/A")
+        if (na == "N/A ")
         {
             cout << "     *" << endl;
         }
@@ -513,16 +212,17 @@ void ui::printComputers(vector<Computer> computersToPrint)
     cout << endl;
 }
 
+//Prints connections between computers and scientists in a table
 void ui::printJoin(vector<searching> joinToPrint)
 {
     int counter = 1;
     int width;
+    //adjust width to longest name
     int widthSci = _lists.searchLongestNameScientist();
     int widthCom = _lists.searchLongestNameComputer();
 
     if (widthSci < widthCom)
     {
-        int width;
         width = widthCom;
     }
     else
@@ -536,7 +236,6 @@ void ui::printJoin(vector<searching> joinToPrint)
         cout.width(5);
         counter++;
 
-        //adjusts width to longest name
         cout << joinToPrint[i].getSearchFirstName() << left;
         cout.width(width);
         cout << joinToPrint[i].getSearchLastName() << left;
@@ -551,9 +250,10 @@ void ui::printJoin(vector<searching> joinToPrint)
         int yearBuilt = joinToPrint[i].getSearchYearBuilt();
         if(yearBuilt == 0)
         {
-            na = "N/A";
+            na = "N/A ";
             cout << na;
         }
+        cout << endl;
 
     }
 
@@ -596,7 +296,7 @@ void ui::printC()
     int width = _lists.searchLongestNameComputer();
 
     cout.width(5);
-    cout << left << "No.";
+    cout << left << "ID";
     cout.width(width+2);
     cout << "Name" << left;
     cout.width(width);
@@ -616,19 +316,17 @@ void ui::printC()
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-
+    cout << "WIDTH IS" << width;
     cout.width(5);
-    cout << left << "No.";
+    cout << left << "First name" << left;
     cout.width(width+2);
-    cout << "First name" << left;
-    cout.width(width);
     cout << "Last name" << left;
     cout.width(width);
-    cout << "Name of computer" << left;
+    cout << "N.O.C." << left;
     cout.width(width);
-    cout << "Type of computer";
+    cout << "T.O.C.";
     cout.width(width);
-    cout << "Year of build";
+    cout << "Y.O.B";
     cout << endl;
     for(int i = 0; i < 9; i++)
     {
@@ -900,28 +598,143 @@ void ui::mainMenuCase()
     cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
     cout << "* 6:  Edit scientist/computers           *                       *" << endl;
-    cout << "* 7:  Quit.                              *                       *" << endl;
+    cout << "* 7:  Lets play a game                   *                       *" << endl;
+    cout << "* 8:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 }
 
+//Displays scientists
 void ui::caseOneCase()
 {
-    int displayScientist;
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
     cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Display all dead scientist.        *  N/A = Not applicable *" << endl;
+    cout << "* 4:  Display all dead scientist.        * N/A = Not applicable  *" << endl;
     cout << "* 5:  Display in order of birth.         *                       *" << endl;
     cout << "* 6:  Chuck Norris.                      *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
+
+    string displayScientist;
+    do
+    {
+        cin >> displayScientist;
+
+        // Displays all scientists
+        if (displayScientist == "1")
+        {
+            vector<Scientist> newvector;
+            cout << "***List of all scientists***" << endl;
+            newvector = _lists.displayScientist();
+            printS();
+            printScientists(newvector);
+            break;
+        }
+
+        //Displays all scientists in alphabetical order
+        else if(displayScientist == "2")
+        {
+            string numb;
+            vector<Scientist> newVector;
+            do
+            {
+                cout << "Enter 1 for ascending order or 2 for descending order: ";
+                cin >> numb;
+                if(numb == "1")
+                {
+                    newVector = _lists.scientistInAlphabeticalOrder();
+                    cout << "***List of all scientist in alphabetic order***" << endl;
+                    printS();
+                    printScientists(newVector);
+                    break;
+                }
+                else if(numb == "2")
+                {
+                    newVector = _lists.scientistInReverseAlphabeticalOrder();
+                    printS();
+                    printScientists(newVector);
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid input, please try again! " << endl;
+                }
+            } while (numb != "1" || numb != "2");
+            break;
+        }
+        else if (displayScientist == "3")
+        {
+            vector<Scientist> living;
+
+            cout << "***List of all living scientists***" << endl;
+            living = _lists.searchAliveScientist();
+            printS();
+            printScientists(living);
+            break;
+        }
+        else if (displayScientist == "4")
+        {
+           vector<Scientist> dead;
+           cout << "***List of all dead scientists***" << endl;
+           dead = _lists.searchDeadScientist();
+           printS();
+           printScientists(dead);
+           break;
+        }
+            //This case organizes the living scientists from oldest to youngest
+        else if (displayScientist == "5")
+        {
+            string numb;
+            vector<Scientist> order;
+            do
+            {
+                cout << "choose 1 for order of youngest or 2 for order of oldest: ";
+                cin >> numb;
+                if(numb == "1")
+                {
+                    order = _lists.youngestOrderScientist();
+                    printS();
+                    printScientists(order);
+                    break;
+                }
+                else if (numb == "2")
+                {
+                    order = _lists.oldestOrderScientist();
+                    printS();
+                    printScientists(order);
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid input, please try again! " << endl;
+                }
+            } while (numb != "1" || numb != "2");
+            break;
+        }
+        else if (displayScientist == "6")
+        {
+
+            //listServices norris;
+            //norris.changeTo(norris.chuckNorris());
+            //print(norris);
+            //printScientists(norris);
+        }
+        else
+        {
+            cout << "Invalid input, please try again! " << endl;
+        }
+    } while (displayScientist != "1" || displayScientist != "2" || displayScientist != "3" || displayScientist != "4" || displayScientist != "5" || displayScientist != "6");
+
+
 }
 
+
+//Displays all computers
 void ui::caseTwoCase()
 {
     cout << "------------------------------------------------------------------" << endl;
@@ -933,6 +746,114 @@ void ui::caseTwoCase()
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
+    string displayScientist;
+
+    //printing menu for caseTwoCase
+    do
+    {
+        cin >> displayScientist;
+        if (displayScientist == "1")
+        {
+            vector<Computer> newvector;
+
+            cout << "***List of all computers***" << endl;
+            newvector = _lists.displayComputer();
+            printC();
+            printComputers(newvector);
+            break;
+        }
+
+        else if(displayScientist == "2")
+        {
+            vector<Computer> newvector;
+            string numb;
+            do
+            {
+                cout << "Enter 1 for list in ascending order or 2 for descending order: ";
+                cin >> numb;
+                if(numb == "1")
+                {
+                    newvector = _lists.computerInAlphabeticalOrder();
+                    cout << "***List of computer in alphabetical order***" << endl;
+                    printC();
+                    printComputers(newvector);
+                    break;
+                }
+                else if(numb == "2")
+                {
+                    newvector = _lists.computerInReverseAlphabeticalOrder();
+                    cout << "***List of computer in reverse alphabetical order***" << endl;
+                    printC();
+                    printComputers(newvector);
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid input, please try again! " << endl;
+                }
+            }while (numb != "1" || numb != "2");
+            break;
+        }
+        else if (displayScientist == "3")
+        {
+            string numb;
+            vector<Computer> yearOfBuild;
+            do
+            {
+                cout << "***List of build year***" << endl;
+                cout << "Enter 1 for order of youngest or 2 for oldest: ";
+                cin >> numb;
+                if(numb == "1")
+                {
+                    yearOfBuild = _lists.youngestOrderComputer();
+                    printC();
+                    printComputers(yearOfBuild);
+                    break;
+                }
+                else if(numb == "2")
+                {
+                    yearOfBuild = _lists.oldestOrderComputer();
+                    printC();
+                    printComputers(yearOfBuild);
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid input, please try again!" << endl;
+                }
+            } while(numb != "1" || numb != "2");
+            break;
+        }
+
+        //This case displays if the computer was built or not
+        else if (displayScientist == "4")
+        {
+            string numb;
+            vector<Computer> built;
+            do
+            {
+                cout << "Enter 1 for list of computers that were built or 2 for not built: ";
+                cin >> numb;
+                if(numb == "1")
+                {
+                    built = _lists.myComputerWasBuilt();
+                    printC();
+                    printComputers(built);
+                }
+                else if(numb == "2")
+                {
+                    built = _lists.myComputerWasNotBuilt();
+                    printC();
+                    printComputers(built);
+                }
+                else
+                {
+                    cout << "Invalid input, please try again!" << endl;
+                }
+            } while (numb != "1" || numb != "2");
+            break;
+        }
+    } while (displayScientist != "1" || displayScientist != "2" || displayScientist != "3" || displayScientist != "4");
 }
 
 void ui::caseThreeCase()
@@ -984,37 +905,127 @@ void ui::caseThreeCase()
      }
 }
 
+//This is used to add new scientists, comptuers and connections to the database.
 void ui::caseFourCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
+    cout << "* 1:  Add a scientist.                   *                       *" << endl;
     cout << "* 2:  Add a computer.                    *                       *" << endl;
     cout << "* 3:  Add a connection                   *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
+
+     int addScientistOrComputer;
+     bool invalidInput = true;
+     while(invalidInput)
+     {
+         while (!(cin >> addScientistOrComputer))
+         {
+             cin.clear();
+             cin.ignore(1000,'\n');
+             cout << "Not valid input, please try again: ";
+         }
+         if(!((addScientistOrComputer > 0) && (addScientistOrComputer < 4)))
+         {
+             cout << "Not valid input, please try again: ";
+             invalidInput = true;
+         }
+         else
+             {
+                 invalidInput = false;
+             }
+         }
+
+         if(addScientistOrComputer == 1)
+         {
+            addScientist();
+         }
+         if(addScientistOrComputer == 2)
+         {
+            addComputer();
+         }
+         if(addScientistOrComputer == 3)
+         {
+             addConnection();
+         }
+
 }
 
+//This deletes a scientist or a computer from the database
 void ui::caseFiveCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Delete a scientist.                * Y.O.B = year of birth *" << endl;
+    cout << "* 1:  Delete a scientist.                *                       *" << endl;
     cout << "* 2:  Delete a computer.                 *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
+
+    int deleteScientistOrComputer;
+    bool invalidInput = true;
+    while(invalidInput)
+    {
+        while (!(cin >> deleteScientistOrComputer))
+        {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Not valid input, please try again: ";
+        }
+        if(!((deleteScientistOrComputer > 0) && (deleteScientistOrComputer < 3)))
+        {
+            cout << "Not valid input, please try again: ";
+            invalidInput = true;
+        }
+        else
+        {
+            invalidInput = false;
+        }
+    }
+
+    if(deleteScientistOrComputer == 1)
+    {
+        string scientName;
+        vector<Scientist> ceckForDeleteS;
+        int idDelete;
+        cout << "Enter name for scientist you want to delete: ";
+        cin >> scientName;
+        ceckForDeleteS = _lists.searchForName(scientName);
+        printS();
+        printScientists(ceckForDeleteS);
+        cout << "Enter id for scientist to delete" << endl;
+        cin >> idDelete;
+        _lists.deleteScientistFromDatabase(idDelete);
+    }
+
+    if(deleteScientistOrComputer == 2)
+    {
+           //DELETE COMPUTER
+        string compName;
+        vector<Computer> checkForDeleteC;
+        cout << "Enter name for computer u want to delete";
+        cin >> compName;
+        checkForDeleteC = _lists.searchForNameComputer(compName);
+        printC();
+        printComputers(checkForDeleteC);
+        int idDelete;
+        cout << "Enter id for computer to delete" << endl;
+        cin >> idDelete;
+        _lists.deleteComputerFromDatabase(idDelete);
+    }
+
 }
 
 void ui::caseSixCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Edit a scientist.                  * Y.O.B = year of birth *" << endl;
+    cout << "* 1:  Edit a scientist.                  *                       *" << endl;
     cout << "* 2:  Edit a computer.                   *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "-----------------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
 }
@@ -1266,10 +1277,11 @@ void ui::searchConnections()
     //Search for connections.
      int searchConnections;
      cout << "------------------------------------------------------------------" << endl;
-     cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
-     cout << "* 1:  Search by scientist.               *                       *" << endl;
-     cout << "* 2:  Search by computer.                *                       *" << endl;
-     cout << "*----------------------------------------*-----------------------*" << endl;
+     cout << "*------ Database for Connections -------*--------Glossary--------*" << endl;
+     cout << "* 1:  Search by scientist.              *N.O.C.= Name of computer*" << endl;
+     cout << "* 2:  Search by computer.               *T.O.C.= Type of computer*" << endl;
+     cout << "*                                       *Y.O.C.= Year of creation*" << endl;
+     cout << "*---------------------------------------*------------------------*" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "Enter number: ";
 
