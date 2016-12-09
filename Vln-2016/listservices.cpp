@@ -338,6 +338,48 @@ bool listServices::updateYOAScientist(int x, int id)
     return check;
 }
 
+bool listServices::updateNameComputer(string x, int id)
+{
+    bool check;
+    if (_myData.updateNameComputer(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateTypeComputer(string x, int id)
+{
+    bool check;
+    if (_myData.updateTypeComputer(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateYOCComputer(int x, int id)
+{
+    bool check;
+    if (_myData.updateYOCComputer(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;

@@ -68,6 +68,10 @@ public:
     void addComputer();
     void addConnection();
 
+    //functions for case six
+    void caseSixMajorCase();
+    void caseSixCaseOne();
+
 
 
 
