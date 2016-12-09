@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
    // QCoreApplication a(argc, argv);
 
-    DataLayer db;
+    //DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
 
@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
 
     //db.updateFirstName("ASSFACE", 10);
 
+
    /*playGame game;
 
         cout << "press Q to quit" << endl;
@@ -69,6 +70,7 @@ int main(int argc, char *argv[])
         };
         game.printTable(ticTacToeTable);
         game.theGame(ticTacToeTable);   */
+
 
 
     return 0;

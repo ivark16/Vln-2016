@@ -43,9 +43,14 @@ public:
     void mainMenuCase();
     void caseOneCase();
     void caseTwoCase();
+    void caseThreeCase();
     void caseFourCase();
     void caseFiveCase();
     void caseSixCase();
+
+    //Search functions for case 3
+    void searchScientist();
+    void searchComputers();
 
 
 

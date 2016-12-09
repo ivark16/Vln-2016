@@ -35,7 +35,7 @@ public:
     int getBirthYearAt(int i);
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
-    bool deleteFunction(string x);
+    bool deleteFunction(int x);
     bool addFunction(Scientist newScientist);
     vector<Scientist> readInAlphabeticalOrder();
     vector<Scientist> readInReverseAlphabeticalOrder();
@@ -51,8 +51,9 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(Computer newComputer);
     bool addFunctionConnect(connection newConnection);
-    bool deleteFunctionComputer(string x);
-    bool deleteConnectionFunction(int x);
+    bool deleteFunctionComputer(int x);
+    bool deleteConnectionFunctionScientist(int x);
+    bool deleteConnectionFunctionComputer(int x);
     vector<Computer> checkInComputer(string x);
 
 
@@ -61,6 +62,7 @@ public:
 
     vector<Computer> checkInComputerYear(int x, int y);
     vector<Computer> checkInComputerSingleYear(int x);
+    vector<Computer> checkInComputerType(string x);
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 
