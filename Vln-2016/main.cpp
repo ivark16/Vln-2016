@@ -13,13 +13,13 @@ int main(int argc, char *argv[])
     //consoleUI Master;
     //Master.run();
 
-   /* QCoreApplication a(argc, argv);
+   // QCoreApplication a(argc, argv);
 
     //DataLayer db;
 
     //db.readAllDataFromSearchingDatabse();
 
-    if (db.deleteFunction("Ivar"))
+    /*if (db.deleteFunction("Ivar"))
 
     {
         cout << "Person deleted" << endl;
@@ -56,6 +56,9 @@ int main(int argc, char *argv[])
     ui Master;
     Master.run();
 
+    //db.updateFirstName("ASSFACE", 10);
+
+
    /*playGame game;
 
         cout << "press Q to quit" << endl;
@@ -66,7 +69,8 @@ int main(int argc, char *argv[])
             {'7', '8', '9'}
         };
         game.printTable(ticTacToeTable);
-        game.theGame(ticTacToeTable); */
+        game.theGame(ticTacToeTable);   */
+
 
 
     return 0;

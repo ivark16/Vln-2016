@@ -170,14 +170,14 @@ bool DataLayer::deleteFunctionComputer(int x)
 {
     bool bla;
     QSqlQuery myQuery;
-    myQuery.prepare("SELECT name FROM computer WHERE name = (:x)");
+    myQuery.prepare("SELECT name FROM computer WHERE ID = (:x)");
     myQuery.addBindValue(x);
 
     if (myQuery.exec())
     {
         if (myQuery.next())
         {
-            myQuery.prepare("DELETE FROM computer WHERE name = (:x)");
+            myQuery.prepare("DELETE FROM computer WHERE ID = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
             bla = true;
@@ -200,8 +200,7 @@ bool DataLayer::deleteConnectionFunctionScientist(int x)
     {
         if(myQuery.next())
         {
-            myQuery.prepare("DELETE * FROM connect WHERE scientist_ID = (:x)"
-                            "JOIN Connect ON ");
+            myQuery.prepare("DELETE FROM connect WHERE scientist_ID = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
             deleteF = true;
@@ -218,13 +217,13 @@ bool DataLayer::deleteConnectionFunctionComputer(int x)
 {
     bool deleteF;
     QSqlQuery myQuery;
-    myQuery.prepare("SELECT * FROM connect WHERE scientist_id = (:x)");
+    myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
     if(myQuery.exec())
     {
         if(myQuery.next())
         {
-            myQuery.prepare("DELETE * FROM scientist WHERE scientist_id = (:x)");
+            myQuery.prepare("DELETE FROM scientist WHERE scientist_ID = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
             deleteF = true;
@@ -271,7 +270,7 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     vector<Scientist> scientists;
     QSqlQuery query;
     QString qName = QString::fromStdString(name);
-    query.prepare("SELECT * FROM scientist WHERE firstname LIKE (:name) OR lastname LIKE (:name)");
+    query.prepare("SELECT * FROM scientist WHERE firstname LIKE (:name) OR lastname LIKE (:name) COLLATE NOCASE");
     query.addBindValue("%" + qName + "%");
     query.addBindValue("%" + qName + "%");
     query.exec();
@@ -673,7 +672,7 @@ vector<Computer> DataLayer::checkInComputer(string x)
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
 
-    query.prepare("SELECT * FROM computer c WHERE c.name LIKE (:x)");
+    query.prepare("SELECT * FROM computer c WHERE c.name LIKE (:x) COLLATE NOCASE");
     query.addBindValue("%" + qName + "%");
     query.exec();
     int idNames = query.record().indexOf("ID");
@@ -702,7 +701,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
 
-    query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x)");
+    query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x) COLLATE NOCASE");
     query.addBindValue("%" + qName + "%");
     query.exec();
     int idNames = query.record().indexOf("ID");
@@ -730,7 +729,7 @@ bool DataLayer::checkIfExists(string x)
 
     QSqlQuery checkQuery;
     QString qName = QString::fromStdString(x);
-    checkQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x)");
+    checkQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x) COLLATE NOCASE");
     checkQuery.addBindValue(qName);
 
     if (checkQuery.exec())
@@ -754,7 +753,7 @@ bool DataLayer::checkIfComputerExists(string x)
 
     QSqlQuery checkQuery;
     QString qName = QString::fromStdString(x);
-    checkQuery.prepare("SELECT name FROM scientist WHERE name = (:x)");
+    checkQuery.prepare("SELECT name FROM scientist WHERE name = (:x) COLLATE NOCASE");
     checkQuery.addBindValue(qName);
 
     if (checkQuery.exec())
@@ -875,3 +874,39 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
     }
     return myVector;
 }
+
+bool DataLayer::updateFirstName(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("UPDATE scientist SET firstname = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+
+
+
+
+
+
+
+
+
+
+

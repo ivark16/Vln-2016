@@ -46,6 +46,7 @@ public:
     void caseThreeCase();
     void caseFourCase();
     void caseFiveCase();
+    void caseSixCase();
 
     //Search functions for case 3
     void searchScientist();
