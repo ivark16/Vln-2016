@@ -19,8 +19,9 @@ ui::ui(int chooseNumber)
 //This function is called on in the main function.  It runs the entire program.  Important function.
 void ui::run()
 {
-
+    //password protects our database
      enterPassword();
+     //clears the screen
      if (getenv("windir"))
      {
           system("cls");
@@ -1144,7 +1145,7 @@ void ui::searchScientistByBirthYear()
    {
        int minYear = yearChecker(1,0,0);
        int maxYear = yearChecker(4,minYear,0);
-      // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
+       searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
        printS();
        printScientists(searchResults);
    }
@@ -1828,9 +1829,10 @@ void ui::playGame()
     caseSevenCase3(playGame);
     caseSevenCase4(playGame);
     caseSevenCase5(playGame);
-
+    double grade = (double)(playGame)/5.0 * 10;
     cout << "Game over!  You answered " << playGame;
-    cout << " questions correctly out of 5 total.";
+    cout << " questions correctly out of 5 total." << endl;
+    cout << "Your grade is " << grade;
     if (getenv("windir"))
     {
          string thisDoesNothing;
