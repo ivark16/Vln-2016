@@ -154,6 +154,7 @@ void listServices::deleteScientistFromDatabase(int x)
 void listServices::deleteComputerFromDatabase(int x)
 {
     _myData.deleteFunctionComputer(x);
+    _myData.deleteConnectionFunctionComputer(x);
 }
 
 //This function creates and returns a new vector containing only living scientists.

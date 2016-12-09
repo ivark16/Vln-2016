@@ -710,6 +710,10 @@ void ui::run()
                 if(deleteScientistOrComputer == 2)
                 {
                        //DELETE COMPUTER
+                    int idDelete;
+                    cout << "Enter id for computer to delete" << endl;
+                    cin >> idDelete;
+                    _lists.deleteComputerFromDatabase(idDelete);
                 }
             }
             else if (chooseNumber == "6")
@@ -1234,6 +1238,7 @@ void ui::caseFourCase()
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
     cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Add a computer.                    *                       *" << endl;
+    cout << "* 3:  Add a connection                   *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
