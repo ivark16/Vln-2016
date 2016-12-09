@@ -74,6 +74,10 @@ void ui::run()
             {
                 playGame();
             }
+            else if (chooseNumber == "8")
+            {
+                exit(1);
+            }
             else
             {
                 cout << "Invalid input, please try again!" << endl;
