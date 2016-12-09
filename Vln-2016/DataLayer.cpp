@@ -788,3 +788,39 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
     }
     return myVector;
 }
+
+bool DataLayer::updateFirstName(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("UPDATE scientist SET firstname = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+
+
+
+
+
+
+
+
+
+
+

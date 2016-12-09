@@ -148,9 +148,8 @@ void ui::run()
                 //printing menu for caseTwoCase
                 do
                 {
-
                     caseTwoCase();
-
+                    cin >> displayScientist;
                     if (displayScientist == "1")
                     {
                         vector<Computer> newvector;
@@ -657,10 +656,120 @@ void ui::run()
                     //DELETE COMPUTER
              }
 
-
-
             }
             else if (chooseNumber == "6")
+            {
+                string input;
+                do
+                {
+                    caseSixCase();
+                    cin >> input;
+
+                    if (input == "1")
+                    {
+                        string name;
+                        bool check;
+                        bool check2;
+                        int id;
+                        vector<Scientist> editScientist;
+                        do
+                        {
+                            cout << "Please insert name of scientist you want to edit: ";
+                            cin >> name;
+                            editScientist = _lists.searchForName(name);
+                            //id = editScientist[0].
+                            if (editScientist.size() == 0)
+                            {
+                                check2 = false;
+                            }
+                            else
+                            {
+                                check2 = true;
+                            }
+                        }while (check2 == false);
+                        do
+                        {
+                            printS();
+                            printScientists(editScientist);
+                            cout << "Please insert what you would like to edit (example: insert firstname to edit Scientists firstname): ";
+                            cin >> name;
+                            if (name == "firstname" || name == "firstName")
+                            {
+                                string firstname;
+                                cout << "Input new first name: ";
+                                cin >> firstname;
+                                _lists.updateFirstNameScientist(firstname, id);
+                                check = true;
+                                break;
+                            }
+                            else if (name == "lastname" || name == "lastName")
+                            {
+                                string lastname;
+                                cout << "Input new first name: ";
+                                cin >> lastname;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "gender" || name == "Gender")
+                            {
+                                char sex;
+                                cout << "Input new gender";
+                                cin >> sex;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "nationality" || name == "Nationality")
+                            {
+                                string nationality;
+                                cout << "Input new nationality: ";
+                                cin >> nationality;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yob" || name == "YOB")
+                            {
+                                int yob;
+                                cout << "Input new year of birth: ";
+                                cin >> yob;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yod" || name == "YOD")
+                            {
+                                int yod;
+                                cout << "Input new year of death: ";
+                                cin >> yod;
+                                check = true;
+                                break;
+                            }
+                            else if (name == "yoa" || name == "YOA")
+                            {
+                                int yoa;
+                                cout << "Input new year of award: ";
+                                cin >> yoa;
+                                check = true;
+                                break;
+                            }
+                            else
+                            {
+                                cout << "Invalid input, please try again" << endl;
+                                cout << "Valid inputs are: firstname, lastname, gender, Nationality, YOB, YOD, YOA" << endl;
+                                check = false;
+                            }
+                        }while (check == false);
+                    }
+                    else if (input == "2")
+                    {
+
+                    }
+                    else
+                    {
+                        cout << "Invalid input, please try agian" << endl;
+                    }
+                } while (input != "1" || input != "2");
+                break;
+            }
+            else if (chooseNumber == "7")
             {
                 break;
             }
@@ -1150,7 +1259,8 @@ void ui::mainMenuCase()
     cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
     cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
-    cout << "* 6:  Quit.                              *                       *" << endl;
+    cout << "* 6:  Edit scientist/computers           *                       *" << endl;
+    cout << "* 7:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -1204,5 +1314,16 @@ void ui::caseFiveCase()
     cout << "* 2:  Delete a computer.                 *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "------------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}
+
+void ui::caseSixCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Edit a scientist.                  * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  Edit a computer.                   *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 }

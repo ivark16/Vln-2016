@@ -45,6 +45,7 @@ public:
     void caseTwoCase();
     void caseFourCase();
     void caseFiveCase();
+    void caseSixCase();
 
 
 
