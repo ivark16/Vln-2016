@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     //db.readAllDataFromSearchingDatabse();
 
-    /*if (db.deleteFunction("Ivar"))
+    if (db.deleteFunction("Ivar"))
 
     {
         cout << "Person deleted" << endl;
