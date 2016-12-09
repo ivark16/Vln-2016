@@ -19,6 +19,9 @@ ui::ui(int chooseNumber)
 //This function is called on in the main function.  It runs the entire program.  Important function.
 void ui::run()
 {
+
+     enterPassword();
+
      //Displaying cool group 9 logo and credits.
      headerCase();
 
@@ -86,6 +89,21 @@ void ui::run()
                 }
             }
         } while(stillLooping);
+}
+
+
+void ui::enterPassword()
+{
+    string password;
+    cout << "This is a password protected database."  << endl;
+    cout << "Please reference the readme.txt file included." << endl;
+    cout << "Enter password: ";
+    cin >> password;
+    if(password != "chuckNorris")
+    {
+        cout << "Incorrect password." << endl << "Please reference the readme.txt file before attempting to access the database." << endl;
+        exit(1);
+    }
 }
 
 // This function prints all names in a table to the console
@@ -312,12 +330,11 @@ void ui::printC()
     }
     cout << endl;
 }
-
+//Prints a header for the join table.  N
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-    cout << "WIDTH IS" << width;
-    cout.width(5);
+    cout.width(11);
     cout << left << "First name" << left;
     cout.width(width+2);
     cout << "Last name" << left;
@@ -592,10 +609,10 @@ void ui::mainMenuCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
-    cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
-    cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
+    cout << "* 1:  Display list of Scientist.         *                       *" << endl;
+    cout << "* 2:  Display list of Computers.         *                       *" << endl;
+    cout << "* 3:  Search for scientist/computers.    *                       *" << endl;
+    cout << "* 4:  Add new scientist/computers.       *                       *" << endl;
     cout << "* 5:  Delete scientist/computers         *                       *" << endl;
     cout << "* 6:  Edit scientist/computers           *                       *" << endl;
     cout << "* 7:  Lets play a game                   *                       *" << endl;
@@ -613,9 +630,8 @@ void ui::caseOneCase()
     cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
     cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
     cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-    cout << "* 4:  Display all dead scientist.        * N/A = Not applicable  *" << endl;
+    cout << "* 4:  Display all dead scientist.        *                       *" << endl;
     cout << "* 5:  Display in order of birth.         *                       *" << endl;
-    cout << "* 6:  Chuck Norris.                      *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;
     cout << "Enter number: ";
@@ -716,14 +732,6 @@ void ui::caseOneCase()
             } while (numb != "1" || numb != "2");
             break;
         }
-        else if (displayScientist == "6")
-        {
-
-            //listServices norris;
-            //norris.changeTo(norris.chuckNorris());
-            //print(norris);
-            //printScientists(norris);
-        }
         else
         {
             cout << "Invalid input, please try again! " << endl;
@@ -739,9 +747,9 @@ void ui::caseTwoCase()
 {
     cout << "------------------------------------------------------------------" << endl;
     cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display all Computers.             * Y.O.B = year of birth *" << endl;
-    cout << "* 2:  display all in alphabetical order. * Y.O.D = year of death *" << endl;
-    cout << "* 3:  display all when was built.        * Y.O.A = year of award *" << endl;
+    cout << "* 1:  Display all Computers.             *                       *" << endl;
+    cout << "* 2:  display all in alphabetical order. *                       *" << endl;
+    cout << "* 3:  display all when was built.        *                       *" << endl;
     cout << "* 4:  Display if was built.              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "-----------------------------------------------------------------" << endl;

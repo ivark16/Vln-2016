@@ -29,6 +29,8 @@ public:
     void printConnection();
     void printJoin(vector<searching>);
     void printBird();
+    void enterPassword();
+
 
 
     //check functions
