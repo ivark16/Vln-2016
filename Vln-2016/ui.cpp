@@ -1483,7 +1483,8 @@ void ui::addComputer()
     Computer newComputer(id, name, type, YOB, wasBuilt);
     _lists.addComputerToDatabase(newComputer);
 }
-//add a new connection between a scientist and a computer
+
+//This function adds a new connection between a scientist and a computer
 void ui::addConnection()
 {
     bool checkerS = false;
@@ -1693,6 +1694,7 @@ void ui::caseSixMajorCase()
     } while (input != "1" || input != "2");
 }
 
+//This function alows the user to edit scientists and computers that are currently in the database.
 void ui::caseSixCaseOne(int &counter)
 {
     string name;
@@ -1880,13 +1882,13 @@ void ui::caseSixCaseOne(int &counter)
             check = false;
         }
     }while (check == false);
-   // break;
+
 }
-
+// Calling headder for case 7
 int playGame;
-        // Calling headder for case 7
 
 
+//This is game that asks the user 5 questions about computer history. Each function below is one question. The functions check if users answers is correct and counts the score.
 void ui::playGame()
 {
     int playGame = 0;
@@ -1994,6 +1996,7 @@ void ui::caseSevenCase4(int &playGame)
        playGame++;
    }
 }
+//
 void ui::caseSevenCase5(int &playGame)
 {
    string answer = "1";
