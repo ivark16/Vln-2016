@@ -80,31 +80,62 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
-vector<searching> DataLayer::readAllDataFromSearchingDatabse(string x)
+vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 {
-
+    vector<searching> joinQueryscientist;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    QSqlQuery query("SELECT scientist.firstname, scientist.lastname, computer.name, computer.yearbuilt FROM Connect "
+    QSqlQuery query("SELECT SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
                     "JOIN computer ON Connect.Computer_ID =  computer.ID "
                     "JOIN scientist ON Connect.scientist_ID = scientist.ID"
-                    "WHERE scientist.firstname = (:x)");
+                    "WHERE scientist.firstname = (:x) COLLATE NOCASE");
     int idName = query.record().indexOf("firstname");
     int idName2 = query.record().indexOf("lastname");
     int idName3 = query.record().indexOf("name");
-    int idName4 = query.record().indexOf("yearbuilt");
+    int idName4 = query.record().indexOf("type");
+    int idName5 = query.record().indexOf("yearbuilt");
     while(query.next())
     {
         string firstname = query.value(idName).toString().toStdString();
         string lastname = query.value(idName2).toString().toStdString();
         string compname = query.value(idName3).toString().toStdString();
-        int yearbuilt = query.value(idName4).toInt();
+        string comptype = query.value(idName4).toString().toStdString();
+        int yearbuilt = query.value(idName5).toInt();
 
-        searching s(firstname, lastname, compname, yearbuilt);
-        _searching.push_back(s);
+        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryscientist.push_back(s);
 
     }
-    return _searching;
+    return joinQueryscientist;
+}
+
+vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    QString qName = QString::fromStdString(x);
+    QSqlQuery query("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect "
+                    "JOIN computer ON Connect.Computer_ID =  computer.ID "
+                    "JOIN scientist ON Connect.scientist_ID = scientist.ID"
+                    "WHERE computer.name = (:x) COLLATE NOCASE");
+    int idName = query.record().indexOf("firstname");
+    int idName2 = query.record().indexOf("lastname");
+    int idName3 = query.record().indexOf("name");
+    int idName4 = query.record().indexOf("type");
+    int idName5 = query.record().indexOf("yearbuilt");
+    while(query.next())
+    {
+        string firstname = query.value(idName).toString().toStdString();
+        string lastname = query.value(idName2).toString().toStdString();
+        string compname = query.value(idName3).toString().toStdString();
+        string comptype = query.value(idName4).toString().toStdString();
+        int yearbuilt = query.value(idName5).toInt();
+
+        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+
+    }
+    return joinQueryComputer;
 }
 
 bool DataLayer::deleteFunction(string x)

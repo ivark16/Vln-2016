@@ -5,11 +5,12 @@ searching::searching()
 
 }
 
-searching::searching(string firstname, string lastname, string computername, int yearbuilt)
+searching::searching(string firstname, string lastname, string computername, string computertype , int yearbuilt)
 {
     _firstName = firstname;
     _lastName = lastname;
     _computerName = computername;
+    _computerType = computertype;
     _yearbuilt = yearbuilt;
 }
 
@@ -26,6 +27,11 @@ string searching::getSearchLastName()
 string searching::getSearchComputerName()
 {
     return _computerName;
+}
+
+string searching::getSearchComputerType()
+{
+    return _computerType;
 }
 
 int searching::getSearchYearBuilt()

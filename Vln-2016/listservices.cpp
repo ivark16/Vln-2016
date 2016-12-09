@@ -102,6 +102,20 @@ vector<Computer> listServices::youngestOrderComputer()
     return display;
 }
 
+vector<searching> listServices::displaySearchJoinScientistName(string x)
+{
+    vector<searching> displayJoinScientist;
+    displayJoinScientist = _myData.searchForScientistFromSearchingDatabse(x);
+    return displayJoinScientist;
+}
+
+vector<searching> listServices::displaySearchJoinComputerName(string x)
+{
+    vector<searching> displayJoinComputer;
+    displayJoinComputer = _myData.searchForComputerFromSearchingDatabase(x);
+    return displayJoinComputer;
+}
+
 bool listServices::checkIfScientistIsInDataBase (string x)
 {
     bool bla;
