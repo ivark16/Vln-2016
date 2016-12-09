@@ -48,7 +48,9 @@ public:
     vector<Computer> searchWhenBuiltSingleYear(int a);
     vector<Computer> myComputerWasNotBuilt();
     vector<Computer> myComputerWasBuilt();
-
+    vector<Scientist> checkForAward(int x);
+    vector<Scientist> checkBirthYear(int x);
+    vector<Scientist> checkRangeBirthYear(int x, int y);
 
 
 

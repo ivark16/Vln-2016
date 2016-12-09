@@ -1,6 +1,7 @@
 #include "consoleui.h"
 #include "DataLayer.h"
 #include "ui.h"
+#include <stdlib.h>
 using namespace std;
 
     static const QString path = "Scientists.db";

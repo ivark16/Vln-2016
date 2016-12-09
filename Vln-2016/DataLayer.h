@@ -38,6 +38,10 @@ public:
     vector<Scientist> readInReverseAlphabeticalOrder();
     vector<Scientist> readInOldestOrder();
     vector<Scientist> readInYoungestOrder();
+    vector<Scientist> searchForTuringAwardWinners(int x);
+    vector<Scientist> searchForYearOfBirth(int x);
+    vector<Scientist> searchRangeForYearOfBirth(int x, int y);
+
     vector<Computer> readInAlphabeticalOrderComputer();
     vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
@@ -54,6 +58,7 @@ public:
     vector<Computer> checkInComputerSingleYear(int x);
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
+
 };
 
 #endif // SCIENTISLISTFROMSQL_H

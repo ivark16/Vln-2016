@@ -1,6 +1,7 @@
 #include "ui.h"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -17,39 +18,14 @@ ui::ui(int chooseNumber)
 void ui::run()
 {
      int chooseNumber;
-
-     cout << "           _______ _______ ______ _______ ______      ______ " << endl;
-     cout << "          |   |   |       |   __ \\   |   |   __ \\    |  __  |" << endl;
-     cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
-     cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
-     cout << "------------------------------------------------------------------" << endl;
-     cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
-     cout << "*                        Brynjar Barkarson                       *"<< endl;
-     cout << "*                        Dagmar Loftsdottir                      *" << endl;
-     cout << "*                     Gabriela Jona Olafsdottir                  *" << endl;
-     cout << "*                       Ivar Orn Kristjansson                    *" << endl;
-     cout << "*                          Stefan Hjartarson                     *" << endl;
-     cout << "------------------------------------------------------------------" << endl;
-     cout << endl;
-
-
+     //Displaying Group 9 case
+     headerCase();
      bool stillLooping = true;
 
      while(stillLooping)
      {
-         cout << "------------------------------------------------------------------" << endl;
-         cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-         cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
-         cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
-         cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
-         cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
-         cout << "* 5:  Delete scientist/computers         *                       *" << endl;
-         cout << "* 6:  Quit.                              *                       *" << endl;
-         cout << "*----------------------------------------*-----------------------*" << endl;
-         cout << "-----------------------------------------------------------------" << endl;
-         cout << "Enter number: ";
-
-
+         //Displaying main menu case
+         mainMenuCase();
          bool invalidInput = true;
          while(invalidInput)
          {
@@ -76,17 +52,8 @@ void ui::run()
             case 1:
             {
                 int displayScientist;
-                cout << "------------------------------------------------------------------" << endl;
-                cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-                cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
-                cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
-                cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
-                cout << "* 4:  Display all dead scientist.        *  N/A = Not applicable *" << endl;
-                cout << "* 5:  Display in order of birth.         *                       *" << endl;
-                cout << "* 6:  Chuck Norris.                      *                       *" << endl;
-                cout << "*----------------------------------------*-----------------------*" << endl;
-                cout << "-----------------------------------------------------------------" << endl;
-                cout << "Enter number: ";
+                //Displaying Case 1 header
+                caseOneCase();
 
                 bool invalidInput = true;
                 while(invalidInput)
@@ -200,15 +167,7 @@ void ui::run()
             case 2:
             {
                 int displayScientist;
-                cout << "------------------------------------------------------------------" << endl;
-                cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-                cout << "* 1:  Display all Computers.             * Y.O.B = year of birth *" << endl;
-                cout << "* 2:  display all in alphabetical order. * Y.O.D = year of death *" << endl;
-                cout << "* 3:  display all when was built.        * Y.O.A = year of award *" << endl;
-                cout << "* 4:  Display if was built.              *                       *" << endl;
-                cout << "*----------------------------------------*-----------------------*" << endl;
-                cout << "-----------------------------------------------------------------" << endl;
-                cout << "Enter number: ";
+                caseTwoCase();
 
                 bool invalidInput = true;
                 while(invalidInput)
@@ -241,14 +200,6 @@ void ui::run()
                     newvector = _lists.displayComputer();
                     printC();
                     printComputers(newvector);
-                    /*for(unsigned int i = 0 ; i < newvector.size() ; i++)
-                    {
-                        cout << newvector[i].getComputerName() << "\t";
-                        cout << newvector[i].getComputerType() << "\t";
-                        cout << newvector[i].getYearOfBuild() << "\t";
-                        cout << newvector[i].getWasBuilt();
-                        cout << endl;
-                    }*/
                     break;
                 }
 
@@ -262,26 +213,14 @@ void ui::run()
                     if(numb == 1)
                     {
                         newvector = _lists.computerInAlphabeticalOrder();
-                        for(unsigned int i = 0 ; i < newvector.size() ; i++)
-                        {
-                            cout << newvector[i].getComputerName() << "\t";
-                            cout << newvector[i].getComputerType() << "\t";
-                            cout << newvector[i].getYearOfBuild() << "\t";
-                            cout << newvector[i].getWasBuilt();
-                            cout << endl;
-                        }
+                        printC();
+                        printComputers(newvector);
                     }
                     else if(numb == 2)
                     {
                         newvector = _lists.computerInReverseAlphabeticalOrder();
-                        for(unsigned int i = 0 ; i < newvector.size() ; i++)
-                        {
-                            cout << newvector[i].getComputerName() << "\t";
-                            cout << newvector[i].getComputerType() << "\t";
-                            cout << newvector[i].getYearOfBuild() << "\t";
-                            cout << newvector[i].getWasBuilt();
-                            cout << endl;
-                        }
+                        printC();
+                        printComputers(newvector);
                     }
                 }
                 else if (displayScientist == 3)
@@ -294,26 +233,14 @@ void ui::run()
                     if(numb == 1)
                     {
                         yearOfBuild = _lists.youngestOrderComputer();
-                        for(unsigned int i = 0 ; i < yearOfBuild.size() ; i++)
-                        {
-                            cout << yearOfBuild[i].getComputerName() << "\t";
-                            cout << yearOfBuild[i].getComputerType() << "\t";
-                            cout << yearOfBuild[i].getYearOfBuild() << "\t";
-                            cout << yearOfBuild[i].getWasBuilt();
-                            cout << endl;
-                        }
+                        printC();
+                        printComputers(yearOfBuild);
                     }
                     else if(numb == 2)
                     {
                         yearOfBuild = _lists.oldestOrderComputer();
-                        for(unsigned int i = 0 ; i < yearOfBuild.size() ; i++)
-                        {
-                            cout << yearOfBuild[i].getComputerName() << "\t";
-                            cout << yearOfBuild[i].getComputerType() << "\t";
-                            cout << yearOfBuild[i].getYearOfBuild() << "\t";
-                            cout << yearOfBuild[i].getWasBuilt();
-                            cout << endl;
-                        }
+                        printC();
+                        printComputers(yearOfBuild);
                     }
                     break;
                 }
@@ -536,13 +463,8 @@ void ui::run()
             //add new scientist to the database
             //CHECK FUNCTIONS NEEDED
              int addScientistOrComputer;
-             cout << "------------------------------------------------------------------" << endl;
-             cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-             cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
-             cout << "* 2:  Add a computer.                    *                       *" << endl;
-             cout << "*----------------------------------------*-----------------------*" << endl;
-             cout << "-----------------------------------------------------------------" << endl;
-             cout << "Enter number: ";
+             // Calling headder for case 4
+             caseFourCase();
 
              bool invalidInput = true;
              while(invalidInput)
@@ -629,13 +551,7 @@ void ui::run()
             {
              //DELETE a nice boy
              int deleteScientistOrComputer;
-             cout << "------------------------------------------------------------------" << endl;
-             cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-             cout << "* 1:  Delete a scientist.                * Y.O.B = year of birth *" << endl;
-             cout << "* 2:  Delete a computer.                 *                       *" << endl;
-             cout << "*----------------------------------------*-----------------------*" << endl;
-             cout << "------------------------------------------------------------------" << endl;
-             cout << "Enter number: ";
+             caseFiveCase();
 
              bool invalidInput = true;
              while(invalidInput)
@@ -672,21 +588,14 @@ void ui::run()
             {
                 stillLooping = false;
             }
-            if(stillLooping)
-            {
-                string thisDoesNothing;
-                cout << "Enter any letter and press enter to continue!";
-                cin >> thisDoesNothing;
-                for(int i = 0 ; i <= 4 ; i++)
-                {
-                    for(int j = 0 ; j < 8 ; j++ )
-                    {
-                        cout << "--------";
-                    }
-                    cout << endl;
-                }
-            }
         }
+            if(stillLooping == true)
+            {
+                 string thisDoesNothing;
+                 cout << "Input anything and than press enter. ";
+                 cin >> thisDoesNothing;
+                 system("cls");
+            }
     }
 }
 
@@ -1125,3 +1034,85 @@ string ui::nationalityChecker()
        return nationality;
 }
 
+void ui::headerCase()
+{
+    cout << "           _______ _______ ______ _______ ______      ______ " << endl;
+    cout << "          |   |   |       |   __ \\   |   |   __ \\    |  __  |" << endl;
+    cout << "          |       |   -   |    __/   |   |      <    |__    |" << endl;
+    cout << "          |___|___|_______|___|  |_______|___|__|    |______|" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*                      Anna Lara Sigurdardottir                  *" << endl;
+    cout << "*                        Brynjar Barkarson                       *"<< endl;
+    cout << "*                        Dagmar Loftsdottir                      *" << endl;
+    cout << "*                     Gabriela Jona Olafsdottir                  *" << endl;
+    cout << "*                       Ivar Orn Kristjansson                    *" << endl;
+    cout << "*                          Stefan Hjartarson                     *" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << endl;
+}
+
+void ui::mainMenuCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Display list of Scientist.         * Y.O.D = year of death *" << endl;
+    cout << "* 2:  Display list of Computers.         * Y.O.B = year of birth *" << endl;
+    cout << "* 3:  Search for scientist/computers.    * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Add new scientist/computers.       *  N/A = Not applicable *" << endl;
+    cout << "* 5:  Delete scientist/computers         *                       *" << endl;
+    cout << "* 6:  Quit.                              *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}
+
+void ui::caseOneCase()
+{
+    int displayScientist;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Display all scientists.            * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  Display in alphabetical order.     * Y.O.D = year of death *" << endl;
+    cout << "* 3:  display all living scientist.      * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Display all dead scientist.        *  N/A = Not applicable *" << endl;
+    cout << "* 5:  Display in order of birth.         *                       *" << endl;
+    cout << "* 6:  Chuck Norris.                      *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}
+
+void ui::caseTwoCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Display all Computers.             * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  display all in alphabetical order. * Y.O.D = year of death *" << endl;
+    cout << "* 3:  display all when was built.        * Y.O.A = year of award *" << endl;
+    cout << "* 4:  Display if was built.              *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}
+
+void ui::caseFourCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Add a scientist.                   * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  Add a computer.                    *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}
+
+void ui::caseFiveCase()
+{
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
+    cout << "* 1:  Delete a scientist.                * Y.O.B = year of birth *" << endl;
+    cout << "* 2:  Delete a computer.                 *                       *" << endl;
+    cout << "*----------------------------------------*-----------------------*" << endl;
+    cout << "------------------------------------------------------------------" << endl;
+    cout << "Enter number: ";
+}

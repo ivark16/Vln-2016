@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <stdio.h>
+#include <stdlib.h>
 
 class ui
 {
@@ -36,6 +37,13 @@ public:
     string computerTypeChecker();
     bool boolChecker();
 
+    //Headders
+    void headerCase();
+    void mainMenuCase();
+    void caseOneCase();
+    void caseTwoCase();
+    void caseFourCase();
+    void caseFiveCase();
 
 
 
