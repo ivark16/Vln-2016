@@ -215,7 +215,7 @@ bool DataLayer::addFunction(Scientist newScientist)
 }
 
 
-void DataLayer::searchForNameFromDatabase(string name)
+vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
     vector<Scientist> scientists;
     QSqlQuery query;
@@ -242,8 +242,8 @@ void DataLayer::searchForNameFromDatabase(string name)
         int awardYear = query.value(idname6).toInt();
         Scientist s(firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
-        _scientists = scientists;
     }
+    return scientists;
 }
 
 int DataLayer::getSizeOfScientists()

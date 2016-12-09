@@ -348,7 +348,7 @@ void ui::run()
                            cout << "Enter number: ";
 
                            bool invalidInput = true;
-                           /*while(invalidInput)
+                           while(invalidInput)
                            {
                                while (!(cin >> rangeOrSingle))
                                {
@@ -365,35 +365,37 @@ void ui::run()
                                {
                                    invalidInput = false;
                                }
-                               if(rangeOrSingle == 1)
-                               {
-                                   listServices scientistsBirth;
-                                   CheckNumbers(scientistsBirth);
-                               }
-                               else if(rangeOrSingle == 2)
-                               {
-                                   int minYear = yearChecker(1,0,0);
-                                   int maxYear = yearChecker(4,minYear,0);
-                                   listServices scientistsBirth;
-                                   scientistsBirth.changeTo(scientistsBirth.searchBirth(minYear, maxYear));
-                                   print(scientistsBirth);
-                                   printScientists(scientistsBirth);
-                               }
-                                break;
-                            }*/
-                       }
+                          }
+                          vector<Scientist> searchResults;
+                          if(rangeOrSingle == 1)
+                          {
+                              int yearToCheck = yearChecker(1,0,0);
+                              searchResults = _lists.checkBirthYear(yearToCheck);
+                              printS();
+                              printScientists(searchResults);
+                          }
+                          else if(rangeOrSingle == 2)
+                          {
+                              int minYear = yearChecker(1,0,0);
+                              int maxYear = yearChecker(4,minYear,0);
+                             // searchResults = _lists.checkRangeBirthYear(minYear, maxYear);
+                              printS();
+                              printScientists(searchResults);
+                          }
+                          break;
+                      }
+
 
                        //This case lets you search for a scientist from their name (either the first or last name)
                        else if (searchScientist == 2)
                        {
-                           /*listServices scientists;
                            string searchTerm;
                            cout << "Enter a single name to search: ";
                            cin >> searchTerm;
                            //scientists.changeTo(scientists.searchName(searchTerm));
-                           _myData.searchForNameFromDatabase(searchTerm);
-                           print(scientists);
-                           if (_myData.getSizeOfScientists() == 0)
+                           vector<Scientist> nameSearch = _lists.checkName(searchTerm);
+                           printS();
+                           if (nameSearch.size() == 0)
                            {
                                cout << "Person is not in database!" << endl;
                                cout << "-------------------------------------------------------------" << endl;
@@ -401,23 +403,34 @@ void ui::run()
                            }
                            else
                            {
-                               printScientists(scientists);
+                               printScientists(nameSearch);
                                break;
-                           }*/
-
+                           }
                         }
 
                        //This case sorts the scientists by the year they recived the Turning Award
                        else if (searchScientist == 3)
                        {
-                           /*listServices scientists;
+
                            cout << "Enter a single year to search: ";
                            int year;
                            cin >> year;
-                           scientists.changeTo(scientists.searchAward(year));
-                           print(scientists);
-                           printScientists(scientists);
-                           break;*/
+                           vector<Scientist> awardSearch;
+                           awardSearch = _lists.checkForAward(year);
+                           printS();
+                           if (awardSearch.size() == 0)
+                           {
+                               cout << "There is no match in the database!" << endl;
+                               cout << "-------------------------------------------------------------" << endl;
+                               break;
+                           }
+                           else
+                           {
+                               printScientists(awardSearch);
+                               break;
+                           }
+                           printScientists(awardSearch);
+                           break;
                        }
                 }
 
