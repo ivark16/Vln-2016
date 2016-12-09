@@ -21,6 +21,14 @@ void ui::run()
 {
 
      enterPassword();
+     if (getenv("windir"))
+     {
+          system("cls");
+     }
+     else
+     {
+         system("clear");
+     }
 
      //Displaying cool group 9 logo and credits.
      headerCase();
@@ -1806,7 +1814,21 @@ void ui::playGame()
     caseSevenCase5(playGame);
 
     cout << "Game over!  You answered " << playGame;
-    cout << "questions correctly out of 5 total.";
+    cout << " questions correctly out of 5 total.";
+    if (getenv("windir"))
+    {
+         string thisDoesNothing;
+         cout << "Input anything and than press enter: ";
+         cin >> thisDoesNothing;
+         system("cls");
+    }
+    else
+    {
+        string thisDoesNothing;
+        cout << "Input anything and than press enter. ";
+        cin >> thisDoesNothing;
+        system("clear");
+    }
 
 }
 
