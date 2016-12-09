@@ -122,7 +122,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     displayJoinComputer = _myData.searchForComputerFromSearchingDatabase(x);
     return displayJoinComputer;
 }
-
+/*
 bool listServices::checkIfScientistIsInDataBase (string x)
 {
     bool bla;
@@ -150,7 +150,7 @@ bool listServices::checkIfComputerIsInDataBase (string x)
     }
     return bla;
 }
-
+*/
 void listServices::deleteScientistFromDatabase(int x)
 {
     _myData.deleteFunction(x);
