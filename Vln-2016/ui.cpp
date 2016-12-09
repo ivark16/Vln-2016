@@ -1736,7 +1736,7 @@ void ui::caseSixMajorCase()
                     name[0] = toupper(name[0]);
                     if (_lists.updateNameComputer(name, id))
                     {
-                        cout << "Person edited successfully" << endl;
+                        cout << "Computer edited successfully" << endl;
                     }
                     check = true;
                     break;
@@ -1749,7 +1749,7 @@ void ui::caseSixMajorCase()
                     type[0] = toupper(type[0]);
                     if (_lists.updateTypeComputer(type, id))
                     {
-                        cout << "Person edited successfully" << endl;
+                        cout << "Computer edited successfully" << endl;
                     }
                     check = true;
                     break;
@@ -1766,34 +1766,34 @@ void ui::caseSixMajorCase()
                     }
                     if (_lists.updateYOCComputer(yoc, id))
                     {
-                        cout << "Person edited successfully" << endl;
+                        cout << "Computer edited successfully" << endl;
                     }
                     check = true;
                     break;
                 }
                 else if (name == "wib" || name == "WIB")
                 {
-                    string wib;
-                    do
+                    bool check;
+                    int wib;
+
+                    cout << "To edit if it was built please input 1 for true or 0 for false: ";
+                    while(!(cin >> wib))
                     {
-                        cout << "Input 1 for true or 0 for false: ";
-                        cin >> wib;
-                        if (wib != "1" || wib != "2")
-                        {
-                            cout << "Invalid input, please try again!" << endl;
-                        }
-                    } while (wib != "1" || wib != "2");
-                    /*if (_lists.updateYODScientist(yod, id))
+                        cin.clear();
+                        cin.ignore(1000,'\n');
+                        cout << "Invalid input, please try again!" << endl;
+                    }
+                    if (_lists.updateWasBuilt(wib, id))
                     {
-                        cout << "Person edited successfully" << endl;
-                    }*/
+                        cout << "Computer edited successfully" << endl;
+                    }
                     check = true;
                     break;
                 }
                 else
                 {
                     cout << endl << "Invalid input, please try again" << endl;
-                    cout << "Valid inputs are: firstname, lastname, gender, Nationality, YOB, YOD, YOA" << endl << endl;
+                    cout << "Valid inputs are: name, type, yoc (yoc stands for year of creation), wib (wib stands for was it built)" << endl << endl;
                     check = false;
                 }
             }while (check == false);
@@ -1801,7 +1801,7 @@ void ui::caseSixMajorCase()
         }
         else
         {
-            cout << "Invalid input, please try agian" << endl;
+            cout << "Invalid input, please try again" << endl;
         }
     } while (input != "1" || input != "2");
     //break;

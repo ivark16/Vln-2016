@@ -78,6 +78,7 @@ public:
     bool updateNameComputer(string x, int y);
     bool updateTypeComputer(string x, int y);
     bool updateYOCComputer (int x, int y);
+    bool updateWasComputerBuilt (int x, int y);
 };
 
 #endif // SCIENTISLISTFROMSQL_H

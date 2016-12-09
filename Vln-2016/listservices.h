@@ -67,6 +67,7 @@ public:
     bool updateNameComputer(string x, int id);
     bool updateTypeComputer(string x, int id);
     bool updateYOCComputer(int x, int id);
+    bool updateWasBuilt(int x, int id);
     vector<Computer> searchForTypeComputer(string s);
 
 };

@@ -273,7 +273,6 @@ bool DataLayer::addFunction(Scientist newScientist)
     }
 }
 
-
 //This function returns all scientists matching the search word entered by the user.
 vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
@@ -332,8 +331,8 @@ int DataLayer::getDeathYearAt(int i)
 {
     return _scientists[i].getDeathYear();
 }
-int DataLayer::getAwardYearAt(int i)
 
+int DataLayer::getAwardYearAt(int i)
 {
     return _scientists[i].getAwardYear();
 }
@@ -753,58 +752,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     return myVector;
 }
 
-/*
-bool DataLayer::checkIfExists(string x)
-{
-    bool exists = false;
-
-    QSqlQuery checkQuery;
-    QString qName = QString::fromStdString(x);
-    checkQuery.prepare("SELECT firstname FROM scientist WHERE firstname = (:x) COLLATE NOCASE");
-    checkQuery.addBindValue(qName);
-
-    if (checkQuery.exec())
-    {
-        if(checkQuery.next())
-        {
-            exists = true;
-        }
-    }
-    else
-    {
-        exists = false;
-    }
-
-    return exists;
-}
-
-
-bool DataLayer::checkIfComputerExists(string x)
-{
-    bool exists = false;
-
-    QSqlQuery checkQuery;
-    QString qName = QString::fromStdString(x);
-    checkQuery.prepare("SELECT name FROM scientist WHERE name = (:x) COLLATE NOCASE");
-    checkQuery.addBindValue(qName);
-
-    if (checkQuery.exec())
-    {
-        if(checkQuery.next())
-        {
-            exists = true;
-        }
-    }
-    else
-    {
-        exists = false;
-    }
-
-    return exists;
-}
-*/
-
-
+//This function searches the database and returns a vector with computer which was built from searching year range
 vector<Computer> DataLayer::checkInComputerYear(int x, int y)
 {
     vector<Computer> myVector;
@@ -832,6 +780,7 @@ vector<Computer> DataLayer::checkInComputerYear(int x, int y)
     return myVector;
 }
 
+// This function searches the database and returns a vector with computer which was built from searching year
 vector<Computer> DataLayer::checkInComputerSingleYear(int x)
 {
     vector<Computer> myVector;
@@ -858,6 +807,7 @@ vector<Computer> DataLayer::checkInComputerSingleYear(int x)
     return myVector;
 }
 
+// Checks what computers did get built in database and returns a vector with those computers
 vector<Computer> DataLayer::ComputerWasBuilt()
 {
     vector<Computer> myVector;
@@ -1144,7 +1094,28 @@ bool DataLayer::updateYOCComputer (int x, int y)
     return check;
 }
 
+bool DataLayer::updateWasComputerBuilt (int x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    //QString qName = QString::fromStdString(x);
+    query.prepare("UPDATE computer SET wasbuilt = (:x) WHERE ID = (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
 
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
 
 
 

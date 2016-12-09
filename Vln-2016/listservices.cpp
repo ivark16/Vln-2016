@@ -380,6 +380,20 @@ bool listServices::updateYOCComputer(int x, int id)
     return check;
 }
 
+bool listServices::updateWasBuilt(int x, int id)
+{
+    bool check;
+    if (_myData.updateWasComputerBuilt(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;
