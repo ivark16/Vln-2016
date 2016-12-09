@@ -21,6 +21,8 @@ public:
     ui();
     ui(int chooseNumber);
     void run();
+
+    // Print functions, prints out hedders and tables
     void print(listServices scientistsToPrint);
     void printScientists(vector<Scientist> scientistsToPrint);
     void printComputers(vector<Computer> computersToPrint);

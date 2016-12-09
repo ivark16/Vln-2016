@@ -220,7 +220,6 @@ void ui::printJoin(vector<searching> joinToPrint)
     //adjust width to longest name
     int widthSci = _lists.searchLongestNameScientist();
     int widthCom = _lists.searchLongestNameComputer();
-
     if (widthSci < widthCom)
     {
         width = widthCom;
@@ -233,18 +232,17 @@ void ui::printJoin(vector<searching> joinToPrint)
     for(unsigned int i = 0; i < joinToPrint.size(); i++)
     {
         string na;
-        cout.width(5);
+        cout.width(15);
         counter++;
-
         cout << joinToPrint[i].getSearchFirstName() << left;
-        cout.width(width);
+        cout.width(width-10);
         cout << joinToPrint[i].getSearchLastName() << left;
-        cout.width(width);
+        cout.width(width-12);
         cout << joinToPrint[i].getSearchComputerName() << left;
         cout.width(width);
         cout << joinToPrint[i].getSearchComputerType() << left;
         cout.width(width);
-        cout << joinToPrint[i].getSearchYearBuilt() << left;
+        cout << joinToPrint[i].getSearchYearBuilt() << left << "    *";
         cout.width(width);
 
         int yearBuilt = joinToPrint[i].getSearchYearBuilt();
@@ -254,13 +252,8 @@ void ui::printJoin(vector<searching> joinToPrint)
             cout << na;
         }
         cout << endl;
-
     }
-
-    for(int i = 0 ; i < 9 ; i++)
-    {
-        cout << "---------";
-    }
+        cout << "---------------------------------------------------------------------------------";
     cout << endl;
 }
 void ui::printS()
@@ -316,14 +309,14 @@ void ui::printC()
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-    cout << "WIDTH IS" << width;
-    cout.width(5);
+    //cout << "WIDTH IS" << width;
+    cout.width(13);
     cout << left << "First name" << left;
     cout.width(width+2);
     cout << "Last name" << left;
-    cout.width(width);
+    cout.width(width+3);
     cout << "N.O.C." << left;
-    cout.width(width);
+    cout.width(width+5);
     cout << "T.O.C.";
     cout.width(width);
     cout << "Y.O.B";
@@ -839,12 +832,14 @@ void ui::caseTwoCase()
                     built = _lists.myComputerWasBuilt();
                     printC();
                     printComputers(built);
+                    break;
                 }
                 else if(numb == "2")
                 {
                     built = _lists.myComputerWasNotBuilt();
                     printC();
                     printComputers(built);
+                    break;
                 }
                 else
                 {
@@ -1156,6 +1151,7 @@ void ui::searchScientistByName()
     }
     else
     {
+        printS();
         printScientists(nameSearch);
     }
 }
@@ -1275,7 +1271,7 @@ void ui::searchComputers()
 void ui::searchConnections()
 {
     //Search for connections.
-     int searchConnections;
+     int searchC;
      cout << "------------------------------------------------------------------" << endl;
      cout << "*------ Database for Connections -------*--------Glossary--------*" << endl;
      cout << "* 1:  Search by scientist.              *N.O.C.= Name of computer*" << endl;
@@ -1288,13 +1284,13 @@ void ui::searchConnections()
      bool invalidInput = true;
      while(invalidInput)
      {
-        while (!(cin >> searchConnections))
+        while (!(cin >> searchC))
         {
             cin.clear();
             cin.ignore(1000,'\n');
             cout << "Not valid input, please try again: ";
         }
-        if(!((searchConnections > 0) && (searchConnections < 3)))
+        if(!((searchC > 0) && (searchC < 3)))
         {
             cout << "Not valid input, please try again: ";
             invalidInput = true;
@@ -1305,23 +1301,38 @@ void ui::searchConnections()
         }
      }
      vector<searching> connections;
-     if(searchConnections == 1)
+     if(searchC == 1)
      {
          string searchTerm;
          cout << "Enter a single name to search: ";
          cin >> searchTerm;
          connections = _lists.displaySearchJoinScientistName(searchTerm);
          printConnection();
-         printJoin(connections);
+         if (connections.size() == 0)
+         {
+             cout << "No connection in database!" << endl;
+         }
+         else
+         {
+            printJoin(connections);
+         }
+
      }
-     else if(searchConnections == 2)
+     else if(searchC == 2)
      {
          string searchTerm;
          cout << "Enter a single name to search: ";
          cin >> searchTerm;
          connections = _lists.displaySearchJoinComputerName(searchTerm);
          printConnection();
-         printJoin(connections);
+         if (connections.size() == 0)
+         {
+             cout << "No connection in database!" << endl;
+         }
+         else
+         {
+            printJoin(connections);
+         }
      }
 }
 
