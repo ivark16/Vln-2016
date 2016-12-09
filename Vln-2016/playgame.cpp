@@ -1,125 +1,28 @@
 #include "playgame.h"
 
-playGame::playGame()
+/*playGame::playGame()
 {
 
 }
 
-const int ARRAT_SIZE = 3;//The table is always 3 by 3
-
-void playGame::printTable (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
+playGame::playGame(string ..., string ...., int blabla)
 {
-    for (int i = 0; i < ARRAT_SIZE; i++)
-    {
-        for (int j = 0; j < ARRAT_SIZE; j++)
-        {
-            cout << ticTacToeTable[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-bool playGame::checkForWinner (char ticTacToeTable[ARRAT_SIZE][ARRAT_SIZE])
-{
-
-    //Horizontal Check
-    for (int i = 0; i < 3; i++)
-    {
-        if (ticTacToeTable[i][0] == ticTacToeTable[i][1] && ticTacToeTable[i][1] == ticTacToeTable [i][2])
-            {
-                cout << "Winner is: " << ticTacToeTable[i][0] << endl;
-                return true;
-            }
-    }
-    //Vertical Check
-    for (int i = 0; i < 3; i++)
-    {
-            if (ticTacToeTable[0][i] == ticTacToeTable[1][i] && ticTacToeTable[1][i] == ticTacToeTable [2][i])
-            {
-                cout << "Winner is: " << ticTacToeTable[0][i] << endl;
-                return true;
-            }
-    }
-    //Right cross Check
-    for (int i = 0; i < 3; i++)
-    {
-        if (ticTacToeTable [0][0] == ticTacToeTable [1][1] && ticTacToeTable [1][1] == ticTacToeTable [2][2])
-        {
-            cout << "Winner is: " << ticTacToeTable[0][0] << endl;
-                    return true;
-        }
-    }
-
-    //Left cross Check
-    for (int i = 0; i < 3; i++)
-    {
-        if (ticTacToeTable [0][2] == ticTacToeTable [1][1] && ticTacToeTable [1][1] == ticTacToeTable[2][0])
-        {
-            cout << "Winner is: " << ticTacToeTable[0][2] << endl;
-            return true;
-        }
-    }
-    return false;
+    _... = ...;
+    _.... = ....;
+    _blabla = blabla;
 }
 
-bool playGame::insertCharacters(char ticTacToeTable[ARRAT_SIZE][ARRAT_SIZE], char place, char player)
+string playGame::getPlay...()
 {
-    bool valid = false;
-    for (int i = 0; i< ARRAT_SIZE; i++)
-    {
-        for (int j = 0 ; j < ARRAT_SIZE; j ++)
-        {
-            if (ticTacToeTable[i][j] == place)
-            {
-                ticTacToeTable[i][j] = player;
-                valid = true;
-            }
-        }
-    }
-    return valid;
-
+    return _...;
 }
-int playGame::theGame (char ticTacToeTable [ARRAT_SIZE][ARRAT_SIZE])
+
+string playGame::getPlay....()
 {
-    char place;
-    char player = 'X';
-    int draw = 0;
-    while(draw < 9)
-    {
-
-        cout << player << " position: ";
-        cin >> place;
-        if(place == 'q' || place == 'Q')
-        {
-            break;
-        }
-        bool isValid = insertCharacters(ticTacToeTable, place, player);
-
-        if (!isValid)
-        {
-            cout << "Illegal move!" << endl;
-        }
-        else if (player == 'X')
-        {
-            printTable (ticTacToeTable);
-            player = 'O';
-            draw++;
-        }
-        else
-        {
-            printTable (ticTacToeTable);
-            player = 'X';
-            draw++;
-        }
-
-        if (checkForWinner(ticTacToeTable) == true)
-        {
-            return 0;
-        }
-
-    }
-    if(draw == 9)
-    {
-        cout << "Draw!" << endl;
-    }
-    return 0;
+    return _....;
 }
+int playGame::getPlayBlabla()
+{
+    return _blabla;
+}
+*/

@@ -6,16 +6,20 @@
 using namespace std;
 
 
-
+/*
 class playGame
 {
+    string _...;
+    string _....;
+    int _blabla;
+
 public:
     playGame();
-    void printTable (char ticTacToeTable [3][3]);
-    bool checkForWinner (char ticTacToeTable[3][3]);
-    bool insertCharacters(char ticTacToeTable[3][3], char place, char player);
-    int theGame (char ticTacToeTable [3][3]);
+    playGame(string ..., string ...., int blabla);
+    string getPlay...();
+    int getBlabla();
 
-};
+
+};*/
 
 #endif // PLAYGAME_H
