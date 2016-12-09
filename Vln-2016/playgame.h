@@ -1,6 +1,7 @@
 #ifndef PLAYGAME_H
 #define PLAYGAME_H
 #include <iostream>
+#include "string"
 
 using namespace std;
 
