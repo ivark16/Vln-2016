@@ -7,9 +7,11 @@
 using namespace std;
 
 
-void listServices::searchForName(string name)
+vector<Scientist> listServices::searchForName(string name)
 {
-    _myData.searchForNameFromDatabase(name);
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.searchForNameFromDatabase(name);
+    return returnScientist;
 }
 
 int listServices::getSizeOfScientist()
@@ -275,12 +277,26 @@ vector<Scientist> listServices::checkName(string s)
     return names;
 }
 
-/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
+vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
 {
     vector<Scientist> award1;
     award1 = _myData.searchRangeForYearOfBirth(x, y);
     return award1;
-}*/
+}
+
+bool listServices::updateFirstNameScientist(string x, int id)
+{
+    bool check;
+    if (_myData.updateFirstName(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
 
 int listServices::searchLongestNameScientist()
 {

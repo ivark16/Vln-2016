@@ -22,7 +22,7 @@ public:
     int getAwardsFromList(int i) const;
 
     //FREEESH
-    void searchForName(string name);
+    vector<Scientist> searchForName(string name);
     vector<Scientist> displayScientist();
     vector<Computer> displayComputer();
     int getSizeOfScientist();
@@ -57,6 +57,7 @@ public:
     vector<searching> displaySearchJoinComputerName(string x);
     vector<Scientist> checkName(string s);
     vector<Computer> searchForNameComputer(string s);
+    bool updateFirstNameScientist(string x, int id);
     vector<Computer> searchForTypeComputer(string s);
 
 
