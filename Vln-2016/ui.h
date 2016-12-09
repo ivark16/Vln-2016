@@ -5,6 +5,7 @@
 #include "scientist.h"
 #include "computer.h"
 #include "connection.h"
+#include "search.h"
 #include <iostream>
 #include <vector>
 #include <stdio.h>
@@ -24,6 +25,8 @@ public:
     void printComputers(vector<Computer> computersToPrint);
     void printS();
     void printC();
+    void printConnection();
+    void printJoin(vector<searching>);
 
     //check functions
     void CheckNumbers (listServices checkNumbersForScientist);

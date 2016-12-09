@@ -691,6 +691,56 @@ void ui::printComputers(vector<Computer> computersToPrint)
     cout << endl;
 }
 
+void ui::printJoin(vector<searching> joinToPrint)
+{
+    int counter = 1;
+    int width;
+    int widthSci = _lists.searchLongestNameScientist();
+    int widthCom = _lists.searchLongestNameComputer();
+
+    if (widthSci < widthCom)
+    {
+        int width;
+        width = widthCom;
+    }
+    else
+    {
+        width = widthSci;
+    }
+
+    for(unsigned int i = 0; i < joinToPrint.size(); i++)
+    {
+        string na;
+        cout.width(5);
+        counter++;
+
+        //adjusts width to longest name
+        cout << joinToPrint[i].getSearchFirstName() << left;
+        cout.width(width);
+        cout << joinToPrint[i].getSearchLastName() << left;
+        cout.width(width);
+        cout << joinToPrint[i].getSearchComputerName() << left;
+        cout.width(width);
+        cout << joinToPrint[i].getSearchComputerType() << left;
+        cout.width(width);
+        cout << joinToPrint[i].getSearchYearBuilt() << left;
+        cout.width(width);
+
+        int yearBuilt = joinToPrint[i].getSearchYearBuilt();
+        if(yearBuilt == 0)
+        {
+            na = "N/A";
+            cout << na;
+        }
+
+    }
+
+    for(int i = 0 ; i < 9 ; i++)
+    {
+        cout << "---------";
+    }
+    cout << endl;
+}
 void ui::printS()
 {
     int width = _lists.searchLongestNameScientist();
@@ -740,6 +790,31 @@ void ui::printC()
     }
     cout << endl;
 }
+
+void ui::printConnection()
+{
+    int width = _lists.searchLongestNameScientist();
+
+    cout.width(5);
+    cout << left << "No.";
+    cout.width(width+2);
+    cout << "First name" << left;
+    cout.width(width);
+    cout << "Last name" << left;
+    cout.width(width);
+    cout << "Name of computer" << left;
+    cout.width(width);
+    cout << "Type of computer";
+    cout.width(width);
+    cout << "Year of build";
+    cout << endl;
+    for(int i = 0; i < 9; i++)
+    {
+        cout << "---------";
+    }
+    cout << endl;
+}
+
 
 //this is an error check.  It checks the validity of the name and prompts the user for a new one until one is valid.
 string ui::nameChecker(string nameType)
