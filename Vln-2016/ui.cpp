@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
+//#include <curses.h>
 
 using namespace std;
 
@@ -601,10 +602,20 @@ void ui::run()
             }
             if(stillLooping == true && (chooseNumber == "1" || chooseNumber == "2" || chooseNumber == "3" || chooseNumber == "4" || chooseNumber == "5" || chooseNumber == "6"))
             {
-                 string thisDoesNothing;
-                 cout << "Input anything and than press enter. ";
-                 cin >> thisDoesNothing;
-                 system("cls");
+                if (getenv("windir"))
+                {
+                     string thisDoesNothing;
+                     cout << "Input anything and than press enter. ";
+                     cin >> thisDoesNothing;
+                     system("cls");
+                }
+                else
+                {
+                    string thisDoesNothing;
+                    cout << "Input anything and than press enter. ";
+                    cin >> thisDoesNothing;
+                    system("clear");
+                }
             }
         } while(stillLooping);
 }
