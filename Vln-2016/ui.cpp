@@ -376,7 +376,7 @@ void ui::run()
                             checkerC = true;
                         }
                     }
-                    if(checkerS == true && checkerS == true)
+                    if(checkerS == true && checkerC == true)
                     {
                         connection newConnection(scientistId, computerId);
                         _lists.addConnectionToDatabase(newConnection);
