@@ -176,6 +176,13 @@ vector<Scientist> listServices::searchDeadScientist()
     return matchingScientists;
 }
 
+vector<Computer> listServices::searchForNameComputer(string s)
+{
+    vector<Computer> returnComputers;
+    returnComputers = _myData.checkInComputer(s);
+    return returnComputers;
+}
+
 vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
 {
     vector<Computer> returnRange;
