@@ -57,6 +57,12 @@ public:
     vector<Scientist> checkName(string s);
     vector<Computer> searchForNameComputer(string s);
     bool updateFirstNameScientist(string x, int id);
+    bool updateLastNameScientist(string x, int id);
+    bool updateGenderScientist(char x, int id);
+    bool updateNationalityScientist(string x, int id);
+    bool updateYOBScientist(int x, int id);
+    bool updateYODScientist(int x, int id);
+    bool updateYOAScientist(int x, int id);
     vector<Computer> searchForTypeComputer(string s);
 
 

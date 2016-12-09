@@ -293,6 +293,90 @@ bool listServices::updateFirstNameScientist(string x, int id)
     return check;
 }
 
+bool listServices::updateLastNameScientist(string x, int id)
+{
+    bool check;
+    if (_myData.updateLastName(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateGenderScientist(char x, int id)
+{
+    bool check;
+    if (_myData.updateGender(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateNationalityScientist(string x, int id)
+{
+    bool check;
+    if (_myData.updateNationality(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateYOBScientist(int x, int id)
+{
+    bool check;
+    if (_myData.updateYOB(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateYODScientist(int x, int id)
+{
+    bool check;
+    if (_myData.updateYOD(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool listServices::updateYOAScientist(int x, int id)
+{
+    bool check;
+    if (_myData.updateYOA(x, id))
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;

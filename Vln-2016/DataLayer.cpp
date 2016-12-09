@@ -899,6 +899,146 @@ bool DataLayer::updateFirstName(string x, int y)
     return check;
 }
 
+bool DataLayer::updateLastName(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("UPDATE scientist SET lastname = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateGender(char g, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qGender = QChar(g);
+        //QString qGender = QChar(newScientist.getGender());
+    query.prepare("UPDATE scientist SET gender = (:g) WHERE ID = (:y)");
+    query.addBindValue(qGender);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateNationality(string x, int y)
+{
+    bool check;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(x);
+
+    query.prepare("UPDATE scientist SET nationality = (:x) WHERE ID = (:y)");
+    query.addBindValue(qName);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateYOB (int x, int y)
+{
+    bool check;
+    QSqlQuery query;
+
+    query.prepare("UPDATE scientist SET YOB = (:x) WHERE ID = (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateYOD (int x, int y)
+{
+    bool check;
+    QSqlQuery query;
+
+    query.prepare("UPDATE scientist SET YOD = (:x) WHERE ID = (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
+bool DataLayer::updateYOA (int x, int y)
+{
+    bool check;
+    QSqlQuery query;
+
+    query.prepare("UPDATE scientist SET YOA = (:x) WHERE ID = (:y)");
+    query.addBindValue(x);
+    query.addBindValue(y);
+
+    if(query.exec())
+    {
+        if (query.next())
+        {
+            check = true;
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
 
 
 

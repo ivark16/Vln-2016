@@ -403,6 +403,7 @@ void ui::run()
             else if (chooseNumber == "6")
             {
                 string input;
+                int counter;
                 do
                 {
                     caseSixCase();
@@ -420,20 +421,56 @@ void ui::run()
                             cout << "Please insert name of scientist you want to edit: ";
                             cin >> name;
                             editScientist = _lists.searchForName(name);
-                            //id = editScientist[0].
+
                             if (editScientist.size() == 0)
                             {
-                                check2 = false;
+                                string answear;
+                                cout << "No sientist in database! Do you want to continue? (y/n)";
+                                cin >> answear;
+                                if (answear == "y" || answear == "Y")
+                                {
+                                    check2 = false;
+                                }
+                                else
+                                {
+                                    counter = 1;
+                                    check2 = true;
+                                }
+
                             }
                             else
                             {
                                 check2 = true;
                             }
                         }while (check2 == false);
+                        if (counter == 1)
+                        {
+                            break;
+                        }
                         do
                         {
+                            bool check3;
                             printS();
                             printScientists(editScientist);
+                            cout << "Enter ID of scientist you want to edit: ";
+                            cin >> id;
+                            for (unsigned int i = 0; i < editScientist.size(); i++)
+                            {
+                                if(editScientist[i].getID() == id)
+                                {
+                                    check3 = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    check3 = false;
+                                }
+                            }
+                            if (check3 == false)
+                            {
+                                cout << "Invalid ID, no scientist has this ID." << endl;
+                                break;
+                            }
                             cout << "Please insert what you would like to edit (example: insert firstname to edit Scientists firstname): ";
                             cin >> name;
                             if (name == "firstname" || name == "firstName")
@@ -441,31 +478,64 @@ void ui::run()
                                 string firstname;
                                 cout << "Input new first name: ";
                                 cin >> firstname;
-                                _lists.updateFirstNameScientist(firstname, id);
+                                firstname[0] = toupper(firstname[0]);
+                                if (_lists.updateFirstNameScientist(firstname, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
                             else if (name == "lastname" || name == "lastName")
                             {
                                 string lastname;
-                                cout << "Input new first name: ";
+                                cout << "Input new last name: ";
                                 cin >> lastname;
+                                lastname[0] = toupper(lastname[0]);
+                                if (_lists.updateLastNameScientist(lastname, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
                             else if (name == "gender" || name == "Gender")
                             {
                                 char sex;
-                                cout << "Input new gender";
-                                cin >> sex;
+                                bool check;
+                                do
+                                {
+                                    cout << "Input new gender: ";
+                                    cin >> sex;
+                                    if (sex != 'm' && sex != 'M' && sex != 'f' && sex != 'F' && sex != 'o' && sex != 'O')
+                                    {
+                                        cout << "Invalid input, input can only be m, f and o. Please try agian!" << endl;
+                                        check = true;
+                                    }
+                                    else
+                                    {
+                                        check = false;
+                                    }
+                                }while (check == true);
+
+                                sex = toupper(sex);
+                                if (_lists.updateGenderScientist(sex, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
-                                break;
+                                //break;
                             }
                             else if (name == "nationality" || name == "Nationality")
                             {
                                 string nationality;
                                 cout << "Input new nationality: ";
                                 cin >> nationality;
+                                nationality[0] = toupper(nationality[0]);
+                                if (_lists.updateNationalityScientist(nationality, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
@@ -473,7 +543,16 @@ void ui::run()
                             {
                                 int yob;
                                 cout << "Input new year of birth: ";
-                                cin >> yob;
+                                while(!(cin >> yob))
+                                {
+                                    cin.clear();
+                                    cin.ignore(1000,'\n');
+                                    cout << "Invalid input, please try again!" << endl;
+                                }
+                                if (_lists.updateYOBScientist(yob, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
@@ -481,7 +560,16 @@ void ui::run()
                             {
                                 int yod;
                                 cout << "Input new year of death: ";
-                                cin >> yod;
+                                while(!(cin >> yod))
+                                {
+                                    cin.clear();
+                                    cin.ignore(1000,'\n');
+                                    cout << "Invalid input, please try again!" << endl;
+                                }
+                                if (_lists.updateYODScientist(yod, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
@@ -489,17 +577,27 @@ void ui::run()
                             {
                                 int yoa;
                                 cout << "Input new year of award: ";
-                                cin >> yoa;
+                                while(!(cin >> yoa))
+                                {
+                                    cin.clear();
+                                    cin.ignore(1000,'\n');
+                                    cout << "Invalid input, please try again!" << endl;
+                                }
+                                if (_lists.updateYOAScientist(yoa, id))
+                                {
+                                    cout << "Person edited successfully" << endl;
+                                }
                                 check = true;
                                 break;
                             }
                             else
                             {
-                                cout << "Invalid input, please try again" << endl;
-                                cout << "Valid inputs are: firstname, lastname, gender, Nationality, YOB, YOD, YOA" << endl;
+                                cout << endl << "Invalid input, please try again" << endl;
+                                cout << "Valid inputs are: firstname, lastname, gender, Nationality, YOB, YOD, YOA" << endl << endl;
                                 check = false;
                             }
                         }while (check == false);
+                        break;
                     }
                     else if (input == "2")
                     {
@@ -510,7 +608,7 @@ void ui::run()
                         cout << "Invalid input, please try agian" << endl;
                     }
                 } while (input != "1" || input != "2");
-                break;
+                //break;
             }
             else if (chooseNumber == "7")
             {
@@ -526,7 +624,7 @@ void ui::run()
                 if (getenv("windir"))
                 {
                      string thisDoesNothing;
-                     cout << "Input anything and than press enter. ";
+                     cout << "Input anything and than press enter: ";
                      cin >> thisDoesNothing;
                      system("cls");
                 }

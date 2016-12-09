@@ -67,6 +67,12 @@ public:
     vector<Computer> ComputerWasNotBuilt();
 
     bool updateFirstName(string x, int y);
+    bool updateLastName(string x, int y);
+    bool updateGender(char g, int y);
+    bool updateNationality(string x, int y);
+    bool updateYOB (int x, int y);
+    bool updateYOD (int x, int y);
+    bool updateYOA (int x, int y);
 
 };
 
