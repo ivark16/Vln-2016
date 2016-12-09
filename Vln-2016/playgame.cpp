@@ -1,5 +1,4 @@
 #include "playgame.h"
-#include <curses.h>
 
 playGame::playGame()
 {
