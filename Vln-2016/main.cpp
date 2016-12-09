@@ -2,6 +2,8 @@
 #include "DataLayer.h"
 #include "ui.h"
 #include <stdlib.h>
+#include "playgame.h"
+
 using namespace std;
 
     static const QString path = "Scientists.db";
@@ -11,7 +13,7 @@ int main(int argc, char *argv[])
     //consoleUI Master;
     //Master.run();
 
-    QCoreApplication a(argc, argv);
+   /* QCoreApplication a(argc, argv);
 
     //DataLayer db;
 
@@ -53,6 +55,19 @@ int main(int argc, char *argv[])
     //db.ComputerWasBuilt();
     ui Master;
     Master.run();
+
+   /* playGame game;
+
+
+        char ticTacToeTable[3][3] =
+        {
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}
+        };
+        game.printTable(ticTacToeTable);
+        game.theGame(ticTacToeTable);
+*/
 
     return 0;
 }

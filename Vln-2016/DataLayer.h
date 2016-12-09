@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <vector>
 #include <scientist.h>
+#include <connection.h>
 #include <computer.h>
 #include<searching.h>
 
@@ -18,6 +19,7 @@ class DataLayer
     vector<searching> _searching;
     vector<Scientist> _scientists;
     vector<Computer> _computer;
+    vector<connection> _connection;
     QSqlDatabase m_db;
 public:
     DataLayer();
@@ -47,9 +49,11 @@ public:
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
     bool addFunctionComputer(Computer newComputer);
+    bool addFunctionConnect(connection newConnection);
     bool deleteFunctionComputer(string x);
     bool deleteConnectionFunction(int x);
     vector<Computer> checkInComputer(string x);
+
 
     bool checkIfExists(string x);
     bool checkIfComputerExists(string x);

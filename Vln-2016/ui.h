@@ -4,6 +4,7 @@
 #include "DataLayer.h"
 #include "scientist.h"
 #include "computer.h"
+#include "connection.h"
 #include <iostream>
 #include <vector>
 #include <stdio.h>

@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     computer.cpp \
     searching.cpp \
     ui.cpp \
-    connection.cpp
+    connection.cpp \
+    playgame.cpp
 
 HEADERS += \
     consoleui.h \
@@ -31,4 +32,5 @@ HEADERS += \
     computer.h \
     searching.h \
     ui.h \
-    connection.h
+    connection.h \
+    playgame.h

@@ -540,6 +540,23 @@ bool DataLayer::addFunctionComputer(Computer newComputer)
     }
 }
 
+bool DataLayer::addFunctionConnect(connection newConnection)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO connect (Scientist_ID, Computer_ID) VALUES (:scientistId, :computerId)");
+    query.addBindValue(newConnection.getScientistId());
+    query.addBindValue(newConnection.getComputersId());
+
+    if (query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool DataLayer::deleteFunctionComputer(string x)
 {
     bool bla;
