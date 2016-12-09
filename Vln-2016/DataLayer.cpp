@@ -85,11 +85,13 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
 }
 
 vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
-{
+{/*
     vector<searching> joinQueryscientist;
     QString qName = QString::fromStdString(x);
     QSqlQuery query;
-    query.prepare("SELECT SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    query.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID "
+                   "JOIN scientist ON Connect.scientist_ID = scientist.ID"
+                   "WHERE scientist.firstname = (:x) COLLATE NOCASE");
     query.addBindValue(qName);
     query.exec();
     int idName = query.record().indexOf("firstname");
@@ -99,7 +101,6 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     int idName5 = query.record().indexOf("yearbuilt");
     while(query.next())
     {
-        cout << "oasidghsag";
         string firstname = query.value(idName).toString().toStdString();
         string lastname = query.value(idName2).toString().toStdString();
         string compname = query.value(idName3).toString().toStdString();
@@ -111,11 +112,39 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 
     }
     return joinQueryscientist;
+    */
+
+    //CORRECT
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    QString qName = QString::fromStdString(x);
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    myQuery.addBindValue(qName);
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+
+
 }
 
 vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
 {
-    cout << "i go in";
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
@@ -130,7 +159,6 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
 
     while(myQuery.next())
     {
-        cout << "hallo";
         string firstname = myQuery.value(idName).toString().toStdString();
         string lastname = myQuery.value(idName2).toString().toStdString();
         string compname = myQuery.value(idName3).toString().toStdString();
