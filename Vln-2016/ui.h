@@ -74,7 +74,7 @@ public:
 
     //functions for case six
     void caseSixMajorCase();
-    void caseSixCaseOne();
+    void caseSixCaseOne(int &counter);
 
     //functions for case seven
     void caseSevenCase(int &playGame);
