@@ -29,8 +29,8 @@ public:
     void addScientistToDatabase(Scientist newScientist);
     void addComputerToDatabase(Computer newComputer);
     void addConnectionToDatabase(connection newConnection);
-    void deleteScientistFromDatabase();
-    void deleteComputerFromDatabase();
+    void deleteScientistFromDatabase(int x);
+    void deleteComputerFromDatabase(int x);
     vector<Scientist> scientistInAlphabeticalOrder();
     vector<Scientist> scientistInReverseAlphabeticalOrder();
     vector<Computer> computerInAlphabeticalOrder();

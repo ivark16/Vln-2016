@@ -5,8 +5,9 @@ Scientist::Scientist()
  //empty constructor
 }
 
-Scientist::Scientist(string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear)
+Scientist::Scientist(int id, string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear)
 {
+    _ID = id;
     _firstName = fName;
     _lastName = lName;
     _nationality = nationality;
@@ -35,6 +36,12 @@ void Scientist::readFile(vector<Scientist>& scientists)
     */
 
 }
+
+int Scientist::getID()
+{
+    return _ID;
+}
+
 string Scientist::getFirstName()
 {
     return _firstName;

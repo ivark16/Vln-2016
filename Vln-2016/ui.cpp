@@ -605,6 +605,7 @@ void ui::run()
 
                  if(addScientistOrComputer == 1)
                  {
+                     int id = 0;
                      string firstName;
                      string lastName;
                      char gender;
@@ -648,18 +649,19 @@ void ui::run()
                      {
                          cout << "Invalid entry.  Please enter either y (yes) or n (no)";
                      }
-                     Scientist newScientist( firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
+                     Scientist newScientist(id, firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
                      _lists.addScientistToDatabase(newScientist);
                  }
                  if(addScientistOrComputer == 2)
                  {
+                    int id = 0;
                     string name;
                     string type;
                     int YOB;
                     bool wasBuilt;
                     cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
                     cin >> name >> type >> YOB >> wasBuilt;
-                    Computer newComputer(name, type, YOB, wasBuilt);
+                    Computer newComputer(id, name, type, YOB, wasBuilt);
                     _lists.addComputerToDatabase(newComputer);
                 }
                 if(addScientistOrComputer == 3)
@@ -675,40 +677,40 @@ void ui::run()
             }
             else if (chooseNumber == "5")
             {
-             //DELETE a nice boy
-             int deleteScientistOrComputer;
-             caseFiveCase();
+                //DELETE a nice boy
+                int deleteScientistOrComputer;
+                caseFiveCase();
 
-             bool invalidInput = true;
-             while(invalidInput)
-             {
-                 while (!(cin >> deleteScientistOrComputer))
-                 {
-                     cin.clear();
-                     cin.ignore(1000,'\n');
-                     cout << "Not valid input, please try again: ";
-                 }
-                 if(!((deleteScientistOrComputer > 0) && (deleteScientistOrComputer < 3)))
-                 {
-                     cout << "Not valid input, please try again: ";
-                     invalidInput = true;
-                 }
-                 else
-                 {
-                     invalidInput = false;
-                 }
-             }
-             if(deleteScientistOrComputer == 1)
-             {
-                    //DELETE SCIENTIST
-             }
-             if(deleteScientistOrComputer == 2)
-             {
-                    //DELETE COMPUTER
-             }
-
-
-
+                bool invalidInput = true;
+                while(invalidInput)
+                {
+                    while (!(cin >> deleteScientistOrComputer))
+                    {
+                        cin.clear();
+                        cin.ignore(1000,'\n');
+                        cout << "Not valid input, please try again: ";
+                    }
+                    if(!((deleteScientistOrComputer > 0) && (deleteScientistOrComputer < 3)))
+                    {
+                        cout << "Not valid input, please try again: ";
+                        invalidInput = true;
+                    }
+                    else
+                    {
+                        invalidInput = false;
+                    }
+                }
+                if(deleteScientistOrComputer == 1)
+                {
+                    int idDelete;
+                    cout << "Enter id for scientist to delete" << endl;
+                    cin >> idDelete;
+                    _lists.deleteScientistFromDatabase(idDelete);
+                }
+                if(deleteScientistOrComputer == 2)
+                {
+                       //DELETE COMPUTER
+                }
             }
             else if (chooseNumber == "6")
             {
@@ -725,6 +727,7 @@ void ui::run()
                  cout << "Input anything and than press enter. ";
                  cin >> thisDoesNothing;
                  system("cls");
+                 system("clear");
             }
         } while(stillLooping);
 }
@@ -778,7 +781,7 @@ void ui::printScientists (vector<Scientist> scientistsToPrint)
             sex = "other";
         }
         cout.width(5);
-        cout << left << counter;
+        cout << left << scientistsToPrint[i].getID();
         counter++;
         int width = _lists.searchLongestNameScientist();
 
@@ -835,7 +838,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
     {
         string na;
         cout.width(5);
-        cout << left << counter;
+        cout << left << computersToPrint[i].getID();
         counter++;
 
         //adjusts width to longest name

@@ -9,6 +9,7 @@ using namespace std;
 //vantar numberbreitur í txt-sjalinu
 class Computer
 {
+    int _ID;
     string _computerName;
     string _computerType;
     int _yearOfBuild;
@@ -16,7 +17,8 @@ class Computer
 
 public:
     Computer();
-    Computer(string fComputer, string tComputers, int yoBuild, bool wBuilt);
+    Computer(int id, string fComputer, string tComputers, int yoBuild, bool wBuilt);
+    int getID();
     string getComputerName();
     string getComputerType();
     int getYearOfBuild();
