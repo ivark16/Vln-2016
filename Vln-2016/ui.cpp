@@ -1547,6 +1547,7 @@ void ui::caseSixMajorCase()
         if (input == "1")
         {
             caseSixCaseOne(counter);
+            break;
         }
         else if (input == "2")
         {
@@ -1715,8 +1716,8 @@ void ui::caseSixCaseOne(int &counter)
             {
                 counter = 1;
                 check2 = true;
+                break;
             }
-
         }
         else
         {
@@ -1912,8 +1913,6 @@ void ui::playGame()
 
 }
 
-
-
 void ui::caseSevenCase(int &playGame)
 {
    string answer = "2";
@@ -1933,6 +1932,7 @@ void ui::caseSevenCase(int &playGame)
        playGame++;
    }
 }
+
 void ui::caseSevenCase2(int &playGame)
 {
    string answer = "3";
@@ -1952,6 +1952,7 @@ void ui::caseSevenCase2(int &playGame)
        playGame++;
    }
 }
+
 void ui::caseSevenCase3(int &playGame)
 {
    string answer = "1";
@@ -1971,6 +1972,7 @@ void ui::caseSevenCase3(int &playGame)
        playGame++;
    }
 }
+
 void ui::caseSevenCase4(int &playGame)
 {
    string answer = "4";
@@ -1990,6 +1992,7 @@ void ui::caseSevenCase4(int &playGame)
        playGame++;
    }
 }
+
 void ui::caseSevenCase5(int &playGame)
 {
    string answer = "1";

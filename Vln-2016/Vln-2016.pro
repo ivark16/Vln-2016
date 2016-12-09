@@ -12,9 +12,7 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    consoleui.cpp \
     listservices.cpp \
-    scientistList.cpp \
     DataLayer.cpp \
     scientist.cpp \
     computer.cpp \
@@ -24,9 +22,7 @@ SOURCES += main.cpp \
     playgame.cpp
 
 HEADERS += \
-    consoleui.h \
     listservices.h \
-    scientistList.h \
     DataLayer.h \
     scientist.h \
     computer.h \

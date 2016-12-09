@@ -18,6 +18,8 @@ class Computer
 public:
     Computer();
     Computer(int id, string fComputer, string tComputers, int yoBuild, bool wBuilt);
+
+    //Get foll
     int getID();
     string getComputerName();
     string getComputerType();

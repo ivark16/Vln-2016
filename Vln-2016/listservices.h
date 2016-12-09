@@ -1,27 +1,14 @@
 #ifndef LISTSERVICES_H
 #define LISTSERVICES_H
-#include "scientistList.h"
 #include "DataLayer.h"
 #include <vector>
 
 class listServices
 {
-    vector<scientistList> _computerScientists;
     DataLayer _myData;
-    scientistList _data;
 public:
     listServices();
-    string getFirstNameFromList(int i);
-    string getLastNameFromList(int i);
-    string getNationalityFromList(int i);
-    string fullNameFromList(int i) const; // Returns full name from scientistList
-    int dobFromList(int i) const; // Returns date of birth from scientistList
-    int dodFromList(int i) const; // Returns date of death from scientistList
-    int getSizeOfScientistList();
-    char getGenderFromListAt(int i);
-    int getAwardsFromList(int i) const;
 
-    //FREEESH
     vector<Scientist> searchForName(string name);
     vector<Scientist> displayScientist();
     vector<Computer> displayComputer();

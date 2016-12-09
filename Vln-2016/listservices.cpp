@@ -3,9 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
-
 using namespace std;
-
 
 vector<Scientist> listServices::searchForName(string name)
 {
@@ -432,62 +430,8 @@ int listServices::searchLongestNameComputer()
     return longest + 2;
 }
 
-
-// This struct is used to print code in alphabetical order.
-struct ScientistComparison
-{
-    bool operator ()(scientistList i, scientistList j) {return (i.fullName() < j.fullName());}
-};
-//This function is used to return the (first) name of the Scientists at intex i
-string listServices::getFirstNameFromList(int i)
-{
-    return _computerScientists[i].getFirstName();
-}
-//This function is used to return the (last) name of the Scientists at intex i
-string listServices::getLastNameFromList(int i)
-{
-    return _computerScientists[i].getLastName();
-}
-//Returns nationality of scientist at index i
-string listServices::getNationalityFromList(int i)
-{
-    return _computerScientists[i].getNationality();
-}
-//Will return the (full) name of the Scientists at intex i
-string listServices::fullNameFromList(int i) const
-{
-    return _computerScientists[i].fullName();
-}
-//Returns the Scientists date of birth at intex i
-int listServices::dobFromList(int i) const
-{
-    return _computerScientists[i].dob();
-}
-//Returns the Scientists date of death at intex i
-int listServices::dodFromList(int i) const
-{
-    return _computerScientists[i].dod();
-}
-//This function is returning the Scientists gender at intex i
-char listServices::getGenderFromListAt(int i)
-{
-    return _myData.getGenderAt(i);
-}
-//This function returns the Awards from the list at intex i
-int listServices::getAwardsFromList(int i) const
-{
-    return _computerScientists[i].getAwards();
-}
 //A constructor for listServices.  readFile reads data from a .txt file and puts it in the member vector _computerScientists.
 listServices::listServices()
 {
 
 }
-// This function is used to assign a vector rhs to another vector
-//void listServices::changeTo(vector<scientistList> rhs)
-//{
-   // _computerScientists  = rhs;
-//}
-
-
-
