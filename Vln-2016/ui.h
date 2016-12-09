@@ -53,6 +53,7 @@ public:
     void searchScientistByBirthYear();
     void searchScientistByName();
     void searchComputers();
+    void searchComputersByCreation();
     void searchConnections();
     void searchScientistByAward();
 
