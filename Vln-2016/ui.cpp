@@ -386,7 +386,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
         int yearBuilt = computersToPrint[i].getYearOfBuild();
         if(yearBuilt == 0)
         {
-            na = "N/A";
+            na = "N/A ";
             cout << na;
         }
         else
@@ -401,7 +401,7 @@ void ui::printComputers(vector<Computer> computersToPrint)
         {
             cout << "False";
         }
-        if (na == "N/A")
+        if (na == "N/A ")
         {
             cout << "     *" << endl;
         }
@@ -418,16 +418,17 @@ void ui::printComputers(vector<Computer> computersToPrint)
     cout << endl;
 }
 
+//Prints connections between computers and scientists in a table
 void ui::printJoin(vector<searching> joinToPrint)
 {
     int counter = 1;
     int width;
+    //adjust width to longest name
     int widthSci = _lists.searchLongestNameScientist();
     int widthCom = _lists.searchLongestNameComputer();
 
     if (widthSci < widthCom)
     {
-        int width;
         width = widthCom;
     }
     else
@@ -441,7 +442,6 @@ void ui::printJoin(vector<searching> joinToPrint)
         cout.width(5);
         counter++;
 
-        //adjusts width to longest name
         cout << joinToPrint[i].getSearchFirstName() << left;
         cout.width(width);
         cout << joinToPrint[i].getSearchLastName() << left;
@@ -456,9 +456,10 @@ void ui::printJoin(vector<searching> joinToPrint)
         int yearBuilt = joinToPrint[i].getSearchYearBuilt();
         if(yearBuilt == 0)
         {
-            na = "N/A";
+            na = "N/A ";
             cout << na;
         }
+        cout << endl;
 
     }
 
@@ -501,7 +502,7 @@ void ui::printC()
     int width = _lists.searchLongestNameComputer();
 
     cout.width(5);
-    cout << left << "No.";
+    cout << left << "ID";
     cout.width(width+2);
     cout << "Name" << left;
     cout.width(width);
@@ -521,19 +522,17 @@ void ui::printC()
 void ui::printConnection()
 {
     int width = _lists.searchLongestNameScientist();
-
+    cout << "WIDTH IS" << width;
     cout.width(5);
-    cout << left << "No.";
+    cout << left << "First name" << left;
     cout.width(width+2);
-    cout << "First name" << left;
-    cout.width(width);
     cout << "Last name" << left;
     cout.width(width);
-    cout << "Name of computer" << left;
+    cout << "N.O.C." << left;
     cout.width(width);
-    cout << "Type of computer";
+    cout << "T.O.C.";
     cout.width(width);
-    cout << "Year of build";
+    cout << "Y.O.B";
     cout << endl;
     for(int i = 0; i < 9; i++)
     {
@@ -1196,9 +1195,9 @@ void ui::caseFiveCase()
         string scientName;
         vector<Scientist> ceckForDeleteS;
         int idDelete;
-        cout << "Enter name for scientist you want to delete";
+        cout << "Enter name for scientist you want to delete: ";
         cin >> scientName;
-        _lists.searchForName(scientName);
+        ceckForDeleteS = _lists.searchForName(scientName);
         printS();
         printScientists(ceckForDeleteS);
         cout << "Enter id for scientist to delete" << endl;
@@ -1213,7 +1212,7 @@ void ui::caseFiveCase()
         vector<Computer> checkForDeleteC;
         cout << "Enter name for computer u want to delete";
         cin >> compName;
-        _lists.searchForNameComputer(compName);
+        checkForDeleteC = _lists.searchForNameComputer(compName);
         printC();
         printComputers(checkForDeleteC);
         int idDelete;
@@ -1483,10 +1482,11 @@ void ui::searchConnections()
     //Search for connections.
      int searchConnections;
      cout << "------------------------------------------------------------------" << endl;
-     cout << "*------ Database for Connections --------*--------Glossary-------*" << endl;
-     cout << "* 1:  Search by scientist.               *                       *" << endl;
-     cout << "* 2:  Search by computer.                *                       *" << endl;
-     cout << "*----------------------------------------*-----------------------*" << endl;
+     cout << "*------ Database for Connections -------*--------Glossary--------*" << endl;
+     cout << "* 1:  Search by scientist.              *N.O.C.= Name of computer*" << endl;
+     cout << "* 2:  Search by computer.               *T.O.C.= Type of computer*" << endl;
+     cout << "*                                       *Y.O.C.= Year of creation*" << endl;
+     cout << "*---------------------------------------*------------------------*" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "Enter number: ";
 
