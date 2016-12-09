@@ -64,7 +64,7 @@ void ui::run()
             }
             else if (chooseNumber == "7")
             {
-                break;
+                playGame();
             }
             else
             {
@@ -1791,10 +1791,9 @@ void ui::caseSixCaseOne()
 {
 
 }
-/*
+
 int playGame;
         // Calling headder for case 7
-        caseSevenCase();
 
 
 void ui::playGame()
@@ -1807,7 +1806,7 @@ void ui::playGame()
     caseSevenCase5(playGame);
 
     cout << "Game over!  You answered " << playGame;
-    cout << "questions correctly out of 5 total."
+    cout << "questions correctly out of 5 total.";
 
 }
 
@@ -1815,8 +1814,8 @@ void ui::playGame()
 
 void ui::caseSevenCase(int &playGame)
 {
-   int answer = 2;
-   int useranswer = 0;
+   string answer = "2";
+   string useranswer = "0";
    cout << "------------------------------------------------------------------" << endl;
    cout << "* Which of these is NOT a computer?      *-----------------------*" << endl;
    cout << "* 1:  Optiva.                            *                       *" << endl;
@@ -1834,8 +1833,8 @@ void ui::caseSevenCase(int &playGame)
 }
 void ui::caseSevenCase2(int &playGame)
 {
-   int answer = 3;
-   int useranswer = 0;
+   string answer = "3";
+   string useranswer = "0";
    cout << "------------------------------------------------------------------" << endl;
    cout << "* The first hard disk was introduced in 1956 by? *---------------*" << endl;
    cout << "* 1:  Apple.                                     *               *" << endl;
@@ -1853,8 +1852,8 @@ void ui::caseSevenCase2(int &playGame)
 }
 void ui::caseSevenCase3(int &playGame)
 {
-   int answer = 1;
-   int useranswer = 0;
+   string answer = "1";
+   string useranswer = "0";
    cout << "------------------------------------------------------------------" << endl;
    cout << "* Who invented C++?                      *-----------------------*" << endl;
    cout << "* 1:  Bjarne Stroustrup.                 *                       *" << endl;
@@ -1870,10 +1869,10 @@ void ui::caseSevenCase3(int &playGame)
        playGame++;
    }
 }
-void ui::caseSevenCase4(int $playGame)
+void ui::caseSevenCase4(int &playGame)
 {
-   int answer = 4;
-   int useranswer = 0;
+   string answer = "4";
+   string useranswer = "0";
    cout << "------------------------------------------------------------------" << endl;
    cout << "* Who popularized the term \"Bug\"?      *-----------------------*" << endl;
    cout << "* 1:  Frances Allen.                     *                       *" << endl;
@@ -1891,8 +1890,8 @@ void ui::caseSevenCase4(int $playGame)
 }
 void ui::caseSevenCase5(int &playGame)
 {
-   int answer = 1;
-   int useranswer = 0;
+   string answer = "1";
+   string useranswer;
    cout << "------------------------------------------------------------------" << endl;
    cout << "* What year was the Pascal calculator invented? *----------------*" << endl;
    cout << "* 1:  1642.                                     *                *" << endl;
@@ -1908,4 +1907,4 @@ void ui::caseSevenCase5(int &playGame)
        playGame++;
    }
 }
-*/
+

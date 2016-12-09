@@ -55,7 +55,6 @@ public:
     void caseFourCase();
     void caseFiveCase();
     void caseSixCase();
-    void caseSevenCase();
 
     //Search functions for case 3
     void searchScientist();
@@ -75,16 +74,12 @@ public:
     void caseSixMajorCase();
     void caseSixCaseOne();
 
-
-
-
-
-
     //functions for case seven
-    void caseSevenCase2();
-    void caseSevenCase3();
-    void caseSevenCase4();
-    void caseSevenCase5();
+    void caseSevenCase(int &playGame);
+    void caseSevenCase2(int &playGame);
+    void caseSevenCase3(int &playGame);
+    void caseSevenCase4(int &playGame);
+    void caseSevenCase5(int &playGame);
     void playGame();
 
 
