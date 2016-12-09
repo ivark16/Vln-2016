@@ -339,12 +339,14 @@ void ui::run()
                  if(addScientistOrComputer == 2)
                  {
                     int id = 0;
-                    string name;
-                    string type;
-                    int YOB;
-                    bool wasBuilt;
-                    cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
-                    cin >> name >> type >> YOB >> wasBuilt;
+                    string name = computerNameChecker();
+                    string type = computerTypeChecker();
+                    int YOB = yearChecker(5,0,0);
+                    bool wasBuilt = boolChecker();
+                   // cout << "Enter all relevant information (temporary until checks have been amended)" << endl;
+                   // cin >> name >> type >> YOB >> wasBuilt;
+
+
                     Computer newComputer(id, name, type, YOB, wasBuilt);
                     _lists.addComputerToDatabase(newComputer);
                 }
@@ -540,32 +542,6 @@ void ui::run()
             }
         } while(stillLooping);
 }
-
-/*void ui::print(vector<Scientist> scientistsToPrint)
-{
-    int width = scientistsToPrint.searchLongestNameScientist();
-     cout.width(5);
-     cout << left << "No.";
-     cout.width(width);
-     cout << "Firstname" << left;
-     cout.width(width);
-     cout << "Lastname" << left;
-     cout.width(10);
-     cout << "gender" << left;
-     cout.width(width);
-     cout << "nation" << left;
-     cout.width(10);
-     cout << "Y.O.B" << left;
-     cout.width(10);
-     cout << "Y.O.D" << left;
-     cout.width(10);
-     cout << "Y.O.A" << left << endl;
-     for(int i = 0 ; i < 9 ; i++)
-     {
-         cout << "---------";
-     }
-         cout << endl;
-}*/
 
 // This function prints all names in a table to the console
 void ui::printScientists (vector<Scientist> scientistsToPrint)
