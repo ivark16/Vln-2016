@@ -25,10 +25,11 @@ public:
     DataLayer();
     ~DataLayer();
     vector<Computer> readAllFromDataComputerBase();
-    vector<searching> readAllDataFromSearchingDatabse();
+    vector<searching> searchForScientistFromSearchingDatabse(string x);
+    vector<searching> searchForComputerFromSearchingDatabase(string x);
     vector<Scientist> readAllFromScientistsDataBase();
 
-    void searchForNameFromDatabase(string name);
+    vector<Scientist> searchForNameFromDatabase(string name);
     int getSizeOfScientists();
     char getGenderAt(int i);
     int getBirthYearAt(int i);

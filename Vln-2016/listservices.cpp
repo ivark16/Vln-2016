@@ -102,6 +102,20 @@ vector<Computer> listServices::youngestOrderComputer()
     return display;
 }
 
+vector<searching> listServices::displaySearchJoinScientistName(string x)
+{
+    vector<searching> displayJoinScientist;
+    displayJoinScientist = _myData.searchForScientistFromSearchingDatabse(x);
+    return displayJoinScientist;
+}
+
+vector<searching> listServices::displaySearchJoinComputerName(string x)
+{
+    vector<searching> displayJoinComputer;
+    displayJoinComputer = _myData.searchForComputerFromSearchingDatabase(x);
+    return displayJoinComputer;
+}
+
 bool listServices::checkIfScientistIsInDataBase (string x)
 {
     bool bla;
@@ -221,12 +235,20 @@ vector<Scientist> listServices::checkBirthYear(int x)
     return award;
 }
 
-vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
+
+vector<Scientist> listServices::checkName(string s)
+{
+    vector<Scientist> names;
+    names = _myData.searchForNameFromDatabase(s);
+    return names;
+}
+
+/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
 {
     vector<Scientist> award1;
     award1 = _myData.searchRangeForYearOfBirth(x, y);
     return award1;
-}
+}*/
 
 int listServices::searchLongestNameScientist()
 {

@@ -52,6 +52,10 @@ public:
     vector<Scientist> checkForAward(int x);
     vector<Scientist> checkBirthYear(int x);
     vector<Scientist> checkRangeBirthYear(int x, int y);
+    vector<searching> displaySearchJoinScientistName(string x);
+    vector<searching> displaySearchJoinComputerName(string x);
+    vector<Scientist> checkName(string s);
+
 
 
 
