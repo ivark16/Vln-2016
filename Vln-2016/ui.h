@@ -51,8 +51,11 @@ public:
     //Search functions for case 3
     void searchScientist();
     void searchScientistByBirthYear();
+    void searchScientistByName();
     void searchComputers();
     void searchConnections();
+    void searchScientistByAward();
+
 
 
 

@@ -1166,47 +1166,13 @@ void ui::searchScientist()
          //This case lets you search for a scientist from their name (either the first or last name)
          else if (searchScientist == 2)
          {
-             string searchTerm;
-             cout << "Enter a single name to search: ";
-             cin >> searchTerm;
-             vector<Scientist> nameSearch = _lists.checkName(searchTerm);
-             printS();
-             if (nameSearch.size() == 0)
-             {
-                 cout << "Person is not in database!" << endl;
-                 cout << "-------------------------------------------------------------" << endl;
-                 //break;
-             }
-             else
-             {
-                 printScientists(nameSearch);
-               //  break;
-             }
-          }
+             searchScientistByName();
+         }
 
          //This case sorts the scientists by the year they recived the Turning Award
          else if (searchScientist == 3)
          {
-
-             cout << "Enter a single year to search: ";
-             int year;
-             cin >> year;
-             vector<Scientist> awardSearch;
-             awardSearch = _lists.checkForAward(year);
-             printS();
-             if (awardSearch.size() == 0)
-             {
-                 cout << "There is no match in the database!" << endl;
-                 cout << "-------------------------------------------------------------" << endl;
-                // break;
-             }
-             else
-             {
-                 printScientists(awardSearch);
-               //  break;
-             }
-             printScientists(awardSearch);
-             //break;
+             searchScientistByAward();
          }
     }
 
@@ -1260,6 +1226,31 @@ void ui::searchScientistByBirthYear()
    }
 }
 
+void ui::searchScientistByName()
+{
+
+    string searchTerm;
+    cout << "Enter a single name to search: ";
+    cin >> searchTerm;
+    vector<Scientist> nameSearch = _lists.checkName(searchTerm);
+    printS();
+    if (nameSearch.size() == 0)
+    {
+        cout << "Person is not in database!" << endl;
+        cout << "-------------------------------------------------------------" << endl;
+        //break;
+    }
+    else
+    {
+        printScientists(nameSearch);
+      //  break;
+    }
+}
+
+void ui::searchScientistByAward()
+{
+
+}
 
 //Search for computers.
 void ui::searchComputers()
