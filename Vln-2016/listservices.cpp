@@ -2,11 +2,10 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <iostream>
 
 using namespace std;
 
-
+// searches for the name "name", which is user input
 vector<Scientist> listServices::searchForName(string name)
 {
     vector<Scientist> returnScientist;
@@ -23,6 +22,8 @@ int listServices::getSizeOfComputer()
 {
     return _myData.getSizeOfComputer();
 }
+
+//the functions below are referenced in the ui.  These are primarily links between the ui and the data layer
 
 vector<Scientist> listServices::displayScientist()
 {
@@ -380,6 +381,7 @@ bool listServices::updateYOCComputer(int x, int id)
     return check;
 }
 
+//to get the longest name in order to align the table right
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;
@@ -403,6 +405,7 @@ int listServices::searchLongestNameScientist()
     return newLongest + 2;
 }
 
+//to get the longest name in order to align the table right
 int listServices::searchLongestNameComputer()
 {
     vector<Computer> display;
