@@ -1871,7 +1871,6 @@ void ui::caseSixCaseOne(int &counter)
             check = false;
         }
     }while (check == false);
-   // break;
 }
 
 //This is game that asks the user 5 questions about computer history. Each function below is one question.
