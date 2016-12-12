@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     displayAllScientists();
+    displayAllComputer();
 }
 
 MainWindow::~MainWindow()
@@ -56,5 +57,38 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
+
+}
+
+void MainWindow::displayAllComputer()
+{
+    vector<Computer> computers = scientistService.displayComputer();
+    displayComputer(computers);
+}
+
+void MainWindow::displayComputer(vector<Computer> computers)
+{
+    ui->tableWidget_2->clearContents();
+    ui->tableWidget_2->setRowCount(computers.size());
+    for (unsigned int row = 0; row < computers.size(); row++)
+    {
+        Computer allComputer = computers[row];
+
+        QString ID = QString::number(allComputer.getID());
+        QString name = QString::fromStdString(allComputer.getComputerName());
+        QString type = QString::fromStdString(allComputer.getComputerType());
+        QString yob = QString::number(allComputer.getYearOfBuild());
+
+        ui->tableWidget_2->setItem(row , 0, new QTableWidgetItem(ID));
+        ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(name));
+        ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
+        ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
+    }
+}
+
+
+
+void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
+{
 
 }
