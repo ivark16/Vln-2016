@@ -92,3 +92,24 @@ void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
 
 }
+
+
+
+void MainWindow::on_pushButtonSearchScientist_clicked()
+{
+    string inputSearch = ui->lineEditScientist->text().toStdString();
+
+
+    if (isdigit(inputSearch[0]) == true)
+    {
+        int b = atoi(inputSearch.c_str());
+        vector<Scientist> searchYear = scientistService.checkBirthYear(b);
+        displayScientist(searchYear);
+    }
+    else
+    {
+         vector<Scientist> searchname = scientistService.searchForName(inputSearch);
+         displayScientist(searchname);
+    }
+
+}

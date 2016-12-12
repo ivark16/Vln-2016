@@ -7,6 +7,7 @@
 #include <vector>
 #include <QMainWindow>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 namespace Ui {
@@ -25,6 +26,9 @@ private slots:
     void on_tableViewScientist_clicked(const QModelIndex &index);
 
     void on_tableWidget_2_clicked(const QModelIndex &index);
+
+
+    void on_pushButtonSearchScientist_clicked();
 
 private:
     Ui::MainWindow *ui;

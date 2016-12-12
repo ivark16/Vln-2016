@@ -19,11 +19,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -34,6 +34,13 @@
          <widget class="QLineEdit" name="lineEditScientist">
           <property name="placeholderText">
            <string>Search scientists</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonSearchScientist">
+          <property name="text">
+           <string>Search</string>
           </property>
          </widget>
         </item>
@@ -126,7 +133,7 @@
        <attribute name="title">
         <string>Computers</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QTableWidget" name="tableWidget_2">
           <property name="editTriggers">
