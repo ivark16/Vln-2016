@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
-//#include <curses.h>
 
 using namespace std;
 
@@ -293,6 +292,7 @@ void ui::printJoin(vector<searching> joinToPrint)
         cout << "---------------------------------------------------------------------------------";
     cout << endl;
 }
+
 //prints a header for scientist prints
 void ui::printS()
 {
@@ -308,9 +308,9 @@ void ui::printS()
     cout << "Gender" << left;
     cout.width(width-1);
     cout << "Nationality" << left;
-    cout.width(width-6);
+    cout.width(width);
     cout << "Y.O.B." << left;
-    cout.width(width-4);
+    cout.width(width);
     cout << "Y.O.D." << left;
     cout.width(width-4);
     cout << "Y.O.A." << endl;
@@ -321,6 +321,7 @@ void ui::printS()
     }
     cout << endl;
 }
+
 //prints a header for computer prints
 void ui::printC()
 {
@@ -333,7 +334,7 @@ void ui::printC()
     cout.width(width);
     cout << "Type" << left;
     cout.width(width);
-    cout << "Y.O.B." << left;
+    cout << "Y.O.C." << left;
     cout.width(width);
     cout << "Was built?";
     cout << endl;
@@ -343,6 +344,7 @@ void ui::printC()
     }
     cout << endl;
 }
+
 //Prints a header for the join table.
 void ui::printConnection()
 {
@@ -365,7 +367,6 @@ void ui::printConnection()
     }
     cout << endl;
 }
-
 
 //this is an error check.  It checks the validity of the name and prompts the user for a new one until one is valid.
 string ui::nameChecker(string nameType)
@@ -603,6 +604,7 @@ string ui::nationalityChecker()
 
        return nationality;
 }
+
 //Prints a header and credits.
 void ui::headerCase()
 {
@@ -630,9 +632,9 @@ void ui::mainMenuCase()
     cout << "* 2:  Display list of Computers.         *                       *" << endl;
     cout << "* 3:  Search for scientist/computers.    *                       *" << endl;
     cout << "* 4:  Add new scientist/computers.       *                       *" << endl;
-    cout << "* 5:  Delete scientist/computers         *                       *" << endl;
-    cout << "* 6:  Edit scientist/computers           *                       *" << endl;
-    cout << "* 7:  Lets play a game                   *                       *" << endl;
+    cout << "* 5:  Delete scientist/computers.        *                       *" << endl;
+    cout << "* 6:  Edit scientist/computers.          *                       *" << endl;
+    cout << "* 7:  Lets play a game.                  *                       *" << endl;
     cout << "* 8:  Quit.                              *                       *" << endl;
     cout << "*----------------------------------------*-----------------------*" << endl;
     cout << "------------------------------------------------------------------" << endl;
@@ -760,22 +762,19 @@ void ui::caseOneCase()
             cout << "Invalid input, please try again! " << endl;
         }
     } while (displayScientist != "1" || displayScientist != "2" || displayScientist != "3" || displayScientist != "4" || displayScientist != "5" || displayScientist != "6");
-
-
 }
-
 
 //Displays all computers
 void ui::caseTwoCase()
 {
-    cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
-    cout << "* 1:  Display all Computers.             *                       *" << endl;
-    cout << "* 2:  display all in alphabetical order. *                       *" << endl;
-    cout << "* 3:  display all when was built.        *                       *" << endl;
-    cout << "* 4:  Display if was built.              *                       *" << endl;
-    cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers ----------*-----------Glossary---------*" << endl;
+    cout << "* 1:  Display all Computers.             *  N.O.C.= Name of computer  *" << endl;
+    cout << "* 2:  display all in alphabetical order. *  T.O.C.= Type of computer  *" << endl;
+    cout << "* 3:  display all when was created.      *  Y.O.C.= Year of creation  *" << endl;
+    cout << "* 4:  Display if was built.              *                            *" << endl;
+    cout << "*----------------------------------------*----------------------------*" << endl;
+    cout << "-----------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
     string displayScientist;
 
@@ -1004,12 +1003,14 @@ void ui::caseFourCase()
 //This deletes a scientist or a computer from the database
 void ui::caseFiveCase()
 {
-    cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*-----------------------*" << endl;
-    cout << "* 1:  Delete a scientist.                *                       *" << endl;
-    cout << "* 2:  Delete a computer.                 *                       *" << endl;
-    cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "------------------------------------------------------------------" << endl;
+    cout << "-------------------------------------------------------------------" << endl;
+    cout << "*----- Database for Computers -----*------------Glossary----------*" << endl;
+    cout << "* 1:  Delete a scientist.          *   Y.O.B = year of birth      *" << endl;
+    cout << "* 2:  Delete a computer.           *   Y.O.D = year of death      *" << endl;
+    cout << "*                                  *   Y.O.D = year of death      *" << endl;
+    cout << "*                                  *   Y.O.C.= year of creation   *" << endl;
+    cout << "*----------------------------------*------------------------------*" << endl;
+    cout << "-------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 
     int deleteScientistOrComputer;
@@ -1070,27 +1071,30 @@ void ui::caseFiveCase()
 //print case six header for editing scientists and computers
 void ui::caseSixCase()
 {
-    cout << "------------------------------------------------------------------" << endl;
-    cout << "*------ Database for Computers ----------*-----------------------*" << endl;
-    cout << "* 1:  Edit a scientist.                  *                       *" << endl;
-    cout << "* 2:  Edit a computer.                   *                       *" << endl;
-    cout << "*----------------------------------------*-----------------------*" << endl;
-    cout << "------------------------------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------" << endl;
+    cout << "*------ Database for Computers --------*-----------Glossary--------*" << endl;
+    cout << "* 1:  Edit a scientist.                *  Y.O.D = year of death    *" << endl;
+    cout << "* 2:  Edit a computer.                 *  Y.O.B = year of birth    *" << endl;
+    cout << "*                                      *  Y.O.A = year of award    *" << endl;
+    cout << "*                                      *  Y.O.C.= Year of creation *" << endl;
+    cout << "*--------------------------------------*---------------------------*" << endl;
+    cout << "--------------------------------------------------------------------" << endl;
     cout << "Enter number: ";
 }
+
 //search for a scientist from the database.  This displays a menu of options and calls other functions.
 void ui::searchScientist()
 {
 
     //searchScientist()
       int searchScientist;
-      cout << "------------------------------------------------------------------" << endl;
-      cout << "*------ Database for Scientist ----------*--------Glossary-------*" << endl;
-      cout << "* 1:  Search for birth year.             *                       *" << endl;
-      cout << "* 2:  Search for name.                   *                       *"<< endl;
-      cout << "* 3:  search for Turing awards.          *                       *" << endl;
-      cout << "*----------------------------------------*-----------------------*" << endl;
-      cout << "-----------------------------------------------------------------" << endl;
+      cout << "-------------------------------------------------------------------" << endl;
+      cout << "*------ Database for Scientist ----------*---------Glossary--------*" << endl;
+      cout << "* 1:  Search for birth year.             *  Y.O.D = year of death  *" << endl;
+      cout << "* 2:  Search for name.                   *  Y.O.B = year of birth  *" << endl;
+      cout << "* 3:  search for Turing awards.          *  Y.O.A = year of award  *" << endl;
+      cout << "*----------------------------------------*-------------------------*" << endl;
+      cout << "--------------------------------------------------------------------" << endl;
       cout << "Enter number: ";
 
       bool invalidInput = true;
@@ -1185,6 +1189,7 @@ void ui::searchScientistByBirthYear()
        printScientists(searchResults);
    }
 }
+
 //search a scientist by name
 void ui::searchScientistByName()
 {
@@ -1227,11 +1232,11 @@ void ui::searchComputers()
 {
  int searchComputers;
  cout << "------------------------------------------------------------------" << endl;
- cout << "*------ Database for Computers ----------*--------Glossary-------*" << endl;
- cout << "* 1:  Search for name.                   *                       *" << endl;
- cout << "* 2:  Search for type.                   *                       *" << endl;
- cout << "* 3:  Search for year of creation.       *                       *" << endl;
- cout << "*----------------------------------------*-----------------------*" << endl;
+ cout << "*------ Database for Computers -------*----------Glossary--------*" << endl;
+ cout << "* 1:  Search for name.                * N.O.C.= Name of computer *" << endl;
+ cout << "* 2:  Search for type.                * T.O.C.= Type of computer *" << endl;
+ cout << "* 3:  Search for year of creation.    * Y.O.C.= Year of creation *" << endl;
+ cout << "*-------------------------------------*--------------------------*" << endl;
  cout << "------------------------------------------------------------------" << endl;
  cout << "Enter number: ";
 
@@ -1333,16 +1338,17 @@ void ui::searchComputers()
     }
     }
 }
+
 //allows you to search for connections
 void ui::searchConnections()
 {
     //Search for connections.
      int searchC;
      cout << "------------------------------------------------------------------" << endl;
-     cout << "*------ Database for Connections ----*---------------------------*" << endl;
-     cout << "* 1:  Search by scientist.           *                           *" << endl;
-     cout << "* 2:  Search by computer.            *                           *" << endl;
-     cout << "*                                    *                           *" << endl;
+     cout << "*------ Database for Connections ----*----------Glossary---------*" << endl;
+     cout << "* 1:  Search by scientist.           * N.O.C.= Name of computer  *" << endl;
+     cout << "* 2:  Search by computer.            * T.O.C.= Type of computer  *" << endl;
+     cout << "*                                    * Y.O.C.= Year of creation  *" << endl;
      cout << "*------------------------------------*---------------------------*" << endl;
      cout << "------------------------------------------------------------------" << endl;
      cout << "Enter number: ";
@@ -1414,6 +1420,7 @@ void ui::printBird()
     cout << "      L\\_               _/I        L\\_    " << endl;
     cout << "Unfortunately, there are no bird scientists." << endl;
 }
+
 //add a scientist
 void ui::addScientist()
 {
@@ -1464,6 +1471,7 @@ void ui::addScientist()
     Scientist newScientist(id, firstName, lastName, gender, nationality, birthYear, deathYear, awardYear);
     _lists.addScientistToDatabase(newScientist);
 }
+
 //add a computer
 void ui::addComputer()
 {
@@ -1479,7 +1487,8 @@ void ui::addComputer()
     Computer newComputer(id, name, type, YOB, wasBuilt);
     _lists.addComputerToDatabase(newComputer);
 }
-//add a new connection between a scientist and a computer
+
+//This function adds a new connection between a scientist and a computer
 void ui::addConnection()
 {
     bool checkerS = false;
@@ -1690,6 +1699,7 @@ void ui::caseSixMajorCase()
     } while (input != "1" || input != "2");
 }
 
+//This function alows the user to edit scientists and computers that are currently in the database.
 void ui::caseSixCaseOne(int &counter)
 {
     string name;
@@ -1735,22 +1745,6 @@ void ui::caseSixCaseOne(int &counter)
         printScientists(editScientist);
         cout << "Enter ID of scientist you want to edit: ";
         cin >> id;
-        for (unsigned int i = 0; i < editScientist.size(); i++)
-        {
-            if(editScientist[i].getID() == id)
-            {
-                check3 = true;
-            }
-            else
-            {
-                check3 = false;
-            }
-        }
-        if (check3 == false)
-        {
-            cout << "Invalid ID, no scientist has this ID." << endl;
-            break;
-        }
         cout << "Please insert what you would like to edit (example: insert firstname to edit Scientists firstname): ";
         cin >> name;
         if (name == "firstname" || name == "firstName")
@@ -1880,10 +1874,8 @@ void ui::caseSixCaseOne(int &counter)
    // break;
 }
 
-int playGame;
-        // Calling headder for case 7
-
-
+//This is game that asks the user 5 questions about computer history. Each function below is one question.
+//The functions check if users answers is correct and counts the score.
 void ui::playGame()
 {
     int playGame = 0;
@@ -2012,4 +2004,3 @@ void ui::caseSevenCase5(int &playGame)
        playGame++;
    }
 }
-

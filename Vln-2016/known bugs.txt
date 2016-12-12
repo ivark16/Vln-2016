@@ -1,1 +1,10 @@
-There are no known bugs.
+Known bugs
+
+*Ekki er hægt að skrifa setningu inn, þegar þú ert að leyta að scientist í edid scientist. 
+ þá fer það í endalaua loop-u sem við fundum nokkrar mínútur í skil og höfðum því miður ekki tíma til 
+ að laga.
+
+*You can get stuck in edit function. We did not have enough time to fix that.
+
+*You can edit scientist by ID that does not show, this happened after putting in functions, we prefered
+ that rather than one long function.
