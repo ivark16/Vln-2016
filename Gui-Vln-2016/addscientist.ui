@@ -94,6 +94,18 @@
      </item>
      <item>
       <widget class="QLabel" name="genderLabel">
+       <property name="minimumSize">
+        <size>
+         <width>239</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>239</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string/>
        </property>
