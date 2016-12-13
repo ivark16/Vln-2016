@@ -42,6 +42,8 @@ private:
     bool getNationality();
     bool getBirthYear();
     bool getDeathYear();
+    bool getAwardYear();
+
 
 
 

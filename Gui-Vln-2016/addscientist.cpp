@@ -4,6 +4,7 @@
 #include "listservices.h"
 #include <string>
 #include <cstdlib>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -41,27 +42,25 @@ void addScientist::on_addScientistButton_clicked()
 
     //this runs if no required fields are empty.
 
-        bool hasFirstName = getFirstName();
-        bool hasLastName = getLastName();
-        bool hasGender = getGender();
-        bool hasNationality = getNationality();
-        bool hasBirthYear = getBirthYear();
-        bool hasDeathYear = getDeathYear();
-        bool hasAwardYear; // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
+    bool hasFirstName = getFirstName();
+    bool hasLastName = getLastName();
+    bool hasGender = getGender();
+    bool hasNationality = getNationality();
+    bool hasBirthYear = getBirthYear();
+    bool hasDeathYear = getDeathYear();
+    bool hasAwardYear = getAwardYear(); // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
-    //if it's all legal, add the scientist to the database.  Maybe open a little popup.
-
-
-
-        isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear);
+    //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
+    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
 
 
     if(isLegalScientist)
     {
         Scientist newScientist(0, _firstName, _lastName, 'm', _nationality, _birthYear, _deathYear, _awardYear);
         _connection.addScientistToDatabase(newScientist);
-
-        ui -> firstNameLabel -> setText("GREAT SUCCESS");
+        QMessageBox popup;
+        popup.setText("The scientist has successfully been added to the database");
+        popup.exec();
     }
 
 }
@@ -228,7 +227,7 @@ bool addScientist::getNationality()
     {
         ui ->nationalityLabel ->setText("<span style='color: red'>Nationality can only contain latin characters</span>");
     }
-    else if(potentialNationality.size() < 5 || potentialNationality.size() > 21)
+    else if(potentialNationality.size() < 4 || potentialNationality.size() > 21)
     {
         ui ->nationalityLabel ->setText("<span style=' color: red'>Nationality be between 4 and 20 characters</span>");
     }
@@ -238,7 +237,7 @@ bool addScientist::getNationality()
         _nationality = potentialNationality;
     }
 
-    return (hasContent && hasOnlyChar && !(potentialNationality.size() < 5 || potentialNationality.size() > 21));
+    return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
 bool addScientist::getBirthYear()
@@ -339,6 +338,55 @@ bool addScientist::getDeathYear()
     {
         //If there are no problems, the birth year is legal.
         _deathYear = potentialDeathYear;
+    }
+
+    return(hasOnlyNumbers && isInRange);
+
+}
+
+bool addScientist::getAwardYear()
+{
+    int potentialAwardYear = ui ->turingAwardBox ->text().toInt();
+    string potentialAwardYearString =(ui ->turingAwardBox ->text()).toStdString();
+
+    bool hasOnlyNumbers = true;
+    bool isInRange = true;
+
+    //Checks that there is something in the field
+    if((ui ->turingAwardBox->text()).isEmpty())
+    {
+        _awardYear = 0;
+        return true;
+    }
+
+    //checks that it has only numbers
+    for(unsigned int i = 0; i < potentialAwardYearString.size();i++)
+    {
+        if(!isdigit(potentialAwardYearString[0]))
+        {
+            hasOnlyNumbers = false;
+        }
+    }
+    //checks that it is in range
+    if(potentialAwardYear <_birthYear || (potentialAwardYear > _deathYear && _deathYear != 0) || potentialAwardYear > 2016 && potentialAwardYear < 1966)
+    {
+        isInRange = false;
+    }
+
+    //throws errors when necessary
+
+    if(!hasOnlyNumbers)
+    {
+        ui ->turingAwardLabel ->setText("<span style='color: red'>Award year can only contain numbers</span>");
+    }
+    else if(!isInRange)
+    {
+        ui ->turingAwardLabel ->setText("<span style=' color: red'>Not legal award year</span>");
+    }
+    else
+    {
+        //If there are no problems, the birth year is legal.
+        _awardYear = potentialAwardYear;
     }
 
     return(hasOnlyNumbers && isInRange);
