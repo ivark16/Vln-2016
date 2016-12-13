@@ -120,7 +120,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonAdd">
+         <widget class="QPushButton" name="pushButtonAddScientist">
           <property name="text">
            <string>Add</string>
           </property>

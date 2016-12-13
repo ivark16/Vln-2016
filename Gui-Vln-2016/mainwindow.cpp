@@ -138,7 +138,7 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
 }
 
 
-void MainWindow::on_pushButtonAdd_clicked()
+void MainWindow::on_pushButtonAddScientist_clicked()
 {
     addScientist addScientist;
     addScientist.exec();

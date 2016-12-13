@@ -27,7 +27,7 @@ private slots:
     void on_tableWidget_2_clicked(const QModelIndex &index);
     void on_pushButtonSearchScientist_clicked();
 
-    void on_pushButtonAdd_clicked();
+    void on_pushButtonAddScientist_clicked();
 
 private:
     Ui::MainWindow *ui;
