@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 {
-    //ui->button_remove_student->setEnabled(true);
+    ui->pushButtonDeleteScientist->setEnabled(true);
 }
 
 void MainWindow::displayAllScientists()
@@ -65,7 +65,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
-
+    currrentlyDisplaydStudent = scientists;
 }
 
 void MainWindow::displayAllComputer()
@@ -148,7 +148,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     }
 }
 
-
+//Connection------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_tableWidget_3_clicked(const QModelIndex &index)
 {
     //ui->button_remove_connection->setEnabled(true);
@@ -179,6 +179,22 @@ void MainWindow::displayConnection(vector<connection> connections)
         ui->tableWidget_3->setItem(row, 2,  new QTableWidgetItem(computersId));
     }
 }
+void MainWindow::on_pushButtonEditConnection_clicked()
+{
+
+}
+
+void MainWindow::on_pushButtonAddConnection_clicked()
+{
+
+}
+
+void MainWindow::on_pushButtonDeleteConnection_clicked()
+{
+
+}
+
+//------------------------------------------------------------------------------------------------------------------------------
 
 void MainWindow::on_pushButtonAddScientist_clicked()
 {
@@ -188,7 +204,20 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 
 void MainWindow::on_pushButtonDeleteScientist_clicked()
 {
+    int scientistNo = ui->tableWidget->currentIndex().row();
+    Scientist currentScientist = currrentlyDisplaydStudent.at(scientistNo);
+    int id = currentScientist.getID();
+    bool success = scientistService.deleteScientistFromDatabase(id);
 
+    if (success == true)
+    {
+        displayAllScientists();
+        ui->pushButtonDeleteScientist->setEnabled(false);
+    }
+    else
+    {
+        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
+    }
 }
 
 void MainWindow::on_pushButtonEditScientist_clicked()
@@ -196,4 +225,9 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     editscientist edit;
     edit.setModal(true);
     edit.exec();
+}
+
+void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
+{
+    ui->pushButtonDeleteScientist->setEnabled(true);
 }

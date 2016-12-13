@@ -132,11 +132,18 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     return displayJoinComputer;
 }
 
-void listServices::deleteScientistFromDatabase(int x)
+bool listServices::deleteScientistFromDatabase(int x)
 {
-    _myData.deleteFunction(x);
-    _myData.deleteConnectionFunctionScientist(x);
-
+    bool check;
+    if (_myData.deleteFunction(x) == true && _myData.deleteConnectionFunctionScientist(x) == true)
+    {
+        check = true;
+    }
+    else
+    {
+        check == false;
+    }
+    return check;
 }
 
 void listServices::deleteComputerFromDatabase(int x)
