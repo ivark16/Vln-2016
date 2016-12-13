@@ -36,9 +36,16 @@ private:
     int _awardYear;
 
 
-    bool checkForEmpty();
     bool getGender();
     bool getFirstName();
+    bool getLastName();
+    bool getNationality();
+    bool getBirthYear();
+    bool getDeathYear();
+
+
+
+
 
 };
 
