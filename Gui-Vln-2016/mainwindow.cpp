@@ -198,7 +198,8 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
 
 void MainWindow::on_pushButtonAddScientist_clicked()
 {
-
+    addScientist addScientist;
+    addScientist.exec();
 }
 
 void MainWindow::on_pushButtonDeleteScientist_clicked()
