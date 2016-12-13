@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1073</width>
-    <height>687</height>
+    <width>306</width>
+    <height>428</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -29,7 +32,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -132,8 +135,18 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonDeleteScientist">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelErrorMessageForDelete">
+          <property name="text">
+           <string/>
           </property>
          </widget>
         </item>
@@ -321,7 +334,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1073</width>
+     <width>306</width>
      <height>17</height>
     </rect>
    </property>

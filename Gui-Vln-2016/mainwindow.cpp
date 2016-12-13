@@ -216,7 +216,7 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     }
     else
     {
-        //Gera error message
+        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
     }
 }
 
@@ -225,4 +225,9 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     editscientist edit;
     edit.setModal(true);
     edit.exec();
+}
+
+void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
+{
+    ui->pushButtonDeleteScientist->setEnabled(true);
 }
