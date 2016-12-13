@@ -24,12 +24,11 @@ public:
     ~MainWindow();
 
 private slots:
+
     void on_tableViewScientist_clicked(const QModelIndex &index);
     void on_tableWidget_2_clicked(const QModelIndex &index);
     void on_pushButtonSearchScientist_clicked();
-
     void on_pushButtonEditScientist_clicked();
-
     void on_pushButtonDeleteScientist_clicked();
 
 private:

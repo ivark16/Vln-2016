@@ -47,6 +47,14 @@ HEADERS  += mainwindow.h \
         computer.h
         searching.h
         connection.h
-FORMS    += mainwindow.ui \
+FORMS   += mainwindow.ui \
     addscientist.ui \
     editscientist.ui
+
+    addscientist.ui
+    editscientist.ui
+INCLUDEPATH += models \
+    repositories \
+    services \
+    ui
+

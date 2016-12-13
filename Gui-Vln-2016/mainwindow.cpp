@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "addScientist.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -135,6 +136,7 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
     }
 
 }
+
 
 
 void MainWindow::on_pushButtonEditScientist_clicked()
