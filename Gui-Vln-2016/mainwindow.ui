@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
-    <height>600</height>
+    <width>1073</width>
+    <height>687</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -29,7 +29,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -37,18 +37,22 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLineEdit" name="lineEditScientist">
-          <property name="placeholderText">
-           <string>Search scientists</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButtonSearchScientist">
-          <property name="text">
-           <string>Search</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="lineEditScientist">
+            <property name="placeholderText">
+             <string>Search scientists</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labelErrorMessageFromScientist">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QComboBox" name="comboBoxScientist"/>
@@ -120,7 +124,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonAdd">
+         <widget class="QPushButton" name="pushButtonAddScientist">
           <property name="text">
            <string>Add</string>
           </property>

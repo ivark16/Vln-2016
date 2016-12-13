@@ -64,6 +64,8 @@ public:
     bool updateYOCComputer(int x, int id);
     bool updateWasBuilt(int x, int id);
     vector<Computer> searchForTypeComputer(string s);
+    vector<Scientist> checkDeathYear(int x);
+    vector<Scientist> checkNationality(string s);
 
 };
 
