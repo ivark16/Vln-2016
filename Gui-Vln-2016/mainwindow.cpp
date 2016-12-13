@@ -267,6 +267,6 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
     }
     if (searchname.size()==0 && searchYear.size() == 0)
     {
-        ui->labelComputerErrorMessage->setText("<span style=' color: red'> No scientist found </span>");
+        ui->labelComputerErrorMessage->setText("<span style=' color: red'> No computer found </span>");
     }
 }
