@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "addScientist.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -144,4 +145,10 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     {
         ui->labelErrorMessageFromScientist->setText("<span style=' color: red'> No scientist found </span>");
     }
+}
+
+void MainWindow::on_pushButtonAdd_clicked()
+{
+    addScientist addScientist;
+    addScientist.exec();
 }

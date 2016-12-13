@@ -27,6 +27,8 @@ private slots:
     void on_tableWidget_2_clicked(const QModelIndex &index);
     void on_lineEditScientist_textChanged(const QString &arg1);
 
+    void on_pushButtonAdd_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
