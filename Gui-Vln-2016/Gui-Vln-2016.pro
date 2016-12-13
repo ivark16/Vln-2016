@@ -47,3 +47,7 @@ HEADERS  += mainwindow.h \
         connection.h
 FORMS    += mainwindow.ui \
     addscientist.ui
+INCLUDEPATH += models \
+    repositories \
+    services \
+    ui

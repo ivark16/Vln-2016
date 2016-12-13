@@ -15,6 +15,10 @@ public:
     explicit addScientist(QWidget *parent = 0);
     ~addScientist();
 
+private slots:
+
+ //   void on_addScientistButton_clicked();
+
 private:
     Ui::addScientist *ui;
 };
