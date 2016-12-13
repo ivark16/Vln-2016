@@ -182,7 +182,8 @@ void MainWindow::displayConnection(vector<connection> connections)
 
 void MainWindow::on_pushButtonAddScientist_clicked()
 {
-
+    addScientist addScientist;
+    addScientist.exec();
 }
 
 void MainWindow::on_pushButtonDeleteScientist_clicked()
