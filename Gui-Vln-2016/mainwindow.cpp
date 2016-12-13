@@ -200,6 +200,7 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 {
     addScientist addScientist;
     addScientist.exec();
+    displayAllScientists();
 }
 
 void MainWindow::on_pushButtonDeleteScientist_clicked()

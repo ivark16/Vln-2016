@@ -66,38 +66,6 @@ void addScientist::on_addScientistButton_clicked()
 
 }
 
-//NOT NEEDED!!
-bool addScientist::checkForEmpty()
-{
-    bool hasContent = true;
-    if((ui ->firstNameBox->text()).isEmpty())
-    {
-        ui -> firstNameLabel ->setText("<span style='color: red'>First name required</span>");
-        hasContent = false;
-    }
-    if((ui ->lastNameBox->text()).isEmpty())
-    {
-        ui -> lastNameLabel ->setText("<span style='color: red'>Last name required</span>");
-        hasContent = false;
-    }
-    if((ui ->nationalityBox->text()).isEmpty())
-    {
-        ui -> nationalityLabel ->setText("<span style='color: red'>Nationality required</span>");
-        hasContent = false;
-    }
-    if((ui ->birthYearBox ->text()).isEmpty())
-    {
-        ui ->birthYearLabel ->setText("<span style='color: red'>Birth year required</span>");
-        hasContent = false;
-    }
-    if(ui->genderSelectBox ->currentIndex() == 0 || ui->genderSelectBox ->currentIndex() == 1)
-    {
-        ui ->genderLabel ->setText("<span style='color: red'>Gender required</span>");
-        hasContent = false;
-    }
-    //hasContent is true if and only if all required fields have entries.
-    return hasContent;
-}
 
 bool addScientist::getGender()
 {
