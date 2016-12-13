@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 {
-    //ui->button_remove_student->setEnabled(true);
+    ui->pushButtonDeleteScientist->setEnabled(true);
 }
 
 void MainWindow::displayAllScientists()
@@ -65,7 +65,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
-
+    currrentlyDisplaydStudent = scientists;
 }
 
 void MainWindow::displayAllComputer()
@@ -187,7 +187,20 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 
 void MainWindow::on_pushButtonDeleteScientist_clicked()
 {
+    int scientistNo = ui->tableWidget->currentIndex().row();
+    Scientist currentScientist = currrentlyDisplaydStudent.at(scientistNo);
+    int id = currentScientist.getID();
+    bool success = scientistService.deleteScientistFromDatabase(id);
 
+    if (success == true)
+    {
+        displayAllScientists();
+        ui->pushButtonDeleteScientist->setEnabled(false);
+    }
+    else
+    {
+        //Gera error message
+    }
 }
 
 void MainWindow::on_pushButtonEditScientist_clicked()

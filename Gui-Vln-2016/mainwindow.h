@@ -47,6 +47,8 @@ private:
     void displayAllConnections();
     void displayConnection(vector<connection> connections);
 
+    vector<Scientist> currrentlyDisplaydStudent;
+
     listServices scientistService;
 };
 
