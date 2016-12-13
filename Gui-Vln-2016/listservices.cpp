@@ -235,6 +235,13 @@ vector<Scientist> listServices::checkName(string s)
     return names;
 }
 
+vector<Scientist> listServices::checkFullName(string s)
+{
+    vector<Scientist> names;
+    names = _myData.searchFullNameFromDatabase(s);
+    return names;
+}
+
 vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
 {
     vector<Scientist> award1;

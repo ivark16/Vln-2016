@@ -305,6 +305,40 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     return scientists;
 }
 
+//This function returns all scientists matching the search word entered by the user.
+vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(name);
+    query.prepare("SELECT * FROM scientist WHERE firstname LIKE (:name) AND lastname LIKE (:name) COLLATE NOCASE");
+    query.addBindValue("%" + qName + "%");
+    query.addBindValue("%" + qName + "%");
+    query.exec();
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
 int DataLayer::getSizeOfScientists()
 {
     return _scientists.size();
@@ -493,7 +527,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
 {
     vector<Scientist> scientists;
     QSqlQuery query;
-    query.prepare("SELECT * FROM scientist WHERE YOB = (:x)");
+    query.prepare("SELECT * FROM scientist WHERE YOB = (:x) OR YOA = (:x)");
     query.addBindValue(x);
     query.exec();
     int idNames = query.record().indexOf("ID");
