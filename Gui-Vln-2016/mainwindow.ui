@@ -256,9 +256,9 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="tabConnections">
        <attribute name="title">
-        <string>Page</string>
+        <string>Connections</string>
        </attribute>
        <widget class="QPushButton" name="pushButton_5">
         <property name="geometry">
