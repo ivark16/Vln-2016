@@ -45,7 +45,15 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
+        if(deathYear == "0")
+        {
+            deathYear = "Alive";
+        }
         QString awardYear = QString::number(currentScientist.getAwardYear());
+        if(awardYear == "0")
+        {
+            awardYear = "None";
+        }
         QString ID = QString::number(currentScientist.getID());
 
         ui->tableWidget->setItem(row, 0, new QTableWidgetItem(ID));
