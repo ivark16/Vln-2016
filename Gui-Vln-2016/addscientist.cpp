@@ -45,16 +45,23 @@ void addScientist::on_addScientistButton_clicked()
         bool hasLastName = getLastName();
         bool hasGender = getGender();
         bool hasNationality = getNationality();
-        bool hasBirthYear; getBirthYear();
-        bool hasDeathYear; // = _deathYear = (ui -> deathYearBox -> text()).toInt();
+        bool hasBirthYear = getBirthYear();
+        bool hasDeathYear = getDeathYear();
         bool hasAwardYear; // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
     //if it's all legal, add the scientist to the database.  Maybe open a little popup.
+
+
+
+        isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear);
+
 
     if(isLegalScientist)
     {
         Scientist newScientist(0, _firstName, _lastName, 'm', _nationality, _birthYear, _deathYear, _awardYear);
         _connection.addScientistToDatabase(newScientist);
+
+        ui -> firstNameLabel -> setText("GREAT SUCCESS");
     }
 
 }
@@ -83,7 +90,7 @@ bool addScientist::checkForEmpty()
         ui ->birthYearLabel ->setText("<span style='color: red'>Birth year required</span>");
         hasContent = false;
     }
-    if(ui->genderSelectBox ->currentText() == "Gender" || ui->genderSelectBox ->currentText() == "---")
+    if(ui->genderSelectBox ->currentIndex() == 0 || ui->genderSelectBox ->currentIndex() == 1)
     {
         ui ->genderLabel ->setText("<span style='color: red'>Gender required</span>");
         hasContent = false;
@@ -94,17 +101,17 @@ bool addScientist::checkForEmpty()
 
 bool addScientist::getGender()
 {
-    if(ui->genderLabel->selectedText() == "Male")
+    if((ui->genderSelectBox->currentIndex()) == 2)
     {
         _gender = 'm';
         return true;
     }
-    else if(ui ->genderLabel->selectedText() == "Female")
+    else if((ui ->genderSelectBox->currentIndex()) == 3)
     {
         _gender = 'f';
         return true;
     }
-    else if(ui ->genderLabel ->selectedText() == "Other")
+    else if((ui ->genderSelectBox ->currentIndex()) == 4)
     {
         _gender = 'o';
         return true;
