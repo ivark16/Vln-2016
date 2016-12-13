@@ -44,6 +44,10 @@ private slots:
 
     void on_tableWidget_clicked(const QModelIndex &index);
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_lineEditComputer_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
@@ -56,6 +60,7 @@ private:
     void displayConnection(vector<connection> connections);
 
     vector<Scientist> currrentlyDisplaydStudent;
+    vector<Computer> currentlyDisplayComputer;
 
     listServices scientistService;
 };

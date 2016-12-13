@@ -92,6 +92,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
     }
+    currentlyDisplayComputer = computers;
 }
 
 void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
@@ -230,4 +231,41 @@ void MainWindow::on_pushButtonEditScientist_clicked()
 void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
 {
     ui->pushButtonDeleteScientist->setEnabled(true);
+}
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
+{
+    ui->labelComputerErrorMessage->setText("");
+    string inputSearch = ui->lineEditComputer->text().toStdString();
+    vector<Computer> searchname;
+    vector<Computer> searchYear;
+
+    if (isdigit(inputSearch[0]) == true)
+    {
+        int b = atoi(inputSearch.c_str());
+        searchYear = scientistService.searchWhenBuiltSingleYear(b);
+        displayComputer(searchYear);
+    }
+    else
+    {
+         searchname = scientistService.searchForNameComputer(inputSearch);
+         if (searchname.size() == 0)
+         {
+             searchname = scientistService.searchForTypeComputer(inputSearch);
+             displayComputer(searchname);
+         }
+         else
+         {
+            displayComputer(searchname);
+         }
+    }
+    if (searchname.size()==0 && searchYear.size() == 0)
+    {
+        ui->labelComputerErrorMessage->setText("<span style=' color: red'> No scientist found </span>");
+    }
 }
