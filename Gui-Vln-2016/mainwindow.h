@@ -36,6 +36,12 @@ private slots:
     //void on_pushButtonSearchConnection_clicked();
     void on_tableWidget_3_clicked(const QModelIndex &index);
 
+    void on_pushButtonEditConnection_clicked();
+
+    void on_pushButtonAddConnection_clicked();
+
+    void on_pushButtonDeleteConnection_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
