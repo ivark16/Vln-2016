@@ -97,7 +97,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
 
 void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
-
+        ui->pushButtonDeleteComputer->setEnabled(true);
 }
 
 //Fall til ad leita ad visindamonnum, leitar ad nofnum og fæðingarári vísindamanna.
@@ -268,5 +268,23 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
     if (searchname.size()==0 && searchYear.size() == 0)
     {
         ui->labelComputerErrorMessage->setText("<span style=' color: red'> No computer found </span>");
+    }
+}
+
+void MainWindow::on_pushButtonDeleteComputer_clicked()
+{
+    int computerNo = ui->tableWidget_2->currentIndex().row();
+    Computer currentComputer = currentlyDisplayComputer.at(computerNo);
+    int id = currentComputer.getID();
+    bool success = scientistService.deleteComputerFromDatabase(id);
+
+    if (success == true)
+    {
+        displayAllComputer();
+        ui->pushButtonDeleteComputer->setEnabled(false);
+    }
+    else
+    {
+        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
     }
 }

@@ -48,6 +48,8 @@ private slots:
 
     void on_lineEditComputer_textChanged(const QString &arg1);
 
+    void on_pushButtonDeleteComputer_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();

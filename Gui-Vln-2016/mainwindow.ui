@@ -231,13 +231,21 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="pushButtonDeleteComputer">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Delete</string>
           </property>
          </widget>
         </item>
        </layout>
+       <zorder>pushButton_2</zorder>
+       <zorder>pushButton_3</zorder>
+       <zorder>pushButtonDeleteComputer</zorder>
+       <zorder>horizontalLayoutWidget</zorder>
+       <zorder>tableWidget_2</zorder>
       </widget>
       <widget class="QWidget" name="tabConnections">
        <attribute name="title">

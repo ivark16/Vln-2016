@@ -146,10 +146,18 @@ bool listServices::deleteScientistFromDatabase(int x)
     return check;
 }
 
-void listServices::deleteComputerFromDatabase(int x)
+bool listServices::deleteComputerFromDatabase(int x)
 {
-    _myData.deleteFunctionComputer(x);
-    _myData.deleteConnectionFunctionComputer(x);
+    bool check;
+    if(_myData.deleteFunctionComputer(x) == true && _myData.deleteConnectionFunctionComputer(x) == true)
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
 }
 
 //This function creates and returns a new vector containing only living scientists.
