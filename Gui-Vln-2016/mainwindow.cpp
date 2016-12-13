@@ -136,3 +136,15 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
 
 }
 
+
+void MainWindow::on_pushButtonEditScientist_clicked()
+{
+    editscientist edit;
+    edit.setModal(true);
+    edit.exec();
+}
+
+void MainWindow::on_pushButtonDeleteScientist_clicked()
+{
+
+}

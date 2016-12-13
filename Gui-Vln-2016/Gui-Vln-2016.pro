@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     listservices.cpp \
     scientist.cpp \
     searching.cpp \
-    addscientist.cpp
+    addscientist.cpp \
+    editscientist.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     searching.h \
     sql.h \
     sqlite3.h \
-    addscientist.h
+    addscientist.h \
+    editscientist.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -46,4 +48,5 @@ HEADERS  += mainwindow.h \
         searching.h
         connection.h
 FORMS    += mainwindow.ui \
-    addscientist.ui
+    addscientist.ui \
+    editscientist.ui

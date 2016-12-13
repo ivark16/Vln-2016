@@ -10,10 +10,12 @@ DataLayer::DataLayer()
        m_db = QSqlDatabase::addDatabase("QSQLITE");
        m_db.setDatabaseName("Scientists.sqlite");
        if (!m_db.open())
-          {
-          }
+       {
+               qDebug("AÆSJBFPIASHBFÐOAJSD");
+       }
        else
        {
+
        }
 }
 

@@ -29,7 +29,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -113,7 +113,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonEdit">
+         <widget class="QPushButton" name="pushButtonEditScientist">
           <property name="text">
            <string>Edit</string>
           </property>
@@ -127,7 +127,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonDelete">
+         <widget class="QPushButton" name="pushButtonDeleteScientist">
           <property name="text">
            <string>Delete</string>
           </property>
