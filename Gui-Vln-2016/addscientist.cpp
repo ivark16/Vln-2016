@@ -18,7 +18,7 @@ addScientist::~addScientist()
 {
     delete ui;
 }
-/*
+
 
 void addScientist::on_addScientistButton_clicked()
 {
@@ -55,5 +55,3 @@ void addScientist::on_addScientistButton_clicked()
 
 
 }
-
-*/

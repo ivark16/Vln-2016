@@ -86,6 +86,28 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
+//Returns all connections in the database
+vector<connection> DataLayer::readAllFromDataConnectionBase()
+{
+    connection s;
+    vector<connection> displayConnection;
+    QSqlQuery query("SELECT * FROM connection");
+    //int idName = query.record().indexOf("ID");
+    int idName1 = query.record().indexOf("scientistId");
+    int idName2 = query.record().indexOf("computersId");
+
+    while(query.next())
+    {
+        //int ids = query.value(idName).toInt();
+        int scientistId = query.value(idName1).toInt();
+        int computersId = query.value(idName2).toInt();
+
+        connection s(scientistId, computersId);
+        displayConnection.push_back(s);
+    }
+    return displayConnection;
+}
+
 //This function lets you search the joined table for a scientist.  it returns all entries in the join table that match.
 vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 {
@@ -307,6 +329,38 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     return scientists;
 }
 
+vector<Scientist> DataLayer::searchNationality(string name)
+{
+    vector<Scientist> scientists;
+    QSqlQuery query;
+    QString qName = QString::fromStdString(name);
+    query.prepare("SELECT * FROM scientist WHERE nationality LIKE (:name)");
+    query.addBindValue("%" + qName + "%");
+    query.exec();
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
 //This function returns all scientists matching the search word entered by the user.
 vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
 {
@@ -496,9 +550,42 @@ vector<Scientist> DataLayer::readInYoungestOrder()
 vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
 {
     vector<Scientist> scientists;
+    QString qNumber = QString::number(x);
     QSqlQuery query;
     query.prepare("SELECT * FROM scientist WHERE YOA = (:x)");
-    query.addBindValue(x);
+    query.addBindValue(qNumber);
+    query.exec();
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        scientists.push_back(s);
+    }
+    return scientists;
+}
+
+vector<Scientist> DataLayer::searchForDeadPeople(int x)
+{
+    vector<Scientist> scientists;
+    QString qNumber = QString::number(x);
+    QSqlQuery query;
+    query.prepare("SELECT * FROM scientist WHERE YOD = (:x)");
+    query.addBindValue(qNumber);
     query.exec();
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
@@ -686,6 +773,47 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     }
     return returnComputer;
 }
+
+/*//This returns all connections in alphabetical order in a vector.
+vector<connection> DataLayer::readInAlphabeticalOrderConnection()
+{
+    vector<Computer> returnConnection;
+    QSqlQuery query("SELECT * FROM connection s ORDER BY s.name ASC");
+    //int idNames = query.record().indexOf("ID");
+    int IdName = query.record().indexOf("scientistId");
+    int IdName1 = query.record().indexOf("computersId");
+
+
+    while(query.next())
+    {
+        //int id = query.value(IdNames).toInt();
+        string scientistId = query.value(IdName).toString().toStdString();
+        string computersId = query.value(IdName1).toString().toStdString();
+        connection s(scientistId, computersIdt);
+        returnConnection.push_back(s);
+    }
+    return returnConnection;
+}
+
+//This returns all connections in reverse alphabetical order in a vector.
+vector<connection> DataLayer::readInReverseAlphabeticalOrderConnection()
+{
+    vector<connection> returnConnection;
+    QSqlQuery query("SELECT * FROM connection s ORDER BY s.name DESC");
+    //int idNames = query.record().indexOf("ID");
+    int IdName = query.record().indexOf("scientistId");
+    int IdName1 = query.record().indexOf("computersId");
+
+    while(query.next())
+    {
+        //int id = query.value(IdNames).toInt();
+        string scientistId = query.value(IdName).toString().toStdString();
+        string computersId = query.value(IdName1).toString().toStdString();
+        connection s(scientistId, computersId);
+        returnConnection.push_back(s);
+    }
+    return returnConnection;
+}*/
 
 //This function adds a new computer to the database.
 //The new instance of computer, newComputer has been created in another function.

@@ -2,6 +2,7 @@
 #define ADDSCIENTIST_H
 
 #include <QDialog>
+#include "listservices.h"
 
 namespace Ui {
 class addScientist;
@@ -17,10 +18,12 @@ public:
 
 private slots:
 
- //   void on_addScientistButton_clicked();
+
+    void on_addScientistButton_clicked();
 
 private:
     Ui::addScientist *ui;
+    listServices connection;
 };
 
 #endif // ADDSCIENTIST_H

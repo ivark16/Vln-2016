@@ -28,9 +28,13 @@ public:
     //Join functions
     vector<searching> searchForScientistFromSearchingDatabse(string x);
     vector<searching> searchForComputerFromSearchingDatabase(string x);
+    vector<searching> searchForConnectionFromSearchingDatabase(string x);
 
     int getSizeOfScientists();
     int getSizeOfComputer();
+    int getSizeOfConnection();
+    int getscientistIdrAt(int i);
+    int getcomputersIdAt(int i);
     char getGenderAt(int i);
     int getBirthYearAt(int i);
     int getDeathYearAt(int i);
@@ -52,9 +56,11 @@ public:
     //Search functions for scientists
     vector<Scientist> searchForTuringAwardWinners(int x);
     vector<Scientist> searchForYearOfBirth(int x);
+    vector<Scientist> searchForDeadPeople(int x);
     vector<Scientist> searchRangeForYearOfBirth(int x, int y);
     vector<Scientist> searchForNameFromDatabase(string name);
     vector<Scientist> searchFullNameFromDatabase(string name);
+    vector<Scientist> searchNationality(string name);
 
     //Display functions for computer
     vector<Computer> readInAlphabeticalOrderComputer();
@@ -76,6 +82,10 @@ public:
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 
+    //Display functions for connection
+    //vector<Computer> readInAlphabeticalOrderConnection();
+    //vector<Computer> readInReverseAlphabeticalOrderConnection();
+    vector<connection> readAllFromDataConnectionBase();
 
     //Functions for updating scientist database
     bool updateFirstName(string x, int y);
