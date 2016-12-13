@@ -25,7 +25,7 @@ public:
 private slots:
     void on_tableViewScientist_clicked(const QModelIndex &index);
     void on_tableWidget_2_clicked(const QModelIndex &index);
-    void on_pushButtonSearchScientist_clicked();
+    void on_lineEditScientist_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

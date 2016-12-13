@@ -52,9 +52,11 @@ public:
     //Search functions for scientists
     vector<Scientist> searchForTuringAwardWinners(int x);
     vector<Scientist> searchForYearOfBirth(int x);
+    vector<Scientist> searchForDeadPeople(int x);
     vector<Scientist> searchRangeForYearOfBirth(int x, int y);
     vector<Scientist> searchForNameFromDatabase(string name);
     vector<Scientist> searchFullNameFromDatabase(string name);
+    vector<Scientist> searchNationality(string name);
 
     //Display functions for computer
     vector<Computer> readInAlphabeticalOrderComputer();

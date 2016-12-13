@@ -227,6 +227,12 @@ vector<Scientist> listServices::checkBirthYear(int x)
     return award;
 }
 
+vector<Scientist> listServices::checkDeathYear(int x)
+{
+    vector<Scientist> award;
+    award = _myData.searchForDeadPeople(x);
+    return award;
+}
 
 vector<Scientist> listServices::checkName(string s)
 {
@@ -239,6 +245,13 @@ vector<Scientist> listServices::checkFullName(string s)
 {
     vector<Scientist> names;
     names = _myData.searchFullNameFromDatabase(s);
+    return names;
+}
+
+vector<Scientist> listServices::checkNationality(string s)
+{
+    vector<Scientist> names;
+    names = _myData.searchNationality(s);
     return names;
 }
 
