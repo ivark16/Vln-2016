@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     displayAllScientists();
     displayAllComputer();
+    displayAllConnections();
 }
 
 MainWindow::~MainWindow()
@@ -134,5 +135,36 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
 
     }
 
+}
+
+void MainWindow::on_tableWidget_3_clicked(const QModelIndex &index)
+{
+    //ui->button_remove_connection->setEnabled(true);
+}
+
+void MainWindow::displayAllConnections()
+{
+    vector<connection> connections = scientistService.displayConnection();
+    displayConnection(connections);
+}
+
+void MainWindow::displayConnection(vector<connection> connections)
+{
+    ui->tableWidget_3->clearContents();
+
+    ui->tableWidget_3->setRowCount(connections.size());
+
+    for (unsigned int row = 0; row < connections.size(); row++)
+    {
+        connection currentConnection = connections[row];
+
+        QString scientistId = QString::number(currentConnection.getScientistId());
+        QString computersId = QString::number(currentConnection.getComputersId());
+        //QString ID = QString::number(currentConnection.getID());
+
+        //ui->tableWidget->setItem(row, 0, new QTableWidgetItem(ID));
+        ui->tableWidget_3->setItem(row, 1,  new QTableWidgetItem(scientistId));
+        ui->tableWidget_3->setItem(row, 2,  new QTableWidgetItem(computersId));
+    }
 }
 

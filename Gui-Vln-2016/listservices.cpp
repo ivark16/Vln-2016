@@ -40,6 +40,13 @@ vector<Computer> listServices::displayComputer()
     return display;
 }
 
+vector<connection> listServices::displayConnection()
+{
+    vector<connection> display;
+    display = _myData.readAllFromDataConnectionBase();
+    return display;
+}
+
 void listServices::addScientistToDatabase(Scientist newScientist)
 {
     _myData.addFunction(newScientist);

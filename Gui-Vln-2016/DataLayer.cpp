@@ -84,6 +84,28 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
+//Returns all connections in the database
+vector<connection> DataLayer::readAllFromDataConnectionBase()
+{
+    connection s;
+    vector<connection> displayConnection;
+    QSqlQuery query("SELECT * FROM connection");
+    //int idName = query.record().indexOf("ID");
+    int idName1 = query.record().indexOf("scientistId");
+    int idName2 = query.record().indexOf("computersId");
+
+    while(query.next())
+    {
+        //int ids = query.value(idName).toInt();
+        int scientistId = query.value(idName1).toInt();
+        int computersId = query.value(idName2).toInt();
+
+        connection s(scientistId, computersId);
+        displayConnection.push_back(s);
+    }
+    return displayConnection;
+}
+
 //This function lets you search the joined table for a scientist.  it returns all entries in the join table that match.
 vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 {
@@ -684,6 +706,47 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     }
     return returnComputer;
 }
+
+/*//This returns all connections in alphabetical order in a vector.
+vector<connection> DataLayer::readInAlphabeticalOrderConnection()
+{
+    vector<Computer> returnConnection;
+    QSqlQuery query("SELECT * FROM connection s ORDER BY s.name ASC");
+    //int idNames = query.record().indexOf("ID");
+    int IdName = query.record().indexOf("scientistId");
+    int IdName1 = query.record().indexOf("computersId");
+
+
+    while(query.next())
+    {
+        //int id = query.value(IdNames).toInt();
+        string scientistId = query.value(IdName).toString().toStdString();
+        string computersId = query.value(IdName1).toString().toStdString();
+        connection s(scientistId, computersIdt);
+        returnConnection.push_back(s);
+    }
+    return returnConnection;
+}
+
+//This returns all connections in reverse alphabetical order in a vector.
+vector<connection> DataLayer::readInReverseAlphabeticalOrderConnection()
+{
+    vector<connection> returnConnection;
+    QSqlQuery query("SELECT * FROM connection s ORDER BY s.name DESC");
+    //int idNames = query.record().indexOf("ID");
+    int IdName = query.record().indexOf("scientistId");
+    int IdName1 = query.record().indexOf("computersId");
+
+    while(query.next())
+    {
+        //int id = query.value(IdNames).toInt();
+        string scientistId = query.value(IdName).toString().toStdString();
+        string computersId = query.value(IdName1).toString().toStdString();
+        connection s(scientistId, computersId);
+        returnConnection.push_back(s);
+    }
+    return returnConnection;
+}*/
 
 //This function adds a new computer to the database.
 //The new instance of computer, newComputer has been created in another function.

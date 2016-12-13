@@ -26,6 +26,8 @@ private slots:
     void on_tableViewScientist_clicked(const QModelIndex &index);
     void on_tableWidget_2_clicked(const QModelIndex &index);
     void on_pushButtonSearchScientist_clicked();
+    //void on_pushButtonSearchConnection_clicked();
+    void on_tableWidget_3_clicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
@@ -34,6 +36,9 @@ private:
 
     void displayAllComputer();
     void displayComputer (vector<Computer> computers);
+
+    void displayAllConnections();
+    void displayConnection(vector<connection> connections);
 
     listServices scientistService;
 };
