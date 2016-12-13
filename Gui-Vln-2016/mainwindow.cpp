@@ -41,9 +41,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         string s(1, a);
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
-        QString gender = QString::fromStdString(s);
-        //QString gender = QChar::QChar(currentScientist.getGender());
-        QString nationality = QString::fromStdString(currentScientist.getNationality());
+        QString gender = QString::fromStdString(s);        QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
         if(deathYear == "0")
@@ -101,19 +99,29 @@ void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 }
 
 //Fall til ad leita ad visindamonnum, leitar ad nofnum og fæðingarári vísindamanna.
-void MainWindow::on_pushButtonSearchScientist_clicked()
+void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 {
+    ui->labelErrorMessageFromScientist->setText("");
     string inputSearch = ui->lineEditScientist->text().toStdString();
-
+    vector<Scientist> searchname;
+    vector<Scientist> searchYear;
 
     if (isdigit(inputSearch[0]) == true)
     {
         int b = atoi(inputSearch.c_str());
-        vector<Scientist> searchYear = scientistService.checkBirthYear(b);
+        searchYear = scientistService.checkBirthYear(b);
         if (searchYear.size() == 0)
         {
             searchYear = scientistService.checkForAward(b);
-            displayScientist(searchYear);
+            if (searchYear.size() == 0)
+            {
+                searchYear = scientistService.checkDeathYear(b);
+                displayScientist(searchYear);
+            }
+            else
+            {
+                displayScientist(searchYear);
+            }
         }
         else
         {
@@ -122,21 +130,22 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
     }
     else
     {
-         vector<Scientist> searchname = scientistService.searchForName(inputSearch);
+         searchname = scientistService.searchForName(inputSearch);
          if (searchname.size() == 0)
          {
-             searchname = scientistService.checkFullName(inputSearch);
+             searchname = scientistService.checkNationality(inputSearch);
              displayScientist(searchname);
          }
          else
          {
             displayScientist(searchname);
          }
-
     }
-
+    if (searchname.size()==0 && searchYear.size() == 0)
+    {
+        ui->labelErrorMessageFromScientist->setText("<span style=' color: red'> No scientist found </span>");
+    }
 }
-
 
 void MainWindow::on_pushButtonAddScientist_clicked()
 {
