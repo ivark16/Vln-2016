@@ -43,6 +43,7 @@ public:
     vector<searching> displaySearchJoinScientistName(string x);
     vector<searching> displaySearchJoinComputerName(string x);
     vector<Scientist> checkName(string s);
+    vector<Scientist> checkFullName(string s);
     vector<Computer> searchForNameComputer(string s);
     bool updateFirstNameScientist(string x, int id);
     bool updateLastNameScientist(string x, int id);

@@ -86,15 +86,12 @@ void MainWindow::displayComputer(vector<Computer> computers)
     }
 }
 
-
-
 void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
 
 }
 
-
-
+//Fall til ad leita ad visindamonnum, leitar ad nofnum og fæðingarári vísindamanna.
 void MainWindow::on_pushButtonSearchScientist_clicked()
 {
     string inputSearch = ui->lineEditScientist->text().toStdString();
@@ -104,12 +101,30 @@ void MainWindow::on_pushButtonSearchScientist_clicked()
     {
         int b = atoi(inputSearch.c_str());
         vector<Scientist> searchYear = scientistService.checkBirthYear(b);
-        displayScientist(searchYear);
+        if (searchYear.size() == 0)
+        {
+            searchYear = scientistService.checkForAward(b);
+            displayScientist(searchYear);
+        }
+        else
+        {
+            displayScientist(searchYear);
+        }
     }
     else
     {
          vector<Scientist> searchname = scientistService.searchForName(inputSearch);
-         displayScientist(searchname);
+         if (searchname.size() == 0)
+         {
+             searchname = scientistService.checkFullName(inputSearch);
+             displayScientist(searchname);
+         }
+         else
+         {
+            displayScientist(searchname);
+         }
+
     }
 
 }
+

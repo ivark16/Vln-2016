@@ -54,6 +54,7 @@ public:
     vector<Scientist> searchForYearOfBirth(int x);
     vector<Scientist> searchRangeForYearOfBirth(int x, int y);
     vector<Scientist> searchForNameFromDatabase(string name);
+    vector<Scientist> searchFullNameFromDatabase(string name);
 
     //Display functions for computer
     vector<Computer> readInAlphabeticalOrderComputer();
