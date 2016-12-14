@@ -25,7 +25,18 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Database</string>
+   <string>DatBase</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resorces.qrc">
+    <normaloff>:/Icons/Pictures/cornerIcon.png</normaloff>:/Icons/Pictures/cornerIcon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow
+ {
+ 	background-color: rgb(196, 228, 236);
+ }
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -39,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
