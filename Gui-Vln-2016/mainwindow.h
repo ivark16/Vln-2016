@@ -52,6 +52,7 @@ private slots:
     void on_pushButtonDeleteComputer_clicked();
 
     void on_actionHelp_triggered();
+    void on_addComputers_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -64,10 +65,11 @@ private:
     void displayAllConnections();
     void displayConnection(vector<connection> connections);
 
-    vector<Scientist> currrentlyDisplaydStudent;
+    vector<Scientist> currentlyDisplayScientist;
     vector<Computer> currentlyDisplayComputer;
 
     listServices scientistService;
+    editscientist blahh;
 };
 
 #endif // MAINWINDOW_H

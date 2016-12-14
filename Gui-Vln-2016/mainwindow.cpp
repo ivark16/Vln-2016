@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "addScientist.h"
+#include "addComputer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,6 +44,18 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
         QString gender = QString::fromStdString(s);
+        if(gender == "m" || gender == "M")
+        {
+            gender = "Male";
+        }
+        else if(gender == "f" || gender == "F")
+        {
+            gender = "Female";
+        }
+        else
+        {
+            gender = "Other";
+        }
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
@@ -66,7 +79,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
-    currrentlyDisplaydStudent = scientists;
+    currentlyDisplayScientist = scientists;
 }
 
 void MainWindow::displayAllComputer()
@@ -87,11 +100,21 @@ void MainWindow::displayComputer(vector<Computer> computers)
         QString name = QString::fromStdString(allComputer.getComputerName());
         QString type = QString::fromStdString(allComputer.getComputerType());
         QString yob = QString::number(allComputer.getYearOfBuild());
+        QString wasBuilt;
+        if(allComputer.getWasBuilt())
+        {
+            wasBuilt = "Yes";
+        }
+        else
+        {
+            wasBuilt = "No";
+        }
 
         ui->tableWidget_2->setItem(row , 0, new QTableWidgetItem(ID));
         ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(name));
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
+        ui ->tableWidget_2->setItem(row,4,new QTableWidgetItem(wasBuilt));
     }
     currentlyDisplayComputer = computers;
 }
@@ -208,7 +231,7 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 void MainWindow::on_pushButtonDeleteScientist_clicked()
 {
     int scientistNo = ui->tableWidget->currentIndex().row();
-    Scientist currentScientist = currrentlyDisplaydStudent.at(scientistNo);
+    Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
     bool success = scientistService.deleteScientistFromDatabase(id);
 
@@ -225,9 +248,13 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
 
 void MainWindow::on_pushButtonEditScientist_clicked()
 {
-    editscientist edit;
-    edit.setModal(true);
-    edit.exec();
+    int selectCurrentStudent = ui->tableWidget->currentIndex().row();
+    Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
+    int id = currscientist.getID();
+     blahh.displayForUpdate(id);
+    blahh.setModal(true);
+    blahh.exec();
+
 }
 
 void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
@@ -294,4 +321,11 @@ void MainWindow::on_actionHelp_triggered()
 {
     HelpWindow window;
     window.on_pushButton_clicked();
+}
+
+void MainWindow::on_addComputers_clicked()
+{
+    addComputer addComputer;
+    addComputer.exec();
+    displayAllComputer();
 }

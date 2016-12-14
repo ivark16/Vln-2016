@@ -119,8 +119,8 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name = (:x) COLLATE NOCASE");
-    myQuery.addBindValue(qName);
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name LIKE (:x) COLLATE NOCASE");
+    myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
     int idName = myQuery.record().indexOf("firstname");
     int idName2 = myQuery.record().indexOf("lastname");

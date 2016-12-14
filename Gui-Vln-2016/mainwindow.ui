@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>465</width>
-    <height>408</height>
+    <height>420</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -224,7 +224,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="addComputers">
           <property name="text">
            <string>Add</string>
           </property>
@@ -242,7 +242,7 @@
         </item>
        </layout>
        <zorder>pushButton_2</zorder>
-       <zorder>pushButton_3</zorder>
+       <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
        <zorder>tableWidget_2</zorder>
       </widget>
@@ -308,7 +308,7 @@
      <x>0</x>
      <y>0</y>
      <width>465</width>
-     <height>17</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
