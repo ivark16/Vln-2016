@@ -50,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -79,13 +79,6 @@
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QComboBox" name="comboBoxScientist"/>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton">
-            <property name="text">
-             <string>Display</string>
-            </property>
-           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer">
@@ -139,8 +132,8 @@
            </property>
            <property name="background">
             <color>
-             <red>0</red>
-             <green>128</green>
+             <red>102</red>
+             <green>204</green>
              <blue>255</blue>
             </color>
            </property>
@@ -151,8 +144,8 @@
            </property>
            <property name="background">
             <color>
-             <red>0</red>
-             <green>128</green>
+             <red>102</red>
+             <green>204</green>
              <blue>255</blue>
             </color>
            </property>
@@ -163,8 +156,8 @@
            </property>
            <property name="background">
             <color>
-             <red>0</red>
-             <green>128</green>
+             <red>102</red>
+             <green>204</green>
              <blue>255</blue>
             </color>
            </property>
@@ -175,8 +168,8 @@
            </property>
            <property name="background">
             <color>
-             <red>0</red>
-             <green>128</green>
+             <red>102</red>
+             <green>204</green>
              <blue>255</blue>
             </color>
            </property>
@@ -187,8 +180,8 @@
            </property>
            <property name="background">
             <color>
-             <red>0</red>
-             <green>128</green>
+             <red>102</red>
+             <green>204</green>
              <blue>255</blue>
             </color>
            </property>
@@ -197,15 +190,36 @@
            <property name="text">
             <string>Y.O.B.</string>
            </property>
+           <property name="background">
+            <color>
+             <red>102</red>
+             <green>204</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Y.O.D.</string>
            </property>
+           <property name="background">
+            <color>
+             <red>102</red>
+             <green>204</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Y.O.A.</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>102</red>
+             <green>204</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
          </widget>
@@ -290,25 +304,60 @@
            <property name="text">
             <string>ID</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Name</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string>Type</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Year of build</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Was built?</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
          </widget>
@@ -364,25 +413,60 @@
            <property name="text">
             <string>First Name</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Last Name</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string>N.O.C</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>T.O.C</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Y.O.C</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
          </widget>
@@ -420,7 +504,7 @@
      <x>0</x>
      <y>0</y>
      <width>481</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

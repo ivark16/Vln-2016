@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "addScientist.h"
 #include "addComputer.h"
+#include "addconnection.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -224,7 +225,8 @@ void MainWindow::on_pushButtonEditConnection_clicked()
 
 void MainWindow::on_pushButtonAddConnection_clicked()
 {
-
+    addConnection addNew;
+    addNew.exec();
 }
 
 void MainWindow::on_pushButtonDeleteConnection_clicked()
@@ -344,53 +346,115 @@ void MainWindow::on_addComputers_clicked()
     displayAllComputer();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_radioButtonAscending_clicked()
 {
     vector<Scientist> scientist;
     if (ui->comboBoxScientist->currentText() == "")
     {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
         scientist = scientistService.displayScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "ID")
     {
-        //scientist = scientistService.();
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInAscendingByID();
     }
    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        //ui->radioButtonAscending->setCheckable(false);
         scientist = scientistService.scientistInAlphabeticalOrder();
+
     }
     else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
     {
-        //scientist = scientistService.;
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInAlphabeticalOrderNationality();
     }
     else if (ui->comboBoxScientist->currentText() == "Gender")
     {
-        //scientist = scientistService.;
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInAlphabeticalOrderGender();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of birth")
     {
-        scientist = scientistService.youngestOrderScientist();
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        //ui->radioButtonAscending->setCheckable(false);
+        scientist = scientistService.oldestOrderScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of death")
     {
-        scientist = scientistService.oldestOrderScientist();
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.youngestOrderScientist();
     }
-    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
+    else if (ui->comboBoxScientist->currentText() == "Year of Award")
     {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
         //scientist = scientistService.;
     }
-
     displayScientist(scientist);
-}
-
-void MainWindow::on_radioButtonAscending_clicked()
-{
-
 }
 
 void MainWindow::on_radioButtonDescending_clicked()
 {
-
+    vector<Scientist> scientist;
+    if (ui->comboBoxScientist->currentText() == "")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.displayScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "ID")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInDiscendingByID();
+    }
+   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.scientistInReverseAlphabeticalOrder();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInReverseAlphabeticalOrderNationality();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Gender")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.readInReverseAlphabeticalOrderGender();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Year of birth")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.youngestOrderScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Year of death")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        scientist = scientistService.oldestOrderScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Year of award")
+    {
+        ui->radioButtonAscending->setCheckable(false);
+        ui->radioButtonAscending->update();
+        //scientist = scientistService.;
+    }
+    displayScientist(scientist);
 }
 
 void MainWindow::on_pushButton_2_clicked()
