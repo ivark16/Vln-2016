@@ -80,17 +80,17 @@ bool addScientist::getGender()
 {
     if((ui->genderSelectBox->currentIndex()) == 2)
     {
-        _gender = 'm';
+        _gender = 'M';
         return true;
     }
     else if((ui ->genderSelectBox->currentIndex()) == 3)
     {
-        _gender = 'f';
+        _gender = 'F';
         return true;
     }
     else if((ui ->genderSelectBox ->currentIndex()) == 4)
     {
-        _gender = 'o';
+        _gender = 'O';
         return true;
     }
     else

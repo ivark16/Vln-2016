@@ -76,6 +76,48 @@ void listServices::addConnectionToDatabase(connection newConnection)
     _myData.addFunctionConnect(newConnection);
 }
 
+vector<Scientist> listServices::readInAscendingByID()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInAscendingByID();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInDiscendingByID()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInDiscendingByID();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInAlphabeticalOrderNationality()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInAlphabeticalOrderNationality();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInReverseAlphabeticalOrderNationality()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInReverseAlphabeticalOrderNationality();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInAlphabeticalOrderGender()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInAlphabeticalOrderGender();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInReverseAlphabeticalOrderGender()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInReverseAlphabeticalOrderGender();
+    return returnScientist;
+}
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
