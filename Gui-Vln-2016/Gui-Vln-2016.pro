@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     searching.cpp \
     addscientist.cpp \
     editscientist.cpp \
-    addcomputer.cpp
+    addcomputer.cpp \
+    helpwindow.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     sqlite3.h \
     addscientist.h \
     editscientist.h \
-    addcomputer.h
+    addcomputer.h \
+    helpwindow.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -52,7 +54,8 @@ HEADERS  += mainwindow.h \
 FORMS   += mainwindow.ui \
     addscientist.ui \
     editscientist.ui \
-    addcomputer.ui
+    addcomputer.ui \
+    helpwindow.ui
 
     addscientist.ui
     editscientist.ui
@@ -60,4 +63,7 @@ INCLUDEPATH += models \
     repositories \
     services \
     ui
+
+RESOURCES += \
+    resorces.qrc
 

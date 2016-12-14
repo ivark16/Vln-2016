@@ -25,14 +25,14 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Database</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -244,7 +244,6 @@
        <zorder>pushButton_2</zorder>
        <zorder>pushButton_3</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
-       <zorder>horizontalLayoutWidget</zorder>
        <zorder>tableWidget_2</zorder>
       </widget>
       <widget class="QWidget" name="tabConnections">
@@ -316,6 +315,7 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionHelp"/>
    </widget>
    <addaction name="menuHelp"/>
   </widget>
@@ -328,8 +328,19 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="resorces.qrc">
+     <normaloff>:/Icons/Pictures/icon.png</normaloff>:/Icons/Pictures/icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resorces.qrc"/>
+ </resources>
  <connections/>
 </ui>

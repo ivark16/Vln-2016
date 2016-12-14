@@ -42,7 +42,8 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         string s(1, a);
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
-        QString gender = QString::fromStdString(s);        QString nationality = QString::fromStdString(currentScientist.getNationality());
+        QString gender = QString::fromStdString(s);
+        QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
         if(deathYear == "0")
@@ -287,4 +288,10 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     {
         ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
     }
+}
+
+void MainWindow::on_actionHelp_triggered()
+{
+    HelpWindow window;
+    window.on_pushButton_clicked();
 }

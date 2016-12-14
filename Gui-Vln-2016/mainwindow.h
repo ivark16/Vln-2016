@@ -4,6 +4,7 @@
 #include "scientist.h"
 #include "listservices.h"
 #include "editscientist.h"
+#include "helpwindow.h"
 #include "computer.h"
 #include <vector>
 #include <QMainWindow>
@@ -49,6 +50,8 @@ private slots:
     void on_lineEditComputer_textChanged(const QString &arg1);
 
     void on_pushButtonDeleteComputer_clicked();
+
+    void on_actionHelp_triggered();
 
 private:
     Ui::MainWindow *ui;
