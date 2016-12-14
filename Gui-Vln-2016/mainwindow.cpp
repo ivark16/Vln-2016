@@ -395,5 +395,11 @@ void MainWindow::on_radioButtonDescending_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
+    int selectCurrentComputer = ui->tableWidget_2->currentIndex().row();
+    Computer currComputer = currentlyDisplayComputer.at(selectCurrentComputer);
+    int id = currComputer.getID();
+    _editComputer.displayForUpdate(id);
+    _editComputer.setModal(true);
+    _editComputer.exec();
+    displayAllComputer();
 }

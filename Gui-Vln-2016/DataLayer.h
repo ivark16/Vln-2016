@@ -77,6 +77,10 @@ public:
     vector<Computer> readInYoungestOrderComputer();
     vector<Computer> readAllFromDataComputerBase();
     vector<Computer> readAllFromDataComputerBaseById(int x);
+    vector<Computer> readIdInAscendingOrder();
+    vector<Computer> readIdInDescindingOrder();
+    vector<Computer> readTypeInAlphabeticalOrder();
+    vector<Computer> readTypeInReverseAlphabeticalOrder();
 
     //Add functions for computer, connect and scientist
     bool addFunctionComputer(Computer newComputer);

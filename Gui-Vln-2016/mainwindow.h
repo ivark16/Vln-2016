@@ -6,6 +6,7 @@
 #include "editscientist.h"
 #include "helpwindow.h"
 #include "computer.h"
+#include "editcomputer.h"
 #include <vector>
 #include <QMainWindow>
 #include <string>
@@ -73,6 +74,8 @@ private:
 
     listServices scientistService;
     editscientist _edit;
+    editcomputer _editComputer;
+
 };
 
 #endif // MAINWINDOW_H

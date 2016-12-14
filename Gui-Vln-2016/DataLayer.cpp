@@ -1533,7 +1533,90 @@ bool DataLayer::updateWasComputerBuilt (int x, int y)
     return check;
 }
 
+vector<Computer> DataLayer::readIdInAscendingOrder()
+{
+    vector<Computer> idAscendingOrder;
+    QSqlQuery query("SELECT * FROM computer ORDER BY ID ASC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        idAscendingOrder.push_back(s);
+    }
+    return idAscendingOrder;
+}
 
+vector<Computer> DataLayer::readIdInDescindingOrder()
+{
+    vector<Computer> idDescendingOrder;
+    QSqlQuery query("SELECT * FROM computer ORDER BY ID DESC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        idDescendingOrder.push_back(s);
+    }
+    return idDescendingOrder;
+}
 
+vector<Computer> DataLayer::readTypeInAlphabeticalOrder()
+{
+    vector<Computer> typeAscendingOrder;
+    QSqlQuery query("SELECT * FROM computer ORDER BY type ASC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        typeAscendingOrder.push_back(s);
+    }
+    return typeAscendingOrder;
+}
 
-
+vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
+{
+    vector<Computer> typeDescendingOrder;
+    QSqlQuery query("SELECT * FROM computer ORDER BY type DESC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        typeDescendingOrder.push_back(s);
+    }
+    return typeDescendingOrder;
+}
