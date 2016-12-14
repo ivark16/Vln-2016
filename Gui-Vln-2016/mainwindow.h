@@ -52,6 +52,8 @@ private slots:
 
     void on_addComputers_clicked();
 
+    void on_tableWidgetConnection_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
