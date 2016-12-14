@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "addScientist.h"
+#include "addComputer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -287,4 +288,11 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     {
         ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
     }
+}
+
+void MainWindow::on_addComputers_clicked()
+{
+    addComputer addComputer;
+    addComputer.exec();
+    displayAllComputer();
 }

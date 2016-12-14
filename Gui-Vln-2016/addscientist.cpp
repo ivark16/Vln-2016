@@ -56,11 +56,21 @@ void addScientist::on_addScientistButton_clicked()
 
     if(isLegalScientist)
     {
-        Scientist newScientist(0, _firstName, _lastName, 'm', _nationality, _birthYear, _deathYear, _awardYear);
+        Scientist newScientist(0, _firstName, _lastName, _gender, _nationality, _birthYear, _deathYear, _awardYear);
         _connection.addScientistToDatabase(newScientist);
         QMessageBox popup;
-        popup.setText("The scientist has successfully been added to the database");
+        popup.setText("The scientist has successfully been added to the database.");
         popup.exec();
+
+        //sets all text boxes to empty, in case the user wants to add another scientist.
+
+        ui ->birthYearBox ->setText("");
+        ui ->deathYearBox ->setText("");
+        ui ->firstNameBox ->setText("");
+        ui ->genderSelectBox ->setCurrentIndex(0);
+        ui ->lastNameBox -> setText("");
+        ui ->nationalityBox -> setText("");
+        ui ->turingAwardBox -> setText ("");
     }
 
 }
@@ -134,6 +144,8 @@ bool addScientist::getFirstName()
     }
     else
     {
+        //Make sure that the first letter of the name is upper case
+        potentialName[0] = toupper(potentialName[0]);
         //If there are no problems, the first name is legal.
         _firstName = potentialName;
     }
@@ -183,6 +195,8 @@ bool addScientist::getLastName()
     }
     else
     {
+        //make sure the first letter is uppercase
+        potentialName[0] = toupper(potentialName[0]);
         //If there are no problems, the last name is legal.
         _lastName = potentialName;
     }
@@ -207,7 +221,7 @@ bool addScientist::getNationality()
     //check that it has only characters
     for(unsigned int i = 0; i < potentialNationality.size(); i++)
     {
-        if(isalpha(potentialNationality[i]))
+        if(isalpha(potentialNationality[i]) || potentialNationality[i] == ' ')
         {
             //do nothing
         }
@@ -233,6 +247,8 @@ bool addScientist::getNationality()
     }
     else
     {
+        //make sure the first letter is upper case so it sorts correctly
+        potentialNationality[0] = toupper(potentialNationality[0]);
         //If there are no problems, the first name is legal.
         _nationality = potentialNationality;
     }
@@ -390,5 +406,4 @@ bool addScientist::getAwardYear()
     }
 
     return(hasOnlyNumbers && isInRange);
-
 }

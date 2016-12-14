@@ -50,6 +50,8 @@ private slots:
 
     void on_pushButtonDeleteComputer_clicked();
 
+    void on_addComputers_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
