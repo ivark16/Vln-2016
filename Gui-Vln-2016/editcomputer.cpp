@@ -7,6 +7,10 @@ editcomputer::editcomputer(QWidget *parent) :
     ui(new Ui::editcomputer)
 {
     ui->setupUi(this);
+    ui ->BuiltStatus ->addItem("Built status");
+    ui ->BuiltStatus ->addItem("---");
+    ui ->BuiltStatus ->addItem("Was built");
+    ui ->BuiltStatus ->addItem("Was not built");
 }
 
 editcomputer::~editcomputer()
@@ -23,10 +27,20 @@ void editcomputer::displayForUpdate(int id)
     QString name = QString::fromStdString(newvector[0].getComputerName());
     QString type = QString::fromStdString(newvector[0].getComputerType());
     QString yob = QString::number(newvector[0].getYearOfBuild());
+    int wasBuiltIndex;
+    if(!newvector[0].getWasBuilt())
+    {
+        wasBuiltIndex = 3;
+    }
+    else if(newvector[0].getWasBuilt())
+    {
+        wasBuiltIndex = 2;
+    }
 
     ui->lineEditName->setText(name);
     ui->lineEditType->setText(type);
-    ui->lineEditYOB->setText(yob);
+    ui->YearOfCreation->setText(yob);
+    ui ->BuiltStatus ->setCurrentIndex(wasBuiltIndex);
 
 }
 
@@ -37,18 +51,19 @@ void editcomputer::on_pushButtonUpdateComputer_clicked()
     bool hasName = getNAme();
     bool hasType = getType();
     bool hasBuildYear = getYearOfBuild();
-    //bool hasBeenBuilt = wasBuilt();
+    bool hasBuiltStatus = wasBuilt();
 
-    isLegitComputer = (hasName && hasType && hasBuildYear);
+    isLegitComputer = (hasName && hasType && hasBuildYear && hasBuiltStatus);
 
     if(isLegitComputer)
     {
         _lists.updateNameComputer(_name, _ID);
         _lists.updateTypeComputer(_type, _ID);
         _lists.updateYOCComputer(_yearBuilt, _ID);
+        _lists.updateWasBuilt(_wasBuilt, _ID);
 
         QMessageBox popup;
-        popup.setText("The Computer has successfully been updated to the database");
+        popup.setText("The Computer has successfully been updated in the database");
         popup.exec();
     }
 }
@@ -57,7 +72,7 @@ bool editcomputer::getNAme()
 {
     string potentialName = ui -> lineEditName ->text().toStdString();
 
-    bool hasOnlyChar = true;
+    bool hasLegalCharacters = true;
     bool hasContent = true;
 
     //Checks that there is something in the field
@@ -67,38 +82,38 @@ bool editcomputer::getNAme()
     }
 
     //check that it has only characters
-    /*for(unsigned int i = 0; i < potentialName.size(); i++)
+    for(unsigned int i = 0; i < potentialName.size(); i++)
     {
-        if(isalpha(potentialName[i]))
+        if(isalpha(potentialName[i]) || isdigit(potentialName[i]) || potentialName[i] == ' ')
         {
             //do nothing
         }
         else
         {
-            hasOnlyChar = false;
+            hasLegalCharacters = false;
         }
-    }*/
+    }
 
     //Throws errors if any are needed
     if(!hasContent)
     {
-        ui ->labelName ->setText("<span style='color: red'>First name required</span>");
+        ui ->nameLabel ->setText("<span style='color: red'>First name required</span>");
 
     }
-    /*else if(!hasOnlyChar)
+    else if(!hasLegalCharacters)
     {
-        ui ->labelName ->setText("<span style='color: red'>Name can only contain latin characters</span>");
-    }*/
-    else if(potentialName.size() < 1 || potentialName.size() > 40)
+        ui ->nameLabel ->setText("<span style='color: red'>Name can only contain characters, numbers and spaces</span>");
+    }
+    else if(potentialName.size() < 2 || potentialName.size() > 16)
     {
-        ui -> labelName ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> nameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
     }
     else
     {
         //If there are no problems, the first name is legal.
         _name = potentialName;
     }
-    return (hasContent && hasOnlyChar && !(potentialName.size() < 1 || potentialName.size() > 40));
+    return (hasContent && hasLegalCharacters && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
 bool editcomputer::getType()
@@ -115,7 +130,7 @@ bool editcomputer::getType()
     }
 
     //check that it has only characters
-    /*for(unsigned int i = 0; i < potentialType.size(); i++)
+    for(unsigned int i = 0; i < potentialType.size(); i++)
     {
         if(isalpha(potentialType[i]))
         {
@@ -125,43 +140,43 @@ bool editcomputer::getType()
         {
             hasOnlyChar = false;
         }
-    }*/
+    }
 
     //Throws errors if any are needed
     if(!hasContent)
     {
-        ui ->labelType ->setText("<span style='color: red'>First name required</span>");
+        ui ->typeLabel ->setText("<span style='color: red'>Type required</span>");
 
     }
-    /*else if(!hasOnlyChar)
+    else if(!hasOnlyChar)
     {
-        ui ->labelType ->setText("<span style='color: red'>Name can only contain latin characters</span>");
-    }*/
-    else if(potentialType.size() < 2 || potentialType.size() > 40)
+        ui ->typeLabel ->setText("<span style='color: red'>Type can only contain latin characters</span>");
+    }
+    else if(potentialType.size() < 2 || potentialType.size() > 16)
     {
-        ui -> labelType ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> typeLabel ->setText("<span style=' color: red'>Type must be between 2 and 16 characters</span>");
     }
     else
     {
         //If there are no problems, the first name is legal.
         _type= potentialType;
     }
-    return (hasContent && hasOnlyChar && !(potentialType.size() < 2 || potentialType.size() > 40));
+    return (hasContent && hasOnlyChar && !(potentialType.size() < 2 || potentialType.size() > 16));
 
 
 }
 
 bool editcomputer::getYearOfBuild()
 {
-    int potentialBuildYear = ui -> lineEditYOB ->text().toInt();
-    string potentialBuildYearString =(ui ->lineEditYOB ->text()).toStdString();
+    int potentialBuildYear = ui -> YearOfCreation ->text().toInt();
+    string potentialBuildYearString =(ui ->YearOfCreation ->text()).toStdString();
 
     bool hasContent = true;
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 
     //Checks that there is something in the field
-    if((ui ->lineEditYOB->text()).isEmpty())
+    if((ui ->YearOfCreation->text()).isEmpty())
     {
         hasContent = false;
     }
@@ -176,7 +191,7 @@ bool editcomputer::getYearOfBuild()
     }
 
     //checks that it is in range
-    if(potentialBuildYear <1700 || potentialBuildYear > 2016)
+    if(potentialBuildYear <1822 || potentialBuildYear > 2016)
     {
         isInRange = false;
     }
@@ -184,16 +199,16 @@ bool editcomputer::getYearOfBuild()
     //throws errors when necessary
     if(!hasContent)
     {
-        ui -> labelYOB ->setText("<span style='color: red'>Birth year required</span>");
+        ui -> YearOfCreationLabel ->setText("<span style='color: red'>Creation year required</span>");
 
     }
     else if(!hasOnlyNumbers)
     {
-        ui ->labelYOB ->setText("<span style='color: red'>Birth year can only contain numbers</span>");
+        ui ->YearOfCreationLabel ->setText("<span style='color: red'>Creation year can only contain numbers</span>");
     }
     else if(!isInRange)
     {
-        ui ->labelYOB ->setText("<span style=' color: red'>No computer scientists born in this year </span>");
+        ui ->YearOfCreationLabel ->setText("<span style=' color: red'>No computers made in this year</span>");
     }
     else
     {
@@ -203,4 +218,23 @@ bool editcomputer::getYearOfBuild()
 
 
     return(hasContent && hasOnlyNumbers && isInRange);
+}
+
+bool editcomputer::wasBuilt()
+{
+  if(ui ->BuiltStatus->currentIndex() <2 || ui ->BuiltStatus ->currentIndex() >3)
+  {
+      ui ->BuiltStatusLabel->setText("<span style=' color: red'>Built status required</span>");
+      return false;
+  }
+  else if(ui ->BuiltStatus->currentIndex() == 2)
+  {
+      _wasBuilt = true;
+      return true;
+  }
+  else if(ui ->BuiltStatus->currentIndex() == 3)
+  {
+      _wasBuilt = false;
+      return true;
+  }
 }
