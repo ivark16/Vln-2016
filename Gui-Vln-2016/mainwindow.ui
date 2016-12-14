@@ -137,25 +137,60 @@
            <property name="text">
             <string>ID</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>First name</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string>Last name</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Gender</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Nationality</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
@@ -384,8 +419,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>426</width>
-     <height>17</height>
+     <width>1057</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
