@@ -50,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -201,6 +201,12 @@
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>5</number>
+          </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
           </attribute>
@@ -341,7 +347,7 @@
      <x>0</x>
      <y>0</y>
      <width>1057</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

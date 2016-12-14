@@ -247,14 +247,15 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     }
 }
 
+// This function opens the Edit table and inserts the name from table into lineEdit in the edit table
 void MainWindow::on_pushButtonEditScientist_clicked()
 {
     int selectCurrentStudent = ui->tableWidget->currentIndex().row();
     Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
     int id = currscientist.getID();
-    blahh.displayForUpdate(id);
-    blahh.setModal(true);
-    blahh.exec();
+    _edit.displayForUpdate(id);
+    _edit.setModal(true);
+    _edit.exec();
     displayAllScientists();
 
 }

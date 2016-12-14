@@ -64,7 +64,7 @@ private:
     vector<Computer> currentlyDisplayComputer;
 
     listServices scientistService;
-    editscientist blahh;
+    editscientist _edit;
 };
 
 #endif // MAINWINDOW_H
