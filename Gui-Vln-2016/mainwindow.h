@@ -46,8 +46,9 @@ private:
 
     void displayAllConnections();
     void displayConnection(vector<connection> connections);
-
+    vector<Scientist> currentlyDisplayScientist;
     listServices scientistService;
+    editscientist blahh;
 };
 
 #endif // MAINWINDOW_H

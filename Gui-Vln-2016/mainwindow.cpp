@@ -65,7 +65,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
-
+    currentlyDisplayScientist = scientists;
 }
 
 void MainWindow::displayAllComputer()
@@ -192,7 +192,11 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
 
 void MainWindow::on_pushButtonEditScientist_clicked()
 {
-    editscientist edit;
-    edit.setModal(true);
-    edit.exec();
+    int selectCurrentStudent = ui->tableWidget->currentIndex().row();
+    Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
+    int id = currscientist.getID();
+     blahh.displayForUpdate(id);
+    blahh.setModal(true);
+    blahh.exec();
+
 }
