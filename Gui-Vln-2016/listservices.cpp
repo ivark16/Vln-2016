@@ -553,3 +553,31 @@ listServices::listServices()
 {
 
 }
+
+vector<Computer> listServices::computerIdAscendingOrder()
+{
+    vector<Computer> returnIdAscComputer;
+    returnIdAscComputer = _myData.readIdInAscendingOrder();
+    return returnIdAscComputer;
+}
+
+vector<Computer> listServices::computerIdDescendingOrder()
+{
+    vector<Computer> returnIdDescComputer;
+    returnIdDescComputer = _myData.readIdInDescindingOrder();
+    return returnIdDescComputer;
+}
+
+vector<Computer> listServices::computertypeAscendingOrder()
+{
+    vector<Computer> returntypeAscComputer;
+    returntypeAscComputer = _myData.readTypeInAlphabeticalOrder();
+    return returntypeAscComputer;
+}
+
+vector<Computer> listServices::computertypeDescendingOrder()
+{
+    vector<Computer> returntypeDescComputer;
+    returntypeDescComputer = _myData.readTypeInReverseAlphabeticalOrder();
+    return returntypeDescComputer;
+}

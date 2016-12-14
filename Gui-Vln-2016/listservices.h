@@ -59,6 +59,10 @@ public:
     //Function for alphabetical order of computers
     vector<Computer> computerInAlphabeticalOrder();
     vector<Computer> computerInReverseAlphabeticalOrder();
+    vector<Computer> computerIdAscendingOrder();
+    vector<Computer> computerIdDescendingOrder();
+    vector<Computer> computertypeAscendingOrder();
+    vector<Computer> computertypeDescendingOrder();
 
     //Function for alphabetical order of connections
     vector<connection> connectionInAlphabeticalOrder();
