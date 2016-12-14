@@ -174,7 +174,8 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 }
 
 //Connection------------------------------------------------------------------------------------------------------------------------
-void MainWindow::on_tableWidget_3_clicked(const QModelIndex &index)
+
+void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
 {
     //ui->button_remove_connection->setEnabled(true);
 }
@@ -187,9 +188,9 @@ void MainWindow::displayAllConnections()
 
 void MainWindow::displayConnection(vector<connection> connections)
 {
-    ui->tableWidget_3->clearContents();
+    ui->tableWidgetConnection->clearContents();
 
-    ui->tableWidget_3->setRowCount(connections.size());
+    ui->tableWidgetConnection->setRowCount(connections.size());
 
     for (unsigned int row = 0; row < connections.size(); row++)
     {
@@ -200,8 +201,8 @@ void MainWindow::displayConnection(vector<connection> connections)
         //QString ID = QString::number(currentConnection.getID());
 
         //ui->tableWidget->setItem(row, 0, new QTableWidgetItem(ID));
-        ui->tableWidget_3->setItem(row, 1,  new QTableWidgetItem(scientistId));
-        ui->tableWidget_3->setItem(row, 2,  new QTableWidgetItem(computersId));
+        ui->tableWidgetConnection->setItem(row, 1,  new QTableWidgetItem(scientistId));
+        ui->tableWidgetConnection->setItem(row, 2,  new QTableWidgetItem(computersId));
     }
 }
 void MainWindow::on_pushButtonEditConnection_clicked()
