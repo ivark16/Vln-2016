@@ -788,6 +788,66 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderGender()
     return returnScientist;
 }
 
+//This function sorts all scientists in Ascending order by Year of Award
+vector<Scientist> DataLayer::readInAscendingByYOA()
+{
+    vector<Scientist> returnScientist;
+    QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOA ASC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        returnScientist.push_back(s);
+    }
+    return returnScientist;
+}
+
+//This function sorts all scientists in Descending order by Year of Award
+vector<Scientist> DataLayer::readInDescendingByYOA()
+{
+    vector<Scientist> returnScientist;
+    QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOA DESC");
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        returnScientist.push_back(s);
+    }
+    return returnScientist;
+}
+
 //This returns all scientists who have won a Turing award in the year x, where x is input from the user.
 vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
 {
