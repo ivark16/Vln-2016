@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>408</height>
+    <width>1057</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -25,10 +25,28 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DatBase</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resorces.qrc">
+    <normaloff>:/Icons/Pictures/cornerIcon.png</normaloff>:/Icons/Pictures/cornerIcon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow
+ {
+ 	background-color: rgb(196, 228, 236);
+ }
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/Icons/Pictures/datBase.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
@@ -224,7 +242,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="addComputers">
           <property name="text">
            <string>Add</string>
           </property>
@@ -242,9 +260,8 @@
         </item>
        </layout>
        <zorder>pushButton_2</zorder>
-       <zorder>pushButton_3</zorder>
+       <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
-       <zorder>horizontalLayoutWidget</zorder>
        <zorder>tableWidget_2</zorder>
       </widget>
       <widget class="QWidget" name="tabConnections">
@@ -263,15 +280,30 @@
          <widget class="QComboBox" name="comboBoxConnection"/>
         </item>
         <item>
-         <widget class="QTableWidget" name="tableWidget_3">
+         <widget class="QTableWidget" name="tableWidgetConnection">
           <column>
            <property name="text">
-            <string>ScientistID</string>
+            <string>First Name</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>ComputerID</string>
+            <string>Last Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>N.O.C</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>T.O.C</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Y.O.C</string>
            </property>
           </column>
          </widget>
@@ -308,14 +340,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>465</width>
-     <height>17</height>
+     <width>1057</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionHelp"/>
    </widget>
    <addaction name="menuHelp"/>
   </widget>
@@ -328,8 +361,19 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="resorces.qrc">
+     <normaloff>:/Icons/Pictures/icon.png</normaloff>:/Icons/Pictures/icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resorces.qrc"/>
+ </resources>
  <connections/>
 </ui>

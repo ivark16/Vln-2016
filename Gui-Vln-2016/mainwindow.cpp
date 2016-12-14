@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "addScientist.h"
+#include "addComputer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -42,7 +43,20 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         string s(1, a);
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
-        QString gender = QString::fromStdString(s);        QString nationality = QString::fromStdString(currentScientist.getNationality());
+        QString gender = QString::fromStdString(s);
+        if(gender == "m" || gender == "M")
+        {
+            gender = "Male";
+        }
+        else if(gender == "f" || gender == "F")
+        {
+            gender = "Female";
+        }
+        else
+        {
+            gender = "Other";
+        }
+        QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
         if(deathYear == "0")
@@ -86,11 +100,21 @@ void MainWindow::displayComputer(vector<Computer> computers)
         QString name = QString::fromStdString(allComputer.getComputerName());
         QString type = QString::fromStdString(allComputer.getComputerType());
         QString yob = QString::number(allComputer.getYearOfBuild());
+        QString wasBuilt;
+        if(allComputer.getWasBuilt())
+        {
+            wasBuilt = "Yes";
+        }
+        else
+        {
+            wasBuilt = "No";
+        }
 
         ui->tableWidget_2->setItem(row , 0, new QTableWidgetItem(ID));
         ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(name));
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
+        ui ->tableWidget_2->setItem(row,4,new QTableWidgetItem(wasBuilt));
     }
     currentlyDisplayComputer = computers;
 }
@@ -150,7 +174,8 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 }
 
 //Connection------------------------------------------------------------------------------------------------------------------------
-void MainWindow::on_tableWidget_3_clicked(const QModelIndex &index)
+
+void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
 {
     //ui->button_remove_connection->setEnabled(true);
 }
@@ -163,9 +188,9 @@ void MainWindow::displayAllConnections()
 
 void MainWindow::displayConnection(vector<connection> connections)
 {
-    ui->tableWidget_3->clearContents();
+    ui->tableWidgetConnection->clearContents();
 
-    ui->tableWidget_3->setRowCount(connections.size());
+    ui->tableWidgetConnection->setRowCount(connections.size());
 
     for (unsigned int row = 0; row < connections.size(); row++)
     {
@@ -176,8 +201,8 @@ void MainWindow::displayConnection(vector<connection> connections)
         //QString ID = QString::number(currentConnection.getID());
 
         //ui->tableWidget->setItem(row, 0, new QTableWidgetItem(ID));
-        ui->tableWidget_3->setItem(row, 1,  new QTableWidgetItem(scientistId));
-        ui->tableWidget_3->setItem(row, 2,  new QTableWidgetItem(computersId));
+        ui->tableWidgetConnection->setItem(row, 1,  new QTableWidgetItem(scientistId));
+        ui->tableWidgetConnection->setItem(row, 2,  new QTableWidgetItem(computersId));
     }
 }
 void MainWindow::on_pushButtonEditConnection_clicked()
@@ -292,4 +317,17 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     {
         ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
     }
+}
+
+void MainWindow::on_actionHelp_triggered()
+{
+    HelpWindow window;
+    window.on_pushButton_clicked();
+}
+
+void MainWindow::on_addComputers_clicked()
+{
+    addComputer addComputer;
+    addComputer.exec();
+    displayAllComputer();
 }
