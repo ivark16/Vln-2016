@@ -483,21 +483,17 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButtonAscendingComputer_clicked()
 {
     vector<Computer> computer;
-    if (ui->comboBoxComputer->currentText() == "")
+    if (ui->comboBoxComputer->currentText() == "ID")
     {
-        computer = scientistService.displayComputer();
-    }
-    else if (ui->comboBoxComputer->currentText() == "ID")
-    {
-        //computer = scientistService.;
+        computer = scientistService.computerIdAscendingOrder();
     }
    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInAlphabeticalOrder();
     }
-    else if (ui->comboBoxComputer->currentText() == "Alphabetical order of type")
+    else if (ui->comboBoxComputer->currentText() == "Type")
     {
-        //computer = scientistService;
+        computer = scientistService.computertypeAscendingOrder();
     }
     else if (ui->comboBoxComputer->currentText() == "Year built")
     {
@@ -513,13 +509,9 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
 void MainWindow::on_pushButtonDescendingComputer_clicked()
 {
     vector<Computer> computer;
-    if (ui->comboBoxComputer->currentText() == "")
+    if (ui->comboBoxComputer->currentText() == "ID")
     {
-        computer = scientistService.displayComputer();
-    }
-    else if (ui->comboBoxComputer->currentText() == "ID")
-    {
-        //computer = scientistService.;
+        computer = scientistService.computerIdDescendingOrder();
     }
    else if (ui->comboBoxComputer->currentText() == "Name")
     {
@@ -527,7 +519,7 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     }
     else if (ui->comboBoxComputer->currentText() == "Type")
     {
-        //computer = scientistService;
+        computer = scientistService.computertypeDescendingOrder();
     }
     else if (ui->comboBoxComputer->currentText() == "Year built")
     {
