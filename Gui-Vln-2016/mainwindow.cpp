@@ -43,7 +43,20 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         string s(1, a);
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
-        QString gender = QString::fromStdString(s);        QString nationality = QString::fromStdString(currentScientist.getNationality());
+        QString gender = QString::fromStdString(s);
+        if(gender == "m" || gender == "M")
+        {
+            gender = "Male";
+        }
+        else if(gender == "f" || gender == "F")
+        {
+            gender = "Female";
+        }
+        else
+        {
+            gender = "Other";
+        }
+        QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
         if(deathYear == "0")
@@ -87,11 +100,21 @@ void MainWindow::displayComputer(vector<Computer> computers)
         QString name = QString::fromStdString(allComputer.getComputerName());
         QString type = QString::fromStdString(allComputer.getComputerType());
         QString yob = QString::number(allComputer.getYearOfBuild());
+        QString wasBuilt;
+        if(allComputer.getWasBuilt())
+        {
+            wasBuilt = "Yes";
+        }
+        else
+        {
+            wasBuilt = "No";
+        }
 
         ui->tableWidget_2->setItem(row , 0, new QTableWidgetItem(ID));
         ui->tableWidget_2->setItem(row, 1, new QTableWidgetItem(name));
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
+        ui ->tableWidget_2->setItem(row,4,new QTableWidgetItem(wasBuilt));
     }
     currentlyDisplayComputer = computers;
 }
