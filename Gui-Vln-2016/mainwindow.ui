@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>420</height>
+    <width>1057</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -25,10 +25,28 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Database</string>
+   <string>DatBase</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resorces.qrc">
+    <normaloff>:/Icons/Pictures/cornerIcon.png</normaloff>:/Icons/Pictures/cornerIcon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow
+ {
+ 	background-color: rgb(196, 228, 236);
+ }
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/Icons/Pictures/datBase.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
@@ -194,6 +212,12 @@
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="columnCount">
+           <number>5</number>
+          </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
           </attribute>
@@ -333,8 +357,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>465</width>
-     <height>17</height>
+     <width>1057</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

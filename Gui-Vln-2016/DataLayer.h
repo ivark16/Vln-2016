@@ -52,6 +52,7 @@ public:
     vector<Scientist> readInOldestOrder();
     vector<Scientist> readInYoungestOrder();
     vector<Scientist> readAllFromScientistsDataBase();
+    vector<Scientist> readAllFromScientistDataBaseById(int x);
 
     //Search functions for scientists
     vector<Scientist> searchForTuringAwardWinners(int x);
@@ -68,6 +69,7 @@ public:
     vector<Computer> readInOldestOrderComputer();
     vector<Computer> readInYoungestOrderComputer();
     vector<Computer> readAllFromDataComputerBase();
+    vector<Computer> readAllFromDataComputerBaseById(int x);
 
     //Add functions for computer, connect and scientist
     bool addFunctionComputer(Computer newComputer);

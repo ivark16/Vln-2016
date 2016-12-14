@@ -33,11 +33,25 @@ vector<Scientist> listServices::displayScientist()
     return display;
 }
 
+vector<Scientist> listServices::displayScientistById(int x)
+{
+    vector<Scientist> displayByIdScientist;
+    displayByIdScientist = _myData.readAllFromScientistDataBaseById(x);
+    return displayByIdScientist;
+}
+
 vector<Computer> listServices::displayComputer()
 {
     vector<Computer> display;
     display = _myData.readAllFromDataComputerBase();
     return display;
+}
+
+vector<Computer> listServices::displayComputerById(int x)
+{
+    vector<Computer> displayById;
+    displayById = _myData.readAllFromDataComputerBaseById(x);
+    return displayById;
 }
 
 vector<connection> listServices::displayConnection()
