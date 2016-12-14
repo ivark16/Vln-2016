@@ -132,17 +132,32 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     return displayJoinComputer;
 }
 
-void listServices::deleteScientistFromDatabase(int x)
+bool listServices::deleteScientistFromDatabase(int x)
 {
-    _myData.deleteFunction(x);
-    _myData.deleteConnectionFunctionScientist(x);
-
+    bool check;
+    if (_myData.deleteFunction(x) == true && _myData.deleteConnectionFunctionScientist(x) == true)
+    {
+        check = true;
+    }
+    else
+    {
+        check == false;
+    }
+    return check;
 }
 
-void listServices::deleteComputerFromDatabase(int x)
+bool listServices::deleteComputerFromDatabase(int x)
 {
-    _myData.deleteFunctionComputer(x);
-    _myData.deleteConnectionFunctionComputer(x);
+    bool check;
+    if(_myData.deleteFunctionComputer(x) == true && _myData.deleteConnectionFunctionComputer(x) == true)
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
 }
 
 //This function creates and returns a new vector containing only living scientists.

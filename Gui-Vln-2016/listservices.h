@@ -18,8 +18,8 @@ public:
     void addScientistToDatabase(Scientist newScientist);
     void addComputerToDatabase(Computer newComputer);
     void addConnectionToDatabase(connection newConnection);
-    void deleteScientistFromDatabase(int x);
-    void deleteComputerFromDatabase(int x);
+    bool deleteScientistFromDatabase(int x);
+    bool deleteComputerFromDatabase(int x);
     void deleteConnectionFromDatabase(int x);
     vector<Scientist> scientistInAlphabeticalOrder();
     vector<Scientist> scientistInReverseAlphabeticalOrder();

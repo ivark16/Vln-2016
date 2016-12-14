@@ -2,7 +2,10 @@
 #define ADDSCIENTIST_H
 
 #include <QDialog>
+#include <string>
 #include "listservices.h"
+
+using namespace std;
 
 namespace Ui {
 class addScientist;
@@ -23,7 +26,29 @@ private slots:
 
 private:
     Ui::addScientist *ui;
-    listServices connection;
+    listServices _connection;
+    string _firstName;
+    string _lastName;
+    char _gender;
+    string _nationality;
+    int _birthYear;
+    int _deathYear;
+    int _awardYear;
+
+
+    bool getGender();
+    bool getFirstName();
+    bool getLastName();
+    bool getNationality();
+    bool getBirthYear();
+    bool getDeathYear();
+    bool getAwardYear();
+
+
+
+
+
+
 };
 
 #endif // ADDSCIENTIST_H

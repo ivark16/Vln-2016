@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 {
-    //ui->button_remove_student->setEnabled(true);
+    ui->pushButtonDeleteScientist->setEnabled(true);
 }
 
 void MainWindow::displayAllScientists()
@@ -92,11 +92,12 @@ void MainWindow::displayComputer(vector<Computer> computers)
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
     }
+    currentlyDisplayComputer = computers;
 }
 
 void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
-
+        ui->pushButtonDeleteComputer->setEnabled(true);
 }
 
 //Fall til ad leita ad visindamonnum, leitar ad nofnum og fæðingarári vísindamanna.
@@ -148,7 +149,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     }
 }
 
-
+//Connection------------------------------------------------------------------------------------------------------------------------
 void MainWindow::on_tableWidget_3_clicked(const QModelIndex &index)
 {
     //ui->button_remove_connection->setEnabled(true);
@@ -179,15 +180,46 @@ void MainWindow::displayConnection(vector<connection> connections)
         ui->tableWidget_3->setItem(row, 2,  new QTableWidgetItem(computersId));
     }
 }
-
-void MainWindow::on_pushButtonAddScientist_clicked()
+void MainWindow::on_pushButtonEditConnection_clicked()
 {
 
 }
 
-void MainWindow::on_pushButtonDeleteScientist_clicked()
+void MainWindow::on_pushButtonAddConnection_clicked()
 {
 
+}
+
+void MainWindow::on_pushButtonDeleteConnection_clicked()
+{
+
+}
+
+//------------------------------------------------------------------------------------------------------------------------------
+
+void MainWindow::on_pushButtonAddScientist_clicked()
+{
+    addScientist addScientist;
+    addScientist.exec();
+    displayAllScientists();
+}
+
+void MainWindow::on_pushButtonDeleteScientist_clicked()
+{
+    int scientistNo = ui->tableWidget->currentIndex().row();
+    Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+    int id = currentScientist.getID();
+    bool success = scientistService.deleteScientistFromDatabase(id);
+
+    if (success == true)
+    {
+        displayAllScientists();
+        ui->pushButtonDeleteScientist->setEnabled(false);
+    }
+    else
+    {
+        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
+    }
 }
 
 void MainWindow::on_pushButtonEditScientist_clicked()
@@ -199,4 +231,64 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     blahh.setModal(true);
     blahh.exec();
 
+}
+
+void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
+{
+    ui->pushButtonDeleteScientist->setEnabled(true);
+}
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
+{
+    ui->labelComputerErrorMessage->setText("");
+    string inputSearch = ui->lineEditComputer->text().toStdString();
+    vector<Computer> searchname;
+    vector<Computer> searchYear;
+
+    if (isdigit(inputSearch[0]) == true)
+    {
+        int b = atoi(inputSearch.c_str());
+        searchYear = scientistService.searchWhenBuiltSingleYear(b);
+        displayComputer(searchYear);
+    }
+    else
+    {
+         searchname = scientistService.searchForNameComputer(inputSearch);
+         if (searchname.size() == 0)
+         {
+             searchname = scientistService.searchForTypeComputer(inputSearch);
+             displayComputer(searchname);
+         }
+         else
+         {
+            displayComputer(searchname);
+         }
+    }
+    if (searchname.size()==0 && searchYear.size() == 0)
+    {
+        ui->labelComputerErrorMessage->setText("<span style=' color: red'> No computer found </span>");
+    }
+}
+
+void MainWindow::on_pushButtonDeleteComputer_clicked()
+{
+    int computerNo = ui->tableWidget_2->currentIndex().row();
+    Computer currentComputer = currentlyDisplayComputer.at(computerNo);
+    int id = currentComputer.getID();
+    bool success = scientistService.deleteComputerFromDatabase(id);
+
+    if (success == true)
+    {
+        displayAllComputer();
+        ui->pushButtonDeleteComputer->setEnabled(false);
+    }
+    else
+    {
+        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
+    }
 }

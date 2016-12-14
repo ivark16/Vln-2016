@@ -6,14 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>330</height>
+    <width>510</width>
+    <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Add a new scientist to the database&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
    <item>
     <spacer name="horizontalSpacer_3">
      <property name="orientation">
@@ -87,6 +94,18 @@
      </item>
      <item>
       <widget class="QLabel" name="genderLabel">
+       <property name="minimumSize">
+        <size>
+         <width>239</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>239</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -105,6 +124,12 @@
      </item>
      <item>
       <widget class="QComboBox" name="genderSelectBox">
+       <property name="minimumSize">
+        <size>
+         <width>239</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="currentText">
         <string/>
        </property>
