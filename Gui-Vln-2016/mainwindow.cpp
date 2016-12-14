@@ -66,7 +66,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
     }
-    currrentlyDisplaydStudent = scientists;
+    currentlyDisplayScientist = scientists;
 }
 
 void MainWindow::displayAllComputer()
@@ -208,7 +208,7 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 void MainWindow::on_pushButtonDeleteScientist_clicked()
 {
     int scientistNo = ui->tableWidget->currentIndex().row();
-    Scientist currentScientist = currrentlyDisplaydStudent.at(scientistNo);
+    Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
     bool success = scientistService.deleteScientistFromDatabase(id);
 
@@ -225,9 +225,13 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
 
 void MainWindow::on_pushButtonEditScientist_clicked()
 {
-    editscientist edit;
-    edit.setModal(true);
-    edit.exec();
+    int selectCurrentStudent = ui->tableWidget->currentIndex().row();
+    Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
+    int id = currscientist.getID();
+     blahh.displayForUpdate(id);
+    blahh.setModal(true);
+    blahh.exec();
+
 }
 
 void MainWindow::on_tableWidget_clicked(const QModelIndex &index)

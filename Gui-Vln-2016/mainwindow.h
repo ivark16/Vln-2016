@@ -63,10 +63,11 @@ private:
     void displayAllConnections();
     void displayConnection(vector<connection> connections);
 
-    vector<Scientist> currrentlyDisplaydStudent;
+    vector<Scientist> currentlyDisplayScientist;
     vector<Computer> currentlyDisplayComputer;
 
     listServices scientistService;
+    editscientist blahh;
 };
 
 #endif // MAINWINDOW_H
