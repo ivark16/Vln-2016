@@ -161,6 +161,7 @@ bool editscientist::getFirstName()
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));*/
     //If there are no problems, the first name is legal.
     _firstName = potentialName;
+    return true;
 }
 
 bool editscientist::getLastName()
@@ -210,6 +211,7 @@ bool editscientist::getLastName()
     }
 
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));*/
+    return true;
 }
 
 bool editscientist::getNationality()
@@ -260,6 +262,7 @@ bool editscientist::getNationality()
     }
 
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));*/
+    return true;
 }
 
 bool editscientist::getBirthYear()
