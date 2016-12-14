@@ -50,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -281,6 +281,31 @@
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QComboBox" name="comboBoxComputer">
+            <property name="currentText">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonAscendingComputer">
+            <property name="text">
+             <string>Ascending</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonDescendingComputer">
+            <property name="text">
+             <string>Descending</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
          <widget class="QTableWidget" name="tableWidget_2">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
@@ -391,6 +416,7 @@
        <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
        <zorder>tableWidget_2</zorder>
+       <zorder>horizontalLayoutWidget</zorder>
       </widget>
       <widget class="QWidget" name="tabConnections">
        <attribute name="title">
@@ -530,7 +556,7 @@
      <normaloff>:/Icons/Pictures/icon.png</normaloff>:/Icons/Pictures/icon.png</iconset>
    </property>
    <property name="text">
-    <string>Help</string>
+    <string> </string>
    </property>
   </action>
  </widget>

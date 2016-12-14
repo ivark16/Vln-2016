@@ -17,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxScientist->addItem("Year of birth");
     ui->comboBoxScientist->addItem("Year of death");
     ui->comboBoxScientist->addItem("Year of award");
+    ui->comboBoxComputer->addItem("");
+    ui->comboBoxComputer->addItem("ID");
+    ui->comboBoxComputer->addItem("Name");
+    ui->comboBoxComputer->addItem("Type");
+    ui->comboBoxComputer->addItem("Year built");
+    ui->comboBoxComputer->addItem("Was it built?");
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
@@ -398,7 +404,7 @@ void MainWindow::on_radioButtonAscending_clicked()
     {
         ui->radioButtonAscending->setCheckable(false);
         ui->radioButtonAscending->update();
-        //scientist = scientistService.;
+        scientist = scientistService.readInAscendingByYOA();
     }
     displayScientist(scientist);
 }
@@ -452,7 +458,7 @@ void MainWindow::on_radioButtonDescending_clicked()
     {
         ui->radioButtonAscending->setCheckable(false);
         ui->radioButtonAscending->update();
-        //scientist = scientistService.;
+        scientist = scientistService.readInDescendingByYOA();
     }
     displayScientist(scientist);
 }
@@ -460,4 +466,64 @@ void MainWindow::on_radioButtonDescending_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
 
+}
+
+void MainWindow::on_pushButtonAscendingComputer_clicked()
+{
+    vector<Computer> computer;
+    if (ui->comboBoxComputer->currentText() == "")
+    {
+        computer = scientistService.displayComputer();
+    }
+    else if (ui->comboBoxComputer->currentText() == "ID")
+    {
+        //computer = scientistService.;
+    }
+   else if (ui->comboBoxComputer->currentText() == "Name")
+    {
+        computer = scientistService.computerInAlphabeticalOrder();
+    }
+    else if (ui->comboBoxComputer->currentText() == "Alphabetical order of type")
+    {
+        //computer = scientistService;
+    }
+    else if (ui->comboBoxComputer->currentText() == "Year built")
+    {
+        computer = scientistService.oldestOrderComputer();
+    }
+    else if (ui->comboBoxComputer->currentText() == "Was it built?")
+    {
+        //computer = scientistService;
+    }
+    displayComputer(computer);
+}
+
+void MainWindow::on_pushButtonDescendingComputer_clicked()
+{
+    vector<Computer> computer;
+    if (ui->comboBoxComputer->currentText() == "")
+    {
+        computer = scientistService.displayComputer();
+    }
+    else if (ui->comboBoxComputer->currentText() == "ID")
+    {
+        //computer = scientistService.;
+    }
+   else if (ui->comboBoxComputer->currentText() == "Name")
+    {
+        computer = scientistService.computerInReverseAlphabeticalOrder();
+    }
+    else if (ui->comboBoxComputer->currentText() == "Type")
+    {
+        //computer = scientistService;
+    }
+    else if (ui->comboBoxComputer->currentText() == "Year built")
+    {
+        computer = scientistService.youngestOrderComputer();
+    }
+    else if (ui->comboBoxComputer->currentText() == "Was it built?")
+    {
+        //computer = scientistService;
+    }
+    displayComputer(computer);
 }
