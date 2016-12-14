@@ -49,6 +49,8 @@ private slots:
     void on_actionHelp_triggered();
     void on_addComputers_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
