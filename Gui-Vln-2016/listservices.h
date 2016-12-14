@@ -51,7 +51,7 @@ public:
     bool deleteComputerFromDatabase(int x);
 
     //Functions for deleting Connection
-    void deleteConnectionFromDatabase(int x);
+    bool deleteConnectionFromDatabase(int x, int y);
 
     //Functions for alphabetical order of Scientists
     vector<Scientist> scientistInAlphabeticalOrder();

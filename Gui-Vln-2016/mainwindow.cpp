@@ -229,6 +229,7 @@ void MainWindow::displayConnection(vector<searching> connections)
         ui->tableWidgetConnection->setItem(row, 3, new QTableWidgetItem(type));
         ui->tableWidgetConnection->setItem(row, 4, new QTableWidgetItem(yob));
     }
+    currentlyDisplayConnection = connections;
 }
 void MainWindow::on_pushButtonEditConnection_clicked()
 {
@@ -243,7 +244,21 @@ void MainWindow::on_pushButtonAddConnection_clicked()
 
 void MainWindow::on_pushButtonDeleteConnection_clicked()
 {
+    int connectNo = ui->tableWidgetConnection->currentIndex().row();
+    searching currentConnection = currentlyDisplayConnection.at(connectNo);
+    /*int idComputer = currentConnection.getComputersId();
+    int idScientist = currentConnection.getScientistId();
+    scientistService.deleteConnectionFromDatabase(idComputer, idScientist);
 
+    if (success == true)
+    {
+        displayAllScientists();
+        ui->pushButtonDeleteConnection->setEnabled(false);
+    }
+    else
+    {
+        //ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
+    }*/
 }
 
 //------------------------------------------------------------------------------------------------------------------------------

@@ -230,6 +230,20 @@ bool listServices::deleteComputerFromDatabase(int x)
     return check;
 }
 
+bool listServices::deleteConnectionFromDatabase(int x, int y)
+{
+    bool check;
+    if(_myData.deleteConnectionFunctionComputer(x) == true && _myData.deleteConnectionFunctionScientist(y) == true)
+    {
+        check = true;
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+
 //This function creates and returns a new vector containing only living scientists.
 vector<Scientist> listServices::searchAliveScientist()
 {

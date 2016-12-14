@@ -6,6 +6,8 @@
 #include "editscientist.h"
 #include "helpwindow.h"
 #include "computer.h"
+#include "connection.h"
+#include "searching.h"
 #include "editcomputer.h"
 #include <vector>
 #include <QMainWindow>
@@ -73,6 +75,7 @@ private:
 
     vector<Scientist> currentlyDisplayScientist;
     vector<Computer> currentlyDisplayComputer;
+    vector<searching> currentlyDisplayConnection;
 
 
     listServices scientistService;

@@ -449,6 +449,18 @@
         </item>
         <item>
          <widget class="QTableWidget" name="tableWidgetConnection">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
           <column>
            <property name="text">
             <string>First Name</string>
@@ -514,7 +526,7 @@
         <item>
          <widget class="QPushButton" name="pushButtonEditConnection">
           <property name="text">
-           <string>Edit</string>
+           <string>Connection table</string>
           </property>
          </widget>
         </item>
@@ -527,8 +539,20 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonDeleteConnection">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Delete</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
