@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     addscientist.cpp \
     editscientist.cpp \
     addcomputer.cpp \
-    helpwindow.cpp
+    helpwindow.cpp \
+    addconnection.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     addscientist.h \
     editscientist.h \
     addcomputer.h \
-    helpwindow.h
+    helpwindow.h \
+    addconnection.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -55,7 +57,8 @@ FORMS   += mainwindow.ui \
     addscientist.ui \
     editscientist.ui \
     addcomputer.ui \
-    helpwindow.ui
+    helpwindow.ui \
+    addconnection.ui
 
     addscientist.ui
     editscientist.ui

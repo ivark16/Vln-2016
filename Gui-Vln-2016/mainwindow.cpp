@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "addScientist.h"
 #include "addComputer.h"
+#include "addconnection.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -212,7 +213,8 @@ void MainWindow::on_pushButtonEditConnection_clicked()
 
 void MainWindow::on_pushButtonAddConnection_clicked()
 {
-
+    addConnection addNew;
+    addNew.exec();
 }
 
 void MainWindow::on_pushButtonDeleteConnection_clicked()
