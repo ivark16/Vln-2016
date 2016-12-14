@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>420</height>
+    <width>1057</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -28,11 +28,18 @@
    <string>Database</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/Icons/Pictures/datBase.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -322,8 +329,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>465</width>
-     <height>17</height>
+     <width>1057</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
