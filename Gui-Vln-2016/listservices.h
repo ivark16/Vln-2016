@@ -74,6 +74,9 @@ public:
     vector<Scientist> readInReverseAlphabeticalOrderNationality();
     vector<Scientist> readInAlphabeticalOrderGender();
     vector<Scientist> readInReverseAlphabeticalOrderGender();
+    vector<Scientist> readInAscendingByYOA();
+    vector<Scientist> readInDescendingByYOA();
+
 
 
 };

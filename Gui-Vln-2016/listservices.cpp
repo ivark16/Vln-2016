@@ -118,6 +118,20 @@ vector<Scientist> listServices::readInReverseAlphabeticalOrderGender()
     return returnScientist;
 }
 
+vector<Scientist> listServices::readInAscendingByYOA()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInAscendingByYOA();
+    return returnScientist;
+}
+
+vector<Scientist> listServices::readInDescendingByYOA()
+{
+    vector<Scientist> returnScientist;
+    returnScientist = _myData.readInDescendingByYOA();
+    return returnScientist;
+}
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
