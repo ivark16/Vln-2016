@@ -201,11 +201,11 @@ void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
 
 void MainWindow::displayAllConnections()
 {
-    vector<connection> connections = scientistService.displayConnection();
+    vector<searching> connections = scientistService.displayAllFromSearching();
     displayConnection(connections);
 }
 
-void MainWindow::displayConnection(vector<connection> connections)
+void MainWindow::displayConnection(vector<searching> connections)
 {
     ui->tableWidgetConnection->clearContents();
 
@@ -213,15 +213,19 @@ void MainWindow::displayConnection(vector<connection> connections)
 
     for (unsigned int row = 0; row < connections.size(); row++)
     {
-        connection currentConnection = connections[row];
+        searching currentConnection = connections[row];
 
-        QString scientistId = QString::number(currentConnection.getScientistId());
-        QString computersId = QString::number(currentConnection.getComputersId());
-        //QString ID = QString::number(currentConnection.getID());
+        QString firstName = QString::fromStdString(currentConnection.getSearchFirstName());
+        QString lastName = QString::fromStdString(currentConnection.getSearchLastName());
+        QString name = QString::fromStdString(currentConnection.getSearchComputerName());
+        QString type = QString::fromStdString(currentConnection.getSearchComputerType());
+        QString yob = QString::number(currentConnection.getSearchYearBuilt());
 
-        //ui->tableWidget->setItem(row, 0, new QTableWidgetItem(ID));
-        ui->tableWidgetConnection->setItem(row, 1,  new QTableWidgetItem(scientistId));
-        ui->tableWidgetConnection->setItem(row, 2,  new QTableWidgetItem(computersId));
+        ui->tableWidgetConnection->setItem(row, 0,  new QTableWidgetItem(firstName));
+        ui->tableWidgetConnection->setItem(row, 1,  new QTableWidgetItem(lastName));
+        ui->tableWidgetConnection->setItem(row, 2, new QTableWidgetItem(name));
+        ui->tableWidgetConnection->setItem(row, 3, new QTableWidgetItem(type));
+        ui->tableWidgetConnection->setItem(row, 4, new QTableWidgetItem(yob));
     }
 }
 void MainWindow::on_pushButtonEditConnection_clicked()

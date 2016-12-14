@@ -69,10 +69,11 @@ private:
     void displayComputer (vector<Computer> computers);
 
     void displayAllConnections();
-    void displayConnection(vector<connection> connections);
+    void displayConnection(vector<searching> connections);
 
     vector<Scientist> currentlyDisplayScientist;
     vector<Computer> currentlyDisplayComputer;
+
 
     listServices scientistService;
     editscientist _edit;

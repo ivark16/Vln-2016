@@ -581,3 +581,10 @@ vector<Computer> listServices::computertypeDescendingOrder()
     returntypeDescComputer = _myData.readTypeInReverseAlphabeticalOrder();
     return returntypeDescComputer;
 }
+
+vector<searching> listServices::displayAllFromSearching()
+{
+    vector<searching> displayAllScientistComputer;
+    displayAllScientistComputer = _myData.displayAllfromSearching();
+    return displayAllScientistComputer;
+}

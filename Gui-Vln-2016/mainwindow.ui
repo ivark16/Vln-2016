@@ -50,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -416,7 +416,6 @@
        <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
        <zorder>tableWidget_2</zorder>
-       <zorder>horizontalLayoutWidget</zorder>
       </widget>
       <widget class="QWidget" name="tabConnections">
        <attribute name="title">
@@ -556,7 +555,7 @@
      <normaloff>:/Icons/Pictures/icon.png</normaloff>:/Icons/Pictures/icon.png</iconset>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </action>
  </widget>
