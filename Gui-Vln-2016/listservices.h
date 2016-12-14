@@ -68,6 +68,13 @@ public:
     vector<Computer> searchForTypeComputer(string s);
     vector<Scientist> checkDeathYear(int x);
     vector<Scientist> checkNationality(string s);
+    vector<Scientist> readInAscendingByID();
+    vector<Scientist> readInDiscendingByID();
+    vector<Scientist> readInAlphabeticalOrderNationality();
+    vector<Scientist> readInReverseAlphabeticalOrderNationality();
+    vector<Scientist> readInAlphabeticalOrderGender();
+    vector<Scientist> readInReverseAlphabeticalOrderGender();
+
 
 };
 

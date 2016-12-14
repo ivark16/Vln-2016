@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1057</width>
-    <height>706</height>
+    <width>481</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="baseSize">
@@ -76,7 +76,45 @@
          </layout>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBoxScientist"/>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QComboBox" name="comboBoxScientist"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Display</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>10</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButtonAscending">
+            <property name="text">
+             <string>Ascending</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButtonDescending">
+            <property name="text">
+             <string>Descending</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QTableWidget" name="tableWidget">
@@ -99,25 +137,60 @@
            <property name="text">
             <string>ID</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>First name</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string>Last name</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Gender</string>
            </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
+           </property>
           </column>
           <column>
            <property name="text">
             <string>Nationality</string>
+           </property>
+           <property name="background">
+            <color>
+             <red>0</red>
+             <green>128</green>
+             <blue>255</blue>
+            </color>
            </property>
           </column>
           <column>
@@ -346,8 +419,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1057</width>
-     <height>26</height>
+     <width>481</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

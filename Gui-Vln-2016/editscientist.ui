@@ -132,9 +132,9 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <item>
-      <widget class="QLabel" name="labelYOA">
+      <widget class="QLabel" name="LabelYOB">
        <property name="text">
-        <string>Year of award</string>
+        <string>Year of birth</string>
        </property>
       </widget>
      </item>
@@ -146,9 +146,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="LabelYOB">
+      <widget class="QLabel" name="labelYOA">
        <property name="text">
-        <string>Year of birth</string>
+        <string>Year of award</string>
        </property>
       </widget>
      </item>

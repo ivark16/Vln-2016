@@ -63,6 +63,7 @@ void editscientist::displayForUpdate(int Id)
 
 void editscientist::on_pushButtonUpdate_clicked()
 {
+    bool isLegalScientist;
     //this runs if no required fields are empty.
 
     bool hasFirstName = getFirstName();
@@ -74,13 +75,13 @@ void editscientist::on_pushButtonUpdate_clicked()
     bool hasAwardYear = getAwardYear(); // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
     //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
-    //isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
+    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
 
-    if(true)
+    if(isLegalScientist)
     {
         _lists.updateFirstNameScientist(_firstName, _ID);
         _lists.updateLastNameScientist(_lastName, _ID);
-        _lists.updateGenderScientist('m', _ID);
+        _lists.updateGenderScientist(_gender, _ID);
         _lists.updateNationalityScientist(_nationality, _ID);
         _lists.updateYOBScientist(_birthYear, _ID);
         _lists.updateYODScientist(_deathYear, _ID);
@@ -94,17 +95,17 @@ void editscientist::on_pushButtonUpdate_clicked()
 
 bool editscientist::getGender()
 {
-    if((ui->genderSelectBox->currentIndex()) == 2)
+    if((ui->genderSelectBox->currentIndex()) == 0)
     {
         _gender = 'm';
         return true;
     }
-    else if((ui ->genderSelectBox->currentIndex()) == 3)
+    else if((ui ->genderSelectBox->currentIndex()) == 1)
     {
         _gender = 'f';
         return true;
     }
-    else if((ui ->genderSelectBox ->currentIndex()) == 4)
+    else if((ui ->genderSelectBox ->currentIndex()) == 2)
     {
         _gender = 'o';
         return true;
@@ -140,28 +141,27 @@ bool editscientist::getFirstName()
     }
 
     //Throws errors if any are needed
-   /* if(!hasContent)
+    if(!hasContent)
     {
-        ui ->firstNameLabel ->setText("<span style='color: red'>First name required</span>");
+        ui ->labelFirstName ->setText("<span style='color: red'>First name required</span>");
 
     }
     else if(!hasOnlyChar)
     {
-        ui ->firstNameLabel ->setText("<span style='color: red'>Name can only contain latin characters</span>");
+        ui ->labelFirstName ->setText("<span style='color: red'>Name can only contain latin characters</span>");
     }
     else if(potentialName.size() < 3 || potentialName.size() > 16)
     {
-        ui -> firstNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> labelFirstName ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
     }
     else
     {
-
+        //If there are no problems, the first name is legal.
+        _firstName = potentialName;
     }
+    return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 
-    return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));*/
-    //If there are no problems, the first name is legal.
-    _firstName = potentialName;
-    return true;
+
 }
 
 bool editscientist::getLastName()
@@ -192,17 +192,17 @@ bool editscientist::getLastName()
     }
 
     //Throws errors if any are needed
- /*   if(!hasContent)
+    if(!hasContent)
     {
-        ui ->lastNameLabel ->setText("<span style='color: red'>Last name required</span>");
+        ui ->labelLastName->setText("<span style='color: red'>Last name required</span>");
     }
     else if(!hasOnlyChar)
     {
-        ui ->lastNameLabel ->setText("<span style='color: red'>Name can only contain latin characters</span>");
+        ui ->labelLastName ->setText("<span style='color: red'>Name can only contain latin characters</span>");
     }
     else if(potentialName.size() < 3 || potentialName.size() > 16)
     {
-        ui -> lastNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> labelLastName ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
     }
     else
     {
@@ -210,8 +210,8 @@ bool editscientist::getLastName()
         _lastName = potentialName;
     }
 
-    return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));*/
-    return true;
+    return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
+
 }
 
 bool editscientist::getNationality()
@@ -242,18 +242,18 @@ bool editscientist::getNationality()
     }
 
     //Throws errors if any are needed
-    /*if(!hasContent)
+    if(!hasContent)
     {
-        ui ->nationalityLabel ->setText("<span style='color: red'>Nationality required</span>");
+        ui ->labelNationality ->setText("<span style='color: red'>Nationality required</span>");
 
     }
     else if(!hasOnlyChar)
     {
-        ui ->nationalityLabel ->setText("<span style='color: red'>Nationality can only contain latin characters</span>");
+        ui ->labelNationality ->setText("<span style='color: red'>Nationality can only contain latin characters</span>");
     }
     else if(potentialNationality.size() < 4 || potentialNationality.size() > 21)
     {
-        ui ->nationalityLabel ->setText("<span style=' color: red'>Nationality be between 4 and 20 characters</span>");
+        ui ->labelNationality ->setText("<span style=' color: red'>Nationality be between 4 and 20 characters</span>");
     }
     else
     {
@@ -261,8 +261,7 @@ bool editscientist::getNationality()
         _nationality = potentialNationality;
     }
 
-    return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));*/
-    return true;
+    return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
 bool editscientist::getBirthYear()
@@ -298,16 +297,16 @@ bool editscientist::getBirthYear()
     //throws errors when necessary
     if(!hasContent)
     {
-        ui ->lineEditYOB ->setText("<span style='color: red'>Birth year required</span>");
+        ui -> LabelYOB ->setText("<span style='color: red'>Birth year required</span>");
 
     }
     else if(!hasOnlyNumbers)
     {
-        ui ->lineEditYOB ->setText("<span style='color: red'>Birth year can only contain numbers</span>");
+        ui ->LabelYOB ->setText("<span style='color: red'>Birth year can only contain numbers</span>");
     }
     else if(!isInRange)
     {
-        ui ->lineEditYOB ->setText("<span style=' color: red'>No computer scientists born in this year </span>");
+        ui ->LabelYOB ->setText("<span style=' color: red'>No computer scientists born in this year </span>");
     }
     else
     {
@@ -353,11 +352,11 @@ bool editscientist::getDeathYear()
 
     if(!hasOnlyNumbers)
     {
-        ui ->lineEditYOD ->setText("<span style='color: red'>Death year can only contain numbers</span>");
+        ui ->labelYOD ->setText("<span style='color: red'>Death year can only contain numbers</span>");
     }
     else if(!isInRange)
     {
-        ui ->lineEditYOD ->setText("<span style=' color: red'>Not legal death year</span>");
+        ui ->labelYOD ->setText("<span style=' color: red'>Not legal death year</span>");
     }
     else
     {

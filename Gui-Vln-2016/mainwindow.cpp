@@ -9,6 +9,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->comboBoxScientist->addItem("");
+    ui->comboBoxScientist->addItem("ID");
+    ui->comboBoxScientist->addItem("Alphabetical order of names");
+    ui->comboBoxScientist->addItem("Alphabetical order of nationality");
+    ui->comboBoxScientist->addItem("Gender");
+    ui->comboBoxScientist->addItem("Year of birth");
+    ui->comboBoxScientist->addItem("Year of death");
+    ui->comboBoxScientist->addItem("Year of award");
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
@@ -27,6 +35,8 @@ void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 void MainWindow::displayAllScientists()
 {
     vector<Scientist> scientist = scientistService.displayScientist();
+
+
     displayScientist(scientist);
 }
 
@@ -35,6 +45,8 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
     ui->tableWidget->clearContents();
 
     ui->tableWidget->setRowCount(scientists.size());
+
+
 
     for (unsigned int row = 0; row < scientists.size(); row++)
     {
@@ -249,14 +261,15 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     }
 }
 
+// This function opens the Edit table and inserts the name from table into lineEdit in the edit table
 void MainWindow::on_pushButtonEditScientist_clicked()
 {
     int selectCurrentStudent = ui->tableWidget->currentIndex().row();
     Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
     int id = currscientist.getID();
-    blahh.displayForUpdate(id);
-    blahh.setModal(true);
-    blahh.exec();
+    _edit.displayForUpdate(id);
+    _edit.setModal(true);
+    _edit.exec();
     displayAllScientists();
 
 }
@@ -322,9 +335,8 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
 }
 
 void MainWindow::on_actionHelp_triggered()
-{
-    HelpWindow window;
-    window.on_pushButton_clicked();
+{   HelpWindow window;
+    window.exec();
 }
 
 void MainWindow::on_addComputers_clicked()
@@ -332,4 +344,58 @@ void MainWindow::on_addComputers_clicked()
     addComputer addComputer;
     addComputer.exec();
     displayAllComputer();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    vector<Scientist> scientist;
+    if (ui->comboBoxScientist->currentText() == "")
+    {
+        scientist = scientistService.displayScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "ID")
+    {
+        //scientist = scientistService.();
+    }
+   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    {
+        scientist = scientistService.scientistInAlphabeticalOrder();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
+    {
+        //scientist = scientistService.;
+    }
+    else if (ui->comboBoxScientist->currentText() == "Gender")
+    {
+        //scientist = scientistService.;
+    }
+    else if (ui->comboBoxScientist->currentText() == "Year of birth")
+    {
+        scientist = scientistService.youngestOrderScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Year of death")
+    {
+        scientist = scientistService.oldestOrderScientist();
+    }
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
+    {
+        //scientist = scientistService.;
+    }
+
+    displayScientist(scientist);
+}
+
+void MainWindow::on_radioButtonAscending_clicked()
+{
+
+}
+
+void MainWindow::on_radioButtonDescending_clicked()
+{
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
 }

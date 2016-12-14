@@ -49,6 +49,14 @@ private slots:
     void on_actionHelp_triggered();
     void on_addComputers_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_radioButtonAscending_clicked();
+
+    void on_radioButtonDescending_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
@@ -64,7 +72,7 @@ private:
     vector<Computer> currentlyDisplayComputer;
 
     listServices scientistService;
-    editscientist blahh;
+    editscientist _edit;
 };
 
 #endif // MAINWINDOW_H
