@@ -227,9 +227,10 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     int selectCurrentStudent = ui->tableWidget->currentIndex().row();
     Scientist currscientist = currentlyDisplayScientist.at(selectCurrentStudent);
     int id = currscientist.getID();
-     blahh.displayForUpdate(id);
+    blahh.displayForUpdate(id);
     blahh.setModal(true);
     blahh.exec();
+    displayAllScientists();
 
 }
 

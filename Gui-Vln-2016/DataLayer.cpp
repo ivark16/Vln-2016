@@ -60,6 +60,40 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     return returnScientist;
 }
 
+vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
+{
+    Scientist s;
+    vector<Scientist> returnScientist;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT * FROM scientist WHERE scientist.ID = (:x)");
+    myQuery.addBindValue(x);
+    myQuery.exec();
+    int idName7 = myQuery.record().indexOf("ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idname1 = myQuery.record().indexOf("lastname");
+    int idname2 = myQuery.record().indexOf("gender");
+    int idname3 = myQuery.record().indexOf("nationality");
+    int idname4 = myQuery.record().indexOf("YOB");
+    int idname5 = myQuery.record().indexOf("YOD");
+    int idname6 = myQuery.record().indexOf("YOA");
+    //This while loop, like other while(query.next()) loops in this file,
+    //is intended to extract data from teh database.
+    while(myQuery.next())
+    {
+        int Ids = myQuery.value(idName7).toInt();
+        string firstName = myQuery.value(idName).toString().toStdString();
+        string lastName = myQuery.value(idname1).toString().toStdString();
+        char sex = myQuery.value(idname2).toString().toStdString()[0];
+        string nationality = myQuery.value(idname3).toString().toStdString();
+        int birthYear = myQuery.value(idname4).toInt();
+        int deathYear = myQuery.value(idname5).toInt();
+        int awardYear = myQuery.value(idname6).toInt();
+        Scientist s(Ids, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        returnScientist.push_back(s);
+    }
+    return returnScientist;
+}
+
 //Returns all computers in the database
 vector<Computer> DataLayer::readAllFromDataComputerBase()
 {
@@ -79,6 +113,34 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
         string type = query.value(idName2).toString().toStdString();
         int yearbuilt = query.value(idName3).toInt();
         bool wasbuilt = query.value(idName4).toBool();
+
+        Computer s(ids, name, type, yearbuilt, wasbuilt);
+        displayComputer.push_back(s);
+    }
+    return displayComputer;
+}
+
+vector<Computer> DataLayer::readAllFromDataComputerBaseById(int x)
+{
+    Computer s;
+    vector<Computer> displayComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT * FROM computer WHERE computer.ID = (:x)");
+    myQuery.addBindValue(x);
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("ID");
+    int idName1 = myQuery.record().indexOf("name");
+    int idName2 = myQuery.record().indexOf("type");
+    int idName3 = myQuery.record().indexOf("yearBuilt");
+    int idName4 = myQuery.record().indexOf("wasbuilt");
+
+    while(myQuery.next())
+    {
+        int ids = myQuery.value(idName).toInt();
+        string name = myQuery.value(idName1).toString().toStdString();
+        string type = myQuery.value(idName2).toString().toStdString();
+        int yearbuilt = myQuery.value(idName3).toInt();
+        bool wasbuilt = myQuery.value(idName4).toBool();
 
         Computer s(ids, name, type, yearbuilt, wasbuilt);
         displayComputer.push_back(s);

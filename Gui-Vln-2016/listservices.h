@@ -11,7 +11,9 @@ public:
 
     vector<Scientist> searchForName(string name);
     vector<Scientist> displayScientist();
+    vector<Scientist> displayScientistById(int x);
     vector<Computer> displayComputer();
+    vector<Computer> displayComputerById(int x);
     vector<connection> displayConnection();
     int getSizeOfScientist();
     int getSizeOfComputer();
