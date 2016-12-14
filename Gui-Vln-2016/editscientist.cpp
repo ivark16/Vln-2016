@@ -206,10 +206,11 @@ bool editscientist::getLastName()
     else
     {
         //If there are no problems, the last name is legal.
-        _lastName = potentialName;
+
     }
 
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));*/
+     _lastName = potentialName;
 }
 
 bool editscientist::getNationality()
