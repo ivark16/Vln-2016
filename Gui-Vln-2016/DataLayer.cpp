@@ -228,6 +228,32 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     return joinQueryComputer;
 }
 
+vector<searching> DataLayer::displayAllfromSearching()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID");
+    myQuery.exec();
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
 //This function deletes the scientist with the ID x, where x is input from the user.
 bool DataLayer::deleteFunction(int x)
 {

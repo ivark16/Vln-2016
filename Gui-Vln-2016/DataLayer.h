@@ -29,6 +29,7 @@ public:
     vector<searching> searchForScientistFromSearchingDatabse(string x);
     vector<searching> searchForComputerFromSearchingDatabase(string x);
     vector<searching> searchForConnectionFromSearchingDatabase(string x);
+    vector<searching> displayAllfromSearching();
 
     int getSizeOfScientists();
     int getSizeOfComputer();

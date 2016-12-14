@@ -16,6 +16,7 @@ public:
     vector<searching> displaySearchJoinScientistName(string x);
     vector<searching> displaySearchJoinComputerName(string x);
     vector<searching> displaySearchJoinConnectionName(string x);
+    vector<searching> displayAllFromSearching();
     vector<Computer> searchForNameComputer(string s);
     vector<Computer> searchForTypeComputer(string s);
 
