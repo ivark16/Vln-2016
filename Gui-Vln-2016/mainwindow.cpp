@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
-
 }
 
 MainWindow::~MainWindow()
@@ -381,4 +380,14 @@ void MainWindow::on_pushButton_clicked()
     }
 
     displayScientist(scientist);
+}
+
+void MainWindow::on_radioButtonAscending_clicked()
+{
+
+}
+
+void MainWindow::on_radioButtonDescending_clicked()
+{
+
 }

@@ -51,6 +51,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_radioButtonAscending_clicked();
+
+    void on_radioButtonDescending_clicked();
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
