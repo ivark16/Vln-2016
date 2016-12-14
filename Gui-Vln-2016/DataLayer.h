@@ -53,6 +53,13 @@ public:
     vector<Scientist> readInYoungestOrder();
     vector<Scientist> readAllFromScientistsDataBase();
     vector<Scientist> readAllFromScientistDataBaseById(int x);
+    vector<Scientist> readInAscendingByID();
+    vector<Scientist> readInDiscendingByID();
+    vector<Scientist> readInAlphabeticalOrderNationality();
+    vector<Scientist> readInReverseAlphabeticalOrderNationality();
+    vector<Scientist> readInAlphabeticalOrderGender();
+    vector<Scientist> readInReverseAlphabeticalOrderGender();
+
 
     //Search functions for scientists
     vector<Scientist> searchForTuringAwardWinners(int x);
