@@ -9,7 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->comboBoxScientist->addItem("");
+    ui->comboBoxScientist->addItem("Display scientists");
+    ui->comboBoxScientist->addItem("------------------------------------");
     ui->comboBoxScientist->addItem("ID");
     ui->comboBoxScientist->addItem("Alphabetical order of names");
     ui->comboBoxScientist->addItem("Alphabetical order of nationality");
@@ -17,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxScientist->addItem("Year of birth");
     ui->comboBoxScientist->addItem("Year of death");
     ui->comboBoxScientist->addItem("Year of award");
-    ui->comboBoxComputer->addItem("");
+    ui->comboBoxComputer->addItem("Display computers");
+    ui->comboBoxComputer->addItem("------------------");
     ui->comboBoxComputer->addItem("ID");
     ui->comboBoxComputer->addItem("Name");
     ui->comboBoxComputer->addItem("Type");
