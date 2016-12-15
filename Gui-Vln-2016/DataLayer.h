@@ -43,6 +43,7 @@ public:
     vector<searching> displayComputerYearfromSearchingAscendingOrder();
     vector<searching> displayComputerYearfromSearchingDescendingOrder();
 
+    //Functions that return their current size.
     int getSizeOfScientists();
     int getSizeOfComputer();
     int getSizeOfConnection();
@@ -130,10 +131,10 @@ public:
     bool updateYOCComputer (int x, int y);
     bool updateWasComputerBuilt (int x, int y);
 
-    //Function that searches for pictures of scientists (that are stored within the database.
+    //Functions for searching for pictures of scientists (that are stored within the database).
     QByteArray searchForPictureForScientist(int id);
 
-    //Function for login
+    //Functions for login.
     vector<userandpass> readLogin();
     bool registerUser(userandpass newUser);
 };

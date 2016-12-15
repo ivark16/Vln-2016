@@ -19,7 +19,6 @@ class login : public QDialog
 public:
     explicit login(QWidget *parent = 0);
     ~login();
-    int checkLogin();
 
 private slots:
     void on_pushButtonLogin_clicked();
@@ -30,11 +29,12 @@ private:
     Ui::login *ui;
     listServices _lists;
     registeruser _users;
-
-    string chiperText(string text, int shift);
+    string theDecrypter(string text);
+    string deChiperText(string text, int shift);
     char shiftCharacter(char character, int shift);
     bool isUpperCase(char character);
     bool isLowerCase(char character);
+
 };
 
 #endif // LOGIN_H
