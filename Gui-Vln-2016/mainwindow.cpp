@@ -553,20 +553,16 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     displayComputer(computer);
 }
 
-//play music
-
+//if the check button in the corner is checked, the music will play.
+//The music we used is Disco House by Bernhard Kosten.
+// Link: http://www.flashkit.com/loops/Easy_Listening/discohouse-140130084506.html
+//This music is free to use under a "Linkware" license.
 void MainWindow::playMusic(bool checkState)
 {
 
-
-
-    //QMediaPlaylist *sweetPlaylist = new QMediaPlaylist();
     _sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
     _sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
     _sweetPlaylist->setCurrentIndex(1);
-
-
-    //QMediaPlayer *sweetMusic = new QMediaPlayer();
 
     _sweetMusic->setPlaylist(_sweetPlaylist);
     if(checkState == false)
@@ -607,8 +603,6 @@ void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
     ConnectionTable connection;
     connection.exec();
 }
-
-
 
 void MainWindow::on_playAudio_clicked()
 {
