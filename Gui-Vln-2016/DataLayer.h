@@ -99,8 +99,6 @@ public:
     vector<Computer> ComputerWasNotBuilt();
 
     //Display functions for connection
-    //vector<Computer> readInAlphabeticalOrderConnection();
-    //vector<Computer> readInReverseAlphabeticalOrderConnection();
     vector<connection> readAllFromDataConnectionBase();
 
     //Functions for updating scientist database

@@ -126,6 +126,22 @@ public:
     vector<Scientist> readInAscendingByID();
     vector<Scientist> readInDiscendingByID();
 
+   /* //Functions for Ascending/Descending order by FirstName
+    vector<searching> readInAscendingByFirstName();
+    vector<searching> readInDiscendingFirstName();
+
+    //Functions for Ascending/Descending order by CompName
+    vector<searching> readInAscendingByCompName();
+    vector<searching> readInDiscendingCompName();
+
+    //Functions for Ascending/Descending order by CompType
+    vector<searching> readInAscendingByCompType();
+    vector<searching> readInDiscendingCompType();
+
+    //Functions for Ascending/Descending order by YearBuilt
+    vector<searching> readInAscendingByYearBuilt();
+    vector<searching> readInDiscendingYearBuilt();*/
+
     //Functions for Ascending/Descending alphabetical order by nationality
     vector<Scientist> readInAlphabeticalOrderNationality();
     vector<Scientist> readInReverseAlphabeticalOrderNationality();

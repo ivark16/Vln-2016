@@ -602,3 +602,54 @@ vector<searching> listServices::displayAllFromSearching()
     displayAllScientistComputer = _myData.displayAllfromSearching();
     return displayAllScientistComputer;
 }
+/*
+vector<searching> listServices::readInAscendingByFirstName()
+{
+    vector<searching> readInAscendingByFirstName;
+    readInAscendingByFirstName = _myData.();
+    return readInAscendingByFirstName;
+}
+
+vector<searching> listServices::readInDiscendingFirstName()
+{
+    vector<searching> readInDiscendingFirstName;
+    readInDiscendingFirstName = _myData.();
+    return readInDiscendingFirstName;
+}
+vector<searching> listServices::readInAscendingByCompName()
+{
+    vector<searching> readInAscendingByCompName;
+    readInAscendingByCompName = _myData.();
+    return readInAscendingByCompName;
+}
+vector<searching> listServices::readInDiscendingCompName()
+{
+    vector<searching> readInDiscendingCompName;
+    readInDiscendingCompName = _myData.();
+    return readInDiscendingCompName;
+}
+vector<searching> listServices::readInAscendingByCompType()
+{
+    vector<searching> readInAscendingByCompTypee;
+    readInAscendingByCompType = _myData.();
+    return readInAscendingByCompType;
+}
+vector<searching> listServices::readInDiscendingByCompType()
+{
+    vector<searching> readInDiscendingByCompType;
+    readInDiscendingByCompType = _myData.();
+    return readInDiscendingByCompType;
+}
+vector<searching> listServices::readInAscendingByYearBuilt()
+{
+    vector<searching> readInAscendingByYearBuilt;
+    readInAscendingByYearBuilt = _myData.();
+    return readInAscendingByYearBuilt;
+}
+vector<searching> listServices::readInDiscendingByYearBuilt()
+{
+    vector<searching> readInDiscendingByYearBuilt;
+    readInDiscendingByYearBuilt = _myData.();
+    return readInDiscendingByYearBuilt;
+}
+*/
