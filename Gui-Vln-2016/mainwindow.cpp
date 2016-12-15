@@ -559,16 +559,19 @@ void MainWindow::playMusic()
 {
 
 
+
+    QMediaPlaylist *sweetPlaylist = new QMediaPlaylist();
+    sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+    sweetPlaylist->setCurrentIndex(1);
+
+
     QMediaPlayer *sweetMusic = new QMediaPlayer();
 
-    QString fileName = "dico_house.mp3";
-    if(fileName.isEmpty())
-    {
-        return;
-    }
-    sweetMusic->setMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetMusic->setPlaylist(sweetPlaylist);
     sweetMusic ->setVolume(50);
     sweetMusic ->play();
+
 
 }
 
