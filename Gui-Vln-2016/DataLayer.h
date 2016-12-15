@@ -30,6 +30,16 @@ public:
     vector<searching> searchForComputerFromSearchingDatabase(string x);
     vector<searching> searchForConnectionFromSearchingDatabase(string x);
     vector<searching> displayAllfromSearching();
+    vector<searching> displayFirstNamefromSearchingAscendingOrder();
+    vector<searching> displayFirstNamefromSearchingDescendingOrder();
+    vector<searching> displayComputerNamefromSearchingAscendingOrder();
+    vector<searching> displayComputerNamefromSearchingDescendingOrder();
+    vector<searching> displayComputerTypefromSearchingAscendingOrder();
+    vector<searching> displayComputerTypefromSearchingDescendingOrder();
+    vector<searching> displayComputerYearfromSearchingAscendingOrder();
+    vector<searching> displayComputerYearfromSearchingDescendingOrder();
+
+
 
     int getSizeOfScientists();
     int getSizeOfComputer();
