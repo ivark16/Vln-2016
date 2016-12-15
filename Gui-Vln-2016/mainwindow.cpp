@@ -560,16 +560,19 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
 
 void MainWindow::playMusic()
 {
-    /*
+
+
+    QMediaPlayer *sweetMusic = new QMediaPlayer();
+
     QString fileName = "dico_house.mp3";
     if(fileName.isEmpty())
     {
         return;
     }
-    _musicPlayer->setMedia(QUrl("http://www.flashkit.com/imagesvr_ce/flashkit/loops/Ambient/Ambient/Space_Drif_TomCat_Car_1917/SpaceDrifter.mp3"));
-    _musicPlayer ->setVolume(0);
-    _musicPlayer ->play();
-*/
+    sweetMusic->setMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetMusic ->setVolume(50);
+    sweetMusic ->play();
+
 }
 
 
