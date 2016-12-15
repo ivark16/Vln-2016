@@ -1689,7 +1689,7 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
     return myVector;
 }
 
-// Updates data base for first in scientist, takes in ID and changes that scientist.
+// Updates database for first in scientist, takes in ID and changes that scientist.
 bool DataLayer::updateFirstName(string x, int y)
 {
     bool check;
@@ -1789,7 +1789,7 @@ bool DataLayer::updateNationality(string x, int y)
     return check;
 }
 
-// Updates data base for scientist for year of birth, takes in ID and changes that scientist.
+// Updates database for scientist for year of birth, takes in ID and changes that scientist.
 bool DataLayer::updateYOB (int x, int y)
 {
     bool check;
@@ -1959,6 +1959,7 @@ bool DataLayer::updateWasComputerBuilt (int x, int y)
     return check;
 }
 
+//This function
 vector<Computer> DataLayer::readIdInAscendingOrder()
 {
     vector<Computer> idAscendingOrder;
@@ -1969,7 +1970,7 @@ vector<Computer> DataLayer::readIdInAscendingOrder()
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -2079,7 +2080,7 @@ vector<userandpass> DataLayer::readLogin()
 
 
     //This while loop, like other while(query.next()) loops in this file,
-    //is intended to extract data from teh database.
+    //is intended to extract data from the database.
     while(query.next())
     {
         string username = query.value(idName).toString().toStdString();
