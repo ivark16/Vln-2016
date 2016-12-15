@@ -599,3 +599,29 @@ void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
     ConnectionTable connection;
     connection.exec();
 }
+
+void MainWindow::on_pushButtonAscendingConnection_clicked()
+{
+    vector<searching> connection;
+    if (ui->comboBoxConnection->currentText() == "First Name")
+    {
+        connection = scientistService.readInAscendingByFirstName();
+    }
+    /*else if (ui->comboBoxConnection->currentText() == "Last Name")
+    {
+        connection = scientistService.
+    }*/
+    else if (ui->comboBoxConnection->currentText() == "Computer Name")
+    {
+        connection = scientistService.readInAscendingByCompName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Type")
+    {
+        connection = scientistService.readInAscendingByCompType();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Year built")
+    {
+        connection = scientistService.readInAscendingByYearBuilt();
+    }
+    displayConnection(connection);
+}
