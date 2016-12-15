@@ -745,6 +745,7 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -778,6 +779,7 @@ vector<Scientist> DataLayer::searchNationality(string name)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
     while(query.next())
     {
         int id = query.value(idNames).toInt();

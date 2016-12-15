@@ -5,7 +5,8 @@
 #include "listservices.h"
 #include <string>
 
-namespace Ui {
+namespace Ui
+{
 class addComputer;
 }
 

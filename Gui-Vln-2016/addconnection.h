@@ -6,7 +6,8 @@
 #include "scientist.h"
 #include "computer.h"
 
-namespace Ui {
+namespace Ui
+{
 class addConnection;
 }
 
