@@ -157,7 +157,6 @@ vector<connection> DataLayer::readAllFromDataConnectionBase()
     connection s;
     vector<connection> displayConnection;
     QSqlQuery query("SELECT * FROM connection");
-    //int idName = query.record().indexOf("ID");
     int idName1 = query.record().indexOf("scientistId");
     int idName2 = query.record().indexOf("computersId");
 
@@ -315,6 +314,71 @@ vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.firstname DESC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    //This loop is intended to extract data from the database
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+//This function??
+vector<searching> DataLayer::displayLastNamefromSearchingAscendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.lastname ASC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    //This loop is intended to extract data from the database
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+
+//This function??
+vector<searching> DataLayer::displayLastNamefromSearchingDescendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.lastname DESC;");
     myQuery.exec();
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
@@ -680,6 +744,7 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -713,6 +778,7 @@ vector<Scientist> DataLayer::searchNationality(string name)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -2046,4 +2112,45 @@ QByteArray DataLayer::searchForPictureForScientist(int id)
         myArray = query.value(idName).toByteArray();
     }
     return myArray;
+}
+
+vector<userandpass> DataLayer::readLogin()
+{
+    vector<userandpass> checkForUser;
+    QSqlQuery query("SELECT * FROM users");
+    int idName = query.record().indexOf("username");
+    int idname1 = query.record().indexOf("password");
+
+
+    //This while loop, like other while(query.next()) loops in this file,
+    //is intended to extract data from teh database.
+    while(query.next())
+    {
+        string username = query.value(idName).toString().toStdString();
+        string password = query.value(idname1).toString().toStdString();
+        userandpass users(username, password);
+        checkForUser.push_back(users);
+    }
+    return checkForUser;
+}
+
+bool DataLayer::registerUser(userandpass newUser)
+{
+    QSqlQuery query;
+    QString qName1 = QString::fromStdString(newUser.getuser());
+    QString qName2 = QString::fromStdString(newUser.getpassword());
+
+    query.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    query.addBindValue(qName1);
+    query.addBindValue(qName2);
+    query.exec();
+    //
+    if (query.next())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

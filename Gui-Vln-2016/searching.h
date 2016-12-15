@@ -15,7 +15,9 @@ class searching
     string _computerName;
     string _computerType;
     int _yearbuilt;
+
 public:
+
     searching();
     searching(int idscientist, int idcomputer, string firstname, string lastname,string computername, string computertype,int yearbuilt);
     int getSearchScientistId();

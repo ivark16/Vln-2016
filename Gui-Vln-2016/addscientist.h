@@ -7,7 +7,8 @@
 
 using namespace std;
 
-namespace Ui {
+namespace Ui
+{
 class addScientist;
 }
 
@@ -29,12 +30,11 @@ private:
     listServices _connection;
     string _firstName;
     string _lastName;
-    char _gender;
     string _nationality;
+    char _gender;
     int _birthYear;
     int _deathYear;
     int _awardYear;
-
 
     bool getGender();
     bool getFirstName();
@@ -43,11 +43,6 @@ private:
     bool getBirthYear();
     bool getDeathYear();
     bool getAwardYear();
-
-
-
-
-
 
 };
 

@@ -7,7 +7,8 @@
 #include "computer.h"
 
 
-namespace Ui {
+namespace Ui
+{
 class editcomputer;
 }
 
@@ -36,7 +37,6 @@ private:
     bool getType();
     bool getYearOfBuild();
     bool wasBuilt();
-
 
 };
 

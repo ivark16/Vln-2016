@@ -28,6 +28,7 @@ void editcomputer::displayForUpdate(int id)
     QString type = QString::fromStdString(newvector[0].getComputerType());
     QString yob = QString::number(newvector[0].getYearOfBuild());
     int wasBuiltIndex;
+
     if(!newvector[0].getWasBuilt())
     {
         wasBuiltIndex = 3;
@@ -47,7 +48,6 @@ void editcomputer::displayForUpdate(int id)
 void editcomputer::on_pushButtonUpdateComputer_clicked()
 {
     bool isLegitComputer;
-
     bool hasName = getNAme();
     bool hasType = getType();
     bool hasBuildYear = getYearOfBuild();

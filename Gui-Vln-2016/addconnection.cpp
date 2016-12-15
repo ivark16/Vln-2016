@@ -34,8 +34,6 @@ void addConnection::on_addConnection_2_clicked()
 
         //clear both lists
 
-
-
         ui ->scientistList ->clear();
         ui ->computerList ->clear();
 

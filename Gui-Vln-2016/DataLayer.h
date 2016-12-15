@@ -11,6 +11,7 @@
 #include <connection.h>
 #include <computer.h>
 #include<searching.h>
+#include "userandpass.h"
 
 using namespace std;
 
@@ -33,14 +34,14 @@ public:
     vector<searching> displayAllfromSearching();
     vector<searching> displayFirstNamefromSearchingAscendingOrder();
     vector<searching> displayFirstNamefromSearchingDescendingOrder();
+    vector<searching> displayLastNamefromSearchingAscendingOrder();
+    vector<searching> displayLastNamefromSearchingDescendingOrder();
     vector<searching> displayComputerNamefromSearchingAscendingOrder();
     vector<searching> displayComputerNamefromSearchingDescendingOrder();
     vector<searching> displayComputerTypefromSearchingAscendingOrder();
     vector<searching> displayComputerTypefromSearchingDescendingOrder();
     vector<searching> displayComputerYearfromSearchingAscendingOrder();
     vector<searching> displayComputerYearfromSearchingDescendingOrder();
-
-
 
     int getSizeOfScientists();
     int getSizeOfComputer();
@@ -128,6 +129,9 @@ public:
     bool updateWasComputerBuilt (int x, int y);
 
     QByteArray searchForPictureForScientist(int id);
+    //Function for login
+    vector<userandpass> readLogin();
+    bool registerUser(userandpass newUser);
 };
 
 #endif // SCIENTISLISTFROMSQL_H
