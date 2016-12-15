@@ -62,6 +62,8 @@ private slots:
 
     void on_pushButtonDescendingComputer_clicked();
 
+    void on_lineEditSearchConnection_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();

@@ -549,3 +549,24 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
 }
 
 
+
+void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
+{
+    ui->labelErrorMessageConnection->setText("");
+    string inputSearch = ui->lineEditSearchConnection->text().toStdString();
+    vector<searching> search;
+
+    search = scientistService.displaySearchJoinComputerName(inputSearch);
+    displayConnection(search);
+
+    if (search.size() == 0)
+    {
+        search = scientistService.displaySearchJoinScientistName(inputSearch);
+        displayConnection(search);
+    }
+
+    if (search.size() == 0)
+    {
+        ui->labelErrorMessageConnection->setText("<span style=' color: red'> No computer found </span>");
+    }
+}
