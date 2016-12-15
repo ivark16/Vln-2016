@@ -14,6 +14,8 @@
 #include <QMainWindow>
 #include <string>
 #include <cstdlib>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 
 
@@ -23,7 +25,6 @@ namespace Ui {
 class MainWindow;
 }
 
-class QMediaPlayer;
 
 
 class MainWindow : public QMainWindow
@@ -69,11 +70,14 @@ private slots:
 
     void on_pushButtonDescendingComputer_clicked();
 
-    void playMusic();
+    void playMusic(bool checkStatus);
 
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
     void on_pushButtonAdvancedSearchScientist_clicked();
+
+
+    void on_playAudio_clicked();
 
     void on_pushButtonAscendingConnection_clicked();
 
@@ -99,7 +103,10 @@ private:
     editscientist _edit;
     editcomputer _editComputer;
 
-    QMediaPlayer *_musicPlayer;
+    QMediaPlaylist *_sweetPlaylist = new QMediaPlaylist();
+    QMediaPlayer *_sweetMusic = new QMediaPlayer();
+
+
 
 };
 
