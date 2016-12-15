@@ -40,9 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
-    playMusic();
+    playMusic(ui ->playAudio ->isChecked());
 
-    _musicPlayer = new QMediaPlayer(this);
+    //_musicPlayer = new QMediaPlayer(this);
 }
 
 MainWindow::~MainWindow()
@@ -555,24 +555,29 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
 
 //play music
 
-void MainWindow::playMusic()
+void MainWindow::playMusic(bool checkState)
 {
 
 
 
-    QMediaPlaylist *sweetPlaylist = new QMediaPlaylist();
-    sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
-    sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
-    sweetPlaylist->setCurrentIndex(1);
+    //QMediaPlaylist *sweetPlaylist = new QMediaPlaylist();
+    _sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    _sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+    _sweetPlaylist->setCurrentIndex(1);
 
 
-    QMediaPlayer *sweetMusic = new QMediaPlayer();
+    //QMediaPlayer *sweetMusic = new QMediaPlayer();
 
-    sweetMusic->setPlaylist(sweetPlaylist);
-    sweetMusic ->setVolume(50);
-    sweetMusic ->play();
-
-
+    _sweetMusic->setPlaylist(_sweetPlaylist);
+    if(checkState == false)
+    {
+        _sweetMusic ->stop();
+    }
+    else if(checkState == true)
+    {
+        _sweetMusic ->setVolume(50);
+        _sweetMusic ->play();
+    }
 }
 
 
@@ -601,4 +606,18 @@ void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
 {
     ConnectionTable connection;
     connection.exec();
+}
+
+
+
+void MainWindow::on_playAudio_clicked()
+{
+    if(ui->playAudio ->isChecked())
+    {
+        playMusic(true);
+    }
+    else
+    {
+        playMusic(false);
+    }
 }
