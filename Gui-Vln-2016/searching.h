@@ -8,6 +8,8 @@ using namespace std;
 
 class searching
 {
+    int _idScientist;
+    int _IdComputer;
     string _firstName;
     string _lastName;
     string _computerName;
@@ -15,7 +17,9 @@ class searching
     int _yearbuilt;
 public:
     searching();
-    searching(string firstname, string lastname,string computername, string computertype,int yearbuilt);
+    searching(int idscientist, int idcomputer, string firstname, string lastname,string computername, string computertype,int yearbuilt);
+    int getSearchScientistId();
+    int getSearchComputerId();
     string getSearchFirstName();
     string getSearchLastName();
     string getSearchComputerName();

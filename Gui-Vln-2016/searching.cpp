@@ -5,13 +5,25 @@ searching::searching()
 
 }
 
-searching::searching(string firstname, string lastname, string computername, string computertype , int yearbuilt)
+searching::searching(int idScientist, int idComputer, string firstname, string lastname, string computername, string computertype , int yearbuilt)
 {
+    _idScientist = idScientist;
+    _IdComputer = idComputer;
     _firstName = firstname;
     _lastName = lastname;
     _computerName = computername;
     _computerType = computertype;
     _yearbuilt = yearbuilt;
+}
+
+int searching::getSearchScientistId()
+{
+    return _idScientist;
+}
+
+int searching::getSearchComputerId()
+{
+    return _IdComputer;
 }
 
 string searching::getSearchFirstName()
