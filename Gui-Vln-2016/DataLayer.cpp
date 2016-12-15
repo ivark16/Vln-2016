@@ -176,7 +176,7 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname LIKE (:x) OR scientist.lastname LIKE (:x) COLLATE NOCASE");
     myQuery.addBindValue("%" + qName + "%");
     myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
@@ -244,6 +244,246 @@ vector<searching> DataLayer::displayAllfromSearching()
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.firstname ASC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.firstname DESC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerNamefromSearchingAscendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.name ASC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerNamefromSearchingDescendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.name DESC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerTypefromSearchingAscendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.type ASC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerTypefromSearchingDescendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.type DESC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerYearfromSearchingAscendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.yearBuilt ASC;");
+    myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
+    int idName = myQuery.record().indexOf("firstname");
+    int idName2 = myQuery.record().indexOf("lastname");
+    int idName3 = myQuery.record().indexOf("name");
+    int idName4 = myQuery.record().indexOf("type");
+    int idName5 = myQuery.record().indexOf("yearbuilt");
+
+    while(myQuery.next())
+    {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
+        string firstname = myQuery.value(idName).toString().toStdString();
+        string lastname = myQuery.value(idName2).toString().toStdString();
+        string compname = myQuery.value(idName3).toString().toStdString();
+        string comptype = myQuery.value(idName4).toString().toStdString();
+        int yearbuilt = myQuery.value(idName5).toInt();
+
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
+        joinQueryComputer.push_back(s);
+    }
+    return joinQueryComputer;
+}
+
+vector<searching> DataLayer::displayComputerYearfromSearchingDescendingOrder()
+{
+    vector<searching> joinQueryComputer;
+    QSqlQuery myQuery;
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.yearBuilt DESC;");
     myQuery.exec();
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
