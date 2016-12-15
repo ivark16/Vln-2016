@@ -501,7 +501,8 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     }
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
-        //computer = scientistService;
+        computer = scientistService.ComputerWasBuiltASC();
+        //displayComputer(computer);
     }
     displayComputer(computer);
 }
@@ -527,7 +528,7 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     }
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
-        //computer = scientistService;
+        computer = scientistService.ComputerWasBuiltDESC();
     }
     displayComputer(computer);
 }
@@ -579,8 +580,8 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
 
 void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
 {
-    //ConnectionTable connection;
-    //connection.exec();
+    ConnectionTable connection;
+    connection.exec();
 }
 
 void MainWindow::on_playAudio_clicked()
@@ -648,4 +649,18 @@ void MainWindow::on_pushButtonDesendingConnection_clicked()
         }
         displayConnection(connection);
     }
+}
+
+void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
+{
+    int scientistNo = ui->tableWidget->currentIndex().row();
+    Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+    int id = currentScientist.getID();
+    //_connection.on_pushButtonAdvancedSearch_clicked().exec();
+    ConnectionTable bla;
+    bla.exec();
+    bla.display(id);
+
+    //ConnectionTable connection;
+    //connection.exec();
 }

@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <QByteArray>
 #include <vector>
 #include <scientist.h>
 #include <connection.h>
@@ -26,7 +27,7 @@ public:
     DataLayer();
     ~DataLayer();
 
-    //Join functions
+    //Join functions.
     vector<searching> searchForScientistFromSearchingDatabse(string x);
     vector<searching> searchForComputerFromSearchingDatabase(string x);
     vector<searching> searchForConnectionFromSearchingDatabase(string x);
@@ -52,13 +53,13 @@ public:
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
 
-    //Delete functions
+    //Delete functions.
     bool deleteFunction(int x);
     bool deleteFunctionComputer(int x);
     bool deleteConnectionFunctionScientist(int x);
     bool deleteConnectionFunctionComputer(int x);
 
-    //Display functions for scientist
+    //Display functions for scientist.
     vector<Scientist> readInAlphabeticalOrder();
     vector<Scientist> readInReverseAlphabeticalOrder();
     vector<Scientist> readInOldestOrder();
@@ -75,7 +76,7 @@ public:
     vector<Scientist> readInDescendingByYOA();
 
 
-    //Search functions for scientists
+    //Search functions for scientists.
     vector<Scientist> searchForTuringAwardWinners(int x);
     vector<Scientist> searchForYearOfBirth(int x);
     vector<Scientist> searchForDeadPeople(int x);
@@ -84,7 +85,7 @@ public:
     vector<Scientist> searchFullNameFromDatabase(string name);
     vector<Scientist> searchNationality(string name);
 
-    //Display functions for computer
+    //Display functions for computer.
     vector<Computer> readInAlphabeticalOrderComputer();
     vector<Computer> readInReverseAlphabeticalOrderComputer();
     vector<Computer> readInOldestOrderComputer();
@@ -95,13 +96,15 @@ public:
     vector<Computer> readIdInDescindingOrder();
     vector<Computer> readTypeInAlphabeticalOrder();
     vector<Computer> readTypeInReverseAlphabeticalOrder();
+    vector<Computer> ComputerWasBuiltASC();
+    vector<Computer> ComputerWasBuiltDESC();
 
-    //Add functions for computer, connect and scientist
+    //Add functions for computer, connect and scientist.
     bool addFunctionComputer(Computer newComputer);
     bool addFunctionConnect(connection newConnection);
     bool addFunction(Scientist newScientist);
 
-    //Check functions for computer
+    //Check functions for computer.
     vector<Computer> checkInComputer(string x);
     vector<Computer> checkInComputerYear(int x, int y);
     vector<Computer> checkInComputerSingleYear(int x);
@@ -109,7 +112,7 @@ public:
     vector<Computer> ComputerWasBuilt();
     vector<Computer> ComputerWasNotBuilt();
 
-    //Display functions for connection
+    //Display functions for connection.
     vector<connection> readAllFromDataConnectionBase();
 
     //Functions for updating scientist database
@@ -121,11 +124,14 @@ public:
     bool updateYOD (int x, int y);
     bool updateYOA (int x, int y);
 
-    //Functions for updating computer database
+    //Functions for updating computer database.
     bool updateNameComputer(string x, int y);
     bool updateTypeComputer(string x, int y);
     bool updateYOCComputer (int x, int y);
     bool updateWasComputerBuilt (int x, int y);
+
+    //Function that searches for pictures of scientists (that are stored within the database.
+    QByteArray searchForPictureForScientist(int id);
 
     //Function for login
     vector<userandpass> readLogin();

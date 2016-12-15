@@ -2,6 +2,7 @@
 #define LISTSERVICES_H
 #include "DataLayer.h"
 #include <vector>
+#include <QByteArray>
 
 class listServices
 {
@@ -94,6 +95,8 @@ public:
     vector<Computer> searchWhenBuiltSingleYear(int a);
     vector<Computer> myComputerWasNotBuilt();
     vector<Computer> myComputerWasBuilt();
+    vector<Computer> ComputerWasBuiltASC();
+    vector<Computer> ComputerWasBuiltDESC();
 
     //Function to check for Turing Awars
     vector<Scientist> checkForAward(int x);
@@ -158,6 +161,10 @@ public:
     //Functions for Ascending/Descending order by year of award
     vector<Scientist> readInAscendingByYOA();
     vector<Scientist> readInDescendingByYOA();
+
+    //Search for scientist by ID to display picture and bio
+
+    QByteArray searchScientistPicture(int id);
 
     //Functions for login
     vector<userandpass> checkForUsers();
