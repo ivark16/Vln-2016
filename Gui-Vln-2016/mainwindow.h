@@ -81,6 +81,7 @@ private slots:
 
     void on_pushButtonAscendingConnection_clicked();
 
+    void on_pushButtonDesendingConnection_clicked();
 
 private:
     Ui::MainWindow *ui;
