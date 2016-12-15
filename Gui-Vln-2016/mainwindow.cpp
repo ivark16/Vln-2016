@@ -50,18 +50,13 @@ void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 void MainWindow::displayAllScientists()
 {
     vector<Scientist> scientist = scientistService.displayScientist();
-
-
     displayScientist(scientist);
 }
 
 void MainWindow::displayScientist(vector<Scientist> scientists)
 {
     ui->tableWidget->clearContents();
-
     ui->tableWidget->setRowCount(scientists.size());
-
-
 
     for (unsigned int row = 0; row < scientists.size(); row++)
     {
@@ -205,7 +200,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 
 void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
 {
-    //ui->button_remove_connection->setEnabled(true);
+    ui->pushButtonDeleteConnection->setEnabled(true);
 }
 
 void MainWindow::displayAllConnections()
@@ -217,7 +212,6 @@ void MainWindow::displayAllConnections()
 void MainWindow::displayConnection(vector<searching> connections)
 {
     ui->tableWidgetConnection->clearContents();
-
     ui->tableWidgetConnection->setRowCount(connections.size());
 
     for (unsigned int row = 0; row < connections.size(); row++)
@@ -253,19 +247,19 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
 {
     int connectNo = ui->tableWidgetConnection->currentIndex().row();
     searching currentConnection = currentlyDisplayConnection.at(connectNo);
-    /*int idComputer = currentConnection.getComputersId();
-    int idScientist = currentConnection.getScientistId();
-    scientistService.deleteConnectionFromDatabase(idComputer, idScientist);
+    int idComputer = currentConnection.getSearchComputerId();
+    int idScientist = currentConnection.getSearchScientistId();
+    bool success = scientistService.deleteConnectionFromDatabase(idComputer, idScientist);
 
     if (success == true)
     {
-        displayAllScientists();
+        displayAllConnections();
         ui->pushButtonDeleteConnection->setEnabled(false);
     }
     else
     {
         //ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
-    }*/
+    }
 }
 
 //------------------------------------------------------------------------------------------------------------------------------
