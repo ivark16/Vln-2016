@@ -15,35 +15,49 @@ ConnectionTable::~ConnectionTable()
 
 void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
 {
+
     int id = ui->lineEditAdvancedSearch->text().toInt();
     QByteArray myArray = _list.searchScientistPicture(id);
+
+    if (id == 15)
+    {
+        ui->textBrowserAdvancedSearch->setText("Alan Turing");
+    }
+
+    if (myArray.size() != 0)
+    {
+        QPixmap photo;       
+        photo.loadFromData(myArray);
+        ui->labelPixMap->setPixmap(photo.scaled(100, 500, Qt::IgnoreAspectRatio, Qt::FastTransformation));
+        ui->labelPixMap->setScaledContents(true);
+    }
+    else
+    {
+        ui->labelPixMap->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
+    }
+
+}
+
+void ConnectionTable::display(int id)
+{
+    QByteArray myArray = _list.searchScientistPicture(id);
+
+    if (id == 15)
+    {
+        ui->textBrowserAdvancedSearch->setText("Alan Turing");
+    }
 
     if (myArray.size() != 0)
     {
         QPixmap photo;
-        //photo.
         photo.loadFromData(myArray);
-        ui->labelPixMap->setPixmap(photo);
+        ui->labelPixMap->setPixmap(photo.scaled(100, 500, Qt::IgnoreAspectRatio, Qt::FastTransformation));
+        ui->labelPixMap->setScaledContents(true);
     }
     else
     {
-        ui->labelPixMap->setText("fuck");
+        ui->labelPixMap->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
     }
 
-    /*string filepath = QFileDialog::getOpenFileName(
-                this,
-                "Search For Images",
-                "",
-                "Image files (*.png *.jpg"
-                ).toStdString();
-    if (filepath.length())
-    {
-        QPixmap map(QString::fromStdString(filepath));
-        ui->labelPixMap->setPixmap(map);
-
-    }
-    else
-    {
-
-    }*/
 }
+

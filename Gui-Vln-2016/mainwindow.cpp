@@ -580,8 +580,8 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
 
 void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
 {
-    //ConnectionTable connection;
-    //connection.exec();
+    ConnectionTable connection;
+    connection.exec();
 }
 
 void MainWindow::on_playAudio_clicked()
@@ -649,4 +649,18 @@ void MainWindow::on_pushButtonDesendingConnection_clicked()
         }
         displayConnection(connection);
     }
+}
+
+void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
+{
+    int scientistNo = ui->tableWidget->currentIndex().row();
+    Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+    int id = currentScientist.getID();
+    //_connection.on_pushButtonAdvancedSearch_clicked().exec();
+    ConnectionTable bla;
+    bla.exec();
+    bla.display(id);
+
+    //ConnectionTable connection;
+    //connection.exec();
 }

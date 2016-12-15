@@ -22,12 +22,15 @@ class ConnectionTable : public QDialog
 public:
     explicit ConnectionTable(QWidget *parent = 0);
     ~ConnectionTable();
+    //void on_pushButtonAdvancedSearch_clicked();
+    void display(int id);
 
 private slots:
     void on_pushButtonAdvancedSearch_clicked();
 
 private:
     Ui::ConnectionTable *ui;
+    int _id;
     listServices _list;
 };
 
