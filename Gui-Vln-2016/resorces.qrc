@@ -4,4 +4,10 @@
         <file>Pictures/datBase.png</file>
         <file>Pictures/cornerIcon.png</file>
     </qresource>
+    <qresource prefix="/sounds">
+        <file>sounds/dico_house.MP3</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>sounds/dico_house.MP3</file>
+    </qresource>
 </RCC>

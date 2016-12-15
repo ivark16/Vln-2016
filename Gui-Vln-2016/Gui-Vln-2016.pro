@@ -7,6 +7,7 @@
 QT       += core gui
 QT       += core gui sql
 QT       += sql
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,6 +32,7 @@ SOURCES += main.cpp\
     login.cpp \
     userandpass.cpp \
     registeruser.cpp
+    connectiontable.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -55,6 +57,7 @@ HEADERS  += mainwindow.h \
     login.h \
     userandpass.h \
     registeruser.h
+    connectiontable.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -72,6 +75,7 @@ FORMS   += mainwindow.ui \
     editscientist.ui \
     login.ui \
     registeruser.ui
+    connectiontable.ui
 INCLUDEPATH += models \
     repositories \
     services \

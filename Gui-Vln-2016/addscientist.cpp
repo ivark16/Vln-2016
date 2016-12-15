@@ -149,7 +149,6 @@ bool addScientist::getFirstName()
         //If there are no problems, the first name is legal.
         _firstName = potentialName;
     }
-
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
@@ -200,7 +199,6 @@ bool addScientist::getLastName()
         //If there are no problems, the last name is legal.
         _lastName = potentialName;
     }
-
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
@@ -252,7 +250,6 @@ bool addScientist::getNationality()
         //If there are no problems, the first name is legal.
         _nationality = potentialNationality;
     }
-
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
@@ -305,8 +302,6 @@ bool addScientist::getBirthYear()
         //If there are no problems, the birth year is legal.
         _birthYear = potentialBirthYear;
     }
-
-
     return(hasContent && hasOnlyNumbers && isInRange);
 
 }
@@ -355,7 +350,6 @@ bool addScientist::getDeathYear()
         //If there are no problems, the birth year is legal.
         _deathYear = potentialDeathYear;
     }
-
     return(hasOnlyNumbers && isInRange);
 
 }
@@ -404,6 +398,5 @@ bool addScientist::getAwardYear()
         //If there are no problems, the birth year is legal.
         _awardYear = potentialAwardYear;
     }
-
     return(hasOnlyNumbers && isInRange);
 }

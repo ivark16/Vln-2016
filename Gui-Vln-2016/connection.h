@@ -8,6 +8,7 @@ class connection
 {
     int _scientistId;
     int _computersId;
+
 public:
     connection();
     connection(int scientistId, int computersId);

@@ -264,6 +264,7 @@ vector<Scientist> listServices::searchAliveScientist()
 vector<Scientist> listServices::searchDeadScientist()
 {
     vector<Scientist> matchingScientists;
+
     //this loop goes through all scientists and adds them to the matchingScientists vector if and only if their year of death is listed as 0
     // which means that they are still living.
     for(unsigned int k = 0; k < displayScientist().size(); k++)
@@ -535,7 +536,9 @@ int listServices::searchLongestNameScientist()
             longest = display[i].getFirstName().size();
         }
     }
+
     unsigned int newLongest = longest;
+
     for(unsigned int i = 0; i < display.size(); i++)
     {
         if(newLongest < display[i].getLastName().size())
@@ -551,7 +554,9 @@ int listServices::searchLongestNameComputer()
 {
     vector<Computer> display;
     display = _myData.readAllFromDataComputerBase();
+
     unsigned int longest = 7;
+
     for(unsigned int i = 0; i < display.size(); i++)
     {
         if(longest < display[i].getComputerName().size())
@@ -613,4 +618,72 @@ vector<userandpass> listServices::checkForUsers()
 void listServices::regiserUsers(userandpass newUser)
 {
     _myData.registerUser(newUser);
+}
+vector<searching> listServices::readInAscendingByFirstName()
+{
+    vector<searching> readInAscendingByFirstName;
+    readInAscendingByFirstName = _myData.displayFirstNamefromSearchingAscendingOrder();
+    return readInAscendingByFirstName;
+}
+
+vector<searching> listServices::readInDiscendingFirstName()
+{
+    vector<searching> readInDiscendingFirstName;
+    readInDiscendingFirstName = _myData.displayFirstNamefromSearchingDescendingOrder();
+    return readInDiscendingFirstName;
+}
+vector<searching> listServices::readInAscendingByLastName()
+{
+    vector<searching> readInAscendingByLastName;
+    readInAscendingByLastName = _myData.displayLastNamefromSearchingAscendingOrder();
+    return readInAscendingByLastName;
+}
+
+vector<searching> listServices::readInDiscendingLastName()
+{
+    vector<searching> readInDiscendingLastName;
+    readInDiscendingLastName = _myData.displayLastNamefromSearchingDescendingOrder();
+    return readInDiscendingLastName;
+}
+
+vector<searching> listServices::readInAscendingByCompName()
+{
+    vector<searching> readInAscendingByCompName;
+    readInAscendingByCompName = _myData.displayComputerNamefromSearchingAscendingOrder();
+    return readInAscendingByCompName;
+}
+
+vector<searching> listServices::readInDiscendingCompName()
+{
+    vector<searching> readInDiscendingCompName;
+    readInDiscendingCompName = _myData.displayComputerNamefromSearchingDescendingOrder();
+    return readInDiscendingCompName;
+}
+
+vector<searching> listServices::readInAscendingByCompType()
+{
+    vector<searching> readInAscendingByCompType;
+    readInAscendingByCompType = _myData.displayComputerTypefromSearchingAscendingOrder();
+    return readInAscendingByCompType;
+}
+
+vector<searching> listServices::readInDiscendingByCompType()
+{
+    vector<searching> readInDiscendingByCompType;
+    readInDiscendingByCompType = _myData.displayComputerTypefromSearchingDescendingOrder();
+    return readInDiscendingByCompType;
+}
+
+vector<searching> listServices::readInAscendingByYearBuilt()
+{
+    vector<searching> readInAscendingByYearBuilt;
+    readInAscendingByYearBuilt = _myData.displayComputerYearfromSearchingAscendingOrder();
+    return readInAscendingByYearBuilt;
+}
+
+vector<searching> listServices::readInDiscendingByYearBuilt()
+{
+    vector<searching> readInDiscendingByYearBuilt;
+    readInDiscendingByYearBuilt = _myData.displayComputerYearfromSearchingDescendingOrder();
+    return readInDiscendingByYearBuilt;
 }

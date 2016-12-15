@@ -9,9 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
-    <height>631</height>
+    <width>1067</width>
+    <height>781</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="baseSize">
    <size>
@@ -49,8 +55,14 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -62,7 +74,7 @@
           <item>
            <widget class="QLineEdit" name="lineEditScientist">
             <property name="placeholderText">
-             <string>Search scientists</string>
+             <string>Search scientists:</string>
             </property>
            </widget>
           </item>
@@ -81,27 +93,14 @@
            <widget class="QComboBox" name="comboBoxScientist"/>
           </item>
           <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>10</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="radioButtonAscending">
+           <widget class="QPushButton" name="pushButtonAscending">
             <property name="text">
              <string>Ascending</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButtonDescending">
+           <widget class="QPushButton" name="pushButtonDescending">
             <property name="text">
              <string>Descending</string>
             </property>
@@ -114,11 +113,14 @@
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <property name="sortingEnabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
@@ -226,6 +228,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonEditScientist">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit</string>
           </property>
@@ -249,6 +254,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButtonAdvancedSearchScientist">
+          <property name="text">
+           <string>Advanced search</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="labelErrorMessageForDelete">
           <property name="text">
            <string/>
@@ -267,7 +279,7 @@
           <item>
            <widget class="QLineEdit" name="lineEditComputer">
             <property name="placeholderText">
-             <string>Search computers</string>
+             <string>Search computers:</string>
             </property>
            </widget>
           </item>
@@ -319,11 +331,29 @@
         </item>
         <item>
          <widget class="QTableWidget" name="tableWidget_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="statusTip">
            <string extracomment="bls"/>
           </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
           </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
@@ -403,7 +433,10 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="pushButtonEditComputers">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit</string>
           </property>
@@ -427,7 +460,7 @@
          </widget>
         </item>
        </layout>
-       <zorder>pushButton_2</zorder>
+       <zorder>pushButtonEditComputers</zorder>
        <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
        <zorder>tableWidget_2</zorder>
@@ -480,6 +513,9 @@
          <widget class="QTableWidget" name="tableWidgetConnection">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
           </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
@@ -553,13 +589,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButtonEditConnection">
-          <property name="text">
-           <string>Connection table</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="pushButtonAddConnection">
           <property name="text">
            <string>Add</string>
@@ -589,6 +618,33 @@
       </widget>
      </widget>
     </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QCheckBox" name="playAudio">
+        <property name="text">
+         <string>Play music</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -596,7 +652,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>481</width>
+     <width>1067</width>
      <height>17</height>
     </rect>
    </property>
