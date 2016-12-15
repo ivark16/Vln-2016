@@ -3,6 +3,11 @@
 #include "addScientist.h"
 #include "addComputer.h"
 #include "addconnection.h"
+#include <QObject>
+#include <QMediaObject>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
+    playMusic();
+
+    _musicPlayer = new QMediaPlayer(this);
 }
 
 MainWindow::~MainWindow()
@@ -547,4 +555,19 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     displayComputer(computer);
 }
 
+//play music
+
+void MainWindow::playMusic()
+{
+    /*
+    QString fileName = "dico_house.mp3";
+    if(fileName.isEmpty())
+    {
+        return;
+    }
+    _musicPlayer->setMedia(QUrl("http://www.flashkit.com/imagesvr_ce/flashkit/loops/Ambient/Ambient/Space_Drif_TomCat_Car_1917/SpaceDrifter.mp3"));
+    _musicPlayer ->setVolume(0);
+    _musicPlayer ->play();
+*/
+}
 
