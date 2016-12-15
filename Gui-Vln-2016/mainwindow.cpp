@@ -53,6 +53,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
 {
     ui->pushButtonDeleteScientist->setEnabled(true);
+    ui->pushButtonEditScientist->setEnabled(false);
 }
 
 void MainWindow::displayAllScientists()
@@ -261,6 +262,7 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
     {
         displayAllConnections();
         ui->pushButtonDeleteConnection->setEnabled(false);
+        ui->pushButtonEditScientist->setEnabled(false);
     }
     else
     {
@@ -288,6 +290,7 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     {
         displayAllScientists();
         ui->pushButtonDeleteScientist->setEnabled(false);
+        ui->pushButtonEditScientist->setEnabled(false);
     }
     else
     {
@@ -307,6 +310,7 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     displayAllScientists();
 
     ui->pushButtonEditScientist->setEnabled(false);
+    ui->pushButtonDeleteScientist->setEnabled(false);
 
 }
 
@@ -365,6 +369,7 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     {
         displayAllComputer();
         ui->pushButtonDeleteComputer->setEnabled(false);
+        ui->pushButtonEditComputers->setEnabled(false);
     }
     else
     {
@@ -472,6 +477,7 @@ void MainWindow::on_pushButtonEditComputers_clicked()
     displayAllComputer();
 
     ui->pushButtonEditComputers->setEnabled(false);
+    ui->pushButtonDeleteComputer->setEnabled(false);
 }
 
 void MainWindow::on_pushButtonAscendingComputer_clicked()
