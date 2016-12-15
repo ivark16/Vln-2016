@@ -42,8 +42,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
-    //This while loop, like other while(query.next()) loops in this file,
-    //is intended to extract data from teh database.
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int Ids = query.value(idName7).toInt();
@@ -60,6 +59,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     return returnScientist;
 }
 
+//Returns all scientists in the dtabase in order of ID
 vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
 {
     Scientist s;
@@ -76,8 +76,8 @@ vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
     int idname4 = myQuery.record().indexOf("YOB");
     int idname5 = myQuery.record().indexOf("YOD");
     int idname6 = myQuery.record().indexOf("YOA");
-    //This while loop, like other while(query.next()) loops in this file,
-    //is intended to extract data from teh database.
+
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int Ids = myQuery.value(idName7).toInt();
@@ -106,6 +106,7 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     int idName3 = query.record().indexOf("yearBuilt");
     int idName4 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int ids = query.value(idName).toInt();
@@ -120,6 +121,7 @@ vector<Computer> DataLayer::readAllFromDataComputerBase()
     return displayComputer;
 }
 
+//Returns all computers in the dtabase in order of ID
 vector<Computer> DataLayer::readAllFromDataComputerBaseById(int x)
 {
     Computer s;
@@ -134,6 +136,7 @@ vector<Computer> DataLayer::readAllFromDataComputerBaseById(int x)
     int idName3 = myQuery.record().indexOf("yearBuilt");
     int idName4 = myQuery.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int ids = myQuery.value(idName).toInt();
@@ -158,6 +161,7 @@ vector<connection> DataLayer::readAllFromDataConnectionBase()
     int idName1 = query.record().indexOf("scientistId");
     int idName2 = query.record().indexOf("computersId");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         //int ids = query.value(idName).toInt();
@@ -188,6 +192,7 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -223,6 +228,7 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -239,6 +245,7 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     return joinQueryComputer;
 }
 
+//This function??
 vector<searching> DataLayer::displayAllfromSearching()
 {
     vector<searching> joinQueryComputer;
@@ -253,6 +260,7 @@ vector<searching> DataLayer::displayAllfromSearching()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -269,6 +277,7 @@ vector<searching> DataLayer::displayAllfromSearching()
     return joinQueryComputer;
 }
 
+//This function??
 vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -283,6 +292,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -299,6 +309,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
     return joinQueryComputer;
 }
 
+//This function??
 vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -313,6 +324,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -329,6 +341,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
     return joinQueryComputer;
 }
 
+//This function
 vector<searching> DataLayer::displayComputerNamefromSearchingAscendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -343,6 +356,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingAscendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -359,6 +373,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingAscendingOrder()
     return joinQueryComputer;
 }
 
+//This Function??
 vector<searching> DataLayer::displayComputerNamefromSearchingDescendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -373,6 +388,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingDescendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -389,6 +405,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingDescendingOrder()
     return joinQueryComputer;
 }
 
+//This function
 vector<searching> DataLayer::displayComputerTypefromSearchingAscendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -403,6 +420,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingAscendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -419,6 +437,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingAscendingOrder()
     return joinQueryComputer;
 }
 
+//This function
 vector<searching> DataLayer::displayComputerTypefromSearchingDescendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -433,6 +452,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingDescendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -449,6 +469,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingDescendingOrder()
     return joinQueryComputer;
 }
 
+//This Function
 vector<searching> DataLayer::displayComputerYearfromSearchingAscendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -463,6 +484,7 @@ vector<searching> DataLayer::displayComputerYearfromSearchingAscendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -479,6 +501,7 @@ vector<searching> DataLayer::displayComputerYearfromSearchingAscendingOrder()
     return joinQueryComputer;
 }
 
+//This Function
 vector<searching> DataLayer::displayComputerYearfromSearchingDescendingOrder()
 {
     vector<searching> joinQueryComputer;
@@ -493,6 +516,7 @@ vector<searching> DataLayer::displayComputerYearfromSearchingDescendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
+    //This loop is intended to extract data from the database
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -638,7 +662,7 @@ bool DataLayer::addFunction(Scientist newScientist)
     }
 }
 
-//This function returns all scientists matching the search word entered by the user.
+//This function returns all scientists matching the search word entered by the user. Searching by name
 vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
     vector<Scientist> scientists;
@@ -672,6 +696,7 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     return scientists;
 }
 
+//This function returns all scientists matching the search word entered by the user. Searching by nationality
 vector<Scientist> DataLayer::searchNationality(string name)
 {
     vector<Scientist> scientists;
@@ -722,6 +747,8 @@ vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -738,6 +765,7 @@ vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
     return scientists;
 }
 
+//These functions below return the current size of each
 int DataLayer::getSizeOfScientists()
 {
     return _scientists.size();
@@ -782,6 +810,7 @@ vector<Scientist> DataLayer::readInAscendingByID()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -798,7 +827,7 @@ vector<Scientist> DataLayer::readInAscendingByID()
     return returnScientist;
 }
 
-//This function sorts all scientists in Ascending order by ID
+//This function sorts all scientists in Descending order by ID
 vector<Scientist> DataLayer::readInDiscendingByID()
 {
     vector<Scientist> returnScientist;
@@ -812,6 +841,7 @@ vector<Scientist> DataLayer::readInDiscendingByID()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -842,6 +872,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -872,6 +903,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrder()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -902,6 +934,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderNationality()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -932,6 +965,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderNationality()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -962,6 +996,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -978,7 +1013,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
     return returnScientist;
 }
 
-//This function sorts all scientists in order of birth year in descending order and returns it.
+//This function sorts all scientists in descending order of birth year and returns it.
 vector<Scientist> DataLayer::readInYoungestOrder()
 {
     vector<Scientist> returnScientist;
@@ -992,6 +1027,7 @@ vector<Scientist> DataLayer::readInYoungestOrder()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1023,6 +1059,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderGender()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1053,6 +1090,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderGender()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1083,6 +1121,7 @@ vector<Scientist> DataLayer::readInAscendingByYOA()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1113,6 +1152,7 @@ vector<Scientist> DataLayer::readInDescendingByYOA()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1146,6 +1186,8 @@ vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1162,6 +1204,7 @@ vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
     return scientists;
 }
 
+//This returns all scientists who have died in the year x, where x is an input from the user
 vector<Scientist> DataLayer::searchForDeadPeople(int x)
 {
     vector<Scientist> scientists;
@@ -1178,6 +1221,8 @@ vector<Scientist> DataLayer::searchForDeadPeople(int x)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1210,6 +1255,8 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1243,6 +1290,8 @@ vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
     int idname4 = query.record().indexOf("YOB");
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1270,6 +1319,7 @@ vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1294,6 +1344,7 @@ vector<Computer> DataLayer::readInReverseAlphabeticalOrderComputer()
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1318,6 +1369,7 @@ vector<Computer> DataLayer::readInOldestOrderComputer()
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1343,6 +1395,7 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1455,6 +1508,7 @@ vector<Computer> DataLayer::checkInComputer(string x)
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1484,6 +1538,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
 
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1512,6 +1567,8 @@ vector<Computer> DataLayer::checkInComputerYear(int x, int y)
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1539,6 +1596,8 @@ vector<Computer> DataLayer::checkInComputerSingleYear(int x)
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1565,6 +1624,8 @@ vector<Computer> DataLayer::ComputerWasBuilt()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1591,6 +1652,8 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1883,6 +1946,8 @@ vector<Computer> DataLayer::readIdInAscendingOrder()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1905,6 +1970,8 @@ vector<Computer> DataLayer::readIdInDescindingOrder()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1927,6 +1994,8 @@ vector<Computer> DataLayer::readTypeInAlphabeticalOrder()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();
@@ -1949,6 +2018,8 @@ vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
     int idName1 = query.record().indexOf("type");
     int idName2 = query.record().indexOf("yearBuilt");
     int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
     while(query.next())
     {
         int id = query.value(idNames).toInt();

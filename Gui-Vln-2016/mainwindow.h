@@ -14,15 +14,22 @@
 #include <QMainWindow>
 #include <string>
 #include <cstdlib>
+
+
+
 using namespace std;
 
 namespace Ui {
 class MainWindow;
 }
 
+class QMediaPlayer;
+
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -62,6 +69,8 @@ private slots:
 
     void on_pushButtonDescendingComputer_clicked();
 
+    void playMusic();
+
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
     void on_pushButtonAdvancedSearchScientist_clicked();
@@ -85,6 +94,8 @@ private:
     listServices scientistService;
     editscientist _edit;
     editcomputer _editComputer;
+
+    QMediaPlayer *_musicPlayer;
 
 };
 

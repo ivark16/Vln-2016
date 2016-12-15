@@ -3,6 +3,11 @@
 #include "addScientist.h"
 #include "addComputer.h"
 #include "addconnection.h"
+#include <QObject>
+#include <QMediaObject>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,6 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
+    playMusic();
+
+    _musicPlayer = new QMediaPlayer(this);
 }
 
 MainWindow::~MainWindow()
@@ -545,6 +553,24 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     displayComputer(computer);
 }
 
+//play music
+
+void MainWindow::playMusic()
+{
+
+
+    QMediaPlayer *sweetMusic = new QMediaPlayer();
+
+    QString fileName = "dico_house.mp3";
+    if(fileName.isEmpty())
+    {
+        return;
+    }
+    sweetMusic->setMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetMusic ->setVolume(50);
+    sweetMusic ->play();
+
+}
 
 
 void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
