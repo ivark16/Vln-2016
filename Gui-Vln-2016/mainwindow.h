@@ -9,6 +9,7 @@
 #include "connection.h"
 #include "searching.h"
 #include "editcomputer.h"
+#include "connectiontable.h"
 #include <vector>
 #include <QMainWindow>
 #include <string>
@@ -38,7 +39,6 @@ private slots:
     void on_pushButtonAddScientist_clicked();
 
     //void on_pushButtonSearchConnection_clicked();
-    void on_pushButtonEditConnection_clicked();
     void on_pushButtonAddConnection_clicked();
     void on_pushButtonDeleteConnection_clicked();
     void on_tableWidgetConnection_clicked(const QModelIndex &index);
@@ -63,6 +63,8 @@ private slots:
     void on_pushButtonDescendingComputer_clicked();
 
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
+
+    void on_pushButtonAdvancedSearchScientist_clicked();
 
 private:
     Ui::MainWindow *ui;
