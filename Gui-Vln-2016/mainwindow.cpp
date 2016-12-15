@@ -306,11 +306,14 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     _edit.exec();
     displayAllScientists();
 
+    ui->pushButtonEditScientist->setEnabled(false);
+
 }
 
 void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
 {
     ui->pushButtonDeleteScientist->setEnabled(true);
+    ui->pushButtonEditScientist->setEnabled(true);
 }
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)

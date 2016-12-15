@@ -62,7 +62,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -228,6 +228,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonEditScientist">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit</string>
           </property>
@@ -431,6 +434,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="pushButtonEditComputers">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Edit</string>
           </property>
