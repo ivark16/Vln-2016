@@ -71,6 +71,7 @@ private slots:
 
     void playMusic();
 
+    void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
