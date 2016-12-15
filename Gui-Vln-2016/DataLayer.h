@@ -32,6 +32,8 @@ public:
     vector<searching> displayAllfromSearching();
     vector<searching> displayFirstNamefromSearchingAscendingOrder();
     vector<searching> displayFirstNamefromSearchingDescendingOrder();
+    vector<searching> displayLastNamefromSearchingAscendingOrder();
+    vector<searching> displayLastNamefromSearchingDescendingOrder();
     vector<searching> displayComputerNamefromSearchingAscendingOrder();
     vector<searching> displayComputerNamefromSearchingDescendingOrder();
     vector<searching> displayComputerTypefromSearchingAscendingOrder();
