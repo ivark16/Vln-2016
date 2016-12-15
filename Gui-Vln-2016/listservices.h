@@ -159,6 +159,10 @@ public:
     vector<Scientist> readInAscendingByYOA();
     vector<Scientist> readInDescendingByYOA();
 
+    //Functions for login
+    vector<userandpass> checkForUsers();
+    void regiserUsers(userandpass newUser);
+
 
 };
 

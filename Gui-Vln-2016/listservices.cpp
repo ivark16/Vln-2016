@@ -608,6 +608,17 @@ vector<searching> listServices::displayAllFromSearching()
     return displayAllScientistComputer;
 }
 
+vector<userandpass> listServices::checkForUsers()
+{
+    vector<userandpass> checkUser;
+    checkUser = _myData.readLogin();
+    return checkUser;
+}
+
+void listServices::regiserUsers(userandpass newUser)
+{
+    _myData.registerUser(newUser);
+}
 vector<searching> listServices::readInAscendingByFirstName()
 {
     vector<searching> readInAscendingByFirstName;

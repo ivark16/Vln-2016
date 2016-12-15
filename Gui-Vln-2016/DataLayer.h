@@ -10,6 +10,7 @@
 #include <connection.h>
 #include <computer.h>
 #include<searching.h>
+#include "userandpass.h"
 
 using namespace std;
 
@@ -125,6 +126,10 @@ public:
     bool updateTypeComputer(string x, int y);
     bool updateYOCComputer (int x, int y);
     bool updateWasComputerBuilt (int x, int y);
+
+    //Function for login
+    vector<userandpass> readLogin();
+    bool registerUser(userandpass newUser);
 };
 
 #endif // SCIENTISLISTFROMSQL_H

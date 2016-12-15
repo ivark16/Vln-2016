@@ -579,8 +579,8 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
 
 void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
 {
-    ConnectionTable connection;
-    connection.exec();
+    //ConnectionTable connection;
+    //connection.exec();
 }
 
 void MainWindow::on_playAudio_clicked()
