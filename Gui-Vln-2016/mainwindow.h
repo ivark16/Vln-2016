@@ -46,6 +46,9 @@ private slots:
     void on_lineEditScientist_textChanged(const QString &arg1);
 
     void on_pushButtonAddScientist_clicked();
+    void on_addComputers_clicked();
+
+    void on_actionHelp_triggered();
 
     //void on_pushButtonSearchConnection_clicked();
     void on_pushButtonAddConnection_clicked();
@@ -56,15 +59,11 @@ private slots:
     void on_lineEdit_textChanged(const QString &arg1);
     void on_lineEditComputer_textChanged(const QString &arg1);
 
-    void on_pushButtonDeleteComputer_clicked();
-
-    void on_actionHelp_triggered();
-    void on_addComputers_clicked();
-
     void on_pushButtonAscending_clicked();
     void on_pushButtonDescending_clicked();
 
     void on_pushButtonEditComputers_clicked();
+    void on_pushButtonDeleteComputer_clicked();
 
     void on_pushButtonAscendingComputer_clicked();
     void on_pushButtonDescendingComputer_clicked();

@@ -166,6 +166,20 @@ vector<Computer> listServices::computerInReverseAlphabeticalOrder()
     return returnComputer;
 }
 
+vector<Computer> listServices::ComputerWasBuiltASC()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.ComputerWasBuiltASC();
+    return returnComputer;
+}
+
+vector<Computer> listServices::ComputerWasBuiltDESC()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.ComputerWasBuiltDESC();
+    return returnComputer;
+}
+
 vector<Scientist> listServices::oldestOrderScientist()
 {
     vector<Scientist> returnScientist;

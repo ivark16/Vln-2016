@@ -501,7 +501,8 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     }
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
-        //computer = scientistService;
+        computer = scientistService.ComputerWasBuiltASC();
+        //displayComputer(computer);
     }
     displayComputer(computer);
 }
@@ -527,7 +528,7 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     }
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
-        //computer = scientistService;
+        computer = scientistService.ComputerWasBuiltDESC();
     }
     displayComputer(computer);
 }
