@@ -30,6 +30,8 @@ private:
     char shiftCharacter(char character, int shift);
     bool isUpperCase(char character);
     bool isLowerCase(char character);
+    bool getUserName();
+    bool getPassWord();
 };
 
 #endif // REGISTERUSER_H

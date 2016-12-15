@@ -5,15 +5,20 @@
 
 int main(int argc, char *argv[])
 {
-
-
     QApplication a(argc, argv);
     QMessageBox msgBox;
+
     MainWindow w;
     w.show();
 
     login log;
-    log.exec();
-
-    return a.exec();
+    if (log.exec() != QDialog::Accepted)
+    {
+        a.quit();
+    }
+    else
+    {
+        a.exec();
+    }
+    return 0;
 }
