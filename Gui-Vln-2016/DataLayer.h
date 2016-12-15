@@ -41,8 +41,6 @@ public:
     vector<searching> displayComputerYearfromSearchingAscendingOrder();
     vector<searching> displayComputerYearfromSearchingDescendingOrder();
 
-
-
     int getSizeOfScientists();
     int getSizeOfComputer();
     int getSizeOfConnection();

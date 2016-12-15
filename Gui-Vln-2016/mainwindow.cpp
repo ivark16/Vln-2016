@@ -333,6 +333,7 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
     else
     {
          searchname = scientistService.searchForNameComputer(inputSearch);
+
          if (searchname.size() == 0)
          {
              searchname = scientistService.searchForTypeComputer(inputSearch);

@@ -6,7 +6,8 @@
 #include "listservices.h"
 #include "scientist.h"
 
-namespace Ui {
+namespace Ui
+{
 class editscientist;
 }
 
@@ -20,7 +21,6 @@ public:
     void displayForUpdate(int Id);
 
 private slots:
-
     void on_pushButtonUpdate_clicked();
 
 private:

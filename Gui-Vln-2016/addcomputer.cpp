@@ -107,7 +107,6 @@ bool addComputer::getComputerName()
         //If there are no problems, the first name is legal.
         _computerName = potentialName;
     }
-
     return (hasContent && hasLegalCharacters && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
@@ -159,7 +158,6 @@ bool addComputer::getComputerType()
         //If there are no problems, the first name is legal.
         _computerType = potentialType;
     }
-
     return (hasContent && hasLegalCharacters && !(potentialType.size() < 3 || potentialType.size() > 16));
 }
 

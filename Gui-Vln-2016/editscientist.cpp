@@ -25,6 +25,7 @@ void editscientist::displayForUpdate(int Id)
     newvector = _lists.displayScientistById(Id);
     QString firstname = QString::fromStdString(newvector[0].getFirstName());
     QString lastname = QString::fromStdString(newvector[0].getLastName());
+
     //QChar gender = QChar::isLetter();
     if(newvector[0].getGender() == 'm' || newvector[0].getGender() == 'M')
     {
@@ -50,6 +51,7 @@ void editscientist::displayForUpdate(int Id)
     ui->lineEditNationality->setText(nation);
     ui->lineEditYOB->setText(yob);
     ui->lineEditYOD->setText(yod);
+
     if(yoa == "0")
     {
         ui->lineEditYOA->setText("No award");
@@ -144,7 +146,6 @@ bool editscientist::getFirstName()
     if(!hasContent)
     {
         ui ->labelFirstName ->setText("<span style='color: red'>First name required</span>");
-
     }
     else if(!hasOnlyChar)
     {
@@ -209,7 +210,6 @@ bool editscientist::getLastName()
         //If there are no problems, the last name is legal.
         _lastName = potentialName;
     }
-
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 
 }
@@ -313,8 +313,6 @@ bool editscientist::getBirthYear()
         //If there are no problems, the birth year is legal.
         _birthYear = potentialBirthYear;
     }
-
-
     return(hasContent && hasOnlyNumbers && isInRange);
 
 }
@@ -342,6 +340,7 @@ bool editscientist::getDeathYear()
             hasOnlyNumbers = false;
         }
     }
+
     //checks that it is in range
     if(potentialDeathYear <_birthYear || potentialDeathYear > 2016)
     {
@@ -349,7 +348,6 @@ bool editscientist::getDeathYear()
     }
 
     //throws errors when necessary
-
     if(!hasOnlyNumbers)
     {
         ui ->labelYOD ->setText("<span style='color: red'>Death year can only contain numbers</span>");
@@ -365,7 +363,6 @@ bool editscientist::getDeathYear()
     }
 
     return(hasOnlyNumbers && isInRange);
-
 }
 
 bool editscientist::getAwardYear()
@@ -391,6 +388,7 @@ bool editscientist::getAwardYear()
             hasOnlyNumbers = false;
         }
     }
+
     //checks that it is in range
     if(potentialAwardYear <_birthYear || (potentialAwardYear > _deathYear && _deathYear != 0) || potentialAwardYear > 2016 && potentialAwardYear < 1966)
     {
@@ -412,7 +410,6 @@ bool editscientist::getAwardYear()
         //If there are no problems, the birth year is legal.
         _awardYear = potentialAwardYear;
     }
-
     return(hasOnlyNumbers && isInRange);
 
 }
