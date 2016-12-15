@@ -602,3 +602,15 @@ vector<searching> listServices::displayAllFromSearching()
     displayAllScientistComputer = _myData.displayAllfromSearching();
     return displayAllScientistComputer;
 }
+
+vector<userandpass> listServices::checkForUsers()
+{
+    vector<userandpass> checkUser;
+    checkUser = _myData.readLogin();
+    return checkUser;
+}
+
+void listServices::regiserUsers(userandpass newUser)
+{
+    _myData.registerUser(newUser);
+}

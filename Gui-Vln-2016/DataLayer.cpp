@@ -154,7 +154,6 @@ vector<connection> DataLayer::readAllFromDataConnectionBase()
     connection s;
     vector<connection> displayConnection;
     QSqlQuery query("SELECT * FROM connection");
-    //int idName = query.record().indexOf("ID");
     int idName1 = query.record().indexOf("scientistId");
     int idName2 = query.record().indexOf("computersId");
 
@@ -1960,4 +1959,45 @@ vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
         typeDescendingOrder.push_back(s);
     }
     return typeDescendingOrder;
+}
+
+vector<userandpass> DataLayer::readLogin()
+{
+    vector<userandpass> checkForUser;
+    QSqlQuery query("SELECT * FROM users");
+    int idName = query.record().indexOf("username");
+    int idname1 = query.record().indexOf("password");
+
+
+    //This while loop, like other while(query.next()) loops in this file,
+    //is intended to extract data from teh database.
+    while(query.next())
+    {
+        string username = query.value(idName).toString().toStdString();
+        string password = query.value(idname1).toString().toStdString();
+        userandpass users(username, password);
+        checkForUser.push_back(users);
+    }
+    return checkForUser;
+}
+
+bool DataLayer::registerUser(userandpass newUser)
+{
+    QSqlQuery query;
+    QString qName1 = QString::fromStdString(newUser.getuser());
+    QString qName2 = QString::fromStdString(newUser.getpassword());
+
+    query.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    query.addBindValue(qName1);
+    query.addBindValue(qName2);
+    query.exec();
+    //
+    if (query.next())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

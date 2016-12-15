@@ -27,7 +27,10 @@ SOURCES += main.cpp\
     addcomputer.cpp \
     helpwindow.cpp \
     addconnection.cpp \
-    editcomputer.cpp
+    editcomputer.cpp \
+    login.cpp \
+    userandpass.cpp \
+    registeruser.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -48,7 +51,10 @@ HEADERS  += mainwindow.h \
     addcomputer.h \
     helpwindow.h \
     addconnection.h \
-    editcomputer.h
+    editcomputer.h \
+    login.h \
+    userandpass.h \
+    registeruser.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -63,7 +69,9 @@ FORMS   += mainwindow.ui \
     addconnection.ui \
     editcomputer.ui \
     addscientist.ui \
-    editscientist.ui
+    editscientist.ui \
+    login.ui \
+    registeruser.ui
 INCLUDEPATH += models \
     repositories \
     services \
