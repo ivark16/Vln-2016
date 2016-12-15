@@ -2154,3 +2154,57 @@ bool DataLayer::registerUser(userandpass newUser)
         return false;
     }
 }
+
+vector<Computer> DataLayer::ComputerWasBuiltASC()
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
+
+    query.prepare("Select * From computer ORDER BY wasbuilt ASC");
+    query.exec();
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        myVector.push_back(s);
+    }
+    return myVector;
+}
+
+vector<Computer> DataLayer::ComputerWasBuiltDESC()
+{
+    vector<Computer> myVector;
+    QSqlQuery query;
+
+    query.prepare("Select * From computer ORDER BY wasbuilt DESC");
+    query.exec();
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("name");
+    int idName1 = query.record().indexOf("type");
+    int idName2 = query.record().indexOf("yearBuilt");
+    int idName3 = query.record().indexOf("wasbuilt");
+
+    //This loop is intended to extract data from the database
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string name = query.value(idName).toString().toStdString();
+        string type = query.value(idName1).toString().toStdString();
+        int yearbuilt = query.value(idName2).toInt();
+        bool wasbuilt = query.value(idName3).toBool();
+        Computer s(id, name, type, yearbuilt, wasbuilt);
+        myVector.push_back(s);
+    }
+    return myVector;
+}

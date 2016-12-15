@@ -96,6 +96,8 @@ public:
     vector<Computer> readIdInDescindingOrder();
     vector<Computer> readTypeInAlphabeticalOrder();
     vector<Computer> readTypeInReverseAlphabeticalOrder();
+    vector<Computer> ComputerWasBuiltASC();
+    vector<Computer> ComputerWasBuiltDESC();
 
     //Add functions for computer, connect and scientist
     bool addFunctionComputer(Computer newComputer);

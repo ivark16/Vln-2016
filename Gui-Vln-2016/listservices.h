@@ -95,6 +95,8 @@ public:
     vector<Computer> searchWhenBuiltSingleYear(int a);
     vector<Computer> myComputerWasNotBuilt();
     vector<Computer> myComputerWasBuilt();
+    vector<Computer> ComputerWasBuiltASC();
+    vector<Computer> ComputerWasBuiltDESC();
 
     //Function to check for Turing Awars
     vector<Scientist> checkForAward(int x);
