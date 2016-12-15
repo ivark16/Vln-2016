@@ -126,7 +126,7 @@ public:
     vector<Scientist> readInAscendingByID();
     vector<Scientist> readInDiscendingByID();
 
-   /* //Functions for Ascending/Descending order by FirstName
+   //Functions for Ascending/Descending order by FirstName
     vector<searching> readInAscendingByFirstName();
     vector<searching> readInDiscendingFirstName();
 
@@ -136,11 +136,11 @@ public:
 
     //Functions for Ascending/Descending order by CompType
     vector<searching> readInAscendingByCompType();
-    vector<searching> readInDiscendingCompType();
+    vector<searching> readInDiscendingByCompType();
 
     //Functions for Ascending/Descending order by YearBuilt
     vector<searching> readInAscendingByYearBuilt();
-    vector<searching> readInDiscendingYearBuilt();*/
+    vector<searching> readInDiscendingByYearBuilt();
 
     //Functions for Ascending/Descending alphabetical order by nationality
     vector<Scientist> readInAlphabeticalOrderNationality();
