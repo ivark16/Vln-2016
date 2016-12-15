@@ -6,7 +6,6 @@
     </qresource>
     <qresource prefix="/sounds">
         <file>sounds/dico_house.MP3</file>
-        <file>sounds/SpaceDrifter.wav</file>
     </qresource>
     <qresource prefix="/">
         <file>sounds/dico_house.MP3</file>
