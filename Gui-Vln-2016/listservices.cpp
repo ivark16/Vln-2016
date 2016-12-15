@@ -132,6 +132,12 @@ vector<Scientist> listServices::readInDescendingByYOA()
     return returnScientist;
 }
 
+QByteArray listServices::searchScientistPicture(int id)
+{
+   QByteArray picture = _myData.searchForPictureForScientist(id);
+   return picture;
+}
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -157,6 +163,20 @@ vector<Computer> listServices::computerInReverseAlphabeticalOrder()
 {
     vector<Computer> returnComputer;
     returnComputer = _myData.readInReverseAlphabeticalOrderComputer();
+    return returnComputer;
+}
+
+vector<Computer> listServices::ComputerWasBuiltASC()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.ComputerWasBuiltASC();
+    return returnComputer;
+}
+
+vector<Computer> listServices::ComputerWasBuiltDESC()
+{
+    vector<Computer> returnComputer;
+    returnComputer = _myData.ComputerWasBuiltDESC();
     return returnComputer;
 }
 

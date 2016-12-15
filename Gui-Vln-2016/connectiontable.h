@@ -3,8 +3,10 @@
 #include "connection.h"
 #include "listservices.h"
 #include <QPixmap>
+#include <QByteArray>
 #include <vector>
 #include <QDialog>
+#include <QFileDialog>
 
 using namespace std;
 

@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <QByteArray>
 #include <vector>
 #include <scientist.h>
 #include <connection.h>
@@ -95,6 +96,8 @@ public:
     vector<Computer> readIdInDescindingOrder();
     vector<Computer> readTypeInAlphabeticalOrder();
     vector<Computer> readTypeInReverseAlphabeticalOrder();
+    vector<Computer> ComputerWasBuiltASC();
+    vector<Computer> ComputerWasBuiltDESC();
 
     //Add functions for computer, connect and scientist
     bool addFunctionComputer(Computer newComputer);
@@ -127,6 +130,7 @@ public:
     bool updateYOCComputer (int x, int y);
     bool updateWasComputerBuilt (int x, int y);
 
+    QByteArray searchForPictureForScientist(int id);
     //Function for login
     vector<userandpass> readLogin();
     bool registerUser(userandpass newUser);
