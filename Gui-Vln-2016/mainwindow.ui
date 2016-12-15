@@ -445,7 +445,25 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBoxConnection"/>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QComboBox" name="comboBoxConnection"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonAscendingConnection">
+            <property name="text">
+             <string>Ascending</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonDesendingConnection">
+            <property name="text">
+             <string>Descending</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QTableWidget" name="tableWidgetConnection">

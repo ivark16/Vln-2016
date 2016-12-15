@@ -25,6 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxComputer->addItem("Type");
     ui->comboBoxComputer->addItem("Year built");
     ui->comboBoxComputer->addItem("Was it built?");
+    ui->comboBoxConnection->addItem("Display Connections");
+    ui->comboBoxConnection->addItem("-----------------------");
+    ui->comboBoxConnection->addItem("First Name");
+    ui->comboBoxConnection->addItem("Last Name");
+    ui->comboBoxConnection->addItem("Computer Name");
+    ui->comboBoxConnection->addItem("Type");
+    ui->comboBoxConnection->addItem("Year built");
     displayAllScientists();
     displayAllComputer();
     displayAllConnections();
