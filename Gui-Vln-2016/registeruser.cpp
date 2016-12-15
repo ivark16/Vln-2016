@@ -80,5 +80,5 @@ bool registeruser::isLowerCase(char character)
 {
     int characterInAsciiValure = static_cast<int>(character);
 
-    return (characterInAsciiValure >= 107 && characterInAsciiValure <= 122);
+    return (characterInAsciiValure >= 97 && characterInAsciiValure <= 122);
 }
