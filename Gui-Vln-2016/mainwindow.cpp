@@ -553,3 +553,5 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     }
     displayComputer(computer);
 }
+
+

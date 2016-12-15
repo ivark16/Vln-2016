@@ -176,9 +176,12 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
-    myQuery.addBindValue(qName);
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID  JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE scientist.firstname = (:x) COLLATE NOCASE");
+    myQuery.addBindValue("%" + qName + "%");
+    myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
     int idName2 = myQuery.record().indexOf("lastname");
     int idName3 = myQuery.record().indexOf("name");
@@ -187,13 +190,15 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
 
     while(myQuery.next())
     {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
         string firstname = myQuery.value(idName).toString().toStdString();
         string lastname = myQuery.value(idName2).toString().toStdString();
         string compname = myQuery.value(idName3).toString().toStdString();
         string comptype = myQuery.value(idName4).toString().toStdString();
         int yearbuilt = myQuery.value(idName5).toInt();
 
-        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
         joinQueryComputer.push_back(s);
     }
     return joinQueryComputer;
@@ -205,9 +210,13 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
     QString qName = QString::fromStdString(x);
-    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name = (:x) COLLATE NOCASE");
-    myQuery.addBindValue(qName);
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID WHERE computer.name LIKE (:x) OR computer.type LIKE (:x) OR computer.yearBuilt LIKE (:x) COLLATE NOCASE");
+    myQuery.addBindValue("%" + qName + "%");
+    myQuery.addBindValue("%" + qName + "%");
+    myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
     int idName2 = myQuery.record().indexOf("lastname");
     int idName3 = myQuery.record().indexOf("name");
@@ -216,13 +225,15 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
 
     while(myQuery.next())
     {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
         string firstname = myQuery.value(idName).toString().toStdString();
         string lastname = myQuery.value(idName2).toString().toStdString();
         string compname = myQuery.value(idName3).toString().toStdString();
         string comptype = myQuery.value(idName4).toString().toStdString();
         int yearbuilt = myQuery.value(idName5).toInt();
 
-        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
         joinQueryComputer.push_back(s);
     }
     return joinQueryComputer;
@@ -232,8 +243,10 @@ vector<searching> DataLayer::displayAllfromSearching()
 {
     vector<searching> joinQueryComputer;
     QSqlQuery myQuery;
-    myQuery.prepare("SELECT scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID");
+    myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID");
     myQuery.exec();
+    int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
+    int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
     int idName2 = myQuery.record().indexOf("lastname");
     int idName3 = myQuery.record().indexOf("name");
@@ -242,13 +255,15 @@ vector<searching> DataLayer::displayAllfromSearching()
 
     while(myQuery.next())
     {
+        int IdScientist = myQuery.value(idNamesScientistID).toInt();
+        int IdComputer = myQuery.value(idNamesComputerID).toInt();
         string firstname = myQuery.value(idName).toString().toStdString();
         string lastname = myQuery.value(idName2).toString().toStdString();
         string compname = myQuery.value(idName3).toString().toStdString();
         string comptype = myQuery.value(idName4).toString().toStdString();
         int yearbuilt = myQuery.value(idName5).toInt();
 
-        searching s(firstname, lastname, compname, comptype, yearbuilt);
+        searching s(IdScientist, IdComputer,firstname, lastname, compname, comptype, yearbuilt);
         joinQueryComputer.push_back(s);
     }
     return joinQueryComputer;

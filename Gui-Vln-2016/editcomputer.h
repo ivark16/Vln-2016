@@ -37,6 +37,7 @@ private:
     bool getYearOfBuild();
     bool wasBuilt();
 
+
 };
 
 #endif // EDITCOMPUTER_H
