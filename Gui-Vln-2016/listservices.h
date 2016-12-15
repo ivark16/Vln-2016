@@ -2,6 +2,7 @@
 #define LISTSERVICES_H
 #include "DataLayer.h"
 #include <vector>
+#include <QByteArray>
 
 class listServices
 {
@@ -154,6 +155,9 @@ public:
     vector<Scientist> readInAscendingByYOA();
     vector<Scientist> readInDescendingByYOA();
 
+    //Search for scientist by ID to display picture and bio
+
+    QByteArray searchScientistPicture(int id);
 
 };
 

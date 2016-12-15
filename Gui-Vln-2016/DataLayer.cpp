@@ -2032,3 +2032,18 @@ vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
     }
     return typeDescendingOrder;
 }
+
+QByteArray DataLayer::searchForPictureForScientist(int id)
+{
+    QByteArray myArray;
+    QSqlQuery query ("Select * FROM pictures WHERE sciID = (:id)");
+    query.addBindValue(id);
+    query.exec();
+
+    int idName = query.record().indexOf("sciID");
+    while(query.next())
+    {
+        myArray = query.value(idName).toByteArray();
+    }
+    return myArray;
+}

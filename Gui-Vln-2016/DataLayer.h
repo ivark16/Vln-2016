@@ -5,6 +5,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
+#include <QByteArray>
 #include <vector>
 #include <scientist.h>
 #include <connection.h>
@@ -125,6 +126,8 @@ public:
     bool updateTypeComputer(string x, int y);
     bool updateYOCComputer (int x, int y);
     bool updateWasComputerBuilt (int x, int y);
+
+    QByteArray searchForPictureForScientist(int id);
 };
 
 #endif // SCIENTISLISTFROMSQL_H

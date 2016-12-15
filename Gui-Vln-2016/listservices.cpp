@@ -132,6 +132,12 @@ vector<Scientist> listServices::readInDescendingByYOA()
     return returnScientist;
 }
 
+QByteArray listServices::searchScientistPicture(int id)
+{
+   QByteArray picture = _myData.searchForPictureForScientist(id);
+   return picture;
+}
+
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
