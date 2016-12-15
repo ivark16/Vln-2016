@@ -77,8 +77,10 @@ private slots:
     void on_pushButtonAdvancedSearchScientist_clicked();
 
 
-
     void on_playAudio_clicked();
+
+    void on_pushButtonAscendingConnection_clicked();
+
 
 private:
     Ui::MainWindow *ui;

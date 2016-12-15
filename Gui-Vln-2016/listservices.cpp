@@ -616,6 +616,19 @@ vector<searching> listServices::readInDiscendingFirstName()
     readInDiscendingFirstName = _myData.displayFirstNamefromSearchingDescendingOrder();
     return readInDiscendingFirstName;
 }
+vector<searching> listServices::readInAscendingByLastName()
+{
+    vector<searching> readInAscendingByLastName;
+    readInAscendingByLastName = _myData.displayLastNamefromSearchingAscendingOrder();
+    return readInAscendingByLastName;
+}
+
+vector<searching> listServices::readInDiscendingLastName()
+{
+    vector<searching> readInDiscendingLastName;
+    readInDiscendingLastName = _myData.displayLastNamefromSearchingDescendingOrder();
+    return readInDiscendingLastName;
+}
 vector<searching> listServices::readInAscendingByCompName()
 {
     vector<searching> readInAscendingByCompName;
