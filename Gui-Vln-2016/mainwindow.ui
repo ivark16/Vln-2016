@@ -62,7 +62,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -74,7 +74,7 @@
           <item>
            <widget class="QLineEdit" name="lineEditScientist">
             <property name="placeholderText">
-             <string>Search scientists</string>
+             <string>Search scientists:</string>
             </property>
            </widget>
           </item>
@@ -93,27 +93,14 @@
            <widget class="QComboBox" name="comboBoxScientist"/>
           </item>
           <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>10</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="radioButtonAscending">
+           <widget class="QPushButton" name="pushButtonAscending">
             <property name="text">
              <string>Ascending</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButtonDescending">
+           <widget class="QPushButton" name="pushButtonDescending">
             <property name="text">
              <string>Descending</string>
             </property>
@@ -289,7 +276,7 @@
           <item>
            <widget class="QLineEdit" name="lineEditComputer">
             <property name="placeholderText">
-             <string>Search computers</string>
+             <string>Search computers:</string>
             </property>
            </widget>
           </item>
@@ -443,7 +430,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="pushButtonEditComputers">
           <property name="text">
            <string>Edit</string>
           </property>
@@ -467,7 +454,7 @@
          </widget>
         </item>
        </layout>
-       <zorder>pushButton_2</zorder>
+       <zorder>pushButtonEditComputers</zorder>
        <zorder>addComputers</zorder>
        <zorder>pushButtonDeleteComputer</zorder>
        <zorder>tableWidget_2</zorder>
@@ -660,7 +647,7 @@
      <x>0</x>
      <y>0</y>
      <width>1067</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxComputer->addItem("Type");
     ui->comboBoxComputer->addItem("Year built");
     ui->comboBoxComputer->addItem("Was it built?");
-    ui->comboBoxConnection->addItem("Display Connections");
+    ui->comboBoxConnection->addItem("Display connections");
     ui->comboBoxConnection->addItem("-----------------------");
     ui->comboBoxConnection->addItem("First Name");
     ui->comboBoxConnection->addItem("Last Name");
@@ -153,6 +153,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
 void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
         ui->pushButtonDeleteComputer->setEnabled(true);
+        ui->pushButtonEditComputers->setEnabled(true);
 }
 
 //Fall til ad leita ad visindamonnum, leitar ad nofnum og fæðingarári vísindamanna.
@@ -379,118 +380,84 @@ void MainWindow::on_addComputers_clicked()
     displayAllComputer();
 }
 
-void MainWindow::on_radioButtonAscending_clicked()
+void MainWindow::on_pushButtonAscending_clicked()
 {
     vector<Scientist> scientist;
     if (ui->comboBoxScientist->currentText() == "")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.displayScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "ID")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInAscendingByID();
     }
    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
-        //ui->radioButtonAscending->setCheckable(false);
         scientist = scientistService.scientistInAlphabeticalOrder();
 
     }
     else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInAlphabeticalOrderNationality();
     }
     else if (ui->comboBoxScientist->currentText() == "Gender")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInAlphabeticalOrderGender();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of birth")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
-        //ui->radioButtonAscending->setCheckable(false);
         scientist = scientistService.oldestOrderScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of death")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.youngestOrderScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of Award")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInAscendingByYOA();
     }
     displayScientist(scientist);
 }
 
-void MainWindow::on_radioButtonDescending_clicked()
+void MainWindow::on_pushButtonDescending_clicked()
 {
     vector<Scientist> scientist;
     if (ui->comboBoxScientist->currentText() == "")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.displayScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "ID")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInDiscendingByID();
     }
    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.scientistInReverseAlphabeticalOrder();
     }
     else if (ui->comboBoxScientist->currentText() == "Alphabetical order of nationality")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInReverseAlphabeticalOrderNationality();
     }
     else if (ui->comboBoxScientist->currentText() == "Gender")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInReverseAlphabeticalOrderGender();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of birth")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.youngestOrderScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of death")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.oldestOrderScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "Year of award")
     {
-        ui->radioButtonAscending->setCheckable(false);
-        ui->radioButtonAscending->update();
         scientist = scientistService.readInDescendingByYOA();
     }
     displayScientist(scientist);
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButtonEditComputers_clicked()
 {
     int selectCurrentComputer = ui->tableWidget_2->currentIndex().row();
     Computer currComputer = currentlyDisplayComputer.at(selectCurrentComputer);
@@ -499,6 +466,8 @@ void MainWindow::on_pushButton_2_clicked()
     _editComputer.setModal(true);
     _editComputer.exec();
     displayAllComputer();
+
+    ui->pushButtonEditComputers->setEnabled(false);
 }
 
 void MainWindow::on_pushButtonAscendingComputer_clicked()
