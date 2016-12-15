@@ -610,10 +610,10 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
     {
         connection = scientistService.readInAscendingByFirstName();
     }
-    /*else if (ui->comboBoxConnection->currentText() == "Last Name")
+    else if (ui->comboBoxConnection->currentText() == "Last Name")
     {
-        connection = scientistService.
-    }*/
+        connection = scientistService.readInAscendingByLastName();
+    }
     else if (ui->comboBoxConnection->currentText() == "Computer Name")
     {
         connection = scientistService.readInAscendingByCompName();
@@ -627,4 +627,32 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
         connection = scientistService.readInAscendingByYearBuilt();
     }
     displayConnection(connection);
+}
+
+void MainWindow::on_pushButtonDesendingConnection_clicked()
+{
+    {
+        vector<searching> connection;
+        if (ui->comboBoxConnection->currentText() == "First Name")
+        {
+            connection = scientistService.readInDiscendingFirstName();
+        }
+        else if (ui->comboBoxConnection->currentText() == "Last Name")
+        {
+            connection = scientistService.readInDiscendingLastName();
+        }
+        else if (ui->comboBoxConnection->currentText() == "Computer Name")
+        {
+            connection = scientistService.readInDiscendingCompName();
+        }
+        else if (ui->comboBoxConnection->currentText() == "Type")
+        {
+            connection = scientistService.readInDiscendingByCompType();
+        }
+        else if (ui->comboBoxConnection->currentText() == "Year built")
+        {
+            connection = scientistService.readInDiscendingByYearBuilt();
+        }
+        displayConnection(connection);
+    }
 }
