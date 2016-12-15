@@ -2106,7 +2106,7 @@ QByteArray DataLayer::searchForPictureForScientist(int id)
     query.addBindValue(id);
     query.exec();
 
-    int idName = query.record().indexOf("sciID");
+    int idName = query.record().indexOf("picture");
     while(query.next())
     {
         myArray = query.value(idName).toByteArray();

@@ -79,6 +79,8 @@ private slots:
     void playMusic(bool checkStatus);
     void on_playAudio_clicked();
 
+    void on_tableWidget_2_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     void displayAllScientists();
@@ -98,6 +100,7 @@ private:
     listServices scientistService;
     editscientist _edit;
     editcomputer _editComputer;
+    ConnectionTable _connection;
 
     QMediaPlaylist *_sweetPlaylist = new QMediaPlaylist();
     QMediaPlayer *_sweetMusic = new QMediaPlayer();
