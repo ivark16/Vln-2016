@@ -50,7 +50,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -245,6 +245,13 @@
           </property>
           <property name="text">
            <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButtonAdvancedSearchScientist">
+          <property name="text">
+           <string>Advanced search</string>
           </property>
          </widget>
         </item>
@@ -550,13 +557,6 @@
             </color>
            </property>
           </column>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButtonEditConnection">
-          <property name="text">
-           <string>Connection table</string>
-          </property>
          </widget>
         </item>
         <item>

@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     addcomputer.cpp \
     helpwindow.cpp \
     addconnection.cpp \
-    editcomputer.cpp
+    editcomputer.cpp \
+    connectiontable.cpp
         listservices.cpp
         DataLayer.cpp
         scientist.cpp
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     addcomputer.h \
     helpwindow.h \
     addconnection.h \
-    editcomputer.h
+    editcomputer.h \
+    connectiontable.h
         listservices.h
         DataLayer.h
         scientist.h
@@ -64,7 +66,8 @@ FORMS   += mainwindow.ui \
     addconnection.ui \
     editcomputer.ui \
     addscientist.ui \
-    editscientist.ui
+    editscientist.ui \
+    connectiontable.ui
 INCLUDEPATH += models \
     repositories \
     services \

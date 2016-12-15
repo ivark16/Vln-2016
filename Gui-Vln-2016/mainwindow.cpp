@@ -240,15 +240,12 @@ void MainWindow::displayConnection(vector<searching> connections)
     }
     currentlyDisplayConnection = connections;
 }
-void MainWindow::on_pushButtonEditConnection_clicked()
-{
-
-}
 
 void MainWindow::on_pushButtonAddConnection_clicked()
 {
     addConnection addNew;
     addNew.exec();
+    displayAllConnections();
 }
 
 void MainWindow::on_pushButtonDeleteConnection_clicked()
@@ -562,16 +559,19 @@ void MainWindow::playMusic()
 {
 
 
+
+    QMediaPlaylist *sweetPlaylist = new QMediaPlaylist();
+    sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
+    sweetPlaylist->setCurrentIndex(1);
+
+
     QMediaPlayer *sweetMusic = new QMediaPlayer();
 
-    QString fileName = "dico_house.mp3";
-    if(fileName.isEmpty())
-    {
-        return;
-    }
-    sweetMusic->setMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
+    sweetMusic->setPlaylist(sweetPlaylist);
     sweetMusic ->setVolume(50);
     sweetMusic ->play();
+
 
 }
 
@@ -593,6 +593,12 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
 
     if (search.size() == 0)
     {
-        ui->labelErrorMessageConnection->setText("<span style=' color: red'> No computer found </span>");
+        ui->labelErrorMessageConnection->setText("<span style=' color: red'> No connection found </span>");
     }
+}
+
+void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
+{
+    ConnectionTable connection;
+    connection.exec();
 }
