@@ -35,6 +35,7 @@ private:
     int _deathYear;
     int _awardYear;
 
+    //Error handler functions
     bool getGender();
     bool getFirstName();
     bool getLastName();

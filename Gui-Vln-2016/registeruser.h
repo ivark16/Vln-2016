@@ -2,6 +2,7 @@
 #define REGISTERUSER_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include "listservices.h"
 #include "userandpass.h"
 
@@ -18,6 +19,7 @@ public:
     ~registeruser();
 
 private slots:
+    //Function for register button pressed
     void on_pushButtonRegister_clicked();
 
 private:
@@ -26,8 +28,11 @@ private:
     string _username;
     string _password;
 
+    //Function for encrytion
     string chiperText(string text, int shift);
     char shiftCharacter(char character, int shift);
+
+    //Functions for error handling
     bool isUpperCase(char character);
     bool isLowerCase(char character);
     bool getUserName();
