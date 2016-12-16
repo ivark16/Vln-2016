@@ -348,13 +348,6 @@ vector<Computer> listServices::searchForTypeComputer(string s)
     return returnComputers;
 }
 
-/*vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
-{
-    vector<Computer> returnRange;
-    returnRange = _myData.checkInComputerYear(a, b);
-    return returnRange;
-}*/
-
 //This function recives the the right corresponding computer bult in the year the user has inputed.
 vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
 {
@@ -362,20 +355,6 @@ vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
     returnRange = _myData.checkInComputerSingleYear(a);
     return returnRange;
 }
-
-/*vector<Computer> listServices::myComputerWasBuilt()
-{
-    vector<Computer> returnRange;
-    returnRange = _myData.ComputerWasBuilt();
-    return returnRange;
-}
-
-vector<Computer> listServices::myComputerWasNotBuilt()
-{
-    vector<Computer> returnRange;
-    returnRange = _myData.ComputerWasNotBuilt();
-    return returnRange;
-}*/
 
 //This function collects scientist that have an award from the database.
 vector<Scientist> listServices::checkForAward(int x)
@@ -409,13 +388,6 @@ vector<Scientist> listServices::checkName(string s)
     return names;
 }
 
-/*vector<Scientist> listServices::checkFullName(string s)
-{
-    vector<Scientist> names;
-    names = _myData.searchFullNameFromDatabase(s);
-    return names;
-}*/
-
 //This function collects scientist by their nationality from the database.
 vector<Scientist> listServices::checkNationality(string s)
 {
@@ -423,13 +395,6 @@ vector<Scientist> listServices::checkNationality(string s)
     names = _myData.searchNationality(s);
     return names;
 }
-
-/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
-{
-    vector<Scientist> award1;
-    award1 = _myData.searchRangeForYearOfBirth(x, y);
-    return award1;
-}*/
 
 //This function lets the user update the scientists first name.
 bool listServices::updateFirstNameScientist(string x, int id)

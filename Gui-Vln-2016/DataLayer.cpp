@@ -2211,8 +2211,9 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
     return myVector;
 }
 
+//Function to display images in advanced search (We are sorry about the vocabulary)
 QByteArray DataLayer::inputPicture(QByteArray bit)
 {
-QByteArray fuck;
-return fuck;
+    QByteArray fuck;
+    return fuck;
 }

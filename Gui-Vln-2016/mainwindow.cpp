@@ -39,12 +39,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxConnection->addItem("Type");
     ui->comboBoxConnection->addItem("Year built");
 
+    //These functions disable the acending and descending buttons
     ui->pushButtonAscendingConnection->setEnabled(false);
     ui->pushButtonDesendingConnection->setEnabled(false);
-
     ui->pushButtonAscending->setEnabled(false);
     ui->pushButtonDescending->setEnabled(false);
-
     ui->pushButtonAscendingComputer->setEnabled(false);
     ui->pushButtonDescendingComputer->setEnabled(false);
 
@@ -53,20 +52,12 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputer();
     displayAllConnections();
     playMusic(ui ->playAudio ->isChecked());
-    //_musicPlayer = new QMediaPlayer(this);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-// function for when
-/*void MainWindow::on_tableViewScientist_clicked(const QModelIndex &index)
-{
-    ui->pushButtonDeleteScientist->setEnabled(true);
-    ui->pushButtonEditScientist->setEnabled(false);
-}*/
 
 //Displays all scientists by reading all scientists into vector and displays them on the table in dislayScientist
 void MainWindow::displayAllScientists()
@@ -79,6 +70,7 @@ void MainWindow::displayAllScientists()
 void MainWindow::displayScientist(vector<Scientist> scientists)
 {
     ui->tableWidget->clearContents();
+
     //Sets how many rows the table has to use by checking the size of the vector
     ui->tableWidget->setRowCount(scientists.size());
 
@@ -90,6 +82,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         //Changing char to string
         char a = currentScientist.getGender();
         string s(1, a);
+
         //Changing strings and numbers to Qstring
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
@@ -151,6 +144,7 @@ void MainWindow::displayAllComputer()
 void MainWindow::displayComputer(vector<Computer> computers)
 {
     ui->tableWidget_2->clearContents();
+
     //Sets row count to how many Computers are in data base
     ui->tableWidget_2->setRowCount(computers.size());
 
@@ -328,10 +322,6 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
         ui->pushButtonDeleteConnection->setEnabled(false);
         ui->pushButtonEditScientist->setEnabled(false);
     }
-    else
-    {
-        //ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
-    }
 }
 
 //When add scientist putton is clicked it executes the add scientist window
@@ -339,6 +329,7 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 {
     addScientist addScientist;
     addScientist.exec();
+
     //updates table so new scientist will be displayed
     displayAllScientists();
 }
@@ -449,6 +440,7 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     int computerNo = ui->tableWidget_2->currentIndex().row();
     Computer currentComputer = currentlyDisplayComputer.at(computerNo);
     int id = currentComputer.getID();
+
     //Delete computer by id
     bool success = scientistService.deleteComputerFromDatabase(id);
 
@@ -480,8 +472,7 @@ void MainWindow::on_addComputers_clicked()
     displayAllComputer();
 }
 
-//When the ascending button is clicked in scientist table it will check where the user is in the combobox and then put the table in ascending order
-//by the users choice
+//When the ascending button is clicked in scientist table it will check where the user is in the combobox and then put the table in ascending order by the users choice
 void MainWindow::on_pushButtonAscending_clicked()
 {
     vector<Scientist> scientist;
@@ -521,13 +512,9 @@ void MainWindow::on_pushButtonAscending_clicked()
         scientist = scientistService.readInAscendingByYOA();
     }
     displayScientist(scientist);
-
-    ui->pushButtonAscending->setEnabled(false);
-    ui->pushButtonDescending->setEnabled(false);
 }
 
-//When the descending button is clicked in scientist table it will check where the user is in the combobox and then put the table in descending order
-//by the users choice
+//When the descending button is clicked in scientist table it will check where the user is in the combobox and then put the table in descending order by the users choice
 void MainWindow::on_pushButtonDescending_clicked()
 {
     vector<Scientist> scientist;
@@ -565,13 +552,9 @@ void MainWindow::on_pushButtonDescending_clicked()
         scientist = scientistService.readInDescendingByYOA();
     }
     displayScientist(scientist);
-
-    ui->pushButtonAscending->setEnabled(false);
-    ui->pushButtonDescending->setEnabled(false);
 }
 
-//When the edit putton is clicked after a computer has been choosen it will execute the edit window and display the computer in
-//the window. There you can edit the computer
+//When the edit putton is clicked after a computer has been choosen it will execute the edit window and display the computer in the window. There you can edit the computer
 void MainWindow::on_pushButtonEditComputers_clicked()
 {
     int selectCurrentComputer = ui->tableWidget_2->currentIndex().row();
@@ -587,8 +570,7 @@ void MainWindow::on_pushButtonEditComputers_clicked()
     ui->pushButtonDeleteComputer->setEnabled(false);
 }
 
-//When the ascending button is clicked in computer table it will check where the user is in the combobox and then put the table in ascending order
-//by the users choice
+//When the ascending button is clicked in computer table it will check where the user is in the combobox and then put the table in ascending order by the users choice
 void MainWindow::on_pushButtonAscendingComputer_clicked()
 {
     vector<Computer> computer;
@@ -614,13 +596,9 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
         computer = scientistService.ComputerWasBuiltASC();
     }
     displayComputer(computer);
-
-    ui->pushButtonAscendingComputer->setEnabled(false);
-    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
-//When the descending button is clicked in computer table it will check where the user is in the combobox and then put the table in descending order
-//by the users choice
+//When the descending button is clicked in computer table it will check where the user is in the combobox and then put the table in descending order by the users choice
 void MainWindow::on_pushButtonDescendingComputer_clicked()
 {
     vector<Computer> computer;
@@ -646,9 +624,6 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
         computer = scientistService.ComputerWasBuiltDESC();
     }
     displayComputer(computer);
-
-    ui->pushButtonAscendingComputer->setEnabled(false);
-    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
 //if the check button in the corner is checked, the music will play.
@@ -696,13 +671,6 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
     }
 }
 
-//When advanced search button is pushed the user can input an scientist id and search for picture and bio
-/*void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
-{
-    ConnectionTable connection;
-    connection.exec();
-}*/
-
 //This function plays the music
 void MainWindow::on_playAudio_clicked()
 {
@@ -716,8 +684,7 @@ void MainWindow::on_playAudio_clicked()
     }
 }
 
-//When the ascending button is clicked in connection table it will check where the user is in the combobox and then put the table in ascending order
-//by the users choice
+//When the ascending button is clicked in connection table it will check where the user is in the combobox and then put the table in ascending order by the users choice
 void MainWindow::on_pushButtonAscendingConnection_clicked()
 {
     vector<searching> connection;
@@ -742,13 +709,9 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
         connection = scientistService.readInAscendingByYearBuilt();
     }
     displayConnection(connection);
-
-    ui->pushButtonAscendingConnection->setEnabled(false);
-    ui->pushButtonDesendingConnection->setEnabled(false);
 }
 
-//When the descending button is clicked in connection table it will check where the user is in the combobox and then put the table in descending order
-//by the users choice
+//When the descending button is clicked in connection table it will check where the user is in the combobox and then put the table in descending order by the users choice
 void MainWindow::on_pushButtonDesendingConnection_clicked()
 {
     vector<searching> connection;
@@ -773,18 +736,7 @@ void MainWindow::on_pushButtonDesendingConnection_clicked()
         connection = scientistService.readInDiscendingByYearBuilt();
     }
     displayConnection(connection);
-
-    ui->pushButtonAscendingConnection->setEnabled(false);
-    ui->pushButtonDesendingConnection->setEnabled(false);
 }
-
-/*void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
-{
-
-
-    //ConnectionTable connection;
-    //connection.exec();
-}*/
 
 //When user double clicks scientist another window will open with more information about the scientist with picture and bio
 void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
@@ -793,7 +745,6 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
 
-    //_connection.on_pushButtonAdvancedSearch_clicked().exec();
     ConnectionTable bla;
     bla.display(id);
     bla.exec();

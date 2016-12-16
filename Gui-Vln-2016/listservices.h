@@ -108,7 +108,6 @@ public:
 
     //Functions to check nationality.
     vector<Scientist> checkNationality(string s);
-    //vector<Scientist> checkFullName(string s);
 
     //Functions to edit a scientist.
     bool updateFirstNameScientist(string x, int id);

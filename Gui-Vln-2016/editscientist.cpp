@@ -264,6 +264,7 @@ bool editscientist::getNationality()
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
+//Error handler for birthyear
 bool editscientist::getBirthYear()
 {
     int potentialBirthYear = ui -> lineEditYOB ->text().toInt();
