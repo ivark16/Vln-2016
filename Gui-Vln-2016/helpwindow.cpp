@@ -6,6 +6,8 @@ HelpWindow::HelpWindow(QWidget *parent) :
     ui(new Ui::HelpWindow)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 HelpWindow::~HelpWindow()

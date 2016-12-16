@@ -10,7 +10,6 @@ class listServices
 public:
     listServices();
 
-
     //Functions for searching and displaying search.
     vector<Scientist> searchForName(string name);
     vector<Scientist> checkName(string s);

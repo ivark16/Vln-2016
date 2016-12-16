@@ -10,6 +10,8 @@ editscientist::editscientist(QWidget *parent) :
     ui ->genderSelectBox ->addItem("Male");
     ui ->genderSelectBox ->addItem("Female");
     ui ->genderSelectBox ->addItem("Other");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 editscientist::~editscientist()
@@ -78,7 +80,7 @@ void editscientist::on_pushButtonUpdate_clicked()
     bool hasAwardYear = getAwardYear(); // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
     //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
-    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
+    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear && hasAwardYear);
 
     if(isLegalScientist)
     {
@@ -109,7 +111,7 @@ bool editscientist::getGender()
         _gender = 'f';
         return true;
     }
-    else if((ui ->genderSelectBox ->currentIndex()) == 2)
+    else//((ui ->genderSelectBox ->currentIndex()) == 2)
     {
         _gender = 'o';
         return true;
@@ -121,7 +123,6 @@ bool editscientist::getFirstName()
 {
 
     string potentialName = ui -> lineEditFirstName ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -169,7 +170,6 @@ bool editscientist::getLastName()
 {
 
     string potentialName = ui -> lineEditLastName ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -218,7 +218,6 @@ bool editscientist::getNationality()
 {
 
     string potentialNationality = ui -> lineEditNationality ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -296,7 +295,6 @@ bool editscientist::getBirthYear()
     if(!hasContent)
     {
         ui -> LabelYOB ->setText("<span style='color: red'>Birth year required</span>");
-
     }
     else if(!hasOnlyNumbers)
     {
@@ -366,7 +364,6 @@ bool editscientist::getAwardYear()
 {
     int potentialAwardYear = ui ->lineEditYOA ->text().toInt();
     string potentialAwardYearString =(ui ->lineEditYOA ->text()).toStdString();
-
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 
@@ -387,7 +384,7 @@ bool editscientist::getAwardYear()
     }
 
     //checks that it is in range
-    if(potentialAwardYear <_birthYear || (potentialAwardYear > _deathYear && _deathYear != 0) || potentialAwardYear > 2016 && potentialAwardYear < 1966)
+    if((potentialAwardYear <_birthYear) || ((potentialAwardYear > _deathYear) && (_deathYear != 0)) || ((potentialAwardYear > 2016) && (potentialAwardYear < 1966)))
     {
         isInRange = false;
     }

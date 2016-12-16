@@ -18,6 +18,8 @@ addScientist::addScientist(QWidget *parent) :
     ui ->genderSelectBox ->addItem("Male");
     ui ->genderSelectBox ->addItem("Female");
     ui ->genderSelectBox ->addItem("Other");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
 }
 
@@ -25,7 +27,6 @@ addScientist::~addScientist()
 {
     delete ui;
 }
-
 
 void addScientist::on_addScientistButton_clicked()
 {
@@ -41,7 +42,6 @@ void addScientist::on_addScientistButton_clicked()
     ui ->nationalityLabel ->setText("");
 
     //this runs if no required fields are empty.
-
     bool hasFirstName = getFirstName();
     bool hasLastName = getLastName();
     bool hasGender = getGender();
@@ -51,7 +51,7 @@ void addScientist::on_addScientistButton_clicked()
     bool hasAwardYear = getAwardYear(); // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
     //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
-    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
+    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear && hasAwardYear);
 
 
     if(isLegalScientist)
@@ -64,7 +64,6 @@ void addScientist::on_addScientistButton_clicked()
         popup.exec();
 
         //sets all text boxes to empty, in case the user wants to add another scientist.
-
         ui ->birthYearBox ->setText("");
         ui ->deathYearBox ->setText("");
         ui ->firstNameBox ->setText("");
@@ -106,7 +105,6 @@ bool addScientist::getFirstName()
 {
 
     string potentialName = ui ->firstNameBox ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -156,7 +154,6 @@ bool addScientist::getFirstName()
 //checks the validity of the entered name
 bool addScientist::getLastName()
 {
-
     string potentialName = ui ->lastNameBox ->text().toStdString();
 
     bool hasOnlyChar = true;
@@ -210,7 +207,6 @@ bool addScientist::getNationality()
 {
 
     string potentialNationality = ui ->nationalityBox ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -237,7 +233,6 @@ bool addScientist::getNationality()
     if(!hasContent)
     {
         ui ->nationalityLabel ->setText("<span style='color: red'>Nationality required</span>");
-
     }
     else if(!hasOnlyChar)
     {
@@ -263,7 +258,6 @@ bool addScientist::getBirthYear()
 {
     int potentialBirthYear = ui ->birthYearBox ->text().toInt();
     string potentialBirthYearString =(ui ->birthYearBox ->text()).toStdString();
-
     bool hasContent = true;
     bool hasOnlyNumbers = true;
     bool isInRange = true;
@@ -293,7 +287,6 @@ bool addScientist::getBirthYear()
     if(!hasContent)
     {
         ui ->birthYearLabel ->setText("<span style='color: red'>Birth year required</span>");
-
     }
     else if(!hasOnlyNumbers)
     {
@@ -317,7 +310,6 @@ bool addScientist::getDeathYear()
 {
     int potentialDeathYear = ui ->deathYearBox ->text().toInt();
     string potentialDeathYearString =(ui ->deathYearBox ->text()).toStdString();
-
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 
@@ -357,7 +349,6 @@ bool addScientist::getDeathYear()
         _deathYear = potentialDeathYear;
     }
     return(hasOnlyNumbers && isInRange);
-
 }
 
 //checks the validity of the award year if there is one, it is not a required field
@@ -365,7 +356,6 @@ bool addScientist::getAwardYear()
 {
     int potentialAwardYear = ui ->turingAwardBox ->text().toInt();
     string potentialAwardYearString =(ui ->turingAwardBox ->text()).toStdString();
-
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 
@@ -385,7 +375,7 @@ bool addScientist::getAwardYear()
         }
     }
     //checks that it is in range
-    if(potentialAwardYear <_birthYear || (potentialAwardYear > _deathYear && _deathYear != 0) || potentialAwardYear > 2016 && potentialAwardYear < 1966)
+    if((potentialAwardYear <_birthYear) || ((potentialAwardYear > _deathYear) && (_deathYear != 0)) || ((potentialAwardYear > 2016) && (potentialAwardYear < 1966)))
     {
         isInRange = false;
     }
