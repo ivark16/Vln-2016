@@ -121,6 +121,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         ui->tableWidget->setItem(row, 5,  new QTableWidgetItem(birtYear));
         ui->tableWidget->setItem(row, 6,  new QTableWidgetItem(deathYear));
         ui->tableWidget->setItem(row, 7,  new QTableWidgetItem(awardYear));
+        ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     }
     currentlyDisplayScientist = scientists;
 }
@@ -163,6 +164,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(type));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(yob));
         ui ->tableWidget_2->setItem(row,4,new QTableWidgetItem(wasBuilt));
+        ui->tableWidget_2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     }
     currentlyDisplayComputer = computers;
 }
@@ -260,6 +262,7 @@ void MainWindow::displayConnection(vector<searching> connections)
         ui->tableWidgetConnection->setItem(row, 2, new QTableWidgetItem(name));
         ui->tableWidgetConnection->setItem(row, 3, new QTableWidgetItem(type));
         ui->tableWidgetConnection->setItem(row, 4, new QTableWidgetItem(yob));
+        ui->tableWidgetConnection->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     }
     currentlyDisplayConnection = connections;
 }
