@@ -345,7 +345,8 @@ void MainWindow::on_pushButtonAddScientist_clicked()
 {
     addScientist addScientist;
     addScientist.exec();
-
+    ui->pushButtonEditScientist->setEnabled(false);
+    ui->pushButtonDeleteScientist->setEnabled(false);
     //updates table so new scientist will be displayed
     displayAllScientists();
 }

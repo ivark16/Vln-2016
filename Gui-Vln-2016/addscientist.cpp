@@ -40,6 +40,7 @@ void addScientist::on_addScientistButton_clicked()
     ui ->lastNameLabel ->setText("");
     ui ->genderLabel ->setText("");
     ui ->nationalityLabel ->setText("");
+    ui ->turingAwardLabel ->setText("");
 
     //this runs if no required fields are empty.
     bool hasFirstName = getFirstName();
