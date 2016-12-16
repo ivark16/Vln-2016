@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include "scientist.h"
 #include "listservices.h"
 #include "editscientist.h"
@@ -17,8 +16,6 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
-
-
 using namespace std;
 
 namespace Ui
@@ -26,55 +23,72 @@ namespace Ui
 class MainWindow;
 }
 
-
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
 private slots:
+    //void on_tableViewScientist_clicked(const QModelIndex &index);
 
-    void on_tableViewScientist_clicked(const QModelIndex &index);
-    void on_tableWidget_2_clicked(const QModelIndex &index);
+    //Edit, add and delete buttons for scientist
     void on_pushButtonEditScientist_clicked();
     void on_pushButtonDeleteScientist_clicked();
-    void on_lineEditScientist_textChanged(const QString &arg1);
-
     void on_pushButtonAddScientist_clicked();
-    void on_addComputers_clicked();
 
+    //Displaying help window
     void on_actionHelp_triggered();
 
     //void on_pushButtonSearchConnection_clicked();
+
+    //Add and delete buttons for connection
     void on_pushButtonAddConnection_clicked();
     void on_pushButtonDeleteConnection_clicked();
+
+    //Clicking connnection in table
     void on_tableWidgetConnection_clicked(const QModelIndex &index);
 
+    //Clicking scientist in table
     void on_tableWidget_clicked(const QModelIndex &index);
+
+    //Clicking computer in table
+    void on_tableWidget_2_clicked(const QModelIndex &index);
+
+    //Searches scientists
+    void on_lineEditScientist_textChanged(const QString &arg1);
+
     void on_lineEdit_textChanged(const QString &arg1);
+
+    //Searches computer
     void on_lineEditComputer_textChanged(const QString &arg1);
 
+    //Displays scientist in ascending or descending order when clicked
     void on_pushButtonAscending_clicked();
     void on_pushButtonDescending_clicked();
 
+    //Edit, add and delete buttons for computer
     void on_pushButtonEditComputers_clicked();
     void on_pushButtonDeleteComputer_clicked();
+    void on_addComputers_clicked();
 
+    //Displays computer in ascending or descending order when clicked
     void on_pushButtonAscendingComputer_clicked();
     void on_pushButtonDescendingComputer_clicked();
 
+    //Displays connection in ascending or descending order when clicked
     void on_pushButtonAscendingConnection_clicked();
     void on_pushButtonDesendingConnection_clicked();
 
+    //Searches connection
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
+    //Advanced search for scientist to see picture and bio
     void on_pushButtonAdvancedSearchScientist_clicked();
 
+    //Plays music
     void playMusic(bool checkStatus);
     void on_playAudio_clicked();
 
@@ -82,30 +96,31 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    //Displaying scientist
     void displayAllScientists();
     void displayScientist (vector <Scientist> scientists);
 
+    //Displaying computer
     void displayAllComputer();
     void displayComputer (vector<Computer> computers);
 
+    //Displaying connections
     void displayAllConnections();
     void displayConnection(vector<searching> connections);
 
+    //Currently displayed in tables
     vector<Scientist> currentlyDisplayScientist;
     vector<Computer> currentlyDisplayComputer;
     vector<searching> currentlyDisplayConnection;
-
 
     listServices scientistService;
     editscientist _edit;
     editcomputer _editComputer;
     ConnectionTable _connection;
 
+    //For music
     QMediaPlaylist *_sweetPlaylist = new QMediaPlaylist();
     QMediaPlayer *_sweetMusic = new QMediaPlayer();
-
-
-
 };
 
 #endif // MAINWINDOW_H
