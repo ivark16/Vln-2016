@@ -24,7 +24,6 @@ public:
     string getComputerType();
     int getYearOfBuild();
     bool getWasBuilt();
-
 };
 
 #endif // COMPUTER_H

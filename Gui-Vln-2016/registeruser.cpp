@@ -16,6 +16,8 @@ registeruser::~registeruser()
 //This function is for when register button is pressed
 void registeruser::on_pushButtonRegister_clicked()
 {
+
+
     //sets the warnign text to nothing
     ui ->labelPwd ->setText("");
     ui ->labelUser ->setText("");
@@ -25,6 +27,7 @@ void registeruser::on_pushButtonRegister_clicked()
     bool hasPassWord = getPassWord();
 
     isLegitComputer = (hasUserName && hasPassWord);
+
 
     if(isLegitComputer)
     {
@@ -105,6 +108,9 @@ bool registeruser::isLowerCase(char character)
 //Error handler for username
 bool registeruser::getUserName()
 {
+    bool userExists = true;
+    vector<userandpass> checkUser;
+    checkUser = _lists.checkForUsers();
     string potentialUSer = ui -> lineEditUserName ->text().toStdString();
 
     bool hasLegalCharacters = true;
@@ -129,6 +135,16 @@ bool registeruser::getUserName()
         }
     }
 
+    for(unsigned int i = 0 ; i < checkUser.size(); i++)
+    {
+        QString checkForExistingUser = QString::fromStdString(checkUser[i].getuser());
+        string convertedCheckForExistingUser = checkForExistingUser.toLocal8Bit().constData();
+        if(convertedCheckForExistingUser == potentialUSer)
+        {
+            userExists = false;
+        }
+    }
+
     //Throws errors if any are needed
     if(!hasContent)
     {
@@ -142,12 +158,16 @@ bool registeruser::getUserName()
     {
         ui -> labelUser ->setText("<span style=' color: red'>Username must be between 2 and 10 characters</span>");
     }
+    else if(!userExists)
+    {
+        ui ->labelUser ->setText("<span style='color: red'>Username already exists!</span>");
+    }
     else
     {
         //If there are no problems, the username is legal.
         _username = potentialUSer;
     }
-    return (hasContent && hasLegalCharacters && !(potentialUSer.size() < 2 || potentialUSer.size() > 10));
+    return (userExists && hasContent && hasLegalCharacters && !(potentialUSer.size() < 2 || potentialUSer.size() > 10));
 }
 
 //Error handler for password
