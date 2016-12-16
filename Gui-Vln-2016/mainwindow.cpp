@@ -290,6 +290,7 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
     //To find what connection user clicked on
     int connectNo = ui->tableWidgetConnection->currentIndex().row();
     searching currentConnection = currentlyDisplayConnection.at(connectNo);
+
     //Finds id's of computer and scientist from the connection
     int idComputer = currentConnection.getSearchComputerId();
     int idScientist = currentConnection.getSearchScientistId();
@@ -322,8 +323,10 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     //Finding what scientist the user clicked on
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+
     //Finding the id of the scientist
     int id = currentScientist.getID();
+
     //deleting scientist from data base by id
     bool success = scientistService.deleteScientistFromDatabase(id);
 
@@ -350,6 +353,7 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     _edit.setModal(true);
     _edit.exec();
     displayAllScientists();
+
     //Disables delete and edit buttons
     ui->pushButtonEditScientist->setEnabled(false);
     ui->pushButtonDeleteScientist->setEnabled(false);
@@ -397,6 +401,7 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
             displayComputer(searchname);
          }
     }
+
     //If there is no computer found this will print out "no computer found " message
     if (searchname.size()==0 && searchYear.size() == 0)
     {
@@ -496,7 +501,7 @@ void MainWindow::on_pushButtonDescending_clicked()
     {
         scientist = scientistService.readInDiscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInReverseAlphabeticalOrder();
     }
@@ -550,7 +555,7 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     {
         computer = scientistService.computerIdAscendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInAlphabeticalOrder();
     }
@@ -580,7 +585,7 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     {
         computer = scientistService.computerIdDescendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInReverseAlphabeticalOrder();
     }
@@ -636,6 +641,7 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
         search = scientistService.displaySearchJoinScientistName(inputSearch);
         displayConnection(search);
     }
+
     //If no connection is found this message will appear beside the search
     if (search.size() == 0)
     {
@@ -695,30 +701,28 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
 //by the users choice
 void MainWindow::on_pushButtonDesendingConnection_clicked()
 {
+    vector<searching> connection;
+    if (ui->comboBoxConnection->currentText() == "First Name")
     {
-        vector<searching> connection;
-        if (ui->comboBoxConnection->currentText() == "First Name")
-        {
-            connection = scientistService.readInDiscendingFirstName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Last Name")
-        {
-            connection = scientistService.readInDiscendingLastName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Computer Name")
-        {
-            connection = scientistService.readInDiscendingCompName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Type")
-        {
-            connection = scientistService.readInDiscendingByCompType();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Year built")
-        {
-            connection = scientistService.readInDiscendingByYearBuilt();
-        }
-        displayConnection(connection);
+        connection = scientistService.readInDiscendingFirstName();
     }
+    else if (ui->comboBoxConnection->currentText() == "Last Name")
+    {
+        connection = scientistService.readInDiscendingLastName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Computer Name")
+    {
+        connection = scientistService.readInDiscendingCompName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Type")
+    {
+        connection = scientistService.readInDiscendingByCompType();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Year built")
+    {
+        connection = scientistService.readInDiscendingByYearBuilt();
+    }
+    displayConnection(connection);
 }
 
 /*void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)

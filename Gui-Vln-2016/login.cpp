@@ -32,6 +32,7 @@ void login::on_pushButtonLogin_clicked()
     {
         QString getUser = QString::fromStdString(checking[i].getuser());
         QString getPwd = QString::fromStdString(checking[i].getpassword());
+
         if(getUser == username)
         {
             userExists = true;
@@ -42,6 +43,7 @@ void login::on_pushButtonLogin_clicked()
             string decrypt = getPwd.toLocal8Bit().constData();
             convertedKey = theDecrypter(decrypt);
             QString decryptedPwd = QString::fromStdString(convertedKey);
+
             if(decryptedPwd == password)
             {
                 //sends accept signal to main
@@ -49,7 +51,6 @@ void login::on_pushButtonLogin_clicked()
                 QMessageBox popup;
                 popup.setText("Login successful");
                 popup.exec();
-
             }
             else
             {
@@ -57,6 +58,7 @@ void login::on_pushButtonLogin_clicked()
             }
         }
     }
+
     if(!userExists)
     {
         //if its empty, nothing is displayed but if it

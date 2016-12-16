@@ -26,7 +26,6 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
         QPixmap pixmap(QString::fromStdString(filepath));
         ui->labelPixMap->setPixmap(pixmap);
     }
-
 }
 
 void ConnectionTable::display(int id)

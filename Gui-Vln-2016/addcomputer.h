@@ -1,6 +1,5 @@
 #ifndef ADDCOMPUTER_H
 #define ADDCOMPUTER_H
-
 #include <QDialog>
 #include "listservices.h"
 #include <string>
