@@ -371,7 +371,7 @@ bool addScientist::getAwardYear()
         }
     }
     //checks that it is in range
-    if((potentialAwardYear <_birthYear) || ((potentialAwardYear > _deathYear) && (_deathYear != 0)) || ((potentialAwardYear > 2016) && (potentialAwardYear < 1966)))
+    if((potentialAwardYear <_birthYear) || ((potentialAwardYear > _deathYear) || (_deathYear != 0)) || ((potentialAwardYear > 2016) && (potentialAwardYear < 1966)))
     {
         isInRange = false;
     }

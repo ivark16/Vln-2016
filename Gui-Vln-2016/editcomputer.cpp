@@ -50,10 +50,10 @@ void editcomputer::displayForUpdate(int id)
 void editcomputer::on_pushButtonUpdateComputer_clicked()
 {
     //set all errors to empty every time the button is clicked.
-    ui ->nameLabel ->setText("");
-    ui ->typeLabel ->setText("");
-    ui ->YearOfCreationLabel ->setText("");
-    ui ->BuiltStatusLabel ->setText("");
+    ui ->nameLabel ->setText("Name");
+    ui ->typeLabel ->setText("Type");
+    ui ->YearOfCreationLabel ->setText("Year of creation");
+    ui ->BuiltStatusLabel ->setText("Was built");
 
     bool isLegitComputer;
     bool hasName = getNAme();
