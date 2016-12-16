@@ -56,6 +56,7 @@ void addScientist::on_addScientistButton_clicked()
 
     if(isLegalScientist)
     {
+        //adds the scientist to the database
         Scientist newScientist(0, _firstName, _lastName, _gender, _nationality, _birthYear, _deathYear, _awardYear);
         _connection.addScientistToDatabase(newScientist);
         QMessageBox popup;
@@ -72,10 +73,9 @@ void addScientist::on_addScientistButton_clicked()
         ui ->nationalityBox -> setText("");
         ui ->turingAwardBox -> setText ("");
     }
-
 }
 
-
+//checks the validity of the gender entered by the user
 bool addScientist::getGender()
 {
     if((ui->genderSelectBox->currentIndex()) == 2)
@@ -93,6 +93,7 @@ bool addScientist::getGender()
         _gender = 'O';
         return true;
     }
+    //if no gender is selected it displays an error
     else
     {
         ui -> genderLabel ->setText("<span style=' color: red'>Gender required</span>");
@@ -132,7 +133,6 @@ bool addScientist::getFirstName()
     if(!hasContent)
     {
         ui ->firstNameLabel ->setText("<span style='color: red'>First name required</span>");
-
     }
     else if(!hasOnlyChar)
     {
@@ -142,6 +142,7 @@ bool addScientist::getFirstName()
     {
         ui -> firstNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
     }
+    //else no errors, valid first name
     else
     {
         //Make sure that the first letter of the name is upper case
@@ -152,6 +153,7 @@ bool addScientist::getFirstName()
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
+//checks the validity of the entered name
 bool addScientist::getLastName()
 {
 
@@ -192,6 +194,7 @@ bool addScientist::getLastName()
     {
         ui -> lastNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
     }
+    //else no issues, name is valid
     else
     {
         //make sure the first letter is uppercase
@@ -202,6 +205,7 @@ bool addScientist::getLastName()
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
+//checks the validity of the nationality
 bool addScientist::getNationality()
 {
 
@@ -243,6 +247,7 @@ bool addScientist::getNationality()
     {
         ui ->nationalityLabel ->setText("<span style=' color: red'>Nationality be between 4 and 20 characters</span>");
     }
+    //else no errors, nationality is valid
     else
     {
         //make sure the first letter is upper case so it sorts correctly
@@ -253,6 +258,7 @@ bool addScientist::getNationality()
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
+//checks the validity of the entered birth year
 bool addScientist::getBirthYear()
 {
     int potentialBirthYear = ui ->birthYearBox ->text().toInt();
@@ -306,6 +312,7 @@ bool addScientist::getBirthYear()
 
 }
 
+//checks the validity of the entered year of death (if there is one, this field can be left blank)
 bool addScientist::getDeathYear()
 {
     int potentialDeathYear = ui ->deathYearBox ->text().toInt();
@@ -336,7 +343,6 @@ bool addScientist::getDeathYear()
     }
 
     //throws errors when necessary
-
     if(!hasOnlyNumbers)
     {
         ui ->deathYearLabel ->setText("<span style='color: red'>Death year can only contain numbers</span>");
@@ -354,6 +360,7 @@ bool addScientist::getDeathYear()
 
 }
 
+//checks the validity of the award year if there is one, it is not a required field
 bool addScientist::getAwardYear()
 {
     int potentialAwardYear = ui ->turingAwardBox ->text().toInt();
