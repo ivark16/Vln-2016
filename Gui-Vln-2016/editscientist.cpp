@@ -53,11 +53,17 @@ void editscientist::displayForUpdate(int Id)
     //ui->lineEditGender->setText(gender);
     ui->lineEditNationality->setText(nation);
     ui->lineEditYOB->setText(yob);
-    ui->lineEditYOD->setText(yod);
-
+    if(yod == "0")
+    {
+        ui ->lineEditYOD->setText("");
+    }
+    else
+    {
+        ui->lineEditYOD->setText(yod);
+    }
     if(yoa == "0")
     {
-        ui->lineEditYOA->setText("No award");
+        ui->lineEditYOA->setText("");
     }
     else
     {
