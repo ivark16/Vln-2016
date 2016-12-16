@@ -132,10 +132,13 @@ public:
 
     //Functions for searching for pictures of scientists (that are stored within the database).
     QByteArray searchForPictureForScientist(int id);
+    QByteArray inputPicture(QByteArray bit);
 
     //Functions for login.
     vector<userandpass> readLogin();
     bool registerUser(userandpass newUser);
+
+
 };
 
 #endif // SCIENTISLISTFROMSQL_H

@@ -1,11 +1,9 @@
 #ifndef EDITCOMPUTER_H
 #define EDITCOMPUTER_H
-
 #include <QDialog>
 #include <vector>
 #include "listservices.h"
 #include "computer.h"
-
 
 namespace Ui
 {

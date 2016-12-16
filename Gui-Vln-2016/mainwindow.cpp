@@ -39,6 +39,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxConnection->addItem("Type");
     ui->comboBoxConnection->addItem("Year built");
 
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
+
     //Displays all tables
     displayAllScientists();
     displayAllComputer();
@@ -99,6 +108,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         {
             gender = "Other";
         }
+
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
@@ -113,6 +123,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         {
             awardYear = "None";
         }
+
         QString ID = QString::number(currentScientist.getID());
 
         //Inputting Qstrings into table
@@ -147,6 +158,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
     for (unsigned int row = 0; row < computers.size(); row++)
     {
         Computer allComputer = computers[row];
+
         //Changing strings, numbers and bool to Qstring
         QString ID = QString::number(allComputer.getID());
         QString name = QString::fromStdString(allComputer.getComputerName());
@@ -179,6 +191,13 @@ void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
 {
         ui->pushButtonDeleteComputer->setEnabled(true);
         ui->pushButtonEditComputers->setEnabled(true);
+}
+
+//When you click the combobox 'display computer' it enables Ascending and Descending buttons so you can choose which way you want the computers to be displayd.
+void MainWindow::on_comboBoxComputer_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscendingComputer->setEnabled(true);
+    ui->pushButtonDescendingComputer->setEnabled(true);
 }
 
 //Function to search for scientist, can search names, nationality, year born, year of death and turing award
@@ -241,6 +260,13 @@ void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
     ui->pushButtonDeleteConnection->setEnabled(true);
 }
 
+//When you click the combobox 'display connection' it enables Ascending and Descending buttons so you can choose which way you want the connections to be displayd.
+void MainWindow::on_comboBoxConnection_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscendingConnection->setEnabled(true);
+    ui->pushButtonDesendingConnection->setEnabled(true);
+}
+
 //Display all connections by reading the from data base and putts them into vector
 void MainWindow::displayAllConnections()
 {
@@ -290,6 +316,7 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
     //To find what connection user clicked on
     int connectNo = ui->tableWidgetConnection->currentIndex().row();
     searching currentConnection = currentlyDisplayConnection.at(connectNo);
+
     //Finds id's of computer and scientist from the connection
     int idComputer = currentConnection.getSearchComputerId();
     int idScientist = currentConnection.getSearchScientistId();
@@ -322,8 +349,10 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     //Finding what scientist the user clicked on
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+
     //Finding the id of the scientist
     int id = currentScientist.getID();
+
     //deleting scientist from data base by id
     bool success = scientistService.deleteScientistFromDatabase(id);
 
@@ -350,6 +379,7 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     _edit.setModal(true);
     _edit.exec();
     displayAllScientists();
+
     //Disables delete and edit buttons
     ui->pushButtonEditScientist->setEnabled(false);
     ui->pushButtonDeleteScientist->setEnabled(false);
@@ -360,6 +390,13 @@ void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
 {
     ui->pushButtonDeleteScientist->setEnabled(true);
     ui->pushButtonEditScientist->setEnabled(true);
+}
+
+//When you click the combobox 'display scientist' it enables Ascending and Descending buttons so you can choose which way you want the scientists to be displayd.
+void MainWindow::on_comboBoxScientist_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscending->setEnabled(true);
+    ui->pushButtonDescending->setEnabled(true);
 }
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
@@ -397,6 +434,7 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
             displayComputer(searchname);
          }
     }
+
     //If there is no computer found this will print out "no computer found " message
     if (searchname.size()==0 && searchYear.size() == 0)
     {
@@ -429,7 +467,8 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
 
 //Executes the help window
 void MainWindow::on_actionHelp_triggered()
-{   HelpWindow window;
+{
+    HelpWindow window;
     window.exec();
 }
 
@@ -449,13 +488,15 @@ void MainWindow::on_pushButtonAscending_clicked()
 
     if (ui->comboBoxScientist->currentText() == "")
     {
+        ui->pushButtonAscending->setEnabled(true);
         scientist = scientistService.displayScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "ID")
     {
+        ui->pushButtonAscending->setEnabled(true);
         scientist = scientistService.readInAscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInAlphabeticalOrder();
     }
@@ -480,6 +521,9 @@ void MainWindow::on_pushButtonAscending_clicked()
         scientist = scientistService.readInAscendingByYOA();
     }
     displayScientist(scientist);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
 }
 
 //When the descending button is clicked in scientist table it will check where the user is in the combobox and then put the table in descending order
@@ -496,7 +540,7 @@ void MainWindow::on_pushButtonDescending_clicked()
     {
         scientist = scientistService.readInDiscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInReverseAlphabeticalOrder();
     }
@@ -521,6 +565,9 @@ void MainWindow::on_pushButtonDescending_clicked()
         scientist = scientistService.readInDescendingByYOA();
     }
     displayScientist(scientist);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
 }
 
 //When the edit putton is clicked after a computer has been choosen it will execute the edit window and display the computer in
@@ -550,7 +597,7 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     {
         computer = scientistService.computerIdAscendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInAlphabeticalOrder();
     }
@@ -565,9 +612,11 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
         computer = scientistService.ComputerWasBuiltASC();
-        //displayComputer(computer);
     }
     displayComputer(computer);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
 //When the descending button is clicked in computer table it will check where the user is in the combobox and then put the table in descending order
@@ -580,7 +629,7 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
     {
         computer = scientistService.computerIdDescendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInReverseAlphabeticalOrder();
     }
@@ -597,6 +646,9 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
         computer = scientistService.ComputerWasBuiltDESC();
     }
     displayComputer(computer);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
 //if the check button in the corner is checked, the music will play.
@@ -636,6 +688,7 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
         search = scientistService.displaySearchJoinScientistName(inputSearch);
         displayConnection(search);
     }
+
     //If no connection is found this message will appear beside the search
     if (search.size() == 0)
     {
@@ -689,36 +742,40 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
         connection = scientistService.readInAscendingByYearBuilt();
     }
     displayConnection(connection);
+
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
 }
 
 //When the descending button is clicked in connection table it will check where the user is in the combobox and then put the table in descending order
 //by the users choice
 void MainWindow::on_pushButtonDesendingConnection_clicked()
 {
+    vector<searching> connection;
+    if (ui->comboBoxConnection->currentText() == "First Name")
     {
-        vector<searching> connection;
-        if (ui->comboBoxConnection->currentText() == "First Name")
-        {
-            connection = scientistService.readInDiscendingFirstName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Last Name")
-        {
-            connection = scientistService.readInDiscendingLastName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Computer Name")
-        {
-            connection = scientistService.readInDiscendingCompName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Type")
-        {
-            connection = scientistService.readInDiscendingByCompType();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Year built")
-        {
-            connection = scientistService.readInDiscendingByYearBuilt();
-        }
-        displayConnection(connection);
+        connection = scientistService.readInDiscendingFirstName();
     }
+    else if (ui->comboBoxConnection->currentText() == "Last Name")
+    {
+        connection = scientistService.readInDiscendingLastName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Computer Name")
+    {
+        connection = scientistService.readInDiscendingCompName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Type")
+    {
+        connection = scientistService.readInDiscendingByCompType();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Year built")
+    {
+        connection = scientistService.readInDiscendingByYearBuilt();
+    }
+    displayConnection(connection);
+
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
 }
 
 /*void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)

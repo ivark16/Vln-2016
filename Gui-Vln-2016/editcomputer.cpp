@@ -12,6 +12,8 @@ editcomputer::editcomputer(QWidget *parent) :
     ui ->BuiltStatus ->addItem("---");
     ui ->BuiltStatus ->addItem("Was built");
     ui ->BuiltStatus ->addItem("Was not built");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 editcomputer::~editcomputer()

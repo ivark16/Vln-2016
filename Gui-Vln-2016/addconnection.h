@@ -1,6 +1,5 @@
 #ifndef ADDCONNECTION_H
 #define ADDCONNECTION_H
-
 #include <QDialog>
 #include "listServices.h"
 #include "scientist.h"
@@ -26,7 +25,6 @@ private slots:
     //and a computer are selected
 
     void on_scientistList_clicked(const QModelIndex &index);
-
     void on_computerList_clicked(const QModelIndex &index);
 
 private:
@@ -38,7 +36,6 @@ private:
     vector<Computer> _allComputers = _connection.displayComputer();
     bool _scientistSelected;
     bool _computerSelected;
-
 
 };
 

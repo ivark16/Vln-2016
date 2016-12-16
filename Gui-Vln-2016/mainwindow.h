@@ -59,7 +59,6 @@ private slots:
 
     //Searches scientists
     void on_lineEditScientist_textChanged(const QString &arg1);
-
     void on_lineEdit_textChanged(const QString &arg1);
 
     //Searches computer
@@ -93,11 +92,16 @@ private slots:
     void on_playAudio_clicked();
 
     //void on_tableWidget_2_doubleClicked(const QModelIndex &index);
-
     void on_tableWidget_doubleClicked(const QModelIndex &index);
+
+    //Push ASC and DESC buttons eneble/disable
+    void on_comboBoxScientist_currentIndexChanged(const QString &arg1);
+    void on_comboBoxComputer_currentIndexChanged(const QString &arg1);
+    void on_comboBoxConnection_currentIndexChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
+
     //Displaying scientist
     void displayAllScientists();
     void displayScientist (vector <Scientist> scientists);

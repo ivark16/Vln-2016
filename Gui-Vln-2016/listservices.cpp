@@ -3,8 +3,8 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
-using namespace std;
 
+using namespace std;
 
 //This function searches for the name "name", which is user input.
 vector<Scientist> listServices::searchForName(string name)
@@ -254,6 +254,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
 bool listServices::deleteScientistFromDatabase(int x)
 {
     bool check;
+
     if (_myData.deleteFunction(x) == true && _myData.deleteConnectionFunctionScientist(x) == true)
     {
         check = true;
@@ -709,6 +710,11 @@ vector<userandpass> listServices::checkForUsers()
 void listServices::regiserUsers(userandpass newUser)
 {
     _myData.registerUser(newUser);
+}
+
+QByteArray listServices::returnBitArry(QByteArray bit)
+{
+    return bit;
 }
 
 //Returns the scientist by their first name in an acending order.
