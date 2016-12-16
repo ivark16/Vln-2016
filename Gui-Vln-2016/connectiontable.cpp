@@ -100,17 +100,22 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
         ui->textBrowserAdvancedSearch->setText("Clifford Berry helped John Vincent Atansoff create the first electronic computer in 1939, "
                                                "the Atanasoff–Berry computer (ABC). He died in 1963 at the age of 45.");
     }
+    else
+    {
+        ui->textBrowserAdvancedSearch->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
+    }
 
     if (myArray.size() != 0)
     {
-        QPixmap photo;       
+        QPixmap photo;
         photo.loadFromData(myArray);
         ui->labelPixMap->setPixmap(photo.scaled(100, 500, Qt::IgnoreAspectRatio, Qt::FastTransformation));
         ui->labelPixMap->setScaledContents(true);
     }
     else
     {
-        ui->labelPixMap->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
+        QPixmap pixmap("C:/Users/ivaro/Documents/Vln-2016/Gui-Vln-2016/Pictures/noPhotoAvailable.png");
+        ui->labelPixMap->setPixmap(pixmap.scaled(300, 300, Qt::IgnoreAspectRatio, Qt::FastTransformation));
     }
 
 }

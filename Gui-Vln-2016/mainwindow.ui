@@ -38,11 +38,9 @@
     <normaloff>:/Icons/Pictures/cornerIcon.png</normaloff>:/Icons/Pictures/cornerIcon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow
- {
+   <string notr="true"> QMainWindow{
  	background-color: rgb(196, 228, 236);
- }
-</string>
+ }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -61,8 +59,14 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QAbstractButton
+{
+	background:rgb(255, 125, 125)
+}</string>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -94,6 +98,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscending">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Ascending</string>
             </property>
@@ -101,6 +114,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDescending">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Descending</string>
             </property>
@@ -230,6 +252,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QPushButton" name="pushButtonAddScientist">
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(195, 255, 181)
+}</string>
+            </property>
             <property name="text">
              <string>Add</string>
             </property>
@@ -240,6 +268,12 @@
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(162, 204, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Edit</string>
             </property>
@@ -249,6 +283,12 @@
            <widget class="QPushButton" name="pushButtonDeleteScientist">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(255, 125, 125)
+}</string>
             </property>
             <property name="text">
              <string>Delete</string>
@@ -319,6 +359,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscendingComputer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Ascending</string>
             </property>
@@ -326,6 +375,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDescendingComputer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Descending</string>
             </property>
@@ -440,6 +498,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
            <widget class="QPushButton" name="addComputers">
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(195, 255, 181)
+}</string>
+            </property>
             <property name="text">
              <string>Add</string>
             </property>
@@ -449,6 +513,12 @@
            <widget class="QPushButton" name="pushButtonEditComputers">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(162, 204, 255)
+}</string>
             </property>
             <property name="text">
              <string>Edit</string>
@@ -499,6 +569,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscendingConnection">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Ascending</string>
             </property>
@@ -506,6 +585,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDesendingConnection">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(208, 241, 255)
+}</string>
+            </property>
             <property name="text">
              <string>Descending</string>
             </property>
@@ -596,6 +684,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_10">
           <item>
            <widget class="QPushButton" name="pushButtonAddConnection">
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(195, 255, 181)
+}</string>
+            </property>
             <property name="text">
              <string>Add</string>
             </property>
@@ -605,6 +699,12 @@
            <widget class="QPushButton" name="pushButtonDeleteConnection">
             <property name="enabled">
              <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QAbstractButton
+{
+	background:rgb(255, 125, 125)
+}</string>
             </property>
             <property name="text">
              <string>Delete</string>
@@ -661,7 +761,7 @@
      <x>0</x>
      <y>0</y>
      <width>1067</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

@@ -15,7 +15,6 @@
 
 using namespace std;
 
-
 class DataLayer
 {
     vector<searching> _searching;
@@ -23,6 +22,7 @@ class DataLayer
     vector<Computer> _computer;
     vector<connection> _connection;
     QSqlDatabase m_db;
+
 public:
     DataLayer();
     ~DataLayer();
@@ -49,10 +49,10 @@ public:
     int getSizeOfConnection();
     int getscientistIdrAt(int i);
     int getcomputersIdAt(int i);
-    char getGenderAt(int i);
     int getBirthYearAt(int i);
     int getDeathYearAt(int i);
     int getAwardYearAt(int i);
+    char getGenderAt(int i);
 
     //Delete functions.
     bool deleteFunction(int x);
@@ -75,7 +75,6 @@ public:
     vector<Scientist> readInReverseAlphabeticalOrderGender();
     vector<Scientist> readInAscendingByYOA();
     vector<Scientist> readInDescendingByYOA();
-
 
     //Search functions for scientists.
     vector<Scientist> searchForTuringAwardWinners(int x);
