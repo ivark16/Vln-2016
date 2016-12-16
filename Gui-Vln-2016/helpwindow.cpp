@@ -15,6 +15,7 @@ HelpWindow::~HelpWindow()
     delete ui;
 }
 
+//This function opens the help window
 void HelpWindow::on_HelpWindow_accepted()
 {
 

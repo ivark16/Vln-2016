@@ -12,6 +12,7 @@ editcomputer::editcomputer(QWidget *parent) :
     ui ->BuiltStatus ->addItem("---");
     ui ->BuiltStatus ->addItem("Was built");
     ui ->BuiltStatus ->addItem("Was not built");
+
     //get rid of the default question mark button
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
@@ -47,6 +48,7 @@ void editcomputer::displayForUpdate(int id)
     ui ->BuiltStatus ->setCurrentIndex(wasBuiltIndex);
 }
 
+//This function updates computer when button is pressed
 void editcomputer::on_pushButtonUpdateComputer_clicked()
 {
     bool isLegitComputer;

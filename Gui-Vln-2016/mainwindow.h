@@ -32,7 +32,6 @@ public:
     ~MainWindow();
 
 private slots:
-    //void on_tableViewScientist_clicked(const QModelIndex &index);
 
     //Edit, add and delete buttons for scientist
     void on_pushButtonEditScientist_clicked();
@@ -41,8 +40,6 @@ private slots:
 
     //Displaying help window
     void on_actionHelp_triggered();
-
-    //void on_pushButtonSearchConnection_clicked();
 
     //Add and delete buttons for connection
     void on_pushButtonAddConnection_clicked();
@@ -84,9 +81,6 @@ private slots:
     //Searches connection
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
-    //Advanced search for scientist to see picture and bio
-    //void on_pushButtonAdvancedSearchScientist_clicked();
-
     //Plays music
     void playMusic(bool checkStatus);
     void on_playAudio_clicked();
@@ -119,6 +113,7 @@ private:
     vector<Computer> currentlyDisplayComputer;
     vector<searching> currentlyDisplayConnection;
 
+    //For editing either connections, scientists or computers
     listServices scientistService;
     editscientist _edit;
     editcomputer _editComputer;

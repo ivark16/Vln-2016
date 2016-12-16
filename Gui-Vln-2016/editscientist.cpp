@@ -264,6 +264,7 @@ bool editscientist::getNationality()
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
+//Error handler for birthyear
 bool editscientist::getBirthYear()
 {
     int potentialBirthYear = ui -> lineEditYOB ->text().toInt();
@@ -395,11 +396,11 @@ bool editscientist::getAwardYear()
 
     if(!hasOnlyNumbers)
     {
-        ui ->lineEditYOA ->setText("<span style='color: red'>Award year can only contain numbers</span>");
+        ui ->labelYOA ->setText("<span style='color: red'>Award year can only contain numbers</span>");
     }
     else if(!isInRange)
     {
-        ui ->lineEditYOA ->setText("<span style=' color: red'>Not legal award year</span>");
+        ui ->labelYOA ->setText("<span style=' color: red'>Not legal award year</span>");
     }
     else
     {
