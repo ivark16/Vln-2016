@@ -16,6 +16,10 @@ login::~login()
 //This function is for when user presses login button
 void login::on_pushButtonLogin_clicked()
 {
+    //sets the warnings to be empty in case the user has entered legitemate information.
+    ui ->labelUser ->setText("");
+    ui ->labelPwd ->setText("");
+
     vector<userandpass> checking;
     QString username;
     QString password;
@@ -55,7 +59,11 @@ void login::on_pushButtonLogin_clicked()
     }
     if(!userExists)
     {
-        ui ->labelUser ->setText("<span style='color: red'>User does not exist</span>");
+        //if its empty, nothing is displayed but if it
+        if(!ui ->lineEditUser ->text().isEmpty())
+        {
+              ui ->labelUser ->setText("<span style='color: red'>User does not exist</span>");
+        }
     }
 }
 

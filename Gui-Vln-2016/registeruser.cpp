@@ -20,13 +20,13 @@ void registeruser::on_pushButtonRegister_clicked()
     ui ->labelPwd ->setText("");
     ui ->labelUser ->setText("");
 
-    bool isLegitComputer = false;
+    bool isLegitUser = false;
     bool hasUserName = getUserName();
     bool hasPassWord = getPassWord();
 
-    isLegitComputer = (hasUserName && hasPassWord);
+    isLegitUser = (hasUserName && hasPassWord);
 
-    if(isLegitComputer)
+    if(isLegitUser)
     {
         _username = ui->lineEditUserName->text().toStdString();
         string originalText = ui->lineEditPassword->text().toStdString();
@@ -34,7 +34,7 @@ void registeruser::on_pushButtonRegister_clicked()
         userandpass itemUser(_username, _password);
         _lists.regiserUsers(itemUser);
         QMessageBox registered;
-        registered.setText("User is registered");
+        registered.setText("Registration successful");
         registered.exec();
         close();
     }
