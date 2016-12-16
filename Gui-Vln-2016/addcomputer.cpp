@@ -93,9 +93,9 @@ bool addComputer::getComputerName()
     {
         ui ->computerNameLabel ->setText("<span style='color: red'>Name can only contain characters, numbers or spaces</span>");
     }
-    else if(potentialName.size() < 3 || potentialName.size() > 16)
+    else if(potentialName.size() < 2 || potentialName.size() > 30)
     {
-        ui -> computerNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> computerNameLabel ->setText("<span style=' color: red'>Name must be between 2 and 30 characters</span>");
     }
     else
     {
@@ -142,9 +142,9 @@ bool addComputer::getComputerType()
     {
         ui ->computerTypeLabel ->setText("<span style='color: red'>Type can only contain characters, numbers or spaces</span>");
     }
-    else if(potentialType.size() < 3 || potentialType.size() > 16)
+    else if(potentialType.size() < 2 || potentialType.size() > 30)
     {
-        ui -> computerTypeLabel ->setText("<span style=' color: red'>Type must be between 2 and 16 characters</span>");
+        ui -> computerTypeLabel ->setText("<span style=' color: red'>Type must be between 2 and 30 characters</span>");
     }
     else
     {

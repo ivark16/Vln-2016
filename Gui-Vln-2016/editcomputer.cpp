@@ -8,8 +8,6 @@ editcomputer::editcomputer(QWidget *parent) :
 {
     //List in combobox
     ui->setupUi(this);
-    ui ->BuiltStatus ->addItem("Built status");
-    ui ->BuiltStatus ->addItem("---");
     ui ->BuiltStatus ->addItem("Was built");
     ui ->BuiltStatus ->addItem("Was not built");
 
@@ -35,11 +33,11 @@ void editcomputer::displayForUpdate(int id)
 
     if(!newvector[0].getWasBuilt())
     {
-        wasBuiltIndex = 3;
+        wasBuiltIndex = 1;
     }
     else
     {
-        wasBuiltIndex = 2;
+        wasBuiltIndex = 0;
     }
 
     ui->lineEditName->setText(name);
@@ -108,16 +106,16 @@ bool editcomputer::getNAme()
     {
         ui ->nameLabel ->setText("<span style='color: red'>Name can only contain characters, numbers and spaces</span>");
     }
-    else if(potentialName.size() < 2 || potentialName.size() > 16)
+    else if(potentialName.size() < 2 || potentialName.size() > 30)
     {
-        ui -> nameLabel ->setText("<span style=' color: red'>Name must be between 2 and 16 characters</span>");
+        ui -> nameLabel ->setText("<span style=' color: red'>Name must be between 2 and 30 characters</span>");
     }
     else
     {
         //If there are no problems, the first name is legal.
         _name = potentialName;
     }
-    return (hasContent && hasLegalCharacters && !(potentialName.size() < 3 || potentialName.size() > 16));
+    return (hasContent && hasLegalCharacters && !(potentialName.size() < 2 || potentialName.size() > 30));
 }
 
 //Error check if the type is within certain parameters
@@ -151,20 +149,16 @@ bool editcomputer::getType()
     {
         ui ->typeLabel ->setText("<span style='color: red'>Type required</span>");
     }
-    else if(!hasOnlyChar)
+    else if(potentialType.size() < 2 || potentialType.size() > 30)
     {
-        ui ->typeLabel ->setText("<span style='color: red'>Type can only contain latin characters</span>");
-    }
-    else if(potentialType.size() < 2 || potentialType.size() > 16)
-    {
-        ui -> typeLabel ->setText("<span style=' color: red'>Type must be between 2 and 16 characters</span>");
+        ui -> typeLabel ->setText("<span style=' color: red'>Type must be between 2 and 30 characters</span>");
     }
     else
     {
         //If there are no problems, the first name is legal.
         _type= potentialType;
     }
-    return (hasContent && hasOnlyChar && !(potentialType.size() < 2 || potentialType.size() > 16));
+    return (hasContent && !(potentialType.size() < 2 || potentialType.size() > 30));
 }
 
 //Error check if the yearbuild is within certain parameters
@@ -221,12 +215,12 @@ bool editcomputer::getYearOfBuild()
 //Error check if the wasbuilt is within certain parameters
 bool editcomputer::wasBuilt()
 {
-    if(ui ->BuiltStatus->currentIndex() <2 || ui ->BuiltStatus ->currentIndex() >3)
+    if(ui ->BuiltStatus->currentIndex() != 0 && ui ->BuiltStatus ->currentIndex() != 1)
     {
         ui ->BuiltStatusLabel->setText("<span style=' color: red'>Built status required</span>");
         return false;
     }
-    else if(ui ->BuiltStatus->currentIndex() == 2)
+    else if(ui ->BuiltStatus->currentIndex() == 0)
     {
         _wasBuilt = true;
         return true;
