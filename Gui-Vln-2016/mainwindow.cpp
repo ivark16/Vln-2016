@@ -85,6 +85,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
         QString gender = QString::fromStdString(s);
+
         //Checks if the scientist is male, female or other and writes corresponding text to the table
         if(gender == "m" || gender == "M")
         {
@@ -101,11 +102,13 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
+
         if(deathYear == "0")
         {
             deathYear = "Alive";
         }
         QString awardYear = QString::number(currentScientist.getAwardYear());
+
         if(awardYear == "0")
         {
             awardYear = "None";
@@ -139,6 +142,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
     ui->tableWidget_2->clearContents();
     //Sets row count to how many Computers are in data base
     ui->tableWidget_2->setRowCount(computers.size());
+
     //Inputting from vector into table
     for (unsigned int row = 0; row < computers.size(); row++)
     {
@@ -149,6 +153,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
         QString type = QString::fromStdString(allComputer.getComputerType());
         QString yob = QString::number(allComputer.getYearOfBuild());
         QString wasBuilt;
+
         //Changes if computer was built to yes else no
         if(allComputer.getWasBuilt())
         {
@@ -189,6 +194,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     {
         int b = atoi(inputSearch.c_str());
         searchYear = scientistService.checkBirthYear(b);
+
         if (searchYear.size() == 0)
         {
             searchYear = scientistService.checkForAward(b);
@@ -210,6 +216,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     else
     {
          searchname = scientistService.searchForName(inputSearch);
+
          if (searchname.size() == 0)
          {
              searchname = scientistService.checkNationality(inputSearch);
@@ -220,6 +227,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
             displayScientist(searchname);
          }
     }
+
     //If there is no scientist with users search it displays this message to the user
     if (searchname.size()==0 && searchYear.size() == 0)
     {
@@ -438,6 +446,7 @@ void MainWindow::on_addComputers_clicked()
 void MainWindow::on_pushButtonAscending_clicked()
 {
     vector<Scientist> scientist;
+
     if (ui->comboBoxScientist->currentText() == "")
     {
         scientist = scientistService.displayScientist();
@@ -478,6 +487,7 @@ void MainWindow::on_pushButtonAscending_clicked()
 void MainWindow::on_pushButtonDescending_clicked()
 {
     vector<Scientist> scientist;
+
     if (ui->comboBoxScientist->currentText() == "")
     {
         scientist = scientistService.displayScientist();
@@ -535,6 +545,7 @@ void MainWindow::on_pushButtonEditComputers_clicked()
 void MainWindow::on_pushButtonAscendingComputer_clicked()
 {
     vector<Computer> computer;
+
     if (ui->comboBoxComputer->currentText() == "ID")
     {
         computer = scientistService.computerIdAscendingOrder();
@@ -564,6 +575,7 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
 void MainWindow::on_pushButtonDescendingComputer_clicked()
 {
     vector<Computer> computer;
+
     if (ui->comboBoxComputer->currentText() == "ID")
     {
         computer = scientistService.computerIdDescendingOrder();
@@ -593,7 +605,6 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
 //This music is free to use under a "Linkware" license.
 void MainWindow::playMusic(bool checkState)
 {
-
     _sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
     _sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
     _sweetPlaylist->setCurrentIndex(1);
@@ -724,6 +735,7 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
+
     //_connection.on_pushButtonAdvancedSearch_clicked().exec();
     ConnectionTable bla;
     bla.display(id);

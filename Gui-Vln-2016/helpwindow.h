@@ -18,10 +18,7 @@ public:
     void on_HelpWindow_accepted();
     void on_pushButton_clicked();
 
-
 private slots:
-
-
 
 private:
     Ui::HelpWindow *ui;

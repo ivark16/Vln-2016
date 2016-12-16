@@ -28,6 +28,7 @@ void editcomputer::displayForUpdate(int id)
     QString name = QString::fromStdString(newvector[0].getComputerName());
     QString type = QString::fromStdString(newvector[0].getComputerType());
     QString yob = QString::number(newvector[0].getYearOfBuild());
+
     int wasBuiltIndex;
 
     if(!newvector[0].getWasBuilt())
@@ -72,7 +73,6 @@ void editcomputer::on_pushButtonUpdateComputer_clicked()
 bool editcomputer::getNAme()
 {
     string potentialName = ui -> lineEditName ->text().toStdString();
-
     bool hasLegalCharacters = true;
     bool hasContent = true;
 
@@ -147,7 +147,6 @@ bool editcomputer::getType()
     if(!hasContent)
     {
         ui ->typeLabel ->setText("<span style='color: red'>Type required</span>");
-
     }
     else if(!hasOnlyChar)
     {
@@ -199,7 +198,6 @@ bool editcomputer::getYearOfBuild()
     if(!hasContent)
     {
         ui -> YearOfCreationLabel ->setText("<span style='color: red'>Creation year required</span>");
-
     }
     else if(!hasOnlyNumbers)
     {
