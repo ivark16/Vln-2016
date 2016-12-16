@@ -13,6 +13,8 @@ ConnectionTable::~ConnectionTable()
     delete ui;
 }
 
+//This function browses for pictures and replaces it with the old one, I tried to save it to the database but did not have time
+//to finish.
 void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
 {
     string filepath = QFileDialog::getOpenFileName(
@@ -34,10 +36,11 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
     _list.returnBitArry(bitArray);
 }
 
+//Displays picture and bio for scientist with corresponding id
 void ConnectionTable::display(int id)
 {
     QByteArray myArray = _list.searchScientistPicture(id);
-
+    //This if function finds right bio with id
     if (id == 2)
     {
         ui->textBrowserAdvancedSearch->setText("Augusta Ada King-Noel, Countess of Lovelace was an English Mathematical and writer, chiefly known for her work on Charles Babbage's early machanical general-purpose computer, the Analytical Engine."
@@ -124,17 +127,18 @@ void ConnectionTable::display(int id)
         ui->textBrowserAdvancedSearch->setText("<span style=' color: red'> No bio is available. </span>");
     }
 
+    //If there is no photo, automatic photo will be displayed
     if (myArray.size() != 0)
     {
         QPixmap photo;
         photo.loadFromData(myArray);
+        //Scales photo and inputs into textlabel
         ui->labelPixMap->setPixmap(photo.scaled(100, 500, Qt::IgnoreAspectRatio, Qt::FastTransformation));
         ui->labelPixMap->setScaledContents(true);
     }
     else
     {
         QPixmap pixmap(":/Icons/Pictures/noPhotoAvailable.png");
-        //qrc:/sounds/sounds/dico_house.MP3
         ui->labelPixMap->setPixmap(pixmap.scaled(300, 300, Qt::IgnoreAspectRatio, Qt::FastTransformation));
     }
 }
