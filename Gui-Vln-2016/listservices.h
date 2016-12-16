@@ -7,6 +7,7 @@
 class listServices
 {
     DataLayer _myData;
+
 public:
     listServices();
 
@@ -166,8 +167,8 @@ public:
     //Functions for login.
     vector<userandpass> checkForUsers();
     void regiserUsers(userandpass newUser);
-
     QByteArray returnBitArry(QByteArray bit);
+
 };
 
 #endif // LISTSERVICES_H

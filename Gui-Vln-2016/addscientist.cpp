@@ -53,7 +53,6 @@ void addScientist::on_addScientistButton_clicked()
     //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
     isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear && hasAwardYear);
 
-
     if(isLegalScientist)
     {
         //adds the scientist to the database
@@ -103,7 +102,6 @@ bool addScientist::getGender()
 //The integer this function returns indicates whether the name is legal, and if not, what the problem is.
 bool addScientist::getFirstName()
 {
-
     string potentialName = ui ->firstNameBox ->text().toStdString();
     bool hasOnlyChar = true;
     bool hasContent = true;
@@ -155,7 +153,6 @@ bool addScientist::getFirstName()
 bool addScientist::getLastName()
 {
     string potentialName = ui ->lastNameBox ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -205,7 +202,6 @@ bool addScientist::getLastName()
 //checks the validity of the nationality
 bool addScientist::getNationality()
 {
-
     string potentialNationality = ui ->nationalityBox ->text().toStdString();
     bool hasOnlyChar = true;
     bool hasContent = true;
@@ -302,7 +298,6 @@ bool addScientist::getBirthYear()
         _birthYear = potentialBirthYear;
     }
     return(hasContent && hasOnlyNumbers && isInRange);
-
 }
 
 //checks the validity of the entered year of death (if there is one, this field can be left blank)
@@ -381,7 +376,6 @@ bool addScientist::getAwardYear()
     }
 
     //throws errors when necessary
-
     if(!hasOnlyNumbers)
     {
         ui ->turingAwardLabel ->setText("<span style='color: red'>Award year can only contain numbers</span>");

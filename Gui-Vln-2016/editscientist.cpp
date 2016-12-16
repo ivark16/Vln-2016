@@ -53,11 +53,17 @@ void editscientist::displayForUpdate(int Id)
     //ui->lineEditGender->setText(gender);
     ui->lineEditNationality->setText(nation);
     ui->lineEditYOB->setText(yob);
-    ui->lineEditYOD->setText(yod);
-
+    if(yod == "0")
+    {
+        ui ->lineEditYOD->setText("");
+    }
+    else
+    {
+        ui->lineEditYOD->setText(yod);
+    }
     if(yoa == "0")
     {
-        ui->lineEditYOA->setText("No award");
+        ui->lineEditYOA->setText("");
     }
     else
     {
@@ -121,7 +127,6 @@ bool editscientist::getGender()
 //The integer this function returns indicates whether the name is legal, and if not, what the problem is.
 bool editscientist::getFirstName()
 {
-
     string potentialName = ui -> lineEditFirstName ->text().toStdString();
     bool hasOnlyChar = true;
     bool hasContent = true;
@@ -168,7 +173,6 @@ bool editscientist::getFirstName()
 
 bool editscientist::getLastName()
 {
-
     string potentialName = ui -> lineEditLastName ->text().toStdString();
     bool hasOnlyChar = true;
     bool hasContent = true;
@@ -216,7 +220,6 @@ bool editscientist::getLastName()
 //Error check for nationality
 bool editscientist::getNationality()
 {
-
     string potentialNationality = ui -> lineEditNationality ->text().toStdString();
     bool hasOnlyChar = true;
     bool hasContent = true;
@@ -265,7 +268,6 @@ bool editscientist::getBirthYear()
 {
     int potentialBirthYear = ui -> lineEditYOB ->text().toInt();
     string potentialBirthYearString =(ui ->lineEditYOB ->text()).toStdString();
-
     bool hasContent = true;
     bool hasOnlyNumbers = true;
     bool isInRange = true;

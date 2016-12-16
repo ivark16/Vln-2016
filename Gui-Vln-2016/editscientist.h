@@ -1,6 +1,5 @@
 #ifndef EDITSCIENTIST_H
 #define EDITSCIENTIST_H
-
 #include <QDialog>
 #include <vector>
 #include "listservices.h"
@@ -43,7 +42,6 @@ private:
     bool getBirthYear();
     bool getDeathYear();
     bool getAwardYear();
-
 
 };
 

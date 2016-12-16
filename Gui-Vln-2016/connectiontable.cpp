@@ -6,6 +6,8 @@ ConnectionTable::ConnectionTable(QWidget *parent) :
     ui(new Ui::ConnectionTable)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 ConnectionTable::~ConnectionTable()
@@ -29,6 +31,7 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
         ui->labelPixMap->setPixmap(pixmap);
         _map = pixmap;
     }
+
     QByteArray bitArray;
     QBuffer buffer(&bitArray);
     buffer.open(QIODevice::WriteOnly);

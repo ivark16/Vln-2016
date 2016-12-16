@@ -54,16 +54,13 @@ void addComputer::on_addComputer_2_clicked()
         ui ->computerType ->setText("");
         ui ->yearOfCreation ->setText("");
         ui ->wasBuiltBox ->setCurrentIndex(0);
-
     }
-
 }
 
 //checks the validity of the entered computer name
 bool addComputer::getComputerName()
 {
     string potentialName = ui ->computerName ->text().toStdString();
-
     bool hasLegalCharacters = true;
     bool hasContent = true;
 
@@ -113,7 +110,6 @@ bool addComputer::getComputerName()
 bool addComputer::getComputerType()
 {
     string potentialType = ui ->computerType ->text().toStdString();
-
     bool hasLegalCharacters = true;
     bool hasContent = true;
 
@@ -162,7 +158,6 @@ bool addComputer::getComputerType()
 //checks the validity of the entered year
 bool addComputer::getYearCreated()
 {
-
     int potentialCreationYear = ui ->yearOfCreation ->text().toInt();
     string potentialCreationYearString =(ui ->yearOfCreation ->text()).toStdString();
     bool hasContent = true;
@@ -208,8 +203,6 @@ bool addComputer::getYearCreated()
         //If there are no problems, the birth year is legal.
         _yearBuilt = potentialCreationYear;
     }
-
-
     return(hasContent && hasOnlyNumbers && isInRange);
 }
 

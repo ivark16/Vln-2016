@@ -2213,5 +2213,6 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
 
 QByteArray DataLayer::inputPicture(QByteArray bit)
 {
-
+QByteArray fuck;
+return fuck;
 }

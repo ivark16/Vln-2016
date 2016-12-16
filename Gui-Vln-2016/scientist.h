@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 class Scientist
 {
     int _ID;
@@ -19,7 +18,6 @@ class Scientist
     int _awardYear;
 
 public:
-
     Scientist();
     Scientist(int id, string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear);
     int getID();

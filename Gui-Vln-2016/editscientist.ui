@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>401</width>
-    <height>489</height>
+    <width>470</width>
+    <height>459</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -41,16 +41,16 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="labelLastName">
+      <widget class="QLabel" name="labelFirstName">
        <property name="text">
-        <string>LastName</string>
+        <string>Firstaname</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelFirstName">
+      <widget class="QLabel" name="labelLastName">
        <property name="text">
-        <string>Firstaname</string>
+        <string>LastName</string>
        </property>
       </widget>
      </item>
@@ -59,10 +59,21 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLineEdit" name="lineEditLastName"/>
+      <widget class="QLineEdit" name="lineEditFirstName">
+       <property name="placeholderText">
+        <string>First name</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditFirstName"/>
+      <widget class="QLineEdit" name="lineEditLastName">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Last name</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -96,8 +107,14 @@
          <height>0</height>
         </size>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>170</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="text">
-        <string>Gender</string>
+        <string> Gender</string>
        </property>
       </widget>
      </item>
@@ -106,7 +123,11 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLineEdit" name="lineEditNationality"/>
+      <widget class="QLineEdit" name="lineEditNationality">
+       <property name="placeholderText">
+        <string>Nationality</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QComboBox" name="genderSelectBox">
@@ -161,13 +182,25 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
-      <widget class="QLineEdit" name="lineEditYOB"/>
+      <widget class="QLineEdit" name="lineEditYOB">
+       <property name="placeholderText">
+        <string>Birth year</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditYOD"/>
+      <widget class="QLineEdit" name="lineEditYOD">
+       <property name="placeholderText">
+        <string>Death year (optional)</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditYOA"/>
+      <widget class="QLineEdit" name="lineEditYOA">
+       <property name="placeholderText">
+        <string>Award year (optional)</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
