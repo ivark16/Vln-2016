@@ -13,6 +13,7 @@ login::~login()
     delete ui;
 }
 
+//This function is for when user presses login button
 void login::on_pushButtonLogin_clicked()
 {
     vector<userandpass> checking;
@@ -22,7 +23,6 @@ void login::on_pushButtonLogin_clicked()
     username = ui->lineEditUser->text();
     password = ui->lineEditPwd->text();
 
-
     for(unsigned int i = 0 ; i < checking.size() ; i++ )
     {
         QString getUser = QString::fromStdString(checking[i].getuser());
@@ -31,11 +31,14 @@ void login::on_pushButtonLogin_clicked()
         {
             QString convert;
             string convertedKey;
+
+            //Changes Qstring to normal string
             string decrypt = getPwd.toLocal8Bit().constData();
             convertedKey = theDecrypter(decrypt);
             QString decryptedPwd = QString::fromStdString(convertedKey);
             if(decryptedPwd == password)
             {
+                //sends accept signal to main
                 QDialog::accept();
                 QMessageBox popup;
                 popup.setText("Login successful");
@@ -52,13 +55,14 @@ void login::on_pushButtonLogin_clicked()
     }
 }
 
-
+//This is for when user presses register button
 void login::on_pushButton_2_clicked()
 {
     _users.setModal(true);
     _users.exec();
 }
 
+//This is the primary function for decrypting
 string login::theDecrypter(string text)
 {
     string decrypt = "";
@@ -67,6 +71,7 @@ string login::theDecrypter(string text)
     return decrypt;
 }
 
+//This is function takes the string and how many shifts the decrytion has to have
 string login::deChiperText(string text, int shift)
 {
     string result = "";
@@ -84,10 +89,10 @@ string login::deChiperText(string text, int shift)
             result += currentCharacter;
         }
     }
-
     return result;
 }
 
+//This function shifts the string
 char login::shiftCharacter(char character, int shift)
 {
     int characterAsciiValue = static_cast<int>(character);
@@ -108,10 +113,10 @@ char login::shiftCharacter(char character, int shift)
         characterAsciiValue = (characterAsciiValue + shift) % 26;
         characterAsciiValue += characterAsciiOffset;
     }
-
     return static_cast<char>(characterAsciiValue);
 }
 
+//This function checks if the character is uppercase
 bool login::isUpperCase(char character)
 {
     int characterInAsciiValure = static_cast<int>(character);
@@ -119,6 +124,7 @@ bool login::isUpperCase(char character)
     return (characterInAsciiValure >= 65 && characterInAsciiValure <= 90);
 }
 
+//This function checks if the character is lowercase
 bool login::isLowerCase(char character)
 {
     int characterInAsciiValure = static_cast<int>(character);

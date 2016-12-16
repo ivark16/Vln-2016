@@ -22,6 +22,7 @@ public:
     void displayForUpdate(int id);
 
 private slots:
+    //This activates if the button is pressed
     void on_pushButtonUpdateComputer_clicked();
 
 private:
@@ -33,6 +34,7 @@ private:
     int _yearBuilt;
     bool _wasBuilt;
 
+    //Error Functions
     bool getNAme();
     bool getType();
     bool getYearOfBuild();

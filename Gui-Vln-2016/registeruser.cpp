@@ -13,6 +13,7 @@ registeruser::~registeruser()
     delete ui;
 }
 
+//This function is for when register button is pressed
 void registeruser::on_pushButtonRegister_clicked()
 {
     bool isLegitComputer;
@@ -28,11 +29,14 @@ void registeruser::on_pushButtonRegister_clicked()
         _password = chiperText(originalText, 5);
         userandpass itemUser(_username, _password);
         _lists.regiserUsers(itemUser);
+        QMessageBox registered;
+        registered.setText("User is registered");
+        registered.exec();
         close();
     }
-
 }
 
+//This function takes the string and converts it to char array for encrytion
 string registeruser::chiperText(string text, int shift)
 {
     string result = "";
@@ -50,11 +54,10 @@ string registeruser::chiperText(string text, int shift)
             result += currentCharacter;
         }
     }
-
-
     return result;
 }
 
+//This function shifts the string into encryption
 char registeruser::shiftCharacter(char character, int shift)
 {
     int characterAsciiValue = static_cast<int>(character);
@@ -79,6 +82,7 @@ char registeruser::shiftCharacter(char character, int shift)
     return static_cast<char>(characterAsciiValue);
 }
 
+//checks if string for encryption is uppercase
 bool registeruser::isUpperCase(char character)
 {
     int characterInAsciiValure = static_cast<int>(character);
@@ -86,6 +90,7 @@ bool registeruser::isUpperCase(char character)
     return (characterInAsciiValure >= 65 && characterInAsciiValure <= 90);
 }
 
+//checks if string for encryption is lowercase
 bool registeruser::isLowerCase(char character)
 {
     int characterInAsciiValure = static_cast<int>(character);
@@ -93,6 +98,7 @@ bool registeruser::isLowerCase(char character)
     return (characterInAsciiValure >= 97 && characterInAsciiValure <= 122);
 }
 
+//Error handler for username
 bool registeruser::getUserName()
 {
     string potentialUSer = ui -> lineEditUserName ->text().toStdString();
@@ -127,20 +133,21 @@ bool registeruser::getUserName()
     }
     else if(!hasLegalCharacters)
     {
-        ui ->labelUser ->setText("<span style='color: red'>Name can only contain characters, numbers and spaces</span>");
+        ui ->labelUser ->setText("<span style='color: red'>Username can only contain characters, numbers and spaces</span>");
     }
     else if(potentialUSer.size() < 2 || potentialUSer.size() > 10)
     {
-        ui -> labelUser ->setText("<span style=' color: red'>Name must be between 2 and 10 characters</span>");
+        ui -> labelUser ->setText("<span style=' color: red'>Username must be between 2 and 10 characters</span>");
     }
     else
     {
-        //If there are no problems, the first name is legal.
+        //If there are no problems, the username is legal.
         _username = potentialUSer;
     }
     return (hasContent && hasLegalCharacters && !(potentialUSer.size() < 2 || potentialUSer.size() > 10));
 }
 
+//Error handler for password
 bool registeruser::getPassWord()
 {
     string potentialPassWord = ui -> lineEditPassword ->text().toStdString();
@@ -170,7 +177,7 @@ bool registeruser::getPassWord()
     //Throws errors if any are needed
     if(!hasContent)
     {
-        ui ->labelPwd->setText("<span style='color: red'>Last name required</span>");
+        ui ->labelPwd->setText("<span style='color: red'>Password required</span>");
     }
     else if(!hasOnlyChar)
     {
