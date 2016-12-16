@@ -22,7 +22,6 @@ public:
 
     Scientist();
     Scientist(int id, string fName, string lName, char gender, string nationality, int bYear, int dYear, int aYear);
-    void readFile(vector<Scientist>& scientists);
     int getID();
     string getFirstName();
     string getLastName();
