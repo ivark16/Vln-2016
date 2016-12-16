@@ -75,8 +75,17 @@ void editscientist::displayForUpdate(int Id)
 void editscientist::on_pushButtonUpdate_clicked()
 {
     bool isLegalScientist;
-    //this runs if no required fields are empty.
 
+    //set all errors to empty every time the button is clicked.
+    ui ->LabelYOB->setText("");
+    ui ->labelYOD->setText("");
+    ui ->labelLastName->setText("");
+    ui ->labelFirstName->setText("");
+    ui ->labelGender->setText("");
+    ui ->labelNationality->setText("");
+    ui ->labelYOA->setText("");
+
+    //this runs if no required fields are empty.
     bool hasFirstName = getFirstName();
     bool hasLastName = getLastName();
     bool hasGender = getGender();
@@ -101,6 +110,7 @@ void editscientist::on_pushButtonUpdate_clicked()
         QMessageBox popup;
         popup.setText("The scientist has successfully been updated to the database");
         popup.exec();
+        close();
     }
 }
 

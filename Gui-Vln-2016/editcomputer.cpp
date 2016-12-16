@@ -49,6 +49,12 @@ void editcomputer::displayForUpdate(int id)
 //This function updates computer when button is pressed
 void editcomputer::on_pushButtonUpdateComputer_clicked()
 {
+    //set all errors to empty every time the button is clicked.
+    ui ->nameLabel ->setText("");
+    ui ->typeLabel ->setText("");
+    ui ->YearOfCreationLabel ->setText("");
+    ui ->BuiltStatusLabel ->setText("");
+
     bool isLegitComputer;
     bool hasName = getNAme();
     bool hasType = getType();
@@ -67,7 +73,9 @@ void editcomputer::on_pushButtonUpdateComputer_clicked()
         QMessageBox popup;
         popup.setText("The Computer has successfully been updated in the database");
         popup.exec();
+        close();
     }
+
 }
 
 //Error check if the name is within certain parameters
