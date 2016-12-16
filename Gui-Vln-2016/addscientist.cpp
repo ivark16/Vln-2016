@@ -51,7 +51,7 @@ void addScientist::on_addScientistButton_clicked()
     bool hasAwardYear = getAwardYear(); // =_awardYear =(ui ->turingAwardBox -> text()).toInt();
 
     //A scientist is only legal if they have a name, gender, nationality, birth year and if they have a death year or
-    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear);
+    isLegalScientist = (hasFirstName && hasLastName && hasGender && hasNationality && hasBirthYear && hasDeathYear && hasAwardYear);
 
 
     if(isLegalScientist)
@@ -375,7 +375,7 @@ bool addScientist::getAwardYear()
         }
     }
     //checks that it is in range
-    if(potentialAwardYear <_birthYear || (potentialAwardYear > _deathYear && _deathYear != 0) || potentialAwardYear > 2016 && potentialAwardYear < 1966)
+    if((potentialAwardYear <_birthYear) || ((potentialAwardYear > _deathYear) && (_deathYear != 0)) || ((potentialAwardYear > 2016) && (potentialAwardYear < 1966)))
     {
         isInRange = false;
     }

@@ -30,14 +30,13 @@ void editcomputer::displayForUpdate(int id)
     QString name = QString::fromStdString(newvector[0].getComputerName());
     QString type = QString::fromStdString(newvector[0].getComputerType());
     QString yob = QString::number(newvector[0].getYearOfBuild());
-
-    int wasBuiltIndex;
+    int wasBuiltIndex = 0;
 
     if(!newvector[0].getWasBuilt())
     {
         wasBuiltIndex = 3;
     }
-    else if(newvector[0].getWasBuilt())
+    else
     {
         wasBuiltIndex = 2;
     }
