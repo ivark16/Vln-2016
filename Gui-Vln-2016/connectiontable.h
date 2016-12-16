@@ -7,6 +7,7 @@
 #include <vector>
 #include <QDialog>
 #include <QFileDialog>
+#include <QUrl>
 
 using namespace std;
 
@@ -22,7 +23,6 @@ class ConnectionTable : public QDialog
 public:
     explicit ConnectionTable(QWidget *parent = 0);
     ~ConnectionTable();
-    //void on_pushButtonAdvancedSearch_clicked();
     void display(int id);
 
 private slots:
@@ -30,7 +30,7 @@ private slots:
 
 private:
     Ui::ConnectionTable *ui;
-    int _id;
+    QPixmap _map;
     listServices _list;
 };
 

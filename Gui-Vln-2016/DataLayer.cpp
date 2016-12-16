@@ -2242,3 +2242,8 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
     }
     return myVector;
 }
+
+QByteArray DataLayer::inputPicture(QByteArray bit)
+{
+
+}

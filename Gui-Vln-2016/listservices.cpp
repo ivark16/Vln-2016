@@ -696,6 +696,11 @@ void listServices::regiserUsers(userandpass newUser)
     _myData.registerUser(newUser);
 }
 
+QByteArray listServices::returnBitArry(QByteArray bit)
+{
+    return bit;
+}
+
 //Returns the scientist by their first name in an acending order.
 vector<searching> listServices::readInAscendingByFirstName()
 {
