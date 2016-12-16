@@ -15,8 +15,22 @@ ConnectionTable::~ConnectionTable()
 
 void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
 {
+    string filepath = QFileDialog::getOpenFileName(
+                this,
+                "Search for images",
+                "",
+                "Image files (*png *jpg"
+                ).toStdString();
+    if (filepath.length())
+    {
+        QPixmap pixmap(QString::fromStdString(filepath));
+        ui->labelPixMap->setPixmap(pixmap);
+    }
 
-    int id = ui->lineEditAdvancedSearch->text().toInt();
+}
+
+void ConnectionTable::display(int id)
+{
     QByteArray myArray = _list.searchScientistPicture(id);
 
     if (id == 2)
@@ -102,7 +116,7 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
     }
     else
     {
-        ui->textBrowserAdvancedSearch->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
+        ui->textBrowserAdvancedSearch->setText("<span style=' color: red'> No bio is available. </span>");
     }
 
     if (myArray.size() != 0)
@@ -117,29 +131,5 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
         QPixmap pixmap("C:/Users/ivaro/Documents/Vln-2016/Gui-Vln-2016/Pictures/noPhotoAvailable.png");
         ui->labelPixMap->setPixmap(pixmap.scaled(300, 300, Qt::IgnoreAspectRatio, Qt::FastTransformation));
     }
-
-}
-
-void ConnectionTable::display(int id)
-{
-    QByteArray myArray = _list.searchScientistPicture(id);
-
-    if (id == 2)
-    {
-        ui->textBrowserAdvancedSearch->setText("ada");
-    }
-
-    if (myArray.size() != 0)
-    {
-        QPixmap photo;
-        photo.loadFromData(myArray);
-        ui->labelPixMap->setPixmap(photo.scaled(100, 500, Qt::IgnoreAspectRatio, Qt::FastTransformation));
-        ui->labelPixMap->setScaledContents(true);
-    }
-    else
-    {
-        ui->labelPixMap->setText("<span style=' color: red'> Sorry, no scientist found. </span>");
-    }
-
 }
 
