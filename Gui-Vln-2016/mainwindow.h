@@ -86,13 +86,15 @@ private slots:
     void on_lineEditSearchConnection_textChanged(const QString &arg1);
 
     //Advanced search for scientist to see picture and bio
-    void on_pushButtonAdvancedSearchScientist_clicked();
+    //void on_pushButtonAdvancedSearchScientist_clicked();
 
     //Plays music
     void playMusic(bool checkStatus);
     void on_playAudio_clicked();
 
-    void on_tableWidget_2_doubleClicked(const QModelIndex &index);
+    //void on_tableWidget_2_doubleClicked(const QModelIndex &index);
+
+    void on_tableWidget_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;

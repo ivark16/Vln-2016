@@ -630,11 +630,11 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
 }
 
 //When advanced search button is pushed the user can input an scientist id and search for picture and bio
-void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
+/*void MainWindow::on_pushButtonAdvancedSearchScientist_clicked()
 {
     ConnectionTable connection;
     connection.exec();
-}
+}*/
 
 //This function plays the music
 void MainWindow::on_playAudio_clicked()
@@ -707,17 +707,23 @@ void MainWindow::on_pushButtonDesendingConnection_clicked()
     }
 }
 
+/*void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
+{
+
+
+    //ConnectionTable connection;
+    //connection.exec();
+}*/
+
 //When user double clicks scientist another window will open with more information about the scientist with picture and bio
-void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
+void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
 {
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
     //_connection.on_pushButtonAdvancedSearch_clicked().exec();
     ConnectionTable bla;
-    bla.exec();
     bla.display(id);
+    bla.exec();
 
-    //ConnectionTable connection;
-    //connection.exec();
 }
