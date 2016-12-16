@@ -6,6 +6,8 @@ ConnectionTable::ConnectionTable(QWidget *parent) :
     ui(new Ui::ConnectionTable)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 ConnectionTable::~ConnectionTable()
@@ -25,8 +27,14 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
     {
         QPixmap pixmap(QString::fromStdString(filepath));
         ui->labelPixMap->setPixmap(pixmap);
+        _map = pixmap;
     }
 
+    QByteArray bitArray;
+    QBuffer buffer(&bitArray);
+    buffer.open(QIODevice::WriteOnly);
+    _map.save(&buffer, "PNG");
+    _list.returnBitArry(bitArray);
 }
 
 void ConnectionTable::display(int id)
@@ -128,8 +136,8 @@ void ConnectionTable::display(int id)
     }
     else
     {
-        QPixmap pixmap("C:/Users/ivaro/Documents/Vln-2016/Gui-Vln-2016/Pictures/noPhotoAvailable.png");
+        QPixmap pixmap(":/Icons/Pictures/noPhotoAvailable.png");
+        //qrc:/sounds/sounds/dico_house.MP3
         ui->labelPixMap->setPixmap(pixmap.scaled(300, 300, Qt::IgnoreAspectRatio, Qt::FastTransformation));
     }
 }
-

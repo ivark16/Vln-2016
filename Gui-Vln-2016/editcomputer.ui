@@ -41,7 +41,7 @@
    <item>
     <widget class="QLabel" name="nameLabel">
      <property name="text">
-      <string/>
+      <string>Computer name</string>
      </property>
     </widget>
    </item>
@@ -71,7 +71,7 @@
    <item>
     <widget class="QLabel" name="typeLabel">
      <property name="text">
-      <string/>
+      <string>Computer type</string>
      </property>
     </widget>
    </item>
@@ -100,7 +100,7 @@
      <item>
       <widget class="QLabel" name="YearOfCreationLabel">
        <property name="text">
-        <string/>
+        <string>Year of creation</string>
        </property>
       </widget>
      </item>
@@ -113,7 +113,7 @@
         </size>
        </property>
        <property name="text">
-        <string/>
+        <string>Built status</string>
        </property>
       </widget>
      </item>

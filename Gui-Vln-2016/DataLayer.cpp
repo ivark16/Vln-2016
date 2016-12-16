@@ -623,16 +623,14 @@ bool DataLayer::deleteFunction(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT firstname FROM scientist WHERE ID = (:x)");
     myQuery.addBindValue(x);
+    myQuery.exec();
 
-    if (myQuery.exec())
+    if (myQuery.next())
     {
-        if (myQuery.next())
-        {
-            myQuery.prepare("DELETE FROM scientist WHERE ID = (:x)");
-            myQuery.addBindValue(x);
-            myQuery.exec();
-            deleteF = true;
-        }
+        myQuery.prepare("DELETE FROM scientist WHERE ID = (:x)");
+        myQuery.addBindValue(x);
+        myQuery.exec();
+        deleteF = true;
     }
     else
     {
@@ -648,16 +646,13 @@ bool DataLayer::deleteFunctionComputer(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT name FROM computer WHERE ID = (:x)");
     myQuery.addBindValue(x);
-
-    if (myQuery.exec())
+    myQuery.exec();
+    if (myQuery.next())
     {
-        if (myQuery.next())
-        {
-            myQuery.prepare("DELETE FROM computer WHERE ID = (:x)");
-            myQuery.addBindValue(x);
-            myQuery.exec();
-            deleteC = true;
-        }
+        myQuery.prepare("DELETE FROM computer WHERE ID = (:x)");
+        myQuery.addBindValue(x);
+        myQuery.exec();
+        deleteC = true;
     }
     else
     {
@@ -673,16 +668,13 @@ bool DataLayer::deleteConnectionFunctionScientist(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
-
-    if(myQuery.exec())
+    myQuery.exec();
+    if(myQuery.next())
     {
-        if(myQuery.next())
-        {
-            myQuery.prepare("DELETE FROM connect WHERE scientist_ID = (:x)");
-            myQuery.addBindValue(x);
-            myQuery.exec();
-            deleteF = true;
-        }
+        myQuery.prepare("DELETE FROM connect WHERE scientist_ID = (:x)");
+        myQuery.addBindValue(x);
+        myQuery.exec();
+        deleteF = true;
     }
     else
     {
@@ -698,16 +690,14 @@ bool DataLayer::deleteConnectionFunctionComputer(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
+    myQuery.exec();
 
-    if(myQuery.exec())
+    if(myQuery.next())
     {
-        if(myQuery.next())
-        {
-            myQuery.prepare("DELETE FROM scientist WHERE scientist_ID = (:x)");
-            myQuery.addBindValue(x);
-            myQuery.exec();
-            deleteF = true;
-        }
+        myQuery.prepare("DELETE FROM scientist WHERE scientist_ID = (:x)");
+        myQuery.addBindValue(x);
+        myQuery.exec();
+        deleteF = true;
     }
     else
     {
@@ -1767,13 +1757,11 @@ bool DataLayer::updateFirstName(string x, int y)
     query.prepare("UPDATE scientist SET firstname = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1791,13 +1779,11 @@ bool DataLayer::updateLastName(string x, int y)
     query.prepare("UPDATE scientist SET lastname = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1816,13 +1802,11 @@ bool DataLayer::updateGender(char g, int y)
     query.prepare("UPDATE scientist SET gender = (:g) WHERE ID = (:y)");
     query.addBindValue(qGender);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1840,13 +1824,11 @@ bool DataLayer::updateNationality(string x, int y)
     query.prepare("UPDATE scientist SET nationality = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1863,13 +1845,11 @@ bool DataLayer::updateYOB (int x, int y)
     query.prepare("UPDATE scientist SET YOB = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1886,13 +1866,11 @@ bool DataLayer::updateYOD (int x, int y)
     query.prepare("UPDATE scientist SET YOD = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1909,13 +1887,11 @@ bool DataLayer::updateYOA (int x, int y)
     query.prepare("UPDATE scientist SET YOA = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1933,13 +1909,11 @@ bool DataLayer::updateNameComputer(string x, int y)
     query.prepare("UPDATE computer SET name = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1957,13 +1931,11 @@ bool DataLayer::updateTypeComputer(string x, int y)
     query.prepare("UPDATE computer SET type = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -1980,13 +1952,11 @@ bool DataLayer::updateYOCComputer (int x, int y)
     query.prepare("UPDATE computer SET yearBuilt = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -2004,13 +1974,11 @@ bool DataLayer::updateWasComputerBuilt (int x, int y)
     query.prepare("UPDATE computer SET wasbuilt = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
+    query.exec();
 
-    if(query.exec())
+    if (query.next())
     {
-        if (query.next())
-        {
-            check = true;
-        }
+        check = true;
     }
     else
     {
@@ -2241,4 +2209,10 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
         myVector.push_back(s);
     }
     return myVector;
+}
+
+QByteArray DataLayer::inputPicture(QByteArray bit)
+{
+QByteArray fuck;
+return fuck;
 }

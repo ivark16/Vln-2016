@@ -22,7 +22,6 @@ public:
 
 private slots:
 
-
     //adds the scientist if it is valid, validity checked by calling to other functions (below).
     void on_addScientistButton_clicked();
 
@@ -36,7 +35,6 @@ private:
     int _birthYear;
     int _deathYear;
     int _awardYear;
-
 
     //the functions below check the validity of the entered fields
     bool getGender();

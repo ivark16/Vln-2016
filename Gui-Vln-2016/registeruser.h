@@ -1,6 +1,5 @@
 #ifndef REGISTERUSER_H
 #define REGISTERUSER_H
-
 #include <QDialog>
 #include <QMessageBox>
 #include "listservices.h"

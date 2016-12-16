@@ -7,9 +7,9 @@
 class listServices
 {
     DataLayer _myData;
+
 public:
     listServices();
-
 
     //Functions for searching and displaying search.
     vector<Scientist> searchForName(string name);
@@ -167,7 +167,7 @@ public:
     //Functions for login.
     vector<userandpass> checkForUsers();
     void regiserUsers(userandpass newUser);
-
+    QByteArray returnBitArry(QByteArray bit);
 
 };
 

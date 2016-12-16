@@ -6,6 +6,8 @@ registeruser::registeruser(QWidget *parent) :
     ui(new Ui::registeruser)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 registeruser::~registeruser()
@@ -83,7 +85,6 @@ char registeruser::shiftCharacter(char character, int shift)
         characterAsciiValue = (characterAsciiValue + shift) % 26;
         characterAsciiValue += characterAsciiOffset;
     }
-
     return static_cast<char>(characterAsciiValue);
 }
 
@@ -110,7 +111,6 @@ bool registeruser::getUserName()
     vector<userandpass> checkUser;
     checkUser = _lists.checkForUsers();
     string potentialUSer = ui -> lineEditUserName ->text().toStdString();
-
     bool hasLegalCharacters = true;
     bool hasContent = true;
 
@@ -172,7 +172,6 @@ bool registeruser::getUserName()
 bool registeruser::getPassWord()
 {
     string potentialPassWord = ui -> lineEditPassword ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 

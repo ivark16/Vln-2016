@@ -3,8 +3,8 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
-using namespace std;
 
+using namespace std;
 
 //This function searches for the name "name", which is user input.
 vector<Scientist> listServices::searchForName(string name)
@@ -254,6 +254,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
 bool listServices::deleteScientistFromDatabase(int x)
 {
     bool check;
+
     if (_myData.deleteFunction(x) == true && _myData.deleteConnectionFunctionScientist(x) == true)
     {
         check = true;
@@ -269,6 +270,7 @@ bool listServices::deleteScientistFromDatabase(int x)
 bool listServices::deleteComputerFromDatabase(int x)
 {
     bool check;
+
     if(_myData.deleteFunctionComputer(x) == true && _myData.deleteConnectionFunctionComputer(x) == true)
     {
         check = true;
@@ -284,6 +286,7 @@ bool listServices::deleteComputerFromDatabase(int x)
 bool listServices::deleteConnectionFromDatabase(int x, int y)
 {
     bool check;
+
     if(_myData.deleteConnectionFunctionComputer(x) == true && _myData.deleteConnectionFunctionScientist(y) == true)
     {
         check = true;
@@ -299,6 +302,7 @@ bool listServices::deleteConnectionFromDatabase(int x, int y)
 vector<Scientist> listServices::searchAliveScientist()
 {
     vector<Scientist> matchingScientists;
+
     //this loop goes through all scientists and adds them to the matchingScientists vector if and only if their year of death is listed as 0
     // which means that they are still living.
     for(unsigned int k = 0; k < displayScientist().size(); k++)
@@ -431,6 +435,7 @@ vector<Scientist> listServices::checkNationality(string s)
 bool listServices::updateFirstNameScientist(string x, int id)
 {
     bool check;
+
     if (_myData.updateFirstName(x, id))
     {
         check = true;
@@ -461,6 +466,7 @@ bool listServices::updateLastNameScientist(string x, int id)
 bool listServices::updateGenderScientist(char x, int id)
 {
     bool check;
+
     if (_myData.updateGender(x, id))
     {
         check = true;
@@ -476,6 +482,7 @@ bool listServices::updateGenderScientist(char x, int id)
 bool listServices::updateNationalityScientist(string x, int id)
 {
     bool check;
+
     if (_myData.updateNationality(x, id))
     {
         check = true;
@@ -491,6 +498,7 @@ bool listServices::updateNationalityScientist(string x, int id)
 bool listServices::updateYOBScientist(int x, int id)
 {
     bool check;
+
     if (_myData.updateYOB(x, id))
     {
         check = true;
@@ -506,6 +514,7 @@ bool listServices::updateYOBScientist(int x, int id)
 bool listServices::updateYODScientist(int x, int id)
 {
     bool check;
+
     if (_myData.updateYOD(x, id))
     {
         check = true;
@@ -521,6 +530,7 @@ bool listServices::updateYODScientist(int x, int id)
 bool listServices::updateYOAScientist(int x, int id)
 {
     bool check;
+
     if (_myData.updateYOA(x, id))
     {
         check = true;
@@ -536,6 +546,7 @@ bool listServices::updateYOAScientist(int x, int id)
 bool listServices::updateNameComputer(string x, int id)
 {
     bool check;
+
     if (_myData.updateNameComputer(x, id))
     {
         check = true;
@@ -551,6 +562,7 @@ bool listServices::updateNameComputer(string x, int id)
 bool listServices::updateTypeComputer(string x, int id)
 {
     bool check;
+
     if (_myData.updateTypeComputer(x, id))
     {
         check = true;
@@ -566,6 +578,7 @@ bool listServices::updateTypeComputer(string x, int id)
 bool listServices::updateYOCComputer(int x, int id)
 {
     bool check;
+
     if (_myData.updateYOCComputer(x, id))
     {
         check = true;
@@ -581,6 +594,7 @@ bool listServices::updateYOCComputer(int x, int id)
 bool listServices::updateWasBuilt(int x, int id)
 {
     bool check;
+
     if (_myData.updateWasComputerBuilt(x, id))
     {
         check = true;
@@ -597,7 +611,9 @@ int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;
     display = _myData.readAllFromScientistsDataBase();
+
     unsigned int longest = 7;
+
     for(unsigned int i = 0; i < display.size(); i++)
     {
         if(longest < display[i].getFirstName().size())
@@ -694,6 +710,11 @@ vector<userandpass> listServices::checkForUsers()
 void listServices::regiserUsers(userandpass newUser)
 {
     _myData.registerUser(newUser);
+}
+
+QByteArray listServices::returnBitArry(QByteArray bit)
+{
+    return bit;
 }
 
 //Returns the scientist by their first name in an acending order.

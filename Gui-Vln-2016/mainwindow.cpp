@@ -94,6 +94,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         QString firstName = QString::fromStdString(currentScientist.getFirstName());
         QString lastName = QString::fromStdString(currentScientist.getLastName());
         QString gender = QString::fromStdString(s);
+
         //Checks if the scientist is male, female or other and writes corresponding text to the table
         if(gender == "m" || gender == "M")
         {
@@ -107,18 +108,22 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         {
             gender = "Other";
         }
+
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
+
         if(deathYear == "0")
         {
             deathYear = "Alive";
         }
         QString awardYear = QString::number(currentScientist.getAwardYear());
+
         if(awardYear == "0")
         {
             awardYear = "None";
         }
+
         QString ID = QString::number(currentScientist.getID());
 
         //Inputting Qstrings into table
@@ -148,16 +153,19 @@ void MainWindow::displayComputer(vector<Computer> computers)
     ui->tableWidget_2->clearContents();
     //Sets row count to how many Computers are in data base
     ui->tableWidget_2->setRowCount(computers.size());
+
     //Inputting from vector into table
     for (unsigned int row = 0; row < computers.size(); row++)
     {
         Computer allComputer = computers[row];
+
         //Changing strings, numbers and bool to Qstring
         QString ID = QString::number(allComputer.getID());
         QString name = QString::fromStdString(allComputer.getComputerName());
         QString type = QString::fromStdString(allComputer.getComputerType());
         QString yob = QString::number(allComputer.getYearOfBuild());
         QString wasBuilt;
+
         //Changes if computer was built to yes else no
         if(allComputer.getWasBuilt())
         {
@@ -205,6 +213,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     {
         int b = atoi(inputSearch.c_str());
         searchYear = scientistService.checkBirthYear(b);
+
         if (searchYear.size() == 0)
         {
             searchYear = scientistService.checkForAward(b);
@@ -226,6 +235,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
     else
     {
          searchname = scientistService.searchForName(inputSearch);
+
          if (searchname.size() == 0)
          {
              searchname = scientistService.checkNationality(inputSearch);
@@ -236,6 +246,7 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
             displayScientist(searchname);
          }
     }
+
     //If there is no scientist with users search it displays this message to the user
     if (searchname.size()==0 && searchYear.size() == 0)
     {
@@ -305,6 +316,7 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
     //To find what connection user clicked on
     int connectNo = ui->tableWidgetConnection->currentIndex().row();
     searching currentConnection = currentlyDisplayConnection.at(connectNo);
+
     //Finds id's of computer and scientist from the connection
     int idComputer = currentConnection.getSearchComputerId();
     int idScientist = currentConnection.getSearchScientistId();
@@ -337,8 +349,10 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     //Finding what scientist the user clicked on
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
+
     //Finding the id of the scientist
     int id = currentScientist.getID();
+
     //deleting scientist from data base by id
     bool success = scientistService.deleteScientistFromDatabase(id);
 
@@ -365,6 +379,7 @@ void MainWindow::on_pushButtonEditScientist_clicked()
     _edit.setModal(true);
     _edit.exec();
     displayAllScientists();
+
     //Disables delete and edit buttons
     ui->pushButtonEditScientist->setEnabled(false);
     ui->pushButtonDeleteScientist->setEnabled(false);
@@ -419,6 +434,7 @@ void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
             displayComputer(searchname);
          }
     }
+
     //If there is no computer found this will print out "no computer found " message
     if (searchname.size()==0 && searchYear.size() == 0)
     {
@@ -451,7 +467,8 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
 
 //Executes the help window
 void MainWindow::on_actionHelp_triggered()
-{   HelpWindow window;
+{
+    HelpWindow window;
     window.exec();
 }
 
@@ -468,6 +485,7 @@ void MainWindow::on_addComputers_clicked()
 void MainWindow::on_pushButtonAscending_clicked()
 {
     vector<Scientist> scientist;
+
     if (ui->comboBoxScientist->currentText() == "")
     {
         ui->pushButtonAscending->setEnabled(true);
@@ -478,7 +496,7 @@ void MainWindow::on_pushButtonAscending_clicked()
         ui->pushButtonAscending->setEnabled(true);
         scientist = scientistService.readInAscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInAlphabeticalOrder();
     }
@@ -513,6 +531,7 @@ void MainWindow::on_pushButtonAscending_clicked()
 void MainWindow::on_pushButtonDescending_clicked()
 {
     vector<Scientist> scientist;
+
     if (ui->comboBoxScientist->currentText() == "")
     {
         scientist = scientistService.displayScientist();
@@ -521,7 +540,7 @@ void MainWindow::on_pushButtonDescending_clicked()
     {
         scientist = scientistService.readInDiscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInReverseAlphabeticalOrder();
     }
@@ -573,11 +592,12 @@ void MainWindow::on_pushButtonEditComputers_clicked()
 void MainWindow::on_pushButtonAscendingComputer_clicked()
 {
     vector<Computer> computer;
+
     if (ui->comboBoxComputer->currentText() == "ID")
     {
         computer = scientistService.computerIdAscendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInAlphabeticalOrder();
     }
@@ -604,11 +624,12 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
 void MainWindow::on_pushButtonDescendingComputer_clicked()
 {
     vector<Computer> computer;
+
     if (ui->comboBoxComputer->currentText() == "ID")
     {
         computer = scientistService.computerIdDescendingOrder();
     }
-   else if (ui->comboBoxComputer->currentText() == "Name")
+    else if (ui->comboBoxComputer->currentText() == "Name")
     {
         computer = scientistService.computerInReverseAlphabeticalOrder();
     }
@@ -636,7 +657,6 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
 //This music is free to use under a "Linkware" license.
 void MainWindow::playMusic(bool checkState)
 {
-
     _sweetPlaylist->addMedia(QUrl("qrc:/sounds/sounds/dico_house.MP3"));
     _sweetPlaylist->setPlaybackMode(QMediaPlaylist::Loop);
     _sweetPlaylist->setCurrentIndex(1);
@@ -668,6 +688,7 @@ void MainWindow::on_lineEditSearchConnection_textChanged(const QString &arg1)
         search = scientistService.displaySearchJoinScientistName(inputSearch);
         displayConnection(search);
     }
+
     //If no connection is found this message will appear beside the search
     if (search.size() == 0)
     {
@@ -730,33 +751,31 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
 //by the users choice
 void MainWindow::on_pushButtonDesendingConnection_clicked()
 {
+    vector<searching> connection;
+    if (ui->comboBoxConnection->currentText() == "First Name")
     {
-        vector<searching> connection;
-        if (ui->comboBoxConnection->currentText() == "First Name")
-        {
-            connection = scientistService.readInDiscendingFirstName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Last Name")
-        {
-            connection = scientistService.readInDiscendingLastName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Computer Name")
-        {
-            connection = scientistService.readInDiscendingCompName();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Type")
-        {
-            connection = scientistService.readInDiscendingByCompType();
-        }
-        else if (ui->comboBoxConnection->currentText() == "Year built")
-        {
-            connection = scientistService.readInDiscendingByYearBuilt();
-        }
-        displayConnection(connection);
-
-        ui->pushButtonAscendingConnection->setEnabled(false);
-        ui->pushButtonDesendingConnection->setEnabled(false);
+        connection = scientistService.readInDiscendingFirstName();
     }
+    else if (ui->comboBoxConnection->currentText() == "Last Name")
+    {
+        connection = scientistService.readInDiscendingLastName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Computer Name")
+    {
+        connection = scientistService.readInDiscendingCompName();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Type")
+    {
+        connection = scientistService.readInDiscendingByCompType();
+    }
+    else if (ui->comboBoxConnection->currentText() == "Year built")
+    {
+        connection = scientistService.readInDiscendingByYearBuilt();
+    }
+    displayConnection(connection);
+
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
 }
 
 /*void MainWindow::on_tableWidget_2_doubleClicked(const QModelIndex &index)
@@ -773,6 +792,7 @@ void MainWindow::on_tableWidget_doubleClicked(const QModelIndex &index)
     int scientistNo = ui->tableWidget->currentIndex().row();
     Scientist currentScientist = currentlyDisplayScientist.at(scientistNo);
     int id = currentScientist.getID();
+
     //_connection.on_pushButtonAdvancedSearch_clicked().exec();
     ConnectionTable bla;
     bla.display(id);
