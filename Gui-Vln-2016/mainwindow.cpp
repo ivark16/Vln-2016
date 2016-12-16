@@ -99,6 +99,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         {
             gender = "Other";
         }
+
         QString nationality = QString::fromStdString(currentScientist.getNationality());
         QString birtYear = QString::number(currentScientist.getBirthYear());
         QString deathYear = QString::number(currentScientist.getDeathYear());
@@ -113,6 +114,7 @@ void MainWindow::displayScientist(vector<Scientist> scientists)
         {
             awardYear = "None";
         }
+
         QString ID = QString::number(currentScientist.getID());
 
         //Inputting Qstrings into table
@@ -147,6 +149,7 @@ void MainWindow::displayComputer(vector<Computer> computers)
     for (unsigned int row = 0; row < computers.size(); row++)
     {
         Computer allComputer = computers[row];
+
         //Changing strings, numbers and bool to Qstring
         QString ID = QString::number(allComputer.getID());
         QString name = QString::fromStdString(allComputer.getComputerName());
@@ -434,7 +437,8 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
 
 //Executes the help window
 void MainWindow::on_actionHelp_triggered()
-{   HelpWindow window;
+{
+    HelpWindow window;
     window.exec();
 }
 
@@ -460,7 +464,7 @@ void MainWindow::on_pushButtonAscending_clicked()
     {
         scientist = scientistService.readInAscendingByID();
     }
-   else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
+    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
     {
         scientist = scientistService.scientistInAlphabeticalOrder();
     }

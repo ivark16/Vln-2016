@@ -16,6 +16,8 @@ addComputer::addComputer(QWidget *parent) :
     ui ->wasBuiltBox ->addItem("---");
     ui ->wasBuiltBox ->addItem("Was built");
     ui ->wasBuiltBox ->addItem("Was not built");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 addComputer::~addComputer()

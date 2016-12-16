@@ -6,6 +6,8 @@ registeruser::registeruser(QWidget *parent) :
     ui(new Ui::registeruser)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 registeruser::~registeruser()

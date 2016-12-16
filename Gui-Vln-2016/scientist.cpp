@@ -20,22 +20,6 @@ Scientist::Scientist(int id, string fName, string lName, char gender, string nat
     //writer.addNewScientist(fName, lName, nationality, bYear, dYear, gender, aYear); ADD THIS FUNCTION TO DATALAYER
 }
 
-void Scientist::readFile(vector<Scientist>& scientists)
-{
-    //DataLayer reader;
-    /*  WRITE THESE FUNCTIONS TO DATALAYER
-    do(
-    _firstName = reader.getFirstName(i);
-    _lastName = reader.getLastName(i);
-    _nationality = reader.getNationality(i);
-    _birthYear = reader.getBirthYear(i);
-    _deathYear = reader.getDeathYear(i);
-    _sex = reader.getGender(i);
-    _awardYear = reader.getAwardYear(i);
-    ) while {reader.hasMoreScientists()}
-    */
-}
-
 int Scientist::getID()
 {
     return _ID;
