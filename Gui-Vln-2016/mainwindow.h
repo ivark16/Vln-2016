@@ -96,6 +96,11 @@ private slots:
 
     void on_tableWidget_doubleClicked(const QModelIndex &index);
 
+    //Push ASC and DESC buttons eneble/disable
+    void on_comboBoxScientist_currentIndexChanged(const QString &arg1);
+    void on_comboBoxComputer_currentIndexChanged(const QString &arg1);
+    void on_comboBoxConnection_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     //Displaying scientist

@@ -39,8 +39,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxConnection->addItem("Type");
     ui->comboBoxConnection->addItem("Year built");
 
-    ui->pushButtonAscending->setEnabled(true);
-    ui->pushButtonDescending->setEnabled(true);
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
 
     //Displays all tables
     displayAllScientists();
@@ -179,6 +185,13 @@ void MainWindow::on_tableWidget_2_clicked(const QModelIndex &index)
         ui->pushButtonEditComputers->setEnabled(true);
 }
 
+//When you click the combobox 'display computer' it enables Ascending and Descending buttons so you can choose which way you want the computers to be displayd.
+void MainWindow::on_comboBoxComputer_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscendingComputer->setEnabled(true);
+    ui->pushButtonDescendingComputer->setEnabled(true);
+}
+
 //Function to search for scientist, can search names, nationality, year born, year of death and turing award
 void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 {
@@ -234,6 +247,13 @@ void MainWindow::on_lineEditScientist_textChanged(const QString &arg1)
 void MainWindow::on_tableWidgetConnection_clicked(const QModelIndex &index)
 {
     ui->pushButtonDeleteConnection->setEnabled(true);
+}
+
+//When you click the combobox 'display connection' it enables Ascending and Descending buttons so you can choose which way you want the connections to be displayd.
+void MainWindow::on_comboBoxConnection_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscendingConnection->setEnabled(true);
+    ui->pushButtonDesendingConnection->setEnabled(true);
 }
 
 //Display all connections by reading the from data base and putts them into vector
@@ -357,6 +377,13 @@ void MainWindow::on_tableWidget_clicked(const QModelIndex &index)
     ui->pushButtonEditScientist->setEnabled(true);
 }
 
+//When you click the combobox 'display scientist' it enables Ascending and Descending buttons so you can choose which way you want the scientists to be displayd.
+void MainWindow::on_comboBoxScientist_currentIndexChanged(const QString &arg1)
+{
+    ui->pushButtonAscending->setEnabled(true);
+    ui->pushButtonDescending->setEnabled(true);
+}
+
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
 
@@ -443,10 +470,12 @@ void MainWindow::on_pushButtonAscending_clicked()
     vector<Scientist> scientist;
     if (ui->comboBoxScientist->currentText() == "")
     {
+        ui->pushButtonAscending->setEnabled(true);
         scientist = scientistService.displayScientist();
     }
     else if (ui->comboBoxScientist->currentText() == "ID")
     {
+        ui->pushButtonAscending->setEnabled(true);
         scientist = scientistService.readInAscendingByID();
     }
    else if (ui->comboBoxScientist->currentText() == "Alphabetical order of names")
@@ -563,7 +592,6 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
     else if (ui->comboBoxComputer->currentText() == "Was it built?")
     {
         computer = scientistService.ComputerWasBuiltASC();
-        //displayComputer(computer);
     }
     displayComputer(computer);
 
