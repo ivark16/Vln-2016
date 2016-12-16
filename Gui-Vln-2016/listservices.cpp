@@ -6,7 +6,7 @@
 using namespace std;
 
 
-// searches for the name "name", which is user input
+//This function searches for the name "name", which is user input.
 vector<Scientist> listServices::searchForName(string name)
 {
     vector<Scientist> returnScientist;
@@ -14,9 +14,10 @@ vector<Scientist> listServices::searchForName(string name)
     return returnScientist;
 }
 
+//This function returns its size from the datalayer to the ui.
 int listServices::getSizeOfScientist()
 {
-   return _myData.getSizeOfScientists();
+    return _myData.getSizeOfScientists();
 }
 
 int listServices::getSizeOfComputer()
@@ -24,8 +25,7 @@ int listServices::getSizeOfComputer()
     return _myData.getSizeOfComputer();
 }
 
-//the functions below are referenced in the ui.  These are primarily links between the ui and the data layer
-
+//This function accesses the datalayer, collects all the scientists.
 vector<Scientist> listServices::displayScientist()
 {
     vector<Scientist> display;
@@ -33,6 +33,7 @@ vector<Scientist> listServices::displayScientist()
     return display;
 }
 
+//This function accesses the datalayer and collects all the scientists by their ID.
 vector<Scientist> listServices::displayScientistById(int x)
 {
     vector<Scientist> displayByIdScientist;
@@ -40,6 +41,7 @@ vector<Scientist> listServices::displayScientistById(int x)
     return displayByIdScientist;
 }
 
+//This function accesses the datalayer and collects all the computers.
 vector<Computer> listServices::displayComputer()
 {
     vector<Computer> display;
@@ -47,6 +49,7 @@ vector<Computer> listServices::displayComputer()
     return display;
 }
 
+//This function accesses the datalayer, collects all the computers by their ID.
 vector<Computer> listServices::displayComputerById(int x)
 {
     vector<Computer> displayById;
@@ -54,6 +57,7 @@ vector<Computer> listServices::displayComputerById(int x)
     return displayById;
 }
 
+//This function accesses the datalayer, collects all the connections between scientists and computers.
 vector<connection> listServices::displayConnection()
 {
     vector<connection> display;
@@ -61,21 +65,25 @@ vector<connection> listServices::displayConnection()
     return display;
 }
 
+//This function adds a new scientist to the database.
 void listServices::addScientistToDatabase(Scientist newScientist)
 {
     _myData.addFunction(newScientist);
 }
 
+//This function adds a new computer to the database.
 void listServices::addComputerToDatabase(Computer newComputer)
 {
     _myData.addFunctionComputer(newComputer);
 }
 
+//Adds a new connection to the database.
 void listServices::addConnectionToDatabase(connection newConnection)
 {
     _myData.addFunctionConnect(newConnection);
 }
 
+//Returns all the scientists by their ID in an alphabetical order.
 vector<Scientist> listServices::readInAscendingByID()
 {
     vector<Scientist> returnScientist;
@@ -83,6 +91,7 @@ vector<Scientist> listServices::readInAscendingByID()
     return returnScientist;
 }
 
+//Returns all the scientists by their ID in a reverse alphabetical order.
 vector<Scientist> listServices::readInDiscendingByID()
 {
     vector<Scientist> returnScientist;
@@ -90,6 +99,7 @@ vector<Scientist> listServices::readInDiscendingByID()
     return returnScientist;
 }
 
+//Returns all the scientists by their nationality in an alphabetical order.
 vector<Scientist> listServices::readInAlphabeticalOrderNationality()
 {
     vector<Scientist> returnScientist;
@@ -97,6 +107,7 @@ vector<Scientist> listServices::readInAlphabeticalOrderNationality()
     return returnScientist;
 }
 
+//Returns all the scientists by their nationality in a reverse alphabetical order.
 vector<Scientist> listServices::readInReverseAlphabeticalOrderNationality()
 {
     vector<Scientist> returnScientist;
@@ -104,6 +115,7 @@ vector<Scientist> listServices::readInReverseAlphabeticalOrderNationality()
     return returnScientist;
 }
 
+//Returns all the scientists by their gender in an alphabetical order.
 vector<Scientist> listServices::readInAlphabeticalOrderGender()
 {
     vector<Scientist> returnScientist;
@@ -111,6 +123,7 @@ vector<Scientist> listServices::readInAlphabeticalOrderGender()
     return returnScientist;
 }
 
+//Returns all the scientists by their gender in an reverse alphabetical order.
 vector<Scientist> listServices::readInReverseAlphabeticalOrderGender()
 {
     vector<Scientist> returnScientist;
@@ -118,6 +131,7 @@ vector<Scientist> listServices::readInReverseAlphabeticalOrderGender()
     return returnScientist;
 }
 
+//Returns all the scientists by the year they receved the turning award in an ascending order.
 vector<Scientist> listServices::readInAscendingByYOA()
 {
     vector<Scientist> returnScientist;
@@ -125,6 +139,7 @@ vector<Scientist> listServices::readInAscendingByYOA()
     return returnScientist;
 }
 
+//Returns all the scientists by the year they receved the turning award in an descending order.
 vector<Scientist> listServices::readInDescendingByYOA()
 {
     vector<Scientist> returnScientist;
@@ -132,12 +147,14 @@ vector<Scientist> listServices::readInDescendingByYOA()
     return returnScientist;
 }
 
+//Returns a picture of a scientist (by their ID).
 QByteArray listServices::searchScientistPicture(int id)
 {
    QByteArray picture = _myData.searchForPictureForScientist(id);
    return picture;
 }
 
+//Returns all the scientists by their name in an alphabetical order.
 vector<Scientist> listServices::scientistInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -145,6 +162,7 @@ vector<Scientist> listServices::scientistInAlphabeticalOrder()
     return returnScientist;
 }
 
+//Returns the scientists by their name in a reverse alphabetical order.
 vector<Scientist> listServices::scientistInReverseAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
@@ -152,6 +170,7 @@ vector<Scientist> listServices::scientistInReverseAlphabeticalOrder()
     return returnScientist;
 }
 
+//Returns all the computers by their name in an alphabetical order.
 vector<Computer> listServices::computerInAlphabeticalOrder()
 {
     vector<Computer> returnComputer;
@@ -159,6 +178,7 @@ vector<Computer> listServices::computerInAlphabeticalOrder()
     return returnComputer;
 }
 
+//Returns all the computers by teir name in a reverse alphabetical order.
 vector<Computer> listServices::computerInReverseAlphabeticalOrder()
 {
     vector<Computer> returnComputer;
@@ -166,6 +186,7 @@ vector<Computer> listServices::computerInReverseAlphabeticalOrder()
     return returnComputer;
 }
 
+//Returns all the computers by if they were built in an ascending order.
 vector<Computer> listServices::ComputerWasBuiltASC()
 {
     vector<Computer> returnComputer;
@@ -173,6 +194,7 @@ vector<Computer> listServices::ComputerWasBuiltASC()
     return returnComputer;
 }
 
+//Returns all the computers by if they were built in a descending order.
 vector<Computer> listServices::ComputerWasBuiltDESC()
 {
     vector<Computer> returnComputer;
@@ -180,6 +202,7 @@ vector<Computer> listServices::ComputerWasBuiltDESC()
     return returnComputer;
 }
 
+//Returns a list of the scientists from oldest to youngest.
 vector<Scientist> listServices::oldestOrderScientist()
 {
     vector<Scientist> returnScientist;
@@ -187,6 +210,7 @@ vector<Scientist> listServices::oldestOrderScientist()
     return returnScientist;
 }
 
+//Returns a list of the computers from oldest to youngest.
 vector<Computer> listServices::oldestOrderComputer()
 {
     vector<Computer> display;
@@ -194,6 +218,7 @@ vector<Computer> listServices::oldestOrderComputer()
     return display;
 }
 
+//This function displays the scientists in an order from the youngest to oldest.
 vector<Scientist> listServices::youngestOrderScientist()
 {
     vector<Scientist> returnScientist;
@@ -201,6 +226,7 @@ vector<Scientist> listServices::youngestOrderScientist()
     return returnScientist;
 }
 
+//This function displays the computer in an order from the newest one to the oldest.
 vector<Computer> listServices::youngestOrderComputer()
 {
     vector<Computer> display;
@@ -208,6 +234,7 @@ vector<Computer> listServices::youngestOrderComputer()
     return display;
 }
 
+//function for searching the connection table by the scientists name.
 vector<searching> listServices::displaySearchJoinScientistName(string x)
 {
     vector<searching> displayJoinScientist;
@@ -215,6 +242,7 @@ vector<searching> listServices::displaySearchJoinScientistName(string x)
     return displayJoinScientist;
 }
 
+//function for searching the connection table by a computers name.
 vector<searching> listServices::displaySearchJoinComputerName(string x)
 {
     vector<searching> displayJoinComputer;
@@ -222,6 +250,7 @@ vector<searching> listServices::displaySearchJoinComputerName(string x)
     return displayJoinComputer;
 }
 
+//This function deletes a scientist from the database.
 bool listServices::deleteScientistFromDatabase(int x)
 {
     bool check;
@@ -231,11 +260,12 @@ bool listServices::deleteScientistFromDatabase(int x)
     }
     else
     {
-        check == false;
+        check = false;
     }
     return check;
 }
 
+//This function deletes computers from the database.
 bool listServices::deleteComputerFromDatabase(int x)
 {
     bool check;
@@ -250,6 +280,7 @@ bool listServices::deleteComputerFromDatabase(int x)
     return check;
 }
 
+//This function deletes a connection between a computer and a scientist from the database.
 bool listServices::deleteConnectionFromDatabase(int x, int y)
 {
     bool check;
@@ -297,6 +328,7 @@ vector<Scientist> listServices::searchDeadScientist()
     return matchingScientists;
 }
 
+//This function recives the the right corresponding computer for name the user has inputed.
 vector<Computer> listServices::searchForNameComputer(string s)
 {
     vector<Computer> returnComputers;
@@ -304,6 +336,7 @@ vector<Computer> listServices::searchForNameComputer(string s)
     return returnComputers;
 }
 
+//This function recives the the right corresponding computer for type of computer the user has inputed.
 vector<Computer> listServices::searchForTypeComputer(string s)
 {
     vector<Computer> returnComputers;
@@ -311,13 +344,14 @@ vector<Computer> listServices::searchForTypeComputer(string s)
     return returnComputers;
 }
 
-vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
+/*vector<Computer> listServices::searchWhenBuiltRange(int a, int b)
 {
     vector<Computer> returnRange;
     returnRange = _myData.checkInComputerYear(a, b);
     return returnRange;
-}
+}*/
 
+//This function recives the the right corresponding computer bult in the year the user has inputed.
 vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
 {
     vector<Computer> returnRange;
@@ -325,7 +359,7 @@ vector<Computer> listServices::searchWhenBuiltSingleYear(int a)
     return returnRange;
 }
 
-vector<Computer> listServices::myComputerWasBuilt()
+/*vector<Computer> listServices::myComputerWasBuilt()
 {
     vector<Computer> returnRange;
     returnRange = _myData.ComputerWasBuilt();
@@ -337,9 +371,9 @@ vector<Computer> listServices::myComputerWasNotBuilt()
     vector<Computer> returnRange;
     returnRange = _myData.ComputerWasNotBuilt();
     return returnRange;
-}
+}*/
 
-
+//This function collects scientist that have an award from the database.
 vector<Scientist> listServices::checkForAward(int x)
 {
     vector<Scientist> award;
@@ -347,6 +381,7 @@ vector<Scientist> listServices::checkForAward(int x)
     return award;
 }
 
+//This function collects scientist by there birthyear from the database.
 vector<Scientist> listServices::checkBirthYear(int x)
 {
     vector<Scientist> award;
@@ -354,6 +389,7 @@ vector<Scientist> listServices::checkBirthYear(int x)
     return award;
 }
 
+//This function collects scientist by there deathyear from the database.
 vector<Scientist> listServices::checkDeathYear(int x)
 {
     vector<Scientist> award;
@@ -361,6 +397,7 @@ vector<Scientist> listServices::checkDeathYear(int x)
     return award;
 }
 
+//This function collects computers by their name from the database.
 vector<Scientist> listServices::checkName(string s)
 {
     vector<Scientist> names;
@@ -368,13 +405,14 @@ vector<Scientist> listServices::checkName(string s)
     return names;
 }
 
-vector<Scientist> listServices::checkFullName(string s)
+/*vector<Scientist> listServices::checkFullName(string s)
 {
     vector<Scientist> names;
     names = _myData.searchFullNameFromDatabase(s);
     return names;
-}
+}*/
 
+//This function collects scientist by their nationality from the database.
 vector<Scientist> listServices::checkNationality(string s)
 {
     vector<Scientist> names;
@@ -382,13 +420,14 @@ vector<Scientist> listServices::checkNationality(string s)
     return names;
 }
 
-vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
+/*vector<Scientist> listServices::checkRangeBirthYear(int x, int y)
 {
     vector<Scientist> award1;
     award1 = _myData.searchRangeForYearOfBirth(x, y);
     return award1;
-}
+}*/
 
+//This function lets the user update the scientists first name.
 bool listServices::updateFirstNameScientist(string x, int id)
 {
     bool check;
@@ -403,6 +442,7 @@ bool listServices::updateFirstNameScientist(string x, int id)
     return check;
 }
 
+//This function lets the user update the scientists last name.
 bool listServices::updateLastNameScientist(string x, int id)
 {
     bool check;
@@ -417,6 +457,7 @@ bool listServices::updateLastNameScientist(string x, int id)
     return check;
 }
 
+//This function lets the user update the scientists gender.
 bool listServices::updateGenderScientist(char x, int id)
 {
     bool check;
@@ -431,6 +472,7 @@ bool listServices::updateGenderScientist(char x, int id)
     return check;
 }
 
+//This function lets the user update the scientists nationality.
 bool listServices::updateNationalityScientist(string x, int id)
 {
     bool check;
@@ -445,6 +487,7 @@ bool listServices::updateNationalityScientist(string x, int id)
     return check;
 }
 
+//This function lets the user update the scientists year of birth.
 bool listServices::updateYOBScientist(int x, int id)
 {
     bool check;
@@ -459,6 +502,7 @@ bool listServices::updateYOBScientist(int x, int id)
     return check;
 }
 
+//This function lets the user update the scientists year of birth.
 bool listServices::updateYODScientist(int x, int id)
 {
     bool check;
@@ -473,6 +517,7 @@ bool listServices::updateYODScientist(int x, int id)
     return check;
 }
 
+//This function lets the user update the year the scientist recived the Turning Award.
 bool listServices::updateYOAScientist(int x, int id)
 {
     bool check;
@@ -487,6 +532,7 @@ bool listServices::updateYOAScientist(int x, int id)
     return check;
 }
 
+//This function lets the user update the name of the computers.
 bool listServices::updateNameComputer(string x, int id)
 {
     bool check;
@@ -501,6 +547,7 @@ bool listServices::updateNameComputer(string x, int id)
     return check;
 }
 
+//This function lets the user update the type of computer.
 bool listServices::updateTypeComputer(string x, int id)
 {
     bool check;
@@ -515,6 +562,7 @@ bool listServices::updateTypeComputer(string x, int id)
     return check;
 }
 
+//This function lets the user update the year the computer was created.
 bool listServices::updateYOCComputer(int x, int id)
 {
     bool check;
@@ -529,6 +577,7 @@ bool listServices::updateYOCComputer(int x, int id)
     return check;
 }
 
+//This function lets the user update if the computer was built.
 bool listServices::updateWasBuilt(int x, int id)
 {
     bool check;
@@ -543,7 +592,7 @@ bool listServices::updateWasBuilt(int x, int id)
     return check;
 }
 
-//to get the longest name in order to align the table right
+//to get the longest name in order to align the table right.
 int listServices::searchLongestNameScientist()
 {
     vector<Scientist> display;
@@ -569,7 +618,7 @@ int listServices::searchLongestNameScientist()
     return newLongest + 2;
 }
 
-//to get the longest name in order to align the table right
+//to get the longest name in order to align the table right.
 int listServices::searchLongestNameComputer()
 {
     vector<Computer> display;
@@ -593,6 +642,7 @@ listServices::listServices()
 
 }
 
+//Returns the computers ID in an ascending order.
 vector<Computer> listServices::computerIdAscendingOrder()
 {
     vector<Computer> returnIdAscComputer;
@@ -600,6 +650,7 @@ vector<Computer> listServices::computerIdAscendingOrder()
     return returnIdAscComputer;
 }
 
+//Returns the computers ID in a descending order.
 vector<Computer> listServices::computerIdDescendingOrder()
 {
     vector<Computer> returnIdDescComputer;
@@ -607,6 +658,7 @@ vector<Computer> listServices::computerIdDescendingOrder()
     return returnIdDescComputer;
 }
 
+//Returns the computers type in an ascending order.
 vector<Computer> listServices::computertypeAscendingOrder()
 {
     vector<Computer> returntypeAscComputer;
@@ -614,6 +666,7 @@ vector<Computer> listServices::computertypeAscendingOrder()
     return returntypeAscComputer;
 }
 
+//Returns the computers type in an descending order.
 vector<Computer> listServices::computertypeDescendingOrder()
 {
     vector<Computer> returntypeDescComputer;
@@ -621,6 +674,7 @@ vector<Computer> listServices::computertypeDescendingOrder()
     return returntypeDescComputer;
 }
 
+//Returns a list of connections between scientists and computers.
 vector<searching> listServices::displayAllFromSearching()
 {
     vector<searching> displayAllScientistComputer;
@@ -628,6 +682,7 @@ vector<searching> listServices::displayAllFromSearching()
     return displayAllScientistComputer;
 }
 
+//Checks in database for username when logging in.
 vector<userandpass> listServices::checkForUsers()
 {
     vector<userandpass> checkUser;
@@ -635,10 +690,13 @@ vector<userandpass> listServices::checkForUsers()
     return checkUser;
 }
 
+//Registers a new user (password and username) to the database.
 void listServices::regiserUsers(userandpass newUser)
 {
     _myData.registerUser(newUser);
 }
+
+//Returns the scientist by their first name in an acending order.
 vector<searching> listServices::readInAscendingByFirstName()
 {
     vector<searching> readInAscendingByFirstName;
@@ -646,12 +704,15 @@ vector<searching> listServices::readInAscendingByFirstName()
     return readInAscendingByFirstName;
 }
 
+//Returns the scientist by their first name in a descending order.
 vector<searching> listServices::readInDiscendingFirstName()
 {
     vector<searching> readInDiscendingFirstName;
     readInDiscendingFirstName = _myData.displayFirstNamefromSearchingDescendingOrder();
     return readInDiscendingFirstName;
 }
+
+//Returns the scientist by their last name in an acending order.
 vector<searching> listServices::readInAscendingByLastName()
 {
     vector<searching> readInAscendingByLastName;
@@ -659,6 +720,7 @@ vector<searching> listServices::readInAscendingByLastName()
     return readInAscendingByLastName;
 }
 
+//Returns the scientist by their first name in a descending order.
 vector<searching> listServices::readInDiscendingLastName()
 {
     vector<searching> readInDiscendingLastName;
@@ -666,6 +728,7 @@ vector<searching> listServices::readInDiscendingLastName()
     return readInDiscendingLastName;
 }
 
+//Returns a computer by its name in an acending order.
 vector<searching> listServices::readInAscendingByCompName()
 {
     vector<searching> readInAscendingByCompName;
@@ -673,6 +736,7 @@ vector<searching> listServices::readInAscendingByCompName()
     return readInAscendingByCompName;
 }
 
+//Returns a computer by its name in a descending order.
 vector<searching> listServices::readInDiscendingCompName()
 {
     vector<searching> readInDiscendingCompName;
@@ -680,6 +744,7 @@ vector<searching> listServices::readInDiscendingCompName()
     return readInDiscendingCompName;
 }
 
+//Returns a computer by its type in an acending order.
 vector<searching> listServices::readInAscendingByCompType()
 {
     vector<searching> readInAscendingByCompType;
@@ -687,6 +752,7 @@ vector<searching> listServices::readInAscendingByCompType()
     return readInAscendingByCompType;
 }
 
+//Returns a computer by its name in a descending order.
 vector<searching> listServices::readInDiscendingByCompType()
 {
     vector<searching> readInDiscendingByCompType;
@@ -694,6 +760,7 @@ vector<searching> listServices::readInDiscendingByCompType()
     return readInDiscendingByCompType;
 }
 
+//Returns a computer by the year it was created in an acending order.
 vector<searching> listServices::readInAscendingByYearBuilt()
 {
     vector<searching> readInAscendingByYearBuilt;
@@ -701,6 +768,7 @@ vector<searching> listServices::readInAscendingByYearBuilt()
     return readInAscendingByYearBuilt;
 }
 
+//Returns a computer by the year it was created in a descending order.
 vector<searching> listServices::readInDiscendingByYearBuilt()
 {
     vector<searching> readInDiscendingByYearBuilt;

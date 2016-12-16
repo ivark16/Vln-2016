@@ -15,8 +15,7 @@ DataLayer::DataLayer()
        }
        else
        {
-
-       }
+    }
 }
 
 //A defult constructor that accesses the database.
