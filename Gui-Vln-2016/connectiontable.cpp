@@ -101,6 +101,7 @@ void ConnectionTable::on_pushButtonAdvancedSearch_clicked()
                                                "the Atanasoff–Berry computer (ABC). He died in 1963 at the age of 45.");
     }
 
+
     if (myArray.size() != 0)
     {
         QPixmap photo;       
