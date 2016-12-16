@@ -17,6 +17,7 @@ editscientist::~editscientist()
     delete ui;
 }
 
+//Display function for linedit when the user chooses from mainwindow
 void editscientist::displayForUpdate(int Id)
 {
     _ID = Id;
@@ -62,7 +63,7 @@ void editscientist::displayForUpdate(int Id)
     }
 }
 
-
+//this function is for the psuh button
 void editscientist::on_pushButtonUpdate_clicked()
 {
     bool isLegalScientist;
@@ -95,6 +96,7 @@ void editscientist::on_pushButtonUpdate_clicked()
     }
 }
 
+//Error checker for gender
 bool editscientist::getGender()
 {
     if((ui->genderSelectBox->currentIndex()) == 0)
@@ -161,8 +163,6 @@ bool editscientist::getFirstName()
         _firstName = potentialName;
     }
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
-
-
 }
 
 bool editscientist::getLastName()
@@ -211,9 +211,9 @@ bool editscientist::getLastName()
         _lastName = potentialName;
     }
     return (hasContent && hasOnlyChar && !(potentialName.size() < 3 || potentialName.size() > 16));
-
 }
 
+//Error check for nationality
 bool editscientist::getNationality()
 {
 
@@ -245,7 +245,6 @@ bool editscientist::getNationality()
     if(!hasContent)
     {
         ui ->labelNationality ->setText("<span style='color: red'>Nationality required</span>");
-
     }
     else if(!hasOnlyChar)
     {
@@ -260,7 +259,6 @@ bool editscientist::getNationality()
         //If there are no problems, the first name is legal.
         _nationality = potentialNationality;
     }
-
     return (hasContent && hasOnlyChar && !(potentialNationality.size() < 4 || potentialNationality.size() > 21));
 }
 
@@ -314,14 +312,13 @@ bool editscientist::getBirthYear()
         _birthYear = potentialBirthYear;
     }
     return(hasContent && hasOnlyNumbers && isInRange);
-
 }
 
+//Error handler for deathyear
 bool editscientist::getDeathYear()
 {
     int potentialDeathYear = ui ->lineEditYOD ->text().toInt();
     string potentialDeathYearString =(ui ->lineEditYOD ->text()).toStdString();
-
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 
@@ -361,10 +358,10 @@ bool editscientist::getDeathYear()
         //If there are no problems, the birth year is legal.
         _deathYear = potentialDeathYear;
     }
-
     return(hasOnlyNumbers && isInRange);
 }
 
+//Error handler for awardyear
 bool editscientist::getAwardYear()
 {
     int potentialAwardYear = ui ->lineEditYOA ->text().toInt();
@@ -411,6 +408,5 @@ bool editscientist::getAwardYear()
         _awardYear = potentialAwardYear;
     }
     return(hasOnlyNumbers && isInRange);
-
 }
 

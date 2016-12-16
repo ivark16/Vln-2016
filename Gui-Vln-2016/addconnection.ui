@@ -23,6 +23,11 @@
    <iconset resource="resorces.qrc">
     <normaloff>:/Icons/Pictures/cornerIcon.png</normaloff>:/Icons/Pictures/cornerIcon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+}</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>

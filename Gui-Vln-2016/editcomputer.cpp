@@ -6,6 +6,7 @@ editcomputer::editcomputer(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editcomputer)
 {
+    //List in combobox
     ui->setupUi(this);
     ui ->BuiltStatus ->addItem("Built status");
     ui ->BuiltStatus ->addItem("---");
@@ -18,10 +19,10 @@ editcomputer::~editcomputer()
     delete ui;
 }
 
+//Displays in lineeditwhat computer user has chosen in mainwindow
 void editcomputer::displayForUpdate(int id)
 {
     _ID = id;
-
     vector<Computer> newvector;
     newvector = _lists.displayComputerById(id);
     QString name = QString::fromStdString(newvector[0].getComputerName());
@@ -42,7 +43,6 @@ void editcomputer::displayForUpdate(int id)
     ui->lineEditType->setText(type);
     ui->YearOfCreation->setText(yob);
     ui ->BuiltStatus ->setCurrentIndex(wasBuiltIndex);
-
 }
 
 void editcomputer::on_pushButtonUpdateComputer_clicked()
@@ -68,6 +68,7 @@ void editcomputer::on_pushButtonUpdateComputer_clicked()
     }
 }
 
+//Error check if the name is within certain parameters
 bool editcomputer::getNAme()
 {
     string potentialName = ui -> lineEditName ->text().toStdString();
@@ -116,10 +117,10 @@ bool editcomputer::getNAme()
     return (hasContent && hasLegalCharacters && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
+//Error check if the type is within certain parameters
 bool editcomputer::getType()
 {
     string potentialType = ui -> lineEditType ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -162,15 +163,13 @@ bool editcomputer::getType()
         _type= potentialType;
     }
     return (hasContent && hasOnlyChar && !(potentialType.size() < 2 || potentialType.size() > 16));
-
-
 }
 
+//Error check if the yearbuild is within certain parameters
 bool editcomputer::getYearOfBuild()
 {
     int potentialBuildYear = ui -> YearOfCreation ->text().toInt();
     string potentialBuildYearString =(ui ->YearOfCreation ->text()).toStdString();
-
     bool hasContent = true;
     bool hasOnlyNumbers = true;
     bool isInRange = true;
@@ -215,26 +214,25 @@ bool editcomputer::getYearOfBuild()
         //If there are no problems, the birth year is legal.
         _yearBuilt = potentialBuildYear;
     }
-
-
     return(hasContent && hasOnlyNumbers && isInRange);
 }
 
+//Error check if the wasbuilt is within certain parameters
 bool editcomputer::wasBuilt()
 {
-  if(ui ->BuiltStatus->currentIndex() <2 || ui ->BuiltStatus ->currentIndex() >3)
-  {
-      ui ->BuiltStatusLabel->setText("<span style=' color: red'>Built status required</span>");
-      return false;
-  }
-  else if(ui ->BuiltStatus->currentIndex() == 2)
-  {
-      _wasBuilt = true;
-      return true;
-  }
-  else if(ui ->BuiltStatus->currentIndex() == 3)
-  {
-      _wasBuilt = false;
-      return true;
-  }
+    if(ui ->BuiltStatus->currentIndex() <2 || ui ->BuiltStatus ->currentIndex() >3)
+    {
+        ui ->BuiltStatusLabel->setText("<span style=' color: red'>Built status required</span>");
+        return false;
+    }
+    else if(ui ->BuiltStatus->currentIndex() == 2)
+    {
+        _wasBuilt = true;
+        return true;
+    }
+    else
+    {
+        _wasBuilt = false;
+        return true;
+    }
 }

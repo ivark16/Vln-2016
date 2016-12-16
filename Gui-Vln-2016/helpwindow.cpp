@@ -18,7 +18,7 @@ void HelpWindow::on_HelpWindow_accepted()
 
 }
 
-void HelpWindow::on_pushButton_clicked()
+/*void HelpWindow::on_pushButton_clicked()
 {
 
-}
+}*/

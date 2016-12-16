@@ -33,6 +33,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     Scientist s;
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist");
+
     int idName7 = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -42,7 +43,7 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
     int idname5 = query.record().indexOf("YOD");
     int idname6 = query.record().indexOf("YOA");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(query.next())
     {
         int Ids = query.value(idName7).toInt();
@@ -53,13 +54,14 @@ vector<Scientist> DataLayer::readAllFromScientistsDataBase()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(Ids, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
     return returnScientist;
 }
 
-//Returns all scientists in the dtabase in order of ID
+//Returns all scientists in the dtabase in order of ID.
 vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
 {
     Scientist s;
@@ -68,6 +70,7 @@ vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
     myQuery.prepare("SELECT * FROM scientist WHERE scientist.ID = (:x)");
     myQuery.addBindValue(x);
     myQuery.exec();
+
     int idName7 = myQuery.record().indexOf("ID");
     int idName = myQuery.record().indexOf("firstname");
     int idname1 = myQuery.record().indexOf("lastname");
@@ -77,7 +80,7 @@ vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
     int idname5 = myQuery.record().indexOf("YOD");
     int idname6 = myQuery.record().indexOf("YOA");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int Ids = myQuery.value(idName7).toInt();
@@ -88,18 +91,20 @@ vector<Scientist> DataLayer::readAllFromScientistDataBaseById(int x)
         int birthYear = myQuery.value(idname4).toInt();
         int deathYear = myQuery.value(idname5).toInt();
         int awardYear = myQuery.value(idname6).toInt();
+
         Scientist s(Ids, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
     return returnScientist;
 }
 
-//Returns all computers in the database
+//Returns all computers in the database.
 vector<Computer> DataLayer::readAllFromDataComputerBase()
 {
     Computer s;
     vector<Computer> displayComputer;
     QSqlQuery query("SELECT * FROM computer");
+
     int idName = query.record().indexOf("ID");
     int idName1 = query.record().indexOf("name");
     int idName2 = query.record().indexOf("type");
@@ -130,6 +135,7 @@ vector<Computer> DataLayer::readAllFromDataComputerBaseById(int x)
     myQuery.prepare("SELECT * FROM computer WHERE computer.ID = (:x)");
     myQuery.addBindValue(x);
     myQuery.exec();
+
     int idName = myQuery.record().indexOf("ID");
     int idName1 = myQuery.record().indexOf("name");
     int idName2 = myQuery.record().indexOf("type");
@@ -151,16 +157,17 @@ vector<Computer> DataLayer::readAllFromDataComputerBaseById(int x)
     return displayComputer;
 }
 
-//Returns all connections in the database
+//Returns all connections in the database.
 vector<connection> DataLayer::readAllFromDataConnectionBase()
 {
     connection s;
     vector<connection> displayConnection;
     QSqlQuery query("SELECT * FROM connection");
+
     int idName1 = query.record().indexOf("scientistId");
     int idName2 = query.record().indexOf("computersId");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(query.next())
     {
         //int ids = query.value(idName).toInt();
@@ -183,6 +190,7 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     myQuery.addBindValue("%" + qName + "%");
     myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -191,7 +199,7 @@ vector<searching> DataLayer::searchForScientistFromSearchingDatabse(string x)
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -219,6 +227,7 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     myQuery.addBindValue("%" + qName + "%");
     myQuery.addBindValue("%" + qName + "%");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -227,7 +236,7 @@ vector<searching> DataLayer::searchForComputerFromSearchingDatabase(string x)
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -251,6 +260,7 @@ vector<searching> DataLayer::displayAllfromSearching()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -259,7 +269,7 @@ vector<searching> DataLayer::displayAllfromSearching()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -283,6 +293,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.firstname ASC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -291,7 +302,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingAscendingOrder()
     int idName4 = myQuery.record().indexOf("type");
     int idName5 = myQuery.record().indexOf("yearbuilt");
 
-    //This loop is intended to extract data from the database
+    //This loop is intended to extract data from the database.
     while(myQuery.next())
     {
         int IdScientist = myQuery.value(idNamesScientistID).toInt();
@@ -315,6 +326,7 @@ vector<searching> DataLayer::displayFirstNamefromSearchingDescendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.firstname DESC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -347,6 +359,7 @@ vector<searching> DataLayer::displayLastNamefromSearchingAscendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.lastname ASC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -372,7 +385,6 @@ vector<searching> DataLayer::displayLastNamefromSearchingAscendingOrder()
     return joinQueryComputer;
 }
 
-
 //This function displays a list of connections between scientists and computers (in an descending order by their last name).
 vector<searching> DataLayer::displayLastNamefromSearchingDescendingOrder()
 {
@@ -380,6 +392,7 @@ vector<searching> DataLayer::displayLastNamefromSearchingDescendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY scientist.lastname DESC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -412,6 +425,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingAscendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.name ASC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -444,6 +458,7 @@ vector<searching> DataLayer::displayComputerNamefromSearchingDescendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.name DESC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -476,6 +491,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingAscendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.type ASC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -508,6 +524,7 @@ vector<searching> DataLayer::displayComputerTypefromSearchingDescendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.type DESC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -540,6 +557,7 @@ vector<searching> DataLayer::displayComputerYearfromSearchingAscendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.yearBuilt ASC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -572,6 +590,7 @@ vector<searching> DataLayer::displayComputerYearfromSearchingDescendingOrder()
     QSqlQuery myQuery;
     myQuery.prepare("SELECT connect.scientist_ID, connect.computer_ID, scientist.firstname, scientist.lastname, computer.name, computer.type, computer.yearbuilt FROM Connect JOIN computer ON Connect.Computer_ID =  computer.ID JOIN scientist ON Connect.scientist_ID = scientist.ID ORDER BY computer.yearBuilt DESC;");
     myQuery.exec();
+
     int idNamesScientistID = myQuery.record().indexOf("scientist_ID");
     int idNamesComputerID = myQuery.record().indexOf("computer_ID");
     int idName = myQuery.record().indexOf("firstname");
@@ -625,7 +644,7 @@ bool DataLayer::deleteFunction(int x)
 //This function deletes the scientist with the ID x, where x is input from the user.
 bool DataLayer::deleteFunctionComputer(int x)
 {
-    bool bla;
+    bool deleteC ;
     QSqlQuery myQuery;
     myQuery.prepare("SELECT name FROM computer WHERE ID = (:x)");
     myQuery.addBindValue(x);
@@ -637,14 +656,14 @@ bool DataLayer::deleteFunctionComputer(int x)
             myQuery.prepare("DELETE FROM computer WHERE ID = (:x)");
             myQuery.addBindValue(x);
             myQuery.exec();
-            bla = true;
+            deleteC = true;
         }
     }
     else
     {
-          bla = false;
+          deleteC = false;
     }
-    return bla;
+    return deleteC;
 }
 
 //This function deletes deletes a connection between a scientist with the id x, and all computer connected with them. This is called when a scientist is deleted.
@@ -654,6 +673,7 @@ bool DataLayer::deleteConnectionFunctionScientist(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
+
     if(myQuery.exec())
     {
         if(myQuery.next())
@@ -678,6 +698,7 @@ bool DataLayer::deleteConnectionFunctionComputer(int x)
     QSqlQuery myQuery;
     myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
     myQuery.addBindValue(x);
+
     if(myQuery.exec())
     {
         if(myQuery.next())
@@ -703,7 +724,6 @@ bool DataLayer::addFunction(Scientist newScientist)
     QString qName2 = QString::fromStdString(newScientist.getLastName());
     QString qGender = QChar(newScientist.getGender());
     QString qNat = QString::fromStdString(newScientist.getNationality());
-
     query.prepare("INSERT INTO scientist (firstname, lastname, gender, nationality, YOB, YOD, YOA) VALUES (:name1, :name2, :gender1, :nation, :yob, :yod, :yoa)");
     query.addBindValue(qName1);
     query.addBindValue(qName2);
@@ -724,7 +744,7 @@ bool DataLayer::addFunction(Scientist newScientist)
     }
 }
 
-//This function returns all scientists matching the search word entered by the user. Searching by name
+//This function returns all scientists matching the search word entered by the user, Searching by name.
 vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
 {
     vector<Scientist> scientists;
@@ -734,6 +754,7 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
     query.addBindValue("%" + qName + "%");
     query.addBindValue("%" + qName + "%");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -753,13 +774,14 @@ vector<Scientist> DataLayer::searchForNameFromDatabase(string name)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
     return scientists;
 }
 
-//This function returns all scientists matching the search word entered by the user. Searching by nationality.
+//This function returns all scientists matching the search word entered by the user, Searching by nationality.
 vector<Scientist> DataLayer::searchNationality(string name)
 {
     vector<Scientist> scientists;
@@ -768,6 +790,7 @@ vector<Scientist> DataLayer::searchNationality(string name)
     query.prepare("SELECT * FROM scientist WHERE nationality LIKE (:name)");
     query.addBindValue("%" + qName + "%");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -787,6 +810,7 @@ vector<Scientist> DataLayer::searchNationality(string name)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -803,6 +827,7 @@ vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
     query.addBindValue("%" + qName + "%");
     query.addBindValue("%" + qName + "%");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -823,6 +848,7 @@ vector<Scientist> DataLayer::searchFullNameFromDatabase(string name)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -865,6 +891,7 @@ vector<Scientist> DataLayer::readInAscendingByID()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.ID ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -885,6 +912,7 @@ vector<Scientist> DataLayer::readInAscendingByID()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -896,6 +924,7 @@ vector<Scientist> DataLayer::readInDiscendingByID()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.ID DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -916,6 +945,7 @@ vector<Scientist> DataLayer::readInDiscendingByID()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -927,6 +957,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.firstname, s.lastname ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -947,6 +978,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -958,6 +990,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrder()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.firstname DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -978,6 +1011,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -989,6 +1023,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderNationality()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.nationality ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1009,6 +1044,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderNationality()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1020,6 +1056,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderNationality()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.nationality DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1040,6 +1077,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderNationality()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1051,6 +1089,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOB, s.YOD ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1071,6 +1110,7 @@ vector<Scientist> DataLayer::readInOldestOrder()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1082,6 +1122,7 @@ vector<Scientist> DataLayer::readInYoungestOrder()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOB DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1114,6 +1155,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderGender()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.gender ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1134,6 +1176,7 @@ vector<Scientist> DataLayer::readInAlphabeticalOrderGender()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1145,6 +1188,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderGender()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.gender DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1165,6 +1209,7 @@ vector<Scientist> DataLayer::readInReverseAlphabeticalOrderGender()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1176,37 +1221,7 @@ vector<Scientist> DataLayer::readInAscendingByYOA()
 {
     vector<Scientist> returnScientist;
     QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOA ASC");
-    int idNames = query.record().indexOf("ID");
-    int idName = query.record().indexOf("firstname");
-    int idname1 = query.record().indexOf("lastname");
-    int idname2 = query.record().indexOf("gender");
-    int idname3 = query.record().indexOf("nationality");
-    int idname4 = query.record().indexOf("YOB");
-    int idname5 = query.record().indexOf("YOD");
-    int idname6 = query.record().indexOf("YOA");
 
-    //This loop is intended to extract data from the database
-    while(query.next())
-    {
-        int id = query.value(idNames).toInt();
-        string firstName = query.value(idName).toString().toStdString();
-        string lastName = query.value(idname1).toString().toStdString();
-        char sex = query.value(idname2).toString().toStdString()[0];
-        string nationality = query.value(idname3).toString().toStdString();
-        int birthYear = query.value(idname4).toInt();
-        int deathYear = query.value(idname5).toInt();
-        int awardYear = query.value(idname6).toInt();
-        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
-        returnScientist.push_back(s);
-    }
-    return returnScientist;
-}
-
-//This function sorts all scientists in Descending order by the year they recived the Turning award.
-vector<Scientist> DataLayer::readInDescendingByYOA()
-{
-    vector<Scientist> returnScientist;
-    QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOA DESC");
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1227,6 +1242,40 @@ vector<Scientist> DataLayer::readInDescendingByYOA()
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
+        Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
+        returnScientist.push_back(s);
+    }
+    return returnScientist;
+}
+
+//This function sorts all scientists in Descending order by the year they recived the Turning award.
+vector<Scientist> DataLayer::readInDescendingByYOA()
+{
+    vector<Scientist> returnScientist;
+    QSqlQuery query("SELECT * FROM scientist s ORDER BY s.YOA DESC");
+
+    int idNames = query.record().indexOf("ID");
+    int idName = query.record().indexOf("firstname");
+    int idname1 = query.record().indexOf("lastname");
+    int idname2 = query.record().indexOf("gender");
+    int idname3 = query.record().indexOf("nationality");
+    int idname4 = query.record().indexOf("YOB");
+    int idname5 = query.record().indexOf("YOD");
+    int idname6 = query.record().indexOf("YOA");
+
+    //This loop is intended to extract data from the database.
+    while(query.next())
+    {
+        int id = query.value(idNames).toInt();
+        string firstName = query.value(idName).toString().toStdString();
+        string lastName = query.value(idname1).toString().toStdString();
+        char sex = query.value(idname2).toString().toStdString()[0];
+        string nationality = query.value(idname3).toString().toStdString();
+        int birthYear = query.value(idname4).toInt();
+        int deathYear = query.value(idname5).toInt();
+        int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         returnScientist.push_back(s);
     }
@@ -1242,6 +1291,7 @@ vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
     query.prepare("SELECT * FROM scientist WHERE YOA = (:x)");
     query.addBindValue(qNumber);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1262,6 +1312,7 @@ vector<Scientist> DataLayer::searchForTuringAwardWinners(int x)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -1277,6 +1328,7 @@ vector<Scientist> DataLayer::searchForDeadPeople(int x)
     query.prepare("SELECT * FROM scientist WHERE YOD = (:x)");
     query.addBindValue(qNumber);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1297,6 +1349,7 @@ vector<Scientist> DataLayer::searchForDeadPeople(int x)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -1311,6 +1364,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
     query.prepare("SELECT * FROM scientist WHERE YOB = (:x) OR YOA = (:x)");
     query.addBindValue(x);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1331,6 +1385,7 @@ vector<Scientist> DataLayer::searchForYearOfBirth(int x)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -1346,6 +1401,7 @@ vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
     query.addBindValue(x);
     query.addBindValue(y);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("firstname");
     int idname1 = query.record().indexOf("lastname");
@@ -1366,6 +1422,7 @@ vector<Scientist> DataLayer::searchRangeForYearOfBirth(int x, int y)
         int birthYear = query.value(idname4).toInt();
         int deathYear = query.value(idname5).toInt();
         int awardYear = query.value(idname6).toInt();
+
         Scientist s(id, firstName, lastName, sex, nationality,birthYear,deathYear, awardYear);
         scientists.push_back(s);
     }
@@ -1377,6 +1434,7 @@ vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
 {
     vector<Computer> returnComputer;
     QSqlQuery query("SELECT * FROM computer s ORDER BY s.name ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1391,6 +1449,7 @@ vector<Computer> DataLayer::readInAlphabeticalOrderComputer()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         returnComputer.push_back(s);
     }
@@ -1402,6 +1461,7 @@ vector<Computer> DataLayer::readInReverseAlphabeticalOrderComputer()
 {
     vector<Computer> returnComputer;
     QSqlQuery query("SELECT * FROM computer s ORDER BY s.name DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1416,6 +1476,7 @@ vector<Computer> DataLayer::readInReverseAlphabeticalOrderComputer()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         returnComputer.push_back(s);
     }
@@ -1427,6 +1488,7 @@ vector<Computer> DataLayer::readInOldestOrderComputer()
 {
     vector<Computer> returnComputer;
     QSqlQuery query("SELECT * FROM computer s ORDER BY s.yearBuilt ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1453,6 +1515,7 @@ vector<Computer> DataLayer::readInYoungestOrderComputer()
 {
     vector<Computer> returnComputer;
     QSqlQuery query("SELECT * FROM computer s ORDER BY s.yearBuilt DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1520,10 +1583,10 @@ vector<Computer> DataLayer::checkInComputer(string x)
     vector<Computer> myVector;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("SELECT * FROM computer c WHERE c.name LIKE (:x) COLLATE NOCASE");
     query.addBindValue("%" + qName + "%");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1538,6 +1601,7 @@ vector<Computer> DataLayer::checkInComputer(string x)
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1550,10 +1614,10 @@ vector<Computer> DataLayer::checkInComputerType(string x)
     vector<Computer> myVector;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("SELECT * FROM computer c WHERE c.type LIKE (:x) COLLATE NOCASE");
     query.addBindValue("%" + qName + "%");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1568,6 +1632,7 @@ vector<Computer> DataLayer::checkInComputerType(string x)
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1579,11 +1644,11 @@ vector<Computer> DataLayer::checkInComputerYear(int x, int y)
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("SELECT * FROM computer c WHERE c.yearBuilt BETWEEN (:x) AND (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1598,6 +1663,7 @@ vector<Computer> DataLayer::checkInComputerYear(int x, int y)
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1609,10 +1675,10 @@ vector<Computer> DataLayer::checkInComputerSingleYear(int x)
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("SELECT * FROM computer c WHERE c.yearBuilt = (:x)");
     query.addBindValue(x);
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1627,6 +1693,7 @@ vector<Computer> DataLayer::checkInComputerSingleYear(int x)
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1638,9 +1705,9 @@ vector<Computer> DataLayer::ComputerWasBuilt()
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("Select * From computer c WHERE c.wasbuilt = 1");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1655,6 +1722,7 @@ vector<Computer> DataLayer::ComputerWasBuilt()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1666,9 +1734,9 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("Select * From computer c WHERE c.wasbuilt = 0");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1683,6 +1751,7 @@ vector<Computer> DataLayer::ComputerWasNotBuilt()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -1695,7 +1764,6 @@ bool DataLayer::updateFirstName(string x, int y)
     bool check;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("UPDATE scientist SET firstname = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
@@ -1720,7 +1788,6 @@ bool DataLayer::updateLastName(string x, int y)
     bool check;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("UPDATE scientist SET lastname = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
@@ -1745,7 +1812,7 @@ bool DataLayer::updateGender(char g, int y)
     bool check;
     QSqlQuery query;
     QString qGender = QChar(g);
-        //QString qGender = QChar(newScientist.getGender());
+    //QString qGender = QChar(newScientist.getGender());
     query.prepare("UPDATE scientist SET gender = (:g) WHERE ID = (:y)");
     query.addBindValue(qGender);
     query.addBindValue(y);
@@ -1770,7 +1837,6 @@ bool DataLayer::updateNationality(string x, int y)
     bool check;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("UPDATE scientist SET nationality = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
@@ -1794,7 +1860,6 @@ bool DataLayer::updateYOB (int x, int y)
 {
     bool check;
     QSqlQuery query;
-
     query.prepare("UPDATE scientist SET YOB = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
@@ -1818,7 +1883,6 @@ bool DataLayer::updateYOD (int x, int y)
 {
     bool check;
     QSqlQuery query;
-
     query.prepare("UPDATE scientist SET YOD = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
@@ -1842,7 +1906,6 @@ bool DataLayer::updateYOA (int x, int y)
 {
     bool check;
     QSqlQuery query;
-
     query.prepare("UPDATE scientist SET YOA = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
@@ -1867,7 +1930,6 @@ bool DataLayer::updateNameComputer(string x, int y)
     bool check;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("UPDATE computer SET name = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
@@ -1892,7 +1954,6 @@ bool DataLayer::updateTypeComputer(string x, int y)
     bool check;
     QSqlQuery query;
     QString qName = QString::fromStdString(x);
-
     query.prepare("UPDATE computer SET type = (:x) WHERE ID = (:y)");
     query.addBindValue(qName);
     query.addBindValue(y);
@@ -1916,7 +1977,6 @@ bool DataLayer::updateYOCComputer (int x, int y)
 {
     bool check;
     QSqlQuery query;
-
     query.prepare("UPDATE computer SET yearBuilt = (:x) WHERE ID = (:y)");
     query.addBindValue(x);
     query.addBindValue(y);
@@ -1964,6 +2024,7 @@ vector<Computer> DataLayer::readIdInAscendingOrder()
 {
     vector<Computer> idAscendingOrder;
     QSqlQuery query("SELECT * FROM computer ORDER BY ID ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -1978,6 +2039,7 @@ vector<Computer> DataLayer::readIdInAscendingOrder()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         idAscendingOrder.push_back(s);
     }
@@ -1989,6 +2051,7 @@ vector<Computer> DataLayer::readIdInDescindingOrder()
 {
     vector<Computer> idDescendingOrder;
     QSqlQuery query("SELECT * FROM computer ORDER BY ID DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -2003,6 +2066,7 @@ vector<Computer> DataLayer::readIdInDescindingOrder()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         idDescendingOrder.push_back(s);
     }
@@ -2014,6 +2078,7 @@ vector<Computer> DataLayer::readTypeInAlphabeticalOrder()
 {
     vector<Computer> typeAscendingOrder;
     QSqlQuery query("SELECT * FROM computer ORDER BY type ASC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -2028,6 +2093,7 @@ vector<Computer> DataLayer::readTypeInAlphabeticalOrder()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         typeAscendingOrder.push_back(s);
     }
@@ -2039,6 +2105,7 @@ vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
 {
     vector<Computer> typeDescendingOrder;
     QSqlQuery query("SELECT * FROM computer ORDER BY type DESC");
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -2053,6 +2120,7 @@ vector<Computer> DataLayer::readTypeInReverseAlphabeticalOrder()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         typeDescendingOrder.push_back(s);
     }
@@ -2080,9 +2148,9 @@ vector<userandpass> DataLayer::readLogin()
 {
     vector<userandpass> checkForUser;
     QSqlQuery query("SELECT * FROM users");
+
     int idName = query.record().indexOf("username");
     int idname1 = query.record().indexOf("password");
-
 
     //This while loop, like other while(query.next()) loops in this file, is intended to extract data from the database.
     while(query.next())
@@ -2101,11 +2169,11 @@ bool DataLayer::registerUser(userandpass newUser)
     QSqlQuery query;
     QString qName1 = QString::fromStdString(newUser.getuser());
     QString qName2 = QString::fromStdString(newUser.getpassword());
-
     query.prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
     query.addBindValue(qName1);
     query.addBindValue(qName2);
     query.exec();
+
     //
     if (query.next())
     {
@@ -2122,9 +2190,9 @@ vector<Computer> DataLayer::ComputerWasBuiltASC()
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("Select * From computer ORDER BY wasbuilt ASC");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -2139,6 +2207,7 @@ vector<Computer> DataLayer::ComputerWasBuiltASC()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }
@@ -2150,9 +2219,9 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
 {
     vector<Computer> myVector;
     QSqlQuery query;
-
     query.prepare("Select * From computer ORDER BY wasbuilt DESC");
     query.exec();
+
     int idNames = query.record().indexOf("ID");
     int idName = query.record().indexOf("name");
     int idName1 = query.record().indexOf("type");
@@ -2167,6 +2236,7 @@ vector<Computer> DataLayer::ComputerWasBuiltDESC()
         string type = query.value(idName1).toString().toStdString();
         int yearbuilt = query.value(idName2).toInt();
         bool wasbuilt = query.value(idName3).toBool();
+
         Computer s(id, name, type, yearbuilt, wasbuilt);
         myVector.push_back(s);
     }

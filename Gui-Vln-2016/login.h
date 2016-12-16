@@ -21,14 +21,18 @@ public:
     ~login();
 
 private slots:
+    //Push button for login
     void on_pushButtonLogin_clicked();
 
+    //Push button for register
     void on_pushButton_2_clicked();
 
 private:
     Ui::login *ui;
     listServices _lists;
     registeruser _users;
+
+    //Functions for decrytion
     string theDecrypter(string text);
     string deChiperText(string text, int shift);
     char shiftCharacter(char character, int shift);
