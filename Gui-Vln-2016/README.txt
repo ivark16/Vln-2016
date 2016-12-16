@@ -52,6 +52,7 @@ Brynjar Barkarson
 Gabríela Jóna Ólafsdóttir
 Ívar Örn Kristjánsson
 Margrét Dagmar Loftsdóttir
+Stef‡n Hjartarson
 
 The music playing in the background is Disco House by Bernhard Kosten.  The song can be found here: http://www.flashkit.com/loops/Easy_Listening/discohouse-140130084506.html 
 The question mark used in the help drop-down is free to use for non-commercial work and is available here: http://www.iconarchive.com/show/pretty-office-2-icons-by-custom-icon-design/FAQ-icon.html
