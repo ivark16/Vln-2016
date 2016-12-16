@@ -315,6 +315,9 @@ void MainWindow::on_pushButtonAddConnection_clicked()
     addNew.exec();
     //Calls displayAllConnections to update the table after adding a scientist
     displayAllConnections();
+
+    //disables the edit and delete buttons
+    ui->pushButtonDeleteConnection->setEnabled(false);
 }
 
 //Deletes connection of the connection user clicked on
@@ -481,6 +484,10 @@ void MainWindow::on_addComputers_clicked()
     addComputer addComputer;
     addComputer.exec();
     displayAllComputer();
+
+    //disables the edit and delete buttons
+    ui->pushButtonEditComputers->setEnabled(false);
+    ui->pushButtonDeleteComputer->setEnabled(false);
 }
 
 //When the ascending button is clicked in scientist table it will check where the user is in the combobox and then put the table in ascending order by the users choice
