@@ -23,6 +23,7 @@ addComputer::~addComputer()
     delete ui;
 }
 
+//adds the scientist if it is valid when the button is clicked
 void addComputer::on_addComputer_2_clicked()
 {
     //set all errors to empty every time the button is clicked.
@@ -59,6 +60,7 @@ void addComputer::on_addComputer_2_clicked()
 
 }
 
+//checks the validity of the entered computer name
 bool addComputer::getComputerName()
 {
 
@@ -110,6 +112,7 @@ bool addComputer::getComputerName()
     return (hasContent && hasLegalCharacters && !(potentialName.size() < 3 || potentialName.size() > 16));
 }
 
+//checks the validity of the computer type
 bool addComputer::getComputerType()
 {
 
@@ -161,6 +164,7 @@ bool addComputer::getComputerType()
     return (hasContent && hasLegalCharacters && !(potentialType.size() < 3 || potentialType.size() > 16));
 }
 
+//checks the validity of the entered year
 bool addComputer::getYearCreated()
 {
 
@@ -216,6 +220,7 @@ bool addComputer::getYearCreated()
     return(hasContent && hasOnlyNumbers && isInRange);
 }
 
+//checks that there is an item selected in the built status combobox
 bool addComputer::getBuiltStatus()
 {
     if((ui->wasBuiltBox->currentIndex()) == 2)

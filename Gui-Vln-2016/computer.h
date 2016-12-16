@@ -18,7 +18,7 @@ public:
     Computer();
     Computer(int id, string fComputer, string tComputers, int yoBuild, bool wBuilt);
 
-    //Get foll
+    //Get functions to access data
     int getID();
     string getComputerName();
     string getComputerType();

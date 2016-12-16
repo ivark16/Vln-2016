@@ -29,6 +29,7 @@ private:
     int _yearBuilt;
     bool _wasBuilt;
 
+    //checks the validity of all entered fields
     bool getComputerName();
     bool getComputerType();
     bool getYearCreated();
