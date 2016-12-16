@@ -77,13 +77,13 @@ void editscientist::on_pushButtonUpdate_clicked()
     bool isLegalScientist;
 
     //set all errors to empty every time the button is clicked.
-    ui ->LabelYOB->setText("");
-    ui ->labelYOD->setText("");
-    ui ->labelLastName->setText("");
-    ui ->labelFirstName->setText("");
-    ui ->labelGender->setText("");
-    ui ->labelNationality->setText("");
-    ui ->labelYOA->setText("");
+    ui ->LabelYOB->setText("Year of birth");
+    ui ->labelYOD->setText("Year of death");
+    ui ->labelLastName->setText("Lastname");
+    ui ->labelFirstName->setText("Firstname");
+    ui ->labelGender->setText("Gender");
+    ui ->labelNationality->setText("Nationality");
+    ui ->labelYOA->setText("Year of award");
 
     //this runs if no required fields are empty.
     bool hasFirstName = getFirstName();
