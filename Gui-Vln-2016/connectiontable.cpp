@@ -6,6 +6,8 @@ ConnectionTable::ConnectionTable(QWidget *parent) :
     ui(new Ui::ConnectionTable)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 ConnectionTable::~ConnectionTable()
