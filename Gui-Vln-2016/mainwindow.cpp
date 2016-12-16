@@ -14,9 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     // Writes into comboboxes what user can chooose from to display in ascending or descending order
-    ui->comboBoxScientist->addItem("Display scientists");
-    ui->comboBoxScientist->addItem("------------------------------------");
+    ui->comboBoxScientist->addItem("Please select field to display scientists");
     ui->comboBoxScientist->addItem("ID");
     ui->comboBoxScientist->addItem("Alphabetical order of names");
     ui->comboBoxScientist->addItem("Alphabetical order of nationality");
@@ -24,15 +24,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxScientist->addItem("Year of birth");
     ui->comboBoxScientist->addItem("Year of death");
     ui->comboBoxScientist->addItem("Year of award");
-    ui->comboBoxComputer->addItem("Display computers");
-    ui->comboBoxComputer->addItem("------------------");
+    ui->comboBoxComputer->addItem("Please select field to display computers");
     ui->comboBoxComputer->addItem("ID");
     ui->comboBoxComputer->addItem("Name");
     ui->comboBoxComputer->addItem("Type");
     ui->comboBoxComputer->addItem("Year built");
     ui->comboBoxComputer->addItem("Was it built?");
-    ui->comboBoxConnection->addItem("Display connections");
-    ui->comboBoxConnection->addItem("-----------------------");
+    ui->comboBoxConnection->addItem("Please select field to display connections");
     ui->comboBoxConnection->addItem("First Name");
     ui->comboBoxConnection->addItem("Last Name");
     ui->comboBoxConnection->addItem("Computer Name");
@@ -192,6 +190,12 @@ void MainWindow::on_comboBoxComputer_currentIndexChanged(const QString &arg1)
 {
     ui->pushButtonAscendingComputer->setEnabled(true);
     ui->pushButtonDescendingComputer->setEnabled(true);
+
+    if(arg1 == "Please select field to display computers")
+    {
+        ui->pushButtonAscendingComputer->setEnabled(false);
+        ui->pushButtonDescendingComputer->setEnabled(false);
+    }
 }
 
 //Function to search for scientist, can search names, nationality, year born, year of death and turing award
@@ -259,6 +263,12 @@ void MainWindow::on_comboBoxConnection_currentIndexChanged(const QString &arg1)
 {
     ui->pushButtonAscendingConnection->setEnabled(true);
     ui->pushButtonDesendingConnection->setEnabled(true);
+
+    if(arg1 == "Please select field to display connections")
+    {
+        ui->pushButtonAscendingConnection->setEnabled(false);
+        ui->pushButtonDesendingConnection->setEnabled(false);
+    }
 }
 
 //Display all connections by reading the from data base and putts them into vector
@@ -272,18 +282,21 @@ void MainWindow::displayAllConnections()
 void MainWindow::displayConnection(vector<searching> connections)
 {
     ui->tableWidgetConnection->clearContents();
+
     //Checks how many rows table has to be by checking size of vector
     ui->tableWidgetConnection->setRowCount(connections.size());
 
     for (unsigned int row = 0; row < connections.size(); row++)
     {
         searching currentConnection = connections[row];
+
         //Converting strings and int to QString
         QString firstName = QString::fromStdString(currentConnection.getSearchFirstName());
         QString lastName = QString::fromStdString(currentConnection.getSearchLastName());
         QString name = QString::fromStdString(currentConnection.getSearchComputerName());
         QString type = QString::fromStdString(currentConnection.getSearchComputerType());
         QString yob = QString::number(currentConnection.getSearchYearBuilt());
+
         //Inputs Qstrings into table
         ui->tableWidgetConnection->setItem(row, 0,  new QTableWidgetItem(firstName));
         ui->tableWidgetConnection->setItem(row, 1,  new QTableWidgetItem(lastName));
@@ -318,7 +331,6 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
 
     if (success == true)
     {
-
         ui->pushButtonDeleteConnection->setEnabled(false);
         ui->pushButtonEditScientist->setEnabled(false);
     }
@@ -385,6 +397,12 @@ void MainWindow::on_comboBoxScientist_currentIndexChanged(const QString &arg1)
 {
     ui->pushButtonAscending->setEnabled(true);
     ui->pushButtonDescending->setEnabled(true);
+
+    if(arg1 == "Please select field to display scientists")
+    {
+        ui->pushButtonAscending->setEnabled(false);
+        ui->pushButtonDescending->setEnabled(false);
+    }
 }
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
@@ -392,8 +410,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 
 }
 
-//This searches computers when user inputs something in the line edit. This function will start immedietly to search when there
-//is some input
+//This searches computers when user inputs something in the line edit. This function will start immedietly to search when there is some input
 void MainWindow::on_lineEditComputer_textChanged(const QString &arg1)
 {
     ui->labelComputerErrorMessage->setText("");
