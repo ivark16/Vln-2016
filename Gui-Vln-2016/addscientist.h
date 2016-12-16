@@ -37,7 +37,6 @@ private:
     int _deathYear;
     int _awardYear;
 
-
     //the functions below check the validity of the entered fields
     bool getGender();
     bool getFirstName();
