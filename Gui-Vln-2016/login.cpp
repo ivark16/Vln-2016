@@ -22,6 +22,7 @@ void login::on_pushButtonLogin_clicked()
     checking = _lists.checkForUsers();
     username = ui->lineEditUser->text();
     password = ui->lineEditPwd->text();
+    bool userExists = false;
 
     for(unsigned int i = 0 ; i < checking.size() ; i++ )
     {
@@ -29,6 +30,7 @@ void login::on_pushButtonLogin_clicked()
         QString getPwd = QString::fromStdString(checking[i].getpassword());
         if(getUser == username)
         {
+            userExists = true;
             QString convert;
             string convertedKey;
 
@@ -47,11 +49,13 @@ void login::on_pushButtonLogin_clicked()
             }
             else
             {
-                QMessageBox errorpwd;
-                errorpwd.setText("wrong password");
-                errorpwd.exec();
+               ui ->labelPwd ->setText("<span style='color: red'>Incorrect password</span>");
             }
         }
+    }
+    if(!userExists)
+    {
+        ui ->labelUser ->setText("<span style='color: red'>User does not exist</span>");
     }
 }
 

@@ -16,7 +16,11 @@ registeruser::~registeruser()
 //This function is for when register button is pressed
 void registeruser::on_pushButtonRegister_clicked()
 {
-    bool isLegitComputer;
+    //sets the warnign text to nothing
+    ui ->labelPwd ->setText("");
+    ui ->labelUser ->setText("");
+
+    bool isLegitComputer = false;
     bool hasUserName = getUserName();
     bool hasPassWord = getPassWord();
 
@@ -129,7 +133,6 @@ bool registeruser::getUserName()
     if(!hasContent)
     {
         ui ->labelUser ->setText("<span style='color: red'>Input required</span>");
-
     }
     else if(!hasLegalCharacters)
     {
@@ -175,8 +178,9 @@ bool registeruser::getPassWord()
     }
 
     //Throws errors if any are needed
-    if(!hasContent)
+    if(ui ->lineEditPassword ->text().isEmpty())
     {
+        hasContent = false;
         ui ->labelPwd->setText("<span style='color: red'>Password required</span>");
     }
     else if(!hasOnlyChar)
