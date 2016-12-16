@@ -53,6 +53,9 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -77,6 +80,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLineEdit" name="lineEditScientist">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
             <property name="placeholderText">
              <string>Search scientists:</string>
             </property>
@@ -389,6 +395,9 @@
         </item>
         <item>
          <widget class="QTableWidget" name="tableWidget_2">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -564,7 +573,11 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
-           <widget class="QComboBox" name="comboBoxConnection"/>
+           <widget class="QComboBox" name="comboBoxConnection">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscendingConnection">
@@ -763,7 +776,7 @@
      <x>0</x>
      <y>0</y>
      <width>1067</width>
-     <height>26</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
