@@ -318,10 +318,11 @@ void MainWindow::on_pushButtonDeleteConnection_clicked()
 
     if (success == true)
     {
-        displayAllConnections();
+
         ui->pushButtonDeleteConnection->setEnabled(false);
         ui->pushButtonEditScientist->setEnabled(false);
     }
+    displayAllConnections();
 }
 
 //When add scientist putton is clicked it executes the add scientist window
@@ -350,14 +351,10 @@ void MainWindow::on_pushButtonDeleteScientist_clicked()
     if (success == true)
     {
         //Disables edit and delete buttons and updates table
-        displayAllScientists();
         ui->pushButtonDeleteScientist->setEnabled(false);
         ui->pushButtonEditScientist->setEnabled(false);
     }
-    else
-    {
-        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, scientist was not deleted </span>");
-    }
+    displayAllScientists();
 }
 
 // This function opens the Edit table and inserts the name from table into lineEdit in the edit table
@@ -447,14 +444,11 @@ void MainWindow::on_pushButtonDeleteComputer_clicked()
     if (success == true)
     {
         //Disables edit and delete push botton and reloads the table
-        displayAllComputer();
+
         ui->pushButtonDeleteComputer->setEnabled(false);
         ui->pushButtonEditComputers->setEnabled(false);
     }
-    else
-    {
-        ui->labelErrorMessageForDelete->setText("<span style=' color: red'> Error, computer was not deleted </span>");
-    }
+    displayAllComputer();
 }
 
 //Executes the help window

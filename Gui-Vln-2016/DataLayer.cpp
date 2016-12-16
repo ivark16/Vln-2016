@@ -688,13 +688,13 @@ bool DataLayer::deleteConnectionFunctionComputer(int x)
 {
     bool deleteF;
     QSqlQuery myQuery;
-    myQuery.prepare("SELECT * FROM connect WHERE scientist_ID = (:x)");
+    myQuery.prepare("SELECT * FROM connect WHERE computer_ID = (:x)");
     myQuery.addBindValue(x);
     myQuery.exec();
 
     if(myQuery.next())
     {
-        myQuery.prepare("DELETE FROM scientist WHERE scientist_ID = (:x)");
+        myQuery.prepare("DELETE FROM scientist WHERE computer_ID = (:x)");
         myQuery.addBindValue(x);
         myQuery.exec();
         deleteF = true;
