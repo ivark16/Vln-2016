@@ -66,7 +66,7 @@
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabScientist">
        <attribute name="title">
@@ -98,6 +98,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscending">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {
@@ -111,6 +114,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDescending">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {
@@ -346,6 +352,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscendingComputer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {
@@ -359,6 +368,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDescendingComputer">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {
@@ -550,6 +562,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonAscendingConnection">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {
@@ -563,6 +578,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButtonDesendingConnection">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QAbstractButton
 {

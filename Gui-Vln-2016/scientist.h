@@ -32,8 +32,6 @@ public:
     char getGender();
     int getAwardYear();
     int getSizeOfScientist();
-
-
 };
 
 #endif // SCIENTIST_H
