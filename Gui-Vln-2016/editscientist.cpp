@@ -404,4 +404,3 @@ bool editscientist::getAwardYear()
     }
     return(hasOnlyNumbers && isInRange);
 }
-
