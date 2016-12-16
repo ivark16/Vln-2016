@@ -9,7 +9,8 @@ addConnection::addConnection(QWidget *parent) :
     displayScientists();
     displayComputers();
     ui ->addConnection_2 ->setDisabled(true);
-
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 addConnection::~addConnection()

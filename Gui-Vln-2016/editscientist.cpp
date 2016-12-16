@@ -10,6 +10,8 @@ editscientist::editscientist(QWidget *parent) :
     ui ->genderSelectBox ->addItem("Male");
     ui ->genderSelectBox ->addItem("Female");
     ui ->genderSelectBox ->addItem("Other");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 editscientist::~editscientist()

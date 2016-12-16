@@ -16,6 +16,8 @@ addComputer::addComputer(QWidget *parent) :
     ui ->wasBuiltBox ->addItem("---");
     ui ->wasBuiltBox ->addItem("Was built");
     ui ->wasBuiltBox ->addItem("Was not built");
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 addComputer::~addComputer()
@@ -37,7 +39,6 @@ void addComputer::on_addComputer_2_clicked()
     bool hasType = getComputerType();
     bool hasYearCreated = getYearCreated();
     bool hasBuiltStatus = getBuiltStatus();
-
     bool isLegalComputer = (hasName && hasType && hasYearCreated && hasBuiltStatus);
 
     if(isLegalComputer)

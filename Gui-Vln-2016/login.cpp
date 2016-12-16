@@ -6,6 +6,8 @@ login::login(QWidget *parent) :
     ui(new Ui::login)
 {
     ui->setupUi(this);
+    //get rid of the default question mark button
+    setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
 login::~login()
@@ -49,6 +51,7 @@ void login::on_pushButtonLogin_clicked()
                 QMessageBox popup;
                 popup.setText("Login successful");
                 popup.exec();
+
 
             }
             else
