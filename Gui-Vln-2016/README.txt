@@ -40,6 +40,10 @@ In every tab there is a Delete button to delete an entry in a table. To do this 
 In every tab there is a Display  drop down that if pushed shows the various ways you can display the data in the selected table. For example, in alphabetical order by names, both ascending and descending order. To select those featured the user selects either the Ascending or Descending button to the right of the Display drop down.
 To play or pause the music the user has to push the Play music checkbox on the bottom of the page to the left.  
 
+KNOWN BUGS:
+Sort by year of award ascending does not work like it should for some reason.
+
+
 CREDITS:
 
 Program written by Hópur Níu:
