@@ -40,7 +40,6 @@ void addComputer::on_addComputer_2_clicked()
 
     bool isLegalComputer = (hasName && hasType && hasYearCreated && hasBuiltStatus);
 
-
     if(isLegalComputer)
     {
         Computer newComputer(0, _computerName, _computerType, _yearBuilt, _wasBuilt);
@@ -50,7 +49,6 @@ void addComputer::on_addComputer_2_clicked()
         popup.exec();
 
         //sets all text boxes to empty, in case the user wants to add another scientist.
-
         ui ->computerName ->setText("");
         ui ->computerType ->setText("");
         ui ->yearOfCreation ->setText("");
@@ -63,7 +61,6 @@ void addComputer::on_addComputer_2_clicked()
 //checks the validity of the entered computer name
 bool addComputer::getComputerName()
 {
-
     string potentialName = ui ->computerName ->text().toStdString();
 
     bool hasLegalCharacters = true;
@@ -92,7 +89,6 @@ bool addComputer::getComputerName()
     if(!hasContent)
     {
         ui ->computerNameLabel ->setText("<span style='color: red'>Name required</span>");
-
     }
     else if(!hasLegalCharacters)
     {
@@ -115,7 +111,6 @@ bool addComputer::getComputerName()
 //checks the validity of the computer type
 bool addComputer::getComputerType()
 {
-
     string potentialType = ui ->computerType ->text().toStdString();
 
     bool hasLegalCharacters = true;
@@ -144,7 +139,6 @@ bool addComputer::getComputerType()
     if(!hasContent)
     {
         ui ->computerTypeLabel ->setText("<span style='color: red'>Type required</span>");
-
     }
     else if(!hasLegalCharacters)
     {
@@ -170,7 +164,6 @@ bool addComputer::getYearCreated()
 
     int potentialCreationYear = ui ->yearOfCreation ->text().toInt();
     string potentialCreationYearString =(ui ->yearOfCreation ->text()).toStdString();
-
     bool hasContent = true;
     bool hasOnlyNumbers = true;
     bool isInRange = true;
@@ -200,7 +193,6 @@ bool addComputer::getYearCreated()
     if(!hasContent)
     {
         ui ->YearOfCreationLabel ->setText("<span style='color: red'>Creation year required</span>");
-
     }
     else if(!hasOnlyNumbers)
     {

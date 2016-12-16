@@ -121,7 +121,6 @@ bool editscientist::getFirstName()
 {
 
     string potentialName = ui -> lineEditFirstName ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -169,7 +168,6 @@ bool editscientist::getLastName()
 {
 
     string potentialName = ui -> lineEditLastName ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -218,7 +216,6 @@ bool editscientist::getNationality()
 {
 
     string potentialNationality = ui -> lineEditNationality ->text().toStdString();
-
     bool hasOnlyChar = true;
     bool hasContent = true;
 
@@ -296,7 +293,6 @@ bool editscientist::getBirthYear()
     if(!hasContent)
     {
         ui -> LabelYOB ->setText("<span style='color: red'>Birth year required</span>");
-
     }
     else if(!hasOnlyNumbers)
     {
@@ -366,7 +362,6 @@ bool editscientist::getAwardYear()
 {
     int potentialAwardYear = ui ->lineEditYOA ->text().toInt();
     string potentialAwardYearString =(ui ->lineEditYOA ->text()).toStdString();
-
     bool hasOnlyNumbers = true;
     bool isInRange = true;
 

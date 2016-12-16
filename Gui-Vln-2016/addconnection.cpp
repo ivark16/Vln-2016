@@ -50,7 +50,6 @@ void addConnection::displayScientists()
 {
     for(unsigned int i = 0; i < _allScientists.size(); i++)
     {
-
         //Names are stored in two parts, this creates a new string that contains both names so that the scientists are more recognisable
         QString scientistFullName = QString::fromStdString(((_allScientists[i].getFirstName() + " " + _allScientists[i].getLastName())));
 
