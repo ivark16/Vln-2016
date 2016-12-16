@@ -39,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxConnection->addItem("Type");
     ui->comboBoxConnection->addItem("Year built");
 
+    ui->pushButtonAscending->setEnabled(true);
+    ui->pushButtonDescending->setEnabled(true);
+
     //Displays all tables
     displayAllScientists();
     displayAllComputer();
@@ -471,6 +474,9 @@ void MainWindow::on_pushButtonAscending_clicked()
         scientist = scientistService.readInAscendingByYOA();
     }
     displayScientist(scientist);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
 }
 
 //When the descending button is clicked in scientist table it will check where the user is in the combobox and then put the table in descending order
@@ -511,6 +517,9 @@ void MainWindow::on_pushButtonDescending_clicked()
         scientist = scientistService.readInDescendingByYOA();
     }
     displayScientist(scientist);
+
+    ui->pushButtonAscending->setEnabled(false);
+    ui->pushButtonDescending->setEnabled(false);
 }
 
 //When the edit putton is clicked after a computer has been choosen it will execute the edit window and display the computer in
@@ -557,6 +566,9 @@ void MainWindow::on_pushButtonAscendingComputer_clicked()
         //displayComputer(computer);
     }
     displayComputer(computer);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
 //When the descending button is clicked in computer table it will check where the user is in the combobox and then put the table in descending order
@@ -585,6 +597,9 @@ void MainWindow::on_pushButtonDescendingComputer_clicked()
         computer = scientistService.ComputerWasBuiltDESC();
     }
     displayComputer(computer);
+
+    ui->pushButtonAscendingComputer->setEnabled(false);
+    ui->pushButtonDescendingComputer->setEnabled(false);
 }
 
 //if the check button in the corner is checked, the music will play.
@@ -678,6 +693,9 @@ void MainWindow::on_pushButtonAscendingConnection_clicked()
         connection = scientistService.readInAscendingByYearBuilt();
     }
     displayConnection(connection);
+
+    ui->pushButtonAscendingConnection->setEnabled(false);
+    ui->pushButtonDesendingConnection->setEnabled(false);
 }
 
 //When the descending button is clicked in connection table it will check where the user is in the combobox and then put the table in descending order
@@ -707,6 +725,9 @@ void MainWindow::on_pushButtonDesendingConnection_clicked()
             connection = scientistService.readInDiscendingByYearBuilt();
         }
         displayConnection(connection);
+
+        ui->pushButtonAscendingConnection->setEnabled(false);
+        ui->pushButtonDesendingConnection->setEnabled(false);
     }
 }
 
