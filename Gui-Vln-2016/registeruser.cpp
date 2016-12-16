@@ -174,15 +174,15 @@ bool registeruser::getPassWord()
     }
     else if(!hasOnlyChar)
     {
-        ui ->labelPwd ->setText("<span style='color: red'>Name can only contain latin characters</span>");
+        ui ->labelPwd ->setText("<span style='color: red'>Password can only contain latin characters</span>");
     }
     else if(potentialPassWord.size() <= 3 || potentialPassWord.size() >= 10)
     {
-        ui -> labelPwd ->setText("<span style=' color: red'>Name must be between 2 and 10 characters</span>");
+        ui -> labelPwd ->setText("<span style=' color: red'>Password must be between 2 and 10 characters</span>");
     }
     else
     {
-        //If there are no problems, the last name is legal.
+        //If there are no problems, the password is legal.
         _password = potentialPassWord;
     }
     return (hasContent && hasOnlyChar && !(potentialPassWord.size() <= 3 || potentialPassWord.size() >= 10));
